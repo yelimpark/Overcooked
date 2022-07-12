@@ -10,6 +10,7 @@ public class InGameUIController : MonoBehaviour
     public GameObject PlayerUI;
     public Player player;
 
+    [Header("Loading Circle")]
     public Image LoadingBar;
     private float pressTime;
     public float LoadingSpeed;
