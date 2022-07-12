@@ -13,8 +13,7 @@ public class RayInterection : MonoBehaviour
 
     private void Start()
     {
-        direction = dest.position - transform.position;
-        direction.Normalize();
+
     }
 
     void Update()
@@ -25,10 +24,11 @@ public class RayInterection : MonoBehaviour
 
     public RaycastHit Shoot()
     {
+        direction = dest.position - transform.position;
+        direction.Normalize();
+
         RaycastHit hit;
-
         Physics.Raycast(transform.position, direction, out hit, maxDistance, target);
-
         return hit;
     }
 }

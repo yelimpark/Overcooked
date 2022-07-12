@@ -22,9 +22,13 @@ public class TestMove : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
         moveVec = new Vector3(horizontal, 0f, vertical).normalized;
-        transform.LookAt(transform.position + moveVec);
+        if (moveVec != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(moveVec.x, moveVec.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+        }
     }
 }
