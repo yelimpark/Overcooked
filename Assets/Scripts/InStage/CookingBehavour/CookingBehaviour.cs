@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CookingBehaviour : MonoBehaviour
 {
-    private RayInterection rayInterection;
-    private string position;
-    private bool atPosition = false;
+    protected RayInterection rayInterection;
+    public string position;
+    protected bool atPosition = false;
+    public virtual bool AtPosition
+    {
+        get { return atPosition; }
+        set { atPosition = value; }
+    }
 
-    private string ingrediantName;
-    private string next;
+    public string next;
 
     public virtual void Start()
     {

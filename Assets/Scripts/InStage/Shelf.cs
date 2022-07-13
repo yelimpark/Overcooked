@@ -14,13 +14,14 @@ public class Shelf : MonoBehaviour
         OccupyObj = other.gameObject;
 
         // position correction
-        Vector3 newPos = transform.position;
-        newPos.y += transform.localScale.y;
-        OccupyObj.transform.position = newPos;
-
         Rigidbody rb = OccupyObj.GetComponent<Rigidbody>();
         if (rb != null)
             rb.constraints = RigidbodyConstraints.FreezeAll;
+
+        Vector3 newPos = transform.position;
+        newPos.y += transform.localScale.y;
+        OccupyObj.transform.position = newPos;
+        OccupyObj.transform.rotation = Quaternion.identity;
 
         // check position
         CookingBehaviour cb = OccupyObj.GetComponent<CookingBehaviour>();

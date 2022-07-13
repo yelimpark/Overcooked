@@ -7,6 +7,7 @@ public class InteractableLocation : MonoBehaviour
     private bool active = false;
 
     public GameObject shelfGO;
+    public GameObject player;
 
     public bool Active
     {
@@ -46,6 +47,7 @@ public class InteractableLocation : MonoBehaviour
             Shelf shelf = shelfGO.GetComponent<Shelf>();
             GameObject ingrediant = shelf.OnTakeOut();
             // 플레이어에게 재료 장착시키는 함수
+            ingrediant.transform.position = player.transform.position;
         }
     }
 }
