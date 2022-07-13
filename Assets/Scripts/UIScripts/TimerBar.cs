@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimerBar : MonoBehaviour
 {
     public Slider TimerSlider;
-    float time = 150f;
+    //float time = 150f;
     void Start()
     {
         TimerSlider = GetComponent<Slider>();
@@ -22,6 +22,7 @@ public class TimerBar : MonoBehaviour
         }
         else
         {
+            //게임종료
             Debug.Log("Time is Zero.");
         }
     }
