@@ -16,7 +16,7 @@ public class TimeController : MonoBehaviour
     void Start()
     {
 
-        timeText[0].text = "00";
+        timeText[0].text = "0";
         timeText[1].text = "00";
         
     }
