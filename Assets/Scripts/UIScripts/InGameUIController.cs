@@ -17,7 +17,13 @@ public class InGameUIController : MonoBehaviour
     private float pressTime;
     public float LoadingSpeed;
 
+    [Header("First Bigger Layer")]
+    public float posX, posY;
+    public float time;
+    public float delayTime;
 
+
+    [Header("Camera Moving")]
     public CameraController mainCamera;
     public TimeController timeController;
     public TimerBar timerBar;
