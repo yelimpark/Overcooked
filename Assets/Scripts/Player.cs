@@ -69,8 +69,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftControl) && !isPickUp)
             {
-                //Choping();
-                Washing();
+                Choping();
+                //Washing();
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
