@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public GameObject plate;
     private bool isWashing;
 
-    public float pickAndDropDelay;
+    public float pickOrDropDelay;
     private bool isPickUp;
     private bool delay;
 
@@ -58,23 +58,23 @@ public class Player : MonoBehaviour
                 animator.SetBool("isWashing", false);
             }
         }
-
         animator.SetBool("isWalking", moveVec != Vector3.zero);
     }
 
     private void Action()
     {
-        var canAction = !isChoping && !isWashing && !isPickUp;
+        var canAction = !isChoping && !isWashing;
+        //Debug.Log($"{canAction}, {Input.GetKeyDown(KeyCode.Space)}");
         if (canAction)
         {
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (Input.GetKeyDown(KeyCode.LeftControl) && !isPickUp)
             {
                 //Choping();
                 Washing();
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
-                PickUpAndDropDown();
+                PickUpOrDropDown();
             }
         }
     }
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
         animator.SetBool("isWashing", true);
     }
 
-    private void PickUpAndDropDown()
+    private void PickUpOrDropDown()
     {
         moveVec = Vector3.zero;
         if (!isPickUp)
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
             animator.SetBool("isPickUp", false);
         }
         delay = true;
-        Invoke(nameof(ActiveDelay), pickAndDropDelay);
+        Invoke(nameof(ActiveDelay), pickOrDropDelay);
     }
 
     private void ActiveDelay()
