@@ -40,12 +40,30 @@ public class InteractWithLocation : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKey)
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        if (h != 0 || v != 0)
         {
             Transform hit = rayInterection.Shoot().transform;
             if (hit != null && collisions.Count > 1 && collisions.Contains(hit.gameObject))
             {
                 Cursor = hit.gameObject;
+            }
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            EquipmentSystem es = GetComponent<EquipmentSystem>();
+            if (es != null && es.Equipment != null)
+            {
+                GameObject discarded = es.Unequip();
+
+                if (cursor != null) {
+                    InteractableLocation il = cursor.GetComponent<InteractableLocation>();
+                    if (il != null)
+                        il.shelf.OnPlace(discarded);
+                }
             }
         }
     }

@@ -6,7 +6,7 @@ public class InteractableLocation : MonoBehaviour
 {
     private bool active = false;
 
-    public GameObject shelfGO;
+    public Shelf shelf;
     public GameObject player;
 
     public bool Active
@@ -44,10 +44,13 @@ public class InteractableLocation : MonoBehaviour
     {
         if (active && Input.GetButtonDown("Fire1"))
         {
-            Shelf shelf = shelfGO.GetComponent<Shelf>();
+            EquipmentSystem es = player.GetComponent<EquipmentSystem>();
+            if (es == null || es.Equipment != null)
+                return;
+
             GameObject ingrediant = shelf.OnTakeOut();
-            // 플레이어에게 재료 장착시키는 함수
-            ingrediant.transform.position = player.transform.position;
+            if (ingrediant != null)
+                es.Equip(ingrediant);
         }
     }
 }

@@ -8,10 +8,15 @@ public class Shelf : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Ingrediant") || OccupyObj != null)
+        OnPlace(other.gameObject);
+    }
+
+    public void OnPlace(GameObject go)
+    {
+        if (!go.CompareTag("Ingrediant") || OccupyObj != null)
             return;
 
-        OccupyObj = other.gameObject;
+        OccupyObj = go;
 
         // position correction
         Rigidbody rb = OccupyObj.GetComponent<Rigidbody>();
@@ -22,6 +27,8 @@ public class Shelf : MonoBehaviour
         newPos.y += transform.localScale.y;
         OccupyObj.transform.position = newPos;
         OccupyObj.transform.rotation = Quaternion.identity;
+
+        OccupyObj.transform.SetParent(transform);
 
         // check position
         CookingBehaviour cb = OccupyObj.GetComponent<CookingBehaviour>();
@@ -40,6 +47,8 @@ public class Shelf : MonoBehaviour
         Rigidbody rb = takeout.GetComponent<Rigidbody>();
         if (rb != null)
             rb.constraints = RigidbodyConstraints.None;
+
+        OccupyObj.transform.SetParent();
 
         return takeout;
     }

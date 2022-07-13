@@ -188,7 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shelfGO: {fileID: 326762355285750601}
+  shelf: {fileID: 6408910448809022190}
+  player: {fileID: 0}
 --- !u!114 &8688501488516674481
 MonoBehaviour:
   m_ObjectHideFlags: 0
