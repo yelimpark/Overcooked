@@ -11,11 +11,6 @@ public class RayInterection : MonoBehaviour
 
     private Vector3 direction;
 
-    private void Start()
-    {
-
-    }
-
     void Update()
     {
         if (activeDebug)

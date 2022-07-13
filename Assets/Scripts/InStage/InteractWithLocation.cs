@@ -13,22 +13,22 @@ public class InteractWithLocation : MonoBehaviour
         get { return cursor; }
         set 
         {
-            Highlight highlight;
+            InteractableLocation il;
 
             if (cursor != null)
             {
-                highlight = cursor.GetComponent<Highlight>();
-                if (highlight != null)
-                    highlight.TurnOff();
+                il = cursor.GetComponent<InteractableLocation>();
+                if (il != null)
+                    il.Active = false;
             }
 
             cursor = value;
 
             if (cursor != null)
             {
-                highlight = cursor.GetComponent<Highlight>();
-                if (highlight != null)
-                    highlight.TurnOn();
+                il = cursor.GetComponent<InteractableLocation>();
+                if (il != null)
+                    il.Active = true;
             }
         }
     }
@@ -48,17 +48,12 @@ public class InteractWithLocation : MonoBehaviour
                 Cursor = hit.gameObject;
             }
         }
-
-        if (Input.GetButtonDown("Fire1") && cursor != null)
-        {
-            Transform shelf = cursor.transform.GetChild(0);
-            InteractableLocation il = shelf.GetComponent<InteractableLocation>();
-            GameObject ingrediant = il.OnTakeOut();
-        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
+        Collider other = collision.collider;
+
         if (!other.CompareTag("Interactable") && !other.isTrigger)
             return;
 
@@ -66,8 +61,10 @@ public class InteractWithLocation : MonoBehaviour
         collisions.Add(other.gameObject);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
+        Collider other = collision.collider;
+
         if (!other.CompareTag("Interactable") && !other.isTrigger)
             return;
 

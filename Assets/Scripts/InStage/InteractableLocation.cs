@@ -4,41 +4,48 @@ using UnityEngine;
 
 public class InteractableLocation : MonoBehaviour
 {
-    private GameObject OccupyObj;
+    private bool active = false;
 
-    public void OnTriggerEnter(Collider other)
+    public GameObject shelfGO;
+
+    public bool Active
     {
-        if (!other.CompareTag("Ingrediant") || OccupyObj != null)
-            return;
-
-        OccupyObj = other.gameObject;
-
-        // position correction
-        Vector3 newPos = transform.position;
-        newPos.y += transform.localScale.y;
-        OccupyObj.transform.position = newPos;
-
-        Rigidbody rb = OccupyObj.GetComponent<Rigidbody>();
-        if (rb != null)
-            rb.constraints = RigidbodyConstraints.FreezeAll;
-
-        // check position
-        CookingBehaviour cb = OccupyObj.GetComponent<CookingBehaviour>();
-        if (cb != null)
-            cb.CheckPosition();
+        get { return active; }
+        set 
+        { 
+            active = value;
+            if (active)
+            {
+                OnCursorOn();
+            }
+            else
+            {
+                OnCursorOut();
+            }
+        }
     }
 
-    public GameObject OnTakeOut()
+    public void OnCursorOn()
     {
-        if (OccupyObj == null)
-            return null;
+        Highlight highlight = GetComponent<Highlight>();
+        if (highlight != null)
+            highlight.TurnOn();
+    }
 
-        Rigidbody rb = OccupyObj.GetComponent<Rigidbody>();
-        if (rb != null)
-            rb.constraints = RigidbodyConstraints.None;
+    public void OnCursorOut()
+    {
+        Highlight highlight = GetComponent<Highlight>();
+        if (highlight != null)
+            highlight.TurnOff();
+    }
 
-        GameObject tmp = OccupyObj;
-        OccupyObj = null;
-        return tmp;
+    private void Update()
+    {
+        if (active && Input.GetButtonDown("Fire1"))
+        {
+            Shelf shelf = shelfGO.GetComponent<Shelf>();
+            GameObject ingrediant = shelf.OnTakeOut();
+            // 플레이어에게 재료 장착시키는 함수
+        }
     }
 }
