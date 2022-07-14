@@ -8,6 +8,7 @@ public class Combine : CookingBehaviour
 
     public override void Start()
     {
+
     }
 
     void Update()

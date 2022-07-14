@@ -24,7 +24,7 @@ public class Shelf : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
 
         Vector3 newPos = transform.position;
-        newPos.y += transform.localScale.y;
+        newPos.y += transform.lossyScale.y * 0.5f + OccupyObj.transform.lossyScale.y * 0.5f;
         OccupyObj.transform.position = newPos;
         OccupyObj.transform.rotation = Quaternion.identity;
 
@@ -48,7 +48,7 @@ public class Shelf : MonoBehaviour
         if (rb != null)
             rb.constraints = RigidbodyConstraints.None;
 
-        OccupyObj.transform.SetParent();
+        takeout.transform.parent = null;
 
         return takeout;
     }

@@ -55,6 +55,7 @@ public class InteractWithLocation : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             EquipmentSystem es = GetComponent<EquipmentSystem>();
+
             if (es != null && es.Equipment != null)
             {
                 GameObject discarded = es.Unequip();

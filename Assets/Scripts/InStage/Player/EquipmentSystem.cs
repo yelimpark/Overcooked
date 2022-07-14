@@ -5,7 +5,7 @@ using UnityEngine;
 public class EquipmentSystem : MonoBehaviour
 {
     GameObject equipment;
-    public GameObject Equipment { get; }
+    public GameObject Equipment { get { return equipment; } }
 
     public Transform hands;
 
@@ -36,7 +36,7 @@ public class EquipmentSystem : MonoBehaviour
         if (rb != null)
             rb.constraints = RigidbodyConstraints.None;
 
-        discard.transform.SetParent(null);
+        discard.transform.parent = null;
 
         return discard;
     }
