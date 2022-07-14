@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableLocation : Interactable
+public class CreateBoxWithLocation : Interactable
 {
     public override void OnTakeOutBtnDown()
     {
@@ -13,6 +13,10 @@ public class InteractableLocation : Interactable
         GameObject ingrediant = shelf.OnTakeOut();
         if (ingrediant != null)
             es.Equip(ingrediant);
-        
+        else
+        {
+
+        }
     }
+
 }

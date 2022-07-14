@@ -8,6 +8,7 @@ public class ObjectPool : MonoBehaviour
     private ObjectPool<Stuff> stuffpool;
 
     public Stuff stuffPrefab;
+    public GameObject spon;
 
     private void Start()
     {
@@ -41,16 +42,11 @@ public class ObjectPool : MonoBehaviour
             CreatStuff();
         }
     }
-
-   
-
     private void CreatStuff()
     {
         var stuff = stuffpool.Get();
-        var position = transform.position;
-        var rotation = transform.rotation;
+        var position = spon.transform.position;
 
         stuff.transform.position = position;
-        stuff.transform.rotation = rotation;
     }
 }
