@@ -11,6 +11,7 @@ public class InGameUIController : MonoBehaviour
     public GameObject ReadyUI;
     public GameObject StartUI;
     public Player player;
+    public GameObject FadeUI;
 
     [Header("Loading Circle")]
     public Image LoadingBar;
@@ -25,6 +26,8 @@ public class InGameUIController : MonoBehaviour
 
     [Header("Camera Moving")]
     public CameraController mainCamera;
+    
+    [Header("Time Bar And StopWatch")]
     public TimeController timeController;
     public TimerBar timerBar;
     private void Start()
@@ -63,6 +66,8 @@ public class InGameUIController : MonoBehaviour
         timeController.GetComponent<TimeController>().enabled = false;
         timerBar.GetComponent<TimerBar>().enabled = false;
         HelpUI.SetActive(false);
+
+        
 
         player.enabled = false;
         mainCamera.CameraZoomIn();
