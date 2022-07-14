@@ -29,10 +29,8 @@ public class InteractWithIngrediant : Interact
         }
     }
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
-
         InteracableTag = "Ingrediant";
     }
 }

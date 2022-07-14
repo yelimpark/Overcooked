@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CookingBehaviour : MonoBehaviour
 {
-    protected RayInterection rayInterection;
     public string position;
     protected bool atPosition = false;
     public virtual bool AtPosition
@@ -15,11 +14,6 @@ public class CookingBehaviour : MonoBehaviour
 
     public string next;
 
-    public virtual void Start()
-    {
-        rayInterection = GetComponent<RayInterection>();
-    }
-
     public virtual void Update()
     {
         if (atPosition)
@@ -28,8 +22,10 @@ public class CookingBehaviour : MonoBehaviour
 
     public void CheckPosition()
     {
-        Transform hit = rayInterection.Shoot().transform;
-        if (hit != null && hit.tag == position)
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit, Utils.RAY_MAX_LENGTH);
+
+        if (hit.transform != null && hit.transform.tag == position)
         {
             atPosition = true;
         }

@@ -11,7 +11,7 @@ public class Highlight : MonoBehaviour
 
     public void Start()
     {
-        mr = GetComponent<MeshRenderer>();
+        mr = GetComponentInChildren<MeshRenderer>();
         standard = mr.material.shader;
     }
 

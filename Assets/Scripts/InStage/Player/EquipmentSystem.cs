@@ -19,6 +19,7 @@ public class EquipmentSystem : MonoBehaviour
     private State curState = State.NONE;
     public float equipSpeed = 2f;
     public float equipErrorRange = 0.1f;
+    public LayerMask equipmentMask;
 
     public void Equip(GameObject go)
     {
@@ -35,7 +36,6 @@ public class EquipmentSystem : MonoBehaviour
             childCollider.enabled = false;
         }
 
-        //equipment.transform.position = hands.position;
         curState = State.EQUIPING;
         equipment.transform.SetParent(hands);
     }
@@ -55,9 +55,11 @@ public class EquipmentSystem : MonoBehaviour
                 break;
 
             case State.UNEQUIPING:
-                if (equipment.GetComponent<Rigidbody>().velocity.y < 0.1)
+                if (!Utils.IsFalling(equipment, equipErrorRange, equipmentMask))
                 {
+                    Debug.Log("???");
                     curState = State.NONE;
+                    equipment = null;
                 }
                 break;
 
@@ -77,6 +79,7 @@ public class EquipmentSystem : MonoBehaviour
         if (collider != null)
             collider.enabled = true;
 
+        curState = State.UNEQUIPING;
         equipment.transform.parent = null;
 
         return equipment;

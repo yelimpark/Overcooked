@@ -38,6 +38,12 @@ public class Interactable : MonoBehaviour
             highlight.TurnOff();
     }
 
+    private void Start()
+    {
+        // temp code
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void Update()
     {
         if (active && Input.GetButtonDown("Fire1"))

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
-    protected RayInterection rayInterection;
     protected List<GameObject> collisions = new List<GameObject>();
-    
+
     protected GameObject cursor;
     public virtual GameObject Cursor
     {
@@ -15,11 +14,6 @@ public class Interact : MonoBehaviour
     }
 
     protected string InteracableTag;
-
-    public virtual void Start()
-    {
-        rayInterection = GetComponent<RayInterection>();
-    }
 
     public virtual void Update()
     {
@@ -34,10 +28,15 @@ public class Interact : MonoBehaviour
 
     public void OnMove()
     {
-        Transform hit = rayInterection.Shoot().transform;
-        if (hit != null && collisions.Count > 1 && collisions.Contains(hit.gameObject))
+        RaycastHit hit;
+        Vector3 direction = transform.forward + transform.up * (-1);
+        Physics.Raycast(transform.position, direction.normalized, out hit, Utils.RAY_MAX_LENGTH);
+
+        Transform hitted = hit.transform;
+
+        if (hitted != null && collisions.Count > 1 && collisions.Contains(hitted.gameObject))
         {
-            Cursor = hit.gameObject;
+            Cursor = hitted.gameObject;
         }
     }
 

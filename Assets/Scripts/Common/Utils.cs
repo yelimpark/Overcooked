@@ -12,6 +12,8 @@ public enum Direction
 
 public class Utils : MonoBehaviour
 {
+    public static readonly float RAY_MAX_LENGTH = 10f;
+
     public static void FixPosition(GameObject go)
     {
         Rigidbody rb = go.GetComponent<Rigidbody>();
@@ -43,9 +45,9 @@ public class Utils : MonoBehaviour
     public static bool IsFalling(GameObject go, float errorRange, LayerMask target)
     {
         RaycastHit hit;
-        Physics.Raycast(go.transform.position, Vector3.down, out hit, 10f, target);
+        Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, target);
 
-        if (Vector3.Distance(hit.transform.position, go.transform.position) < errorRange)
+        if (Vector3.Distance(hit.transform.position, go.transform.position) > errorRange + go.transform.lossyScale.y)
         {
             return false;
         }

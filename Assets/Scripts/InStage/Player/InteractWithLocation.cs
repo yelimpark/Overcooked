@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractWithLocation : Interact
@@ -7,7 +5,7 @@ public class InteractWithLocation : Interact
     public override GameObject Cursor
     {
         get { return cursor; }
-        set 
+        set
         {
             InteractableLocation il;
 
@@ -29,9 +27,8 @@ public class InteractWithLocation : Interact
         }
     }
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
         InteracableTag = "Interactable";
     }
 
@@ -59,7 +56,8 @@ public class InteractWithLocation : Interact
                     return;
 
                 GameObject discarded = es.Unequip();
-                il.shelf.OnPlace(discarded);
+                if (discarded != null)
+                    il.shelf.OnPlace(discarded);
             }
             else
             {
