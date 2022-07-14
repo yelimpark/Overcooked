@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
-    private GameObject OccupyObj;
+    private GameObject occupyObj;
+    public GameObject OccupyObj { get; private set; }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -18,7 +19,6 @@ public class Shelf : MonoBehaviour
 
         OccupyObj = go;
 
-        // position correction
         Rigidbody rb = OccupyObj.GetComponent<Rigidbody>();
         if (rb != null)
             rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -30,7 +30,10 @@ public class Shelf : MonoBehaviour
 
         OccupyObj.transform.SetParent(transform);
 
-        // check position
+        Interactable interactable = OccupyObj.GetComponent<Interactable>();
+        if (interactable != null)
+            interactable.enabled = false;
+
         CookingBehaviour cb = OccupyObj.GetComponent<CookingBehaviour>();
         if (cb != null)
             cb.CheckPosition();
@@ -49,6 +52,10 @@ public class Shelf : MonoBehaviour
             rb.constraints = RigidbodyConstraints.None;
 
         takeout.transform.parent = null;
+
+        Interactable interactable = takeout.GetComponent<Interactable>();
+        if (interactable != null)
+            interactable.enabled = true;
 
         return takeout;
     }

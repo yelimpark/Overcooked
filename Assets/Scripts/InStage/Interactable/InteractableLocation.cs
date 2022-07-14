@@ -2,55 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableLocation : MonoBehaviour
+public class InteractableLocation : Interactable
 {
-    private bool active = false;
-
-    public Shelf shelf;
-    public GameObject player;
-
-    public bool Active
+    public override void OnTakeOutBtnDown()
     {
-        get { return active; }
-        set 
-        { 
-            active = value;
-            if (active)
-            {
-                OnCursorOn();
-            }
-            else
-            {
-                OnCursorOut();
-            }
-        }
-    }
+        EquipmentSystem es = player.GetComponent<EquipmentSystem>();
+        if (es == null || es.Equipment != null)
+            return;
 
-    public void OnCursorOn()
-    {
-        Highlight highlight = GetComponent<Highlight>();
-        if (highlight != null)
-            highlight.TurnOn();
-    }
-
-    public void OnCursorOut()
-    {
-        Highlight highlight = GetComponent<Highlight>();
-        if (highlight != null)
-            highlight.TurnOff();
-    }
-
-    private void Update()
-    {
-        if (active && Input.GetButtonDown("Fire1"))
-        {
-            EquipmentSystem es = player.GetComponent<EquipmentSystem>();
-            if (es == null || es.Equipment != null)
-                return;
-
-            GameObject ingrediant = shelf.OnTakeOut();
-            if (ingrediant != null)
-                es.Equip(ingrediant);
-        }
+        GameObject ingrediant = shelf.OnTakeOut();
+        if (ingrediant != null)
+            es.Equip(ingrediant);
     }
 }

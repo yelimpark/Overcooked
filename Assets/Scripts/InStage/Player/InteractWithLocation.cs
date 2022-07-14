@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractWithLocation : MonoBehaviour
+public class InteractWithLocation : Interact
 {
-    private RayInterection rayInterection;
-    private List<GameObject> collisions = new List<GameObject>();
-    
-    private GameObject cursor;
-    public GameObject Cursor
+    public override GameObject Cursor
     {
         get { return cursor; }
         set 
@@ -33,64 +29,42 @@ public class InteractWithLocation : MonoBehaviour
         }
     }
 
-    void Start()
+    public override void Start()
     {
-        rayInterection = GetComponent<RayInterection>();
+        base.Start();
+        InteracableTag = "Interactable";
     }
 
-    void Update()
+    public override void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        if (h != 0 || v != 0)
-        {
-            Transform hit = rayInterection.Shoot().transform;
-            if (hit != null && collisions.Count > 1 && collisions.Contains(hit.gameObject))
-            {
-                Cursor = hit.gameObject;
-            }
-        }
+        base.Update();
 
         if (Input.GetButtonDown("Fire1"))
         {
-            EquipmentSystem es = GetComponent<EquipmentSystem>();
-
-            if (es != null && es.Equipment != null)
-            {
-                GameObject discarded = es.Unequip();
-
-                if (cursor != null) {
-                    InteractableLocation il = cursor.GetComponent<InteractableLocation>();
-                    if (il != null)
-                        il.shelf.OnPlace(discarded);
-                }
-            }
+            OnUnequipBtnDown();
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnUnequipBtnDown()
     {
-        Collider other = collision.collider;
+        EquipmentSystem es = GetComponent<EquipmentSystem>();
 
-        if (!other.CompareTag("Interactable") && !other.isTrigger)
-            return;
+        if (es != null && es.Equipment != null)
+        {
+            if (cursor != null)
+            {
+                InteractableLocation il = cursor.GetComponent<InteractableLocation>();
 
-        Cursor = other.gameObject;
-        collisions.Add(other.gameObject);
-    }
+                if (il == null || il.shelf.OccupyObj != null)
+                    return;
 
-    private void OnCollisionExit(Collision collision)
-    {
-        Collider other = collision.collider;
-
-        if (!other.CompareTag("Interactable") && !other.isTrigger)
-            return;
-
-        GameObject go = other.gameObject;
-
-        collisions.Remove(go);
-        if (go.Equals(cursor))
-            Cursor = null;
+                GameObject discarded = es.Unequip();
+                il.shelf.OnPlace(discarded);
+            }
+            else
+            {
+                es.Unequip();
+            }
+        }
     }
 }

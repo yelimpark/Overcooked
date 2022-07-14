@@ -9,6 +9,10 @@ public class EquipmentSystem : MonoBehaviour
 
     public Transform hands;
 
+    private bool equiping = false;
+    public float equipSpeed = 2f;
+    public float equipErrorRange = 0.1f;
+
     public void Equip(GameObject go)
     {
         if (equipment != null)
@@ -20,13 +24,28 @@ public class EquipmentSystem : MonoBehaviour
         if (rb != null)
             rb.constraints = RigidbodyConstraints.FreezeAll;
 
-        equipment.transform.position = hands.position;
+        //equipment.transform.position = hands.position;
+        equiping = true;
         equipment.transform.SetParent(hands);
+    }
+
+    private void Update()
+    {
+        if (equiping)
+        {
+            Vector3 dir = hands.position - equipment.transform.position;
+            equipment.transform.position += dir.normalized * Time.deltaTime * equipSpeed;
+
+            if (Vector3.Distance(hands.position, equipment.transform.position) < equipErrorRange)
+            {
+                equiping = false;
+            }
+        }
     }
 
     public GameObject Unequip()
     {
-        if (equipment == null)
+        if (equipment == null || equiping)
             return null;
 
         GameObject discard = equipment;

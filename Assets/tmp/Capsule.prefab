@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 6823856367113084007}
   - component: {fileID: 6823856367113084005}
   - component: {fileID: 6823856367113084004}
+  - component: {fileID: 3353363075534042451}
   - component: {fileID: 6823856367113084011}
   - component: {fileID: 6823856367113084013}
   - component: {fileID: 6964918869470137080}
@@ -217,6 +218,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+--- !u!114 &3353363075534042451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6823856367113084003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9894789af4e136f46a24db73b873c0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6823856367113084011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hands: {fileID: 1929381083}
+  equipSpeed: 2
+  equipErrorRange: 0.1
 --- !u!65 &6823856367113084012
 BoxCollider:
   m_ObjectHideFlags: 0

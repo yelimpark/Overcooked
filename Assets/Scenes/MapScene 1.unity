@@ -2197,6 +2197,7 @@ GameObject:
   - component: {fileID: 566032440}
   - component: {fileID: 566032444}
   - component: {fileID: 566032445}
+  - component: {fileID: 566032447}
   - component: {fileID: 566032446}
   m_Layer: 0
   m_Name: Flypan
@@ -2324,6 +2325,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &566032447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566032439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9097ee3beec204f9804b03ba4045a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &589592700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12872,7 +12885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 731100591337276805, guid: edefda837c2e43a4caf70368b36966f6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 731100591337276805, guid: edefda837c2e43a4caf70368b36966f6, type: 3}
       propertyPath: m_TagString
