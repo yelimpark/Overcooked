@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public class Stuff : MonoBehaviour
 {
-    public IObjectPool<Stuff> poolToReturn;
+    public IObjectPool<Stuff> poolToReturn;    
     public bool IsTriggered
     {
         get;
@@ -17,6 +17,7 @@ public class Stuff : MonoBehaviour
         IsTriggered = false;
     }
 
+    
     private void OnCollisionEnter(Collision collision)
     {
         if(IsTriggered)
@@ -24,7 +25,7 @@ public class Stuff : MonoBehaviour
             return;
         }
 
-        if(collision.collider.CompareTag("StuffBox"))
+        if(collision.collider.CompareTag("Trash"))
         {
             IsTriggered = true;
             StartCoroutine(DestroyStuff());               
@@ -33,8 +34,7 @@ public class Stuff : MonoBehaviour
 
     private IEnumerator DestroyStuff()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         poolToReturn.Release(this);
     }
-
 }

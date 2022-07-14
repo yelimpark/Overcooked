@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : MonoBehaviour 
 {
     private ObjectPool<Stuff> stuffpool;
 
@@ -30,24 +30,27 @@ public class ObjectPool : MonoBehaviour
             actionOnDestroy: (stuff) =>
             {
                 Destroy(stuff.gameObject);
-            }, maxSize: 2);
+            }, defaultCapacity:100, maxSize: 1000);
 
 
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             CreatStuff();
         }
-        if(Input.GetMouseButtonDown(1))
-        {
-
-        }
     }
+
+   
 
     private void CreatStuff()
     {
         var stuff = stuffpool.Get();
+        var position = transform.position;
+        var rotation = transform.rotation;
+
+        stuff.transform.position = position;
+        stuff.transform.rotation = rotation;
     }
 }

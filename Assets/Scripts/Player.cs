@@ -28,6 +28,6 @@ public class Player : MonoBehaviour
         moveVec = new Vector3(horizontal, 0f, vertical).normalized;
         transform.LookAt(transform.position + moveVec);
 
-        animator.SetBool("isWalking", moveVec != Vector3.zero);
+        //animator.SetBool("isWalking", moveVec != Vector3.zero);
     }
 }
