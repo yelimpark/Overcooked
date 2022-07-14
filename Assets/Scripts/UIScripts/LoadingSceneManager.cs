@@ -6,17 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class LoadingSceneManager : MonoBehaviour
 {
-    public Image image;
-    public string SceneName;
+    private static LoadingSceneManager instance;
+    public static LoadingSceneManager Instance { get { return instance; } }
 
+    [Header("Canvas UI")]
+    public FadeInOutUI fadeInOutUI;
+    public GameObject loadingUI;
+
+    [Header("LoadingScene Status")]
+    private LoadingSceneStatus CurrentLoadingStatus;
+    public int CurrentUI = 0;
+
+    [Header("Loading Bar")]
+    public Image image;
+
+    [Header("LoadingTime")]
     public float minLoadingTime = 4.0f;
 
-    public UISmallerAnimation smallerAnimation;
+    [Header("Next Scene")]
+    public string SceneName;
+
     private float time;
 
 
     void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+
+        fadeInOutUI.FadeInUI();
         StartCoroutine(LoadAsynSceneCoroutine());
         
     }
@@ -39,17 +59,18 @@ public class LoadingSceneManager : MonoBehaviour
             fakeLoadRatio = fakeLoadTime / minLoadingTime;
             time = +Time.time;
 
-            image.fillAmount = operation.progress;
 
             //loadRatio
             loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
             Debug.Log("Loading progress: " + (loadRatio * 100) + "%");
+            image.fillAmount = loadRatio;
 
             
-
+            
             if (loadRatio >= 0.9f)
             {
-                //yield return new WaitForSeconds(2f);
+                fadeInOutUI.FadeOutUI();
+                yield return new WaitForSeconds(2f);
                 
                 operation.allowSceneActivation = true;
             }

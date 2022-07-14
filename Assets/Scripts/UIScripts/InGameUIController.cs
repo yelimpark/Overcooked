@@ -11,8 +11,7 @@ public class InGameUIController : MonoBehaviour
     public GameObject ReadyUI;
     public GameObject StartUI;
     public Player player;
-    public GameObject FadeUI;
-    public GameObject GameoverUI;
+    public FadeInOutUI FadeUI;
 
     [Header("Loading Circle")]
     public Image LoadingBar;
@@ -33,11 +32,11 @@ public class InGameUIController : MonoBehaviour
     public TimerBar timerBar;
     private void Start()
     {
+        FadeUI.FadeInUI();
         HelpUI.SetActive(true);
         PlayerUI.SetActive(false);
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
-        GameoverUI.SetActive(false);
         player.enabled = false;
 
     }
@@ -62,10 +61,10 @@ public class InGameUIController : MonoBehaviour
         }
         LoadingBar.fillAmount = pressTime/50;
 
-        if(timeController.time <= 0f)
-        {
-            GameoverUI.SetActive(true);
-        }
+        //if(timeController.time <= 0f)
+        //{
+        //    GameoverUI.SetActive(true);
+        //}
     }
 
     IEnumerator ChangeUI()
