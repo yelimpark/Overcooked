@@ -19,14 +19,11 @@ public class Shelf : MonoBehaviour
 
         OccupyObj = go;
 
-        Rigidbody rb = OccupyObj.GetComponent<Rigidbody>();
-        if (rb != null)
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+        Utils.FixPosition(OccupyObj);
 
         Vector3 newPos = transform.position;
         newPos.y += transform.lossyScale.y * 0.5f + OccupyObj.transform.lossyScale.y * 0.5f;
         OccupyObj.transform.position = newPos;
-        OccupyObj.transform.rotation = Quaternion.identity;
 
         OccupyObj.transform.SetParent(transform);
 
@@ -47,9 +44,7 @@ public class Shelf : MonoBehaviour
         GameObject takeout = OccupyObj;
         OccupyObj = null;
 
-        Rigidbody rb = takeout.GetComponent<Rigidbody>();
-        if (rb != null)
-            rb.constraints = RigidbodyConstraints.None;
+        Utils.UnFixPosition(takeout);
 
         takeout.transform.parent = null;
 

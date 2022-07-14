@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public Shelf shelf;
     public GameObject player;
 
     protected bool active = false;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InteractableLocation : Interactable
 {
+    public Shelf shelf;
+
     public override void OnTakeOutBtnDown()
     {
         EquipmentSystem es = player.GetComponent<EquipmentSystem>();
