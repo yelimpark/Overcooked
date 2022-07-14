@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class TimerBar : MonoBehaviour
 {
     public Slider TimerSlider;
+
+    
+
     //float time = 150f;
     void Start()
     {

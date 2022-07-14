@@ -9,7 +9,7 @@ public class TimeController : MonoBehaviour
     [Header("Time Text")]
     public TextMeshProUGUI[] timeText;
     //public TextMeshProUGUI gameOverText;
-    float time = 150f;
+    public float time = 150f;
     int minite, second;
 
 
