@@ -52,12 +52,12 @@ public class InteractWithLocation : Interact
             {
                 InteractableLocation il = cursor.GetComponent<InteractableLocation>();
 
-                if (il == null || il.shelf.OccupyObj != null)
+                if (il == null || il.slot.OccupyObj != null)
                     return;
 
                 GameObject discarded = es.Unequip();
                 if (discarded != null)
-                    il.shelf.OnPlace(discarded);
+                    il.slot.OnPlace(discarded);
             }
             else
             {

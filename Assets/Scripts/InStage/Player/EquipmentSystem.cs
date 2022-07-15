@@ -55,9 +55,8 @@ public class EquipmentSystem : MonoBehaviour
                 break;
 
             case State.UNEQUIPING:
-                if (!Utils.IsFalling(equipment, equipErrorRange, equipmentMask))
+                if (Utils.IsFalling(equipment, equipErrorRange, equipmentMask))
                 {
-                    Debug.Log("???");
                     curState = State.NONE;
                     equipment = null;
                 }

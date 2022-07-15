@@ -47,7 +47,7 @@ public class Utils : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, target);
 
-        if (Vector3.Distance(hit.transform.position, go.transform.position) > errorRange + go.transform.lossyScale.y)
+        if (Mathf.Abs(hit.transform.position.y - go.transform.position.y) > errorRange + go.transform.lossyScale.y)
         {
             return false;
         }

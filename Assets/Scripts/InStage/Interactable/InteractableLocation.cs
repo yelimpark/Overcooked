@@ -10,7 +10,7 @@ public enum LocationType
 
 public class InteractableLocation : Interactable
 {
-    public Shelf shelf;
+    public Slot slot;
     public LocationType type;
 
     public override void OnTakeOutBtnDown()
@@ -19,7 +19,7 @@ public class InteractableLocation : Interactable
         if (es == null || es.Equipment != null)
             return;
 
-        GameObject ingrediant = shelf.OnTakeOut();
+        GameObject ingrediant = slot.OnTakeOut();
         if (ingrediant != null)
             es.Equip(ingrediant);
     }

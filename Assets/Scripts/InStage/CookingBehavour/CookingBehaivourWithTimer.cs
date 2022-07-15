@@ -4,43 +4,44 @@ using UnityEngine;
 
 public class CookingBehaivourWithTimer : CookingBehaviour
 {
-    public GameObject timebar;
+    public TimeBar timebar;
     public float Yoffset;
-
-    public override bool AtPosition
-    {
-        get { return atPosition; }
-        set 
-        {
-            atPosition = value;
-            
-            if (atPosition)
-            {
-                Vector3 newPos = Camera.main.WorldToScreenPoint(transform.position);
-                newPos.y += Yoffset;
-                timebar.transform.position = newPos;
-            }
-
-            timebar.SetActive(atPosition);
-        }
-    }
 
     public void OnTimeUp()
     {
-        string next = string.Empty;
+        Slot slot = GetComponent<Slot>();
+        if (slot == null || slot.OccupyObj == null)
+            return;
 
-        Shelf shelf = GetComponent<Shelf>();
-        if (shelf != null && shelf.OccupyObj != null)
-        {
-            Ingrediant ingrediant =  shelf.OccupyObj.GetComponent<Ingrediant>();
-            next = ingrediant.next;
-        }
+        GameObject before = slot.OnTakeOut();
+        Ingrediant ingrediant = before.GetComponent<Ingrediant>();
 
         // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
-        GameObject nextGO =  GameObject.Find(next);
-        
-        nextGO.transform.position = transform.position;
-        nextGO.SetActive(true);
-        gameObject.SetActive(false);
+        GameObject after = GameObject.Find(ingrediant.next);
+
+        after.transform.position = transform.position;
+        after.SetActive(true);
+        slot.OnPlace(after);
+
+        //반환
+        before.SetActive(false);
+    }
+
+    private void Update()
+    {
+        Vector3 newPos = Camera.main.WorldToScreenPoint(transform.position);
+        newPos.y += Yoffset;
+        timebar.transform.position = newPos;
+    }
+
+    public override void AtPosition()
+    {
+        timebar.gameObject.SetActive(true);
+        timebar.pause = false;
+    }
+
+    public override void ExitPosition() 
+    {
+        timebar.pause = true;
     }
 }

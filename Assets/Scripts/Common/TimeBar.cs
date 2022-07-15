@@ -13,7 +13,7 @@ public class TimeBar : MonoBehaviour
 
     private Slider slider;
 
-    private bool isTriggerd = false;
+    public bool pause = false;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class TimeBar : MonoBehaviour
 
     void Update()
     {
-        if (isTriggerd)
+        if (pause)
             return;
 
         timer += Time.deltaTime;
@@ -31,7 +31,7 @@ public class TimeBar : MonoBehaviour
         if (timer > time)
         {
             TimeUpEvent.Invoke();
-            isTriggerd = true;
+            gameObject.SetActive(false);
         }
     }
 }

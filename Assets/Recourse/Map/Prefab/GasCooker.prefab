@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1011196917364294407}
   - component: {fileID: 4278995685739737852}
   - component: {fileID: 9099042737147547613}
+  - component: {fileID: 19452758418088568}
+  - component: {fileID: 6842656679100000847}
   - component: {fileID: 5819610416137155941}
   m_Layer: 0
   m_Name: GasCooker
@@ -84,6 +86,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &19452758418088568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018539483327282881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  shelf: {fileID: 0}
+  type: 0
+--- !u!114 &6842656679100000847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018539483327282881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb995a24947e2442954b40dec063b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
 --- !u!65 &5819610416137155941
 BoxCollider:
   m_ObjectHideFlags: 0

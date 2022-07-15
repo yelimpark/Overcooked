@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ingrediant
   - Interactable
+  - Cookware
   layers:
   - Default
   - TransparentFX
