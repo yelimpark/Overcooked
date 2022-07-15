@@ -1,0 +1,662 @@
+fileFormatVersion: 2
+guid: a148d44ad4cea594d90ea0c06347875b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1040
+        width: 217
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a43fada1137fe4098d8b35d1fbbb23
+      internalID: -570149404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_1
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 1042
+        width: 198
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ebb306109ef8344a8daf4d3207d08b3
+      internalID: 1217845064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_2
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 1056
+        width: 234
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e2cc4489f80f6043a99128de9f453c7
+      internalID: -220370117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_3
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 1056
+        width: 248
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515fff92ccd31024da0d980f10a42788
+      internalID: 655432581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_4
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 1046
+        width: 245
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9baef391f81559e41bebcd04ebf3c490
+      internalID: 225740169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_5
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 787
+        width: 236
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b793f5cceb12ea40b7ff82e3d0c8227
+      internalID: -1962106369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_6
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 791
+        width: 241
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d62ece4ceebe1b4caaf098a8199b744
+      internalID: -197927405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_7
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 781
+        width: 233
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e1dc57fd4890b4f9fd00664b74f14c
+      internalID: -2081867868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_8
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 786
+        width: 240
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f71b6d50cd8102642962baf36bcc4eb2
+      internalID: -458861941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_9
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 780
+        width: 241
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6999abee39b222468d0f9a218d71cdc
+      internalID: 1633694834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_10
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 528
+        width: 233
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed286bd84ca7c64899506a85c5f5a60
+      internalID: -853099295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_11
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 521
+        width: 225
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 079d7577d0ba37d4784e2831f01a1a21
+      internalID: -1323988471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_12
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 532
+        width: 230
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 667c1abda64456644975db2a530f6dfb
+      internalID: 1821842517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_13
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 540
+        width: 236
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68823c9a564a0a44d9991f3be9c7c937
+      internalID: -1403501164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_14
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 527
+        width: 197
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5a9f03ea9fc0d45b92b20ac5f993fc
+      internalID: 2042561266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_15
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 273
+        width: 249
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8fdbbc2cd1274045957026eba7d740e
+      internalID: 1503111546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_16
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 262
+        width: 250
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7365fd89ab400649afc49dceb7b180c
+      internalID: -1953958570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_17
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 279
+        width: 237
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea690fb375f3c6c429483ec298129e61
+      internalID: -994951398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_18
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 272
+        width: 216
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2804cd3861fc5fd4b95337135463484d
+      internalID: -406500066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_19
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 268
+        width: 241
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e09a5e3a0817e4589b179eeea03c5d
+      internalID: -217091868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 17
+        width: 237
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c0c370066dd394daf4b0c3a78a82f2
+      internalID: -1823926196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_21
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 40
+        width: 240
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc70ebdb3a812a408960654f811248b
+      internalID: 1695477162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_22
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 12
+        width: 229
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8fefb444ebb04642bd1dd720d75fceb
+      internalID: 564254962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: t_sk_crate_lid_images #134874_23
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 13
+        width: 229
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8238af251c7b94caaf982e42a378eb
+      internalID: -256948188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 51c31e0ef2c35aa458f3e393b5a7e19f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      t_sk_crate_lid_images #134874_9: 1633694834
+      t_sk_crate_lid_images #134874_17: -994951398
+      t_sk_crate_lid_images #134874_22: 564254962
+      t_sk_crate_lid_images #134874_16: -1953958570
+      t_sk_crate_lid_images #134874_1: 1217845064
+      t_sk_crate_lid_images #134874_11: -1323988471
+      t_sk_crate_lid_images #134874_4: 225740169
+      t_sk_crate_lid_images #134874_14: 2042561266
+      t_sk_crate_lid_images #134874_19: -217091868
+      t_sk_crate_lid_images #134874_3: 655432581
+      t_sk_crate_lid_images #134874_23: -256948188
+      t_sk_crate_lid_images #134874_20: -1823926196
+      t_sk_crate_lid_images #134874_2: -220370117
+      t_sk_crate_lid_images #134874_7: -2081867868
+      t_sk_crate_lid_images #134874_0: -570149404
+      t_sk_crate_lid_images #134874_6: -197927405
+      t_sk_crate_lid_images #134874_13: -1403501164
+      t_sk_crate_lid_images #134874_21: 1695477162
+      t_sk_crate_lid_images #134874_15: 1503111546
+      t_sk_crate_lid_images #134874_12: 1821842517
+      t_sk_crate_lid_images #134874_10: -853099295
+      t_sk_crate_lid_images #134874_18: -406500066
+      t_sk_crate_lid_images #134874_5: -1962106369
+      t_sk_crate_lid_images #134874_8: -458861941
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
