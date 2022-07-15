@@ -4,18 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LoadingSceneManager : MonoBehaviour
+public class LoadingScene : MonoBehaviour
 {
-    private static LoadingSceneManager instance;
-    public static LoadingSceneManager Instance { get { return instance; } }
+    private static LoadingScene instance;
+    public static LoadingScene Instance { get { return instance; } }
 
     [Header("Canvas UI")]
     public FadeInOutUI fadeInOutUI;
     public GameObject loadingUI;
-
-    [Header("LoadingScene Status")]
-    private LoadingSceneStatus CurrentLoadingStatus;
-    public int CurrentUI = 0;
 
     [Header("Loading Bar")]
     public Image image;
@@ -25,6 +21,12 @@ public class LoadingSceneManager : MonoBehaviour
 
     [Header("Next Scene")]
     public string SceneName;
+
+    public enum SceneNames
+    {
+        STARTSCENE,
+
+    }
 
     private float time;
 
@@ -57,7 +59,7 @@ public class LoadingSceneManager : MonoBehaviour
 
             fakeLoadTime += Time.deltaTime;
             fakeLoadRatio = fakeLoadTime / minLoadingTime;
-            time = +Time.time;
+            time += Time.deltaTime;
 
 
             //loadRatio
@@ -69,6 +71,7 @@ public class LoadingSceneManager : MonoBehaviour
             
             if (loadRatio >= 0.9f)
             {
+                image.fillAmount = 1.0f;
                 fadeInOutUI.FadeOutUI();
                 yield return new WaitForSeconds(2f);
                 
@@ -78,7 +81,7 @@ public class LoadingSceneManager : MonoBehaviour
             yield return null;
             
         }
-        loadRatio = 1.0f;
+        
 
     }
 

@@ -20,7 +20,7 @@ public class TimerBar : MonoBehaviour
     {
         if (TimerSlider.value > 0.0f)
         {
-            // 시간이 변경한 만큼 slider Value 변경을 합니다.
+            // 시간이 변경한 만큼 slider Value 변경
             TimerSlider.value -= Time.deltaTime;
         }
         else
