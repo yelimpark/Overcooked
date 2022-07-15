@@ -8,11 +8,17 @@ public class Info : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        animator.SetBool("isEnter", true);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            animator.SetBool("isEnter", true);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        animator.SetBool("isEnter", false);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            animator.SetBool("isEnter", false);
+        }
     }
 }
