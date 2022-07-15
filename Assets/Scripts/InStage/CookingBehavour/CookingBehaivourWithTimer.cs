@@ -27,6 +27,15 @@ public class CookingBehaivourWithTimer : CookingBehaviour
 
     public void OnTimeUp()
     {
+        string next = string.Empty;
+
+        Shelf shelf = GetComponent<Shelf>();
+        if (shelf != null && shelf.OccupyObj != null)
+        {
+            Ingrediant ingrediant =  shelf.OccupyObj.GetComponent<Ingrediant>();
+            next = ingrediant.next;
+        }
+
         // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
         GameObject nextGO =  GameObject.Find(next);
         

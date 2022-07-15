@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum LocationType
+{
+    SHELF,
+    STOVE
+}
+
 public class InteractableLocation : Interactable
 {
     public Shelf shelf;
+    public LocationType type;
 
     public override void OnTakeOutBtnDown()
     {
