@@ -6,7 +6,7 @@ public class ResultScene : MonoBehaviour
 {
 
     public GameObject FadeUI;
-    public FadeInOutUI fadeOutUI;
+    public FadeOut fadeOutUI;
 
     private void Update()
     {

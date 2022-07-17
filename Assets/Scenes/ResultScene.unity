@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43728545, g: 0.4762408, b: 0.51763576, a: 1}
+  m_IndirectSpecularColor: {r: 0.43728516, g: 0.47624046, b: 0.5176349, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -984,11 +984,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 868771688}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77, y: 295}
+  m_AnchoredPosition: {x: 496, y: 362}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &369802123
@@ -2337,6 +2337,7 @@ RectTransform:
   - {fileID: 369122479}
   - {fileID: 874936909}
   - {fileID: 927129273}
+  - {fileID: 369802122}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2358,7 +2359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeUI: {fileID: 7492449063080639712}
-  fadeOutUI: {fileID: 7492449063080639736}
+  fadeOutUI: {fileID: 7492449063080639720}
 --- !u!1 &874936908
 GameObject:
   m_ObjectHideFlags: 0
@@ -4560,9 +4561,9 @@ GameObject:
   - component: {fileID: 7492449063080639717}
   - component: {fileID: 7492449063080639718}
   - component: {fileID: 7492449063080639719}
-  - component: {fileID: 7492449063080639736}
+  - component: {fileID: 7492449063080639720}
   m_Layer: 5
-  m_Name: FadeUI
+  m_Name: FadeUI(Full)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4650,7 +4651,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7492449063080639736
+--- !u!114 &7492449063080639720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4659,20 +4660,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7492449063080639712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4031050d7eea268489105f2e2bdf5f9d, type: 3}
+  m_Script: {fileID: 11500000, guid: ce3f2e08b5b054144b81a69a91b3fa8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posX: 200
-  posY: 200
   time: 1
   delayTime: 0.1
   FadeUI: {fileID: 7492449062855625248}
   OnCompleteEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7492449063080639736}
-        m_TargetAssemblyTypeName: FadeInOutUI, Assembly-CSharp
-        m_MethodName: ChangeResultScene
+      - m_Target: {fileID: 7492449063080639720}
+        m_TargetAssemblyTypeName: FadeOut, Assembly-CSharp
+        m_MethodName: ChangeResultScene2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4682,3 +4681,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  loadScene: WorldScene

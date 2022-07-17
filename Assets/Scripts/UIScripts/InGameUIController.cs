@@ -14,10 +14,10 @@ public class InGameUIController : MonoBehaviour
     public Player player;
 
     [Header("To Fade UI's")]
-    public FadeInOutUI FadeUI;
-    public FadeInOutUI FadeReadyUI;
-    public FadeInOutUI FadeStartUI;
-    public FadeInOutUI FadeEndUI;
+    public FadeIn FadeUI;
+    public FadeIn FadeReadyUI;
+    public FadeIn FadeStartUI;
+    public FadeIn FadeEndUI;
 
     [Header("Loading Circle")]
     public Image LoadingBar;
