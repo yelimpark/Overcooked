@@ -10,10 +10,27 @@ public class Interact : MonoBehaviour
     public virtual GameObject Cursor
     {
         get { return cursor; }
-        set { cursor = value; }
-    }
+        set
+        {
+            Interactable il;
 
-    protected string InteracableTag;
+            if (cursor != null)
+            {
+                il = cursor.GetComponent<Interactable>();
+                if (il != null)
+                    il.Active = false;
+            }
+
+            cursor = value;
+
+            if (cursor != null)
+            {
+                il = cursor.GetComponent<Interactable>();
+                if (il != null)
+                    il.Active = true;
+            }
+        }
+    }
 
     public virtual void Update()
     {
@@ -40,24 +57,15 @@ public class Interact : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        Collider other = collision.collider;
-
-        if (!other.CompareTag(InteracableTag) && !other.isTrigger)
-            return;
-
         Cursor = other.gameObject;
         collisions.Add(other.gameObject);
+
     }
 
-    private void OnCollisionExit(Collision collision)
+    public virtual void OnTriggerExit(Collider other)
     {
-        Collider other = collision.collider;
-
-        if (!other.CompareTag(InteracableTag) && !other.isTrigger)
-            return;
-
         GameObject go = other.gameObject;
 
         collisions.Remove(go);

@@ -2,36 +2,6 @@ using UnityEngine;
 
 public class InteractWithLocation : Interact
 {
-    public override GameObject Cursor
-    {
-        get { return cursor; }
-        set
-        {
-            InteractableLocation il;
-
-            if (cursor != null)
-            {
-                il = cursor.GetComponent<InteractableLocation>();
-                if (il != null)
-                    il.Active = false;
-            }
-
-            cursor = value;
-
-            if (cursor != null)
-            {
-                il = cursor.GetComponent<InteractableLocation>();
-                if (il != null)
-                    il.Active = true;
-            }
-        }
-    }
-
-    public void Start()
-    {
-        InteracableTag = "Interactable";
-    }
-
     public override void Update()
     {
         base.Update();
@@ -50,19 +20,60 @@ public class InteractWithLocation : Interact
         {
             if (cursor != null)
             {
-                InteractableLocation il = cursor.GetComponent<InteractableLocation>();
+                InteractableAppliances il = cursor.GetComponent<InteractableAppliances>();
 
-                if (il == null || il.slot.OccupyObj != null)
-                    return;
+                if (il == null || il.slot.occupyObj != null)
+                {
+                    switch(il.slot.occupyObj.tag)
+                    {
+                        case "Ingrediant":
+                            return;
+                        case "Cookware":
+                            if (il.slot.occupyObj.GetComponent<Cookware>().occupyObj != null)
+                                return;
+                            break;
+                        default:
+                            break;
+                    }
+                }
 
                 GameObject discarded = es.Unequip();
                 if (discarded != null)
-                    il.slot.OnPlace(discarded);
+                {
+                    switch (il.slot)
+                    {
+                        case Cookware cookware:
+                            cookware.OnPlace(discarded);
+                            break;
+                        case Appliances appliances:
+                            appliances.OnPlace(discarded);
+                            break;
+                        default:
+                            il.slot.OnPlace(discarded);
+                            break;
+                    }
+                }
             }
             else
             {
                 es.Unequip();
             }
         }
+    }
+
+    public override void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Interactable"))
+            return;
+
+        base.OnTriggerEnter(other);
+    }
+
+    public override void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Interactable"))
+            return;
+
+        base.OnTriggerExit(other);
     }
 }

@@ -13,7 +13,10 @@ public class TimeBar : MonoBehaviour
 
     private Slider slider;
 
+    [System.NonSerialized]
     public bool pause = false;
+    [System.NonSerialized]
+    public bool end = false;
 
     void Start()
     {
@@ -22,7 +25,7 @@ public class TimeBar : MonoBehaviour
 
     void Update()
     {
-        if (pause)
+        if (pause || end)
             return;
 
         timer += Time.deltaTime;
@@ -30,6 +33,7 @@ public class TimeBar : MonoBehaviour
 
         if (timer > time)
         {
+            end = true;
             TimeUpEvent.Invoke();
             gameObject.SetActive(false);
         }

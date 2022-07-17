@@ -2,26 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Highlight : MonoBehaviour
+[CreateAssetMenu(menuName = "Highlight", fileName = "Highlight.asset")]
+public class Highlight : ScriptableObject
 {
-    private MeshRenderer mr;
-
     public Shader highlight;
-    private Shader standard;
+    public Shader standard;
 
-    public void Start()
+    public void TurnOn(GameObject go)
     {
-        mr = GetComponentInChildren<MeshRenderer>();
-        standard = mr.material.shader;
+        MeshRenderer mr = go.GetComponentInChildren<MeshRenderer>();
+        if (mr != null)
+            mr.material.shader = highlight;
     }
 
-    public void TurnOn()
+    public void TurnOff(GameObject go)
     {
-        mr.material.shader = highlight;
-    }
-
-    public void TurnOff()
-    {
-        mr.material.shader = standard;
+        MeshRenderer mr = go.GetComponentInChildren<MeshRenderer>();
+        if (mr != null)
+            mr.material.shader = standard;
     }
 }

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158383421951199731}
-  - component: {fileID: 6408910448809022190}
   - component: {fileID: 4472106568747281347}
   - component: {fileID: 2861513690886634581}
   m_Layer: 0
@@ -34,18 +33,6 @@ Transform:
   m_Father: {fileID: 4723336094395808308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6408910448809022190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326762355285750601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05de9a5ef53f35b4798c50c915680589, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4472106568747281347
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87,8 +74,6 @@ GameObject:
   - component: {fileID: 4723336094395808311}
   - component: {fileID: 4723336094395808310}
   - component: {fileID: 2389758545256138495}
-  - component: {fileID: 6520678617189578139}
-  - component: {fileID: 8688501488516674481}
   - component: {fileID: 4417091083021620463}
   m_Layer: 0
   m_Name: Shelf_Top
@@ -174,35 +159,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2000694, y: 0.5176932, z: 1.195835}
-  m_Center: {x: 0, y: 0.25884655, z: 0.0015200973}
---- !u!114 &6520678617189578139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4723336094395808305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shelf: {fileID: 6408910448809022190}
-  player: {fileID: 0}
---- !u!114 &8688501488516674481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4723336094395808305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cb995a24947e2442954b40dec063b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 4800000, guid: 7c5a3fa1836474546b09a3dc803321b5, type: 3}
+  m_Size: {x: 1.2000694, y: 0.39984804, z: 1.195835}
+  m_Center: {x: 0, y: 0.19992396, z: 0.0015200973}
 --- !u!135 &4417091083021620463
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -214,5 +172,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.66902983
+  m_Radius: 0.7
   m_Center: {x: 0, y: 0.3244855, z: -0.06959221}

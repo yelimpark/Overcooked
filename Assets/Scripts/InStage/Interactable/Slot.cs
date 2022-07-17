@@ -4,41 +4,45 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    protected GameObject occupyObj;
-    public GameObject OccupyObj { get; protected set; }
+    public GameObject occupyObj;
 
-    public void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
+        if (!(other.CompareTag("Ingrediant") || other.CompareTag("Cookware")))
+            return;
         OnPlace(other.gameObject);
     }
 
     public virtual void OnPlace(GameObject go)
     {
-        if (OccupyObj != null)
+        if (!(go.CompareTag("Ingrediant") || go.CompareTag("Cookware")))
             return;
 
-        OccupyObj = go;
+        if (occupyObj != null)
+            return;
 
-        Utils.FixPosition(OccupyObj);
+        occupyObj = go;
+
+        Utils.FixPosition(occupyObj);
 
         Vector3 newPos = transform.position;
-        newPos.y += transform.lossyScale.y * 0.5f + OccupyObj.transform.lossyScale.y * 0.5f;
-        OccupyObj.transform.position = newPos;
+        newPos.y += transform.lossyScale.y * 0.5f + occupyObj.transform.lossyScale.y * 0.5f;
+        occupyObj.transform.position = newPos;
 
-        OccupyObj.transform.SetParent(transform);
+        occupyObj.transform.SetParent(transform);
 
-        Interactable interactable = OccupyObj.GetComponent<Interactable>();
+        Interactable interactable = occupyObj.GetComponent<Interactable>();
         if (interactable != null)
             interactable.enabled = false;
     }
 
     public virtual GameObject OnTakeOut()
     {
-        if (OccupyObj == null)
+        if (occupyObj == null)
             return null;
 
-        GameObject takeout = OccupyObj;
-        OccupyObj = null;
+        GameObject takeout = occupyObj;
+        occupyObj = null;
 
         Utils.UnFixPosition(takeout);
 

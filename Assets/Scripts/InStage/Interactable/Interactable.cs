@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public GameObject player;
+    public Highlight highlight;
 
     protected bool active = false;
     public bool Active
@@ -15,27 +16,21 @@ public class Interactable : MonoBehaviour
             active = value;
             if (active)
             {
-                OnCursorOn();
+                highlight.TurnOn(gameObject);
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    highlight.TurnOn(transform.GetChild(i).gameObject);
+                }
             }
             else
             {
-                OnCursorOut();
+                highlight.TurnOff(gameObject);
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    highlight.TurnOff(transform.GetChild(i).gameObject);
+                }
             }
         }
-    }
-
-    public void OnCursorOn()
-    {
-        Highlight highlight = GetComponent<Highlight>();
-        if (highlight != null)
-            highlight.TurnOn();
-    }
-
-    public void OnCursorOut()
-    {
-        Highlight highlight = GetComponent<Highlight>();
-        if (highlight != null)
-            highlight.TurnOff();
     }
 
     private void Start()

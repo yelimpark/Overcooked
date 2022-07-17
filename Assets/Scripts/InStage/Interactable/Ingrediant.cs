@@ -6,7 +6,7 @@ public enum SlotMask
 {
     None = 0,
     FRYPAN = 1,
-    ALL = int.MaxValue
+    CUTTING_BOARD = 2
 }
 
 
