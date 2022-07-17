@@ -8,18 +8,25 @@ public class Slot : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        if (!(other.CompareTag("Ingrediant") || other.CompareTag("Cookware")))
-            return;
-        OnPlace(other.gameObject);
+        if (AbleToPlace(other.gameObject))
+            OnPlace(other.gameObject);
+    }
+
+    public virtual bool AbleToPlace(GameObject go)
+    {
+        if (!(go.CompareTag("Ingrediant") || go.CompareTag("Cookware")))
+            return false;
+
+        if (occupyObj != null)
+            return false;
+
+        return true;
     }
 
     public virtual void OnPlace(GameObject go)
     {
-        if (!(go.CompareTag("Ingrediant") || go.CompareTag("Cookware")))
-            return;
-
-        if (occupyObj != null)
-            return;
+        //if (!AbleToPlace(go))
+        //    return;
 
         occupyObj = go;
 
@@ -36,10 +43,18 @@ public class Slot : MonoBehaviour
             interactable.enabled = false;
     }
 
-    public virtual GameObject OnTakeOut()
+    public virtual bool AbleToTakeOut(GameObject dest)
     {
         if (occupyObj == null)
-            return null;
+            return false;
+
+        return true;
+    }
+
+    public virtual GameObject OnTakeOut(GameObject dest)
+    {
+        //if (!AbleToTakeOut())
+        //    return null;
 
         GameObject takeout = occupyObj;
         occupyObj = null;

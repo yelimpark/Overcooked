@@ -5,36 +5,46 @@ using UnityEngine;
 public class Cookware : Slot
 {
     public SlotMask mask;
+    private CookingBehaviour cb;
 
-    public override void OnTriggerEnter(Collider other)
+    public bool onlyAtPlate = false;
+
+    private void Start()
     {
-        if (!other.CompareTag("Ingrediant"))
-            return;
-        OnPlace(other.gameObject);
+        cb = GetComponent<CookingBehaviour>();
     }
 
-    public new void OnPlace(GameObject go)
+    public override bool AbleToPlace(GameObject go)
     {
         Ingrediant ingrediant = go.GetComponent<Ingrediant>();
         if (ingrediant == null || ingrediant.mask != mask)
-            return;
+            return false;
 
+        return base.AbleToPlace(go);
+    }
+
+    public override void OnPlace(GameObject go)
+    {
         base.OnPlace(go);
 
-        CookingBehaviour cb = GetComponent<CookingBehaviour>();
-        if (cb != null)
+        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
+        if (ingrediant != null && ingrediant.mask == mask && cb != null)
             cb.Execute();
     }
 
-    public override GameObject OnTakeOut()
+    public override bool AbleToTakeOut(GameObject dest)
     {
-        if (occupyObj != null)
-        {
-            CookingBehaviour cb = GetComponent<CookingBehaviour>();
-            if (cb == null || !cb.ExitPosition())
-                return null;
-        }
+        if (cb != null && !cb.ExitPosition())
+            return false;
 
-        return base.OnTakeOut();
+        return base.AbleToTakeOut(dest);
+    }
+
+    public override GameObject OnTakeOut(GameObject dest)
+    {
+        if (cb != null)
+            cb.timebar.Init();
+
+        return base.OnTakeOut(dest);
     }
 }

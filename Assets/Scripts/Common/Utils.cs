@@ -19,7 +19,6 @@ public class Utils : MonoBehaviour
         Rigidbody rb = go.GetComponent<Rigidbody>();
         if (rb != null)
             rb.isKinematic = true;
-            //rb.constraints = RigidbodyConstraints.FreezeAll;
 
         Collider collider = go.GetComponent<Collider>();
         if (collider != null)
@@ -33,7 +32,6 @@ public class Utils : MonoBehaviour
         Rigidbody rb = go.GetComponent<Rigidbody>();
         if (rb != null)
             rb.isKinematic = false;
-        //rb.constraints = RigidbodyConstraints.None;
 
         var colliders = go.transform.GetComponentsInChildren<Collider>();
         foreach (var childCollider in colliders)
@@ -47,8 +45,10 @@ public class Utils : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, target);
 
+        Rigidbody rb = go.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.down * 10;
 
-        if (hit.transform.position.y - go.transform.position.y > errorRange + go.transform.lossyScale.y)
+        if (go.transform.position.y - hit.transform.position.y > errorRange + go.transform.lossyScale.y)
         {
             return false;
         }

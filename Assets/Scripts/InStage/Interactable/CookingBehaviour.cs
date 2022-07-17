@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class CookingBehaviour : MonoBehaviour
 {
+    Cookware cookware;
+
     public TimeBar timebar;
-    public float Yoffset;
+    public float Yoffset = 20f;
 
     public bool fixWhileCooking = false;
     public bool AutoExecute = true;
+
+    [System.NonSerialized]
+    public bool trigger = false;
 
     public SlotMask mask;
     
@@ -23,20 +28,24 @@ public class CookingBehaviour : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        cookware = GetComponent<Cookware>();
+    }
+
     public void OnTimeUp()
     {
-        Cookware cookware = GetComponent<Cookware>();
         if (cookware == null || cookware.occupyObj == null)
             return;
 
-        GameObject before = cookware.OnTakeOut();
+        GameObject before = cookware.OnTakeOut(null);
         Ingrediant ingrediant = before.GetComponent<Ingrediant>();
 
         // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
         GameObject after = GameObject.Find(ingrediant.next);
         after.SetActive(true);
 
-        ((Slot)cookware).OnPlace(after);
+        cookware.OnPlace(after);
 
         //반환
         before.SetActive(false);
@@ -44,19 +53,20 @@ public class CookingBehaviour : MonoBehaviour
 
     private void Update()
     {
-        Vector3 newPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
         newPos.y += Yoffset;
         timebar.transform.position = newPos;
+
+        //임시코드!!!!!!
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            trigger = true;
+            Execute();
+        }
     }
 
     public bool ExitPosition()
     {
-        if (!AutoExecute && !timebar.end)
-        {
-            Execute(true);
-            return false;
-        }
-
         if (fixWhileCooking && !timebar.end)
             return false;
 
@@ -65,7 +75,7 @@ public class CookingBehaviour : MonoBehaviour
         return true;
     }
 
-    public void Execute(bool trigger = false)
+    public void Execute()
     {
         if (timebar.end || CurPosition != mask)
             return;

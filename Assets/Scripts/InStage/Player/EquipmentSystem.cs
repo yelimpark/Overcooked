@@ -19,7 +19,6 @@ public class EquipmentSystem : MonoBehaviour
     private State curState = State.NONE;
     public float equipSpeed = 2f;
     public float equipErrorRange = 0.1f;
-    public LayerMask equipmentMask;
 
     public void Equip(GameObject go)
     {
@@ -55,7 +54,8 @@ public class EquipmentSystem : MonoBehaviour
                 break;
 
             case State.UNEQUIPING:
-                if (Utils.IsFalling(equipment, equipErrorRange, equipmentMask))
+                int layerMask = (-1) - (1 << LayerMask.NameToLayer("player"));
+                if (Utils.IsFalling(equipment, equipErrorRange, layerMask))
                 {
                     curState = State.NONE;
                     equipment = null;

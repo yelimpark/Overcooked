@@ -4,9 +4,10 @@ using UnityEngine;
 
 public enum SlotMask
 {
-    None = 0,
-    FRYPAN = 1,
-    CUTTING_BOARD = 2
+    None,
+    FRYPAN,
+    CUTTING_BOARD,
+    PLATE
 }
 
 

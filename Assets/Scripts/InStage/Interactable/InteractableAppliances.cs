@@ -12,19 +12,11 @@ public class InteractableAppliances : Interactable
         if (es == null || es.Equipment != null)
             return;
 
-        GameObject ingrediant = null;
-        switch(slot)
-        {
-            case Cookware cookware:
-                ingrediant = cookware.OnTakeOut();
-                break;
-            case Appliances appliances:
-                ingrediant = appliances.OnTakeOut();
-                break;
-            default:
-                ingrediant = slot.OnTakeOut();
-                break;
-        }
+        if (!slot.AbleToTakeOut(player))
+            return;
+
+        GameObject ingrediant = slot.OnTakeOut(player);
+
         if (ingrediant != null)
             es.Equip(ingrediant);
     }

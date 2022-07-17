@@ -23,6 +23,13 @@ public class TimeBar : MonoBehaviour
         slider = GetComponent<Slider>();
     }
 
+    public void Init()
+    {
+        timer = 0f;
+        pause = false;
+        end = false;
+    }
+
     void Update()
     {
         if (pause || end)

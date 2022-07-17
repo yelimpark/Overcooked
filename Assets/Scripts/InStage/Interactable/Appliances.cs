@@ -6,14 +6,19 @@ public class Appliances : Slot
 {
     public SlotMask mask;
 
-    public override void OnTriggerEnter(Collider other)
+    public override bool AbleToPlace(GameObject go)
     {
-        if (!(other.CompareTag("Ingrediant") || other.CompareTag("Cookware")))
-            return;
-        OnPlace(other.gameObject);
+        if (occupyObj != null)
+        {
+            Cookware cookware = occupyObj.GetComponent<Cookware>();
+            if (cookware != null)
+                return cookware.AbleToPlace(go);
+        }
+
+        return base.AbleToPlace(go);
     }
 
-    public new void OnPlace(GameObject go)
+    public override void OnPlace(GameObject go)
     {
         if (occupyObj != null)
         {
@@ -27,23 +32,32 @@ public class Appliances : Slot
 
         base.OnPlace(go);
 
-        if (go.Equals(occupyObj))
-        {
-            CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
-            if (cb != null)
-                cb.CurPosition = mask;
-        }
+        CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
+        if (cb != null)
+            cb.CurPosition = mask;
     }
 
-    public override GameObject OnTakeOut()
+    public override bool AbleToTakeOut(GameObject dest)
     {
-        if (occupyObj != null)
+        if (dest != null)
         {
-            CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
-            if (cb != null && !cb.ExitPosition())
-                return null;
+            Cookware cookware = dest.GetComponent<Cookware>();
+            if (cookware != null && cookware.mask == SlotMask.PLATE)
+                return cookware.AbleToTakeOut(dest);
         }
 
-        return base.OnTakeOut();
+        return base.AbleToTakeOut(dest);
+    }
+
+    public override GameObject OnTakeOut(GameObject dest)
+    {
+        if (dest != null)
+        {
+            Cookware cookware = dest.GetComponent<Cookware>();
+            if (cookware != null && cookware.mask == SlotMask.PLATE)
+                return cookware.OnTakeOut(dest);
+        }
+
+        return base.OnTakeOut(dest);
     }
 }

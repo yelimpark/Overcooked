@@ -10,14 +10,19 @@ public class TestMove : MonoBehaviour
     private float vertical;
     private Vector3 moveVec;
 
+    private Animator animator;
+    private Rigidbody rb;
+
     private void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
-        transform.position += moveVec * speed * Time.deltaTime;
+        Vector3 newVelocity = new Vector3(horizontal, 0f, vertical) * speed;
+        rb.velocity = newVelocity;
     }
 
     private void Update()
@@ -30,5 +35,6 @@ public class TestMove : MonoBehaviour
             float angle = Mathf.Atan2(moveVec.x, moveVec.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
+        animator.SetBool("isWalking", moveVec != Vector3.zero);
     }
 }
