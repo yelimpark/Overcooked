@@ -7,7 +7,7 @@ using KeyCode = System.String;
 public class ObjectPoolManager : MonoBehaviour
 {
     [SerializeField]
-    private List<IngredientType> objectPoolData = new List<IngredientType>();
+    private List<IngredientType> objectPoolData = new List<IngredientType>(4);
 
     private Dictionary<KeyCode, MultiObjectPool> originDic;
     private Dictionary<KeyCode, IngredientType> dataDic;
@@ -30,6 +30,11 @@ public class ObjectPoolManager : MonoBehaviour
         originDic = new Dictionary<KeyCode, MultiObjectPool>(dataLen);
         dataDic = new Dictionary<KeyCode, IngredientType>(dataLen);
         poolDic = new Dictionary<KeyCode, Stack<MultiObjectPool>>(dataLen);
+
+        foreach(var data in objectPoolData)
+        {
+            Save(data);
+        }
     }
 
     public void Save(IngredientType data)
