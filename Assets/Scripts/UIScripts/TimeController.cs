@@ -9,14 +9,13 @@ public class TimeController : MonoBehaviour
     [Header("Time Text")]
     public TextMeshProUGUI[] timeText;
     //public TextMeshProUGUI gameOverText;
-    float time = 150f;
+    public float time = 150f;
     int minite, second;
-
 
     void Start()
     {
 
-        timeText[0].text = "0";
+        timeText[0].text = "00";
         timeText[1].text = "00";
         
     }
@@ -30,8 +29,8 @@ public class TimeController : MonoBehaviour
 
         if (minite <= 0 && second <= 0)
         {
-            timeText[0].text = 0.ToString();
-            timeText[1].text = 0.ToString();
+            timeText[0].text = 0.ToString("D2");
+            timeText[1].text = 0.ToString("D2");
         }
 
         else
@@ -44,8 +43,8 @@ public class TimeController : MonoBehaviour
             }
             else
             {
-                timeText[0].text = minite.ToString();
-                timeText[1].text = second.ToString();
+                timeText[0].text = minite.ToString("D2");
+                timeText[1].text = second.ToString("D2");
             }
         }    
     }
