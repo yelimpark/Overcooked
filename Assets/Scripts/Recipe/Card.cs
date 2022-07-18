@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardController : MonoBehaviour
+public class Card : MonoBehaviour
 {
     public Slider timer;
     public Image timerBar;
