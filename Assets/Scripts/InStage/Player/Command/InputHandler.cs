@@ -15,7 +15,6 @@ public class InputHandler : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
-            _invoker.ExecuteCommand(new Grab());
-
+            _invoker.ExecuteCommand(new Grab(gameObject));
     }
 }

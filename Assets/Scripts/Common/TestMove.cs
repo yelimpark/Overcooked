@@ -36,5 +36,15 @@ public class TestMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
         animator.SetBool("isWalking", moveVec != Vector3.zero);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            animator.SetBool("isChoping", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetBool("isChoping", false);
+        }
     }
 }

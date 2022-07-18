@@ -60,6 +60,7 @@ public class CookingBehaviour : MonoBehaviour
         //임시코드!!!!!!
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            CurPosition = SlotMask.CUTTING_BOARD;
             trigger = true;
             Execute();
         }

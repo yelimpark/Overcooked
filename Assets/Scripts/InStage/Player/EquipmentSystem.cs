@@ -20,6 +20,8 @@ public class EquipmentSystem : MonoBehaviour
     public float equipSpeed = 2f;
     public float equipErrorRange = 0.1f;
 
+    public Animator animator;
+
     public void Equip(GameObject go)
     {
         if (equipment != null || curState != State.NONE)
@@ -37,6 +39,8 @@ public class EquipmentSystem : MonoBehaviour
 
         curState = State.EQUIPING;
         equipment.transform.SetParent(hands);
+
+        animator.SetBool("isPickUp", true);
     }
 
     private void Update()
@@ -80,6 +84,8 @@ public class EquipmentSystem : MonoBehaviour
 
         curState = State.UNEQUIPING;
         equipment.transform.parent = null;
+
+        animator.SetBool("isPickUp", false);
 
         return equipment;
     }

@@ -42,8 +42,8 @@ public class Cookware : Slot
 
     public override GameObject OnTakeOut(GameObject dest)
     {
-        if (cb != null)
-            cb.timebar.Init();
+        //if (cb != null)
+        //    cb.timebar.Init();
 
         return base.OnTakeOut(dest);
     }
