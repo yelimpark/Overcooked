@@ -55,4 +55,6 @@ public class Interactable : MonoBehaviour
 
         es.Equip(gameObject);
     }
+
+    
 }

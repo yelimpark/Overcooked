@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireRay : MonoBehaviour
 {
-    public float distance = 10f;
+    public float distance = 2f;
     private RaycastHit rayHit;
     private Ray ray;
 
@@ -17,13 +17,16 @@ public class FireRay : MonoBehaviour
 
     public void Update()
     {
+        OnDrawGizmos();
         if (Physics.Raycast(ray.origin, ray.direction, out rayHit, distance))
         {
-            Debug.Log(rayHit.collider.gameObject.name);
-        }
+            //Debug.Log(rayHit.collider.gameObject.name);
+        }     
+    }
 
-        
-
+    private void OnDrawGizmos()
+    {
+        Debug.DrawRay(ray.origin, ray.direction * distance, Color.green);
     }
 }
 

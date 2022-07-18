@@ -41,10 +41,8 @@ public class Interact : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Collider other = collision.collider;
-
         if (!other.CompareTag(InteracableTag) && !other.isTrigger)
             return;
 
@@ -52,9 +50,8 @@ public class Interact : MonoBehaviour
         collisions.Add(other.gameObject);
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        Collider other = collision.collider;
 
         if (!other.CompareTag(InteracableTag) && !other.isTrigger)
             return;
@@ -65,4 +62,5 @@ public class Interact : MonoBehaviour
         if (go.Equals(cursor))
             Cursor = null;
     }
+
 }

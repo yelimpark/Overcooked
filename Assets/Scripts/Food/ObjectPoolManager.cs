@@ -9,9 +9,9 @@ public class ObjectPoolManager : MonoBehaviour
     [SerializeField]
     private List<IngredientType> objectPoolData = new List<IngredientType>(4);
 
-    private Dictionary<KeyCode, MultiObjectPool> originDic;
+    private Dictionary<KeyCode, PoolingObject> originDic;
     private Dictionary<KeyCode, IngredientType> dataDic;
-    private Dictionary<KeyCode, Stack<MultiObjectPool>> poolDic;
+    private Dictionary<KeyCode, Stack<PoolingObject>> poolDic;
 
     private void Start()
     {
@@ -27,9 +27,9 @@ public class ObjectPoolManager : MonoBehaviour
             return;
         }
 
-        originDic = new Dictionary<KeyCode, MultiObjectPool>(dataLen);
+        originDic = new Dictionary<KeyCode, PoolingObject>(dataLen);
         dataDic = new Dictionary<KeyCode, IngredientType>(dataLen);
-        poolDic = new Dictionary<KeyCode, Stack<MultiObjectPool>>(dataLen);
+        poolDic = new Dictionary<KeyCode, Stack<PoolingObject>>(dataLen);
 
         foreach(var data in objectPoolData)
         {
@@ -46,16 +46,16 @@ public class ObjectPoolManager : MonoBehaviour
         }
 
         GameObject origin = Instantiate(data.IngredientPrefab);
-        if(!origin.TryGetComponent(out MultiObjectPool mpo))
+        if(!origin.TryGetComponent(out PoolingObject mpo))
         {
-          mpo = origin.AddComponent<MultiObjectPool>();
+          mpo = origin.AddComponent<PoolingObject>();
         }
         origin.SetActive(false);
 
-        Stack<MultiObjectPool> objectPool = new Stack<MultiObjectPool>(data.maxIngredCount);
+        Stack<PoolingObject> objectPool = new Stack<PoolingObject>(data.maxIngredCount);
         for(int i =0; i < data.initIngredCount; i++)
         {
-            MultiObjectPool clone = mpo.Clone();
+            PoolingObject clone = mpo.Clone();
             objectPool.Push(clone);
         }
 
@@ -63,9 +63,9 @@ public class ObjectPoolManager : MonoBehaviour
         dataDic.Add(data.key, data);
         poolDic.Add(data.key, objectPool);   
     }
-    public MultiObjectPool Extract(KeyCode key)
+    public PoolingObject Extract(KeyCode key)
     {
-        MultiObjectPool objectPool;
+        PoolingObject objectPool;
 
         if (!poolDic.TryGetValue(key, out var pool))
         {
@@ -84,7 +84,7 @@ public class ObjectPoolManager : MonoBehaviour
         return objectPool;
     }
 
-    public void Return(MultiObjectPool ObjectPool)
+    public void Return(PoolingObject ObjectPool)
     {
         if(!poolDic.TryGetValue(ObjectPool.key, out var pool))
         {

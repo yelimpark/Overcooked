@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Trash
   - StuffBox
+  - Interactable
+  - Ingrediant
   layers:
   - Default
   - TransparentFX
