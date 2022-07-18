@@ -17,23 +17,7 @@ public class CardManager : MonoBehaviour
 
     public void OnSubmit(GameObject submittedFood)
     {
-        //юс╫ц
-        if (submittedFood == null)
-        {
-            foreach (var card in cardList)
-            {
-                Animator animator = card.GetComponent<Animator>();
-                animator.SetTrigger("isTimeout");
-            }
-        }
-        else
-        {
-            foreach (var card in cardList)
-            {
-                Animator animator = card.GetComponent<Animator>();
-                animator.ResetTrigger("isTimeout");
-            }
-        }
+
     }
 
     private void NewCard()
