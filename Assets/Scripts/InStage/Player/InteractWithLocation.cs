@@ -16,43 +16,58 @@ public class InteractWithLocation : Interact
     {
         EquipmentSystem es = GetComponent<EquipmentSystem>();
 
-        if (es != null && es.Equipment != null)
+        if (es != null && es.AbletoUnequip())
         {
             if (cursor != null)
             {
                 InteractableAppliances il = cursor.GetComponent<InteractableAppliances>();
 
-                if (il == null || il.slot.occupyObj != null)
+                //if (il == null || il.slot.occupyObj != null)
+                //{
+                //    switch(il.slot.occupyObj.tag)
+                //    {
+                //        case "Ingrediant":
+                //            return;
+                //        case "Cookware":
+                //            if (il.slot.occupyObj.GetComponent<Cookware>().occupyObj != null)
+                //                return;
+                //            break;
+                //        default:
+                //            break;
+                //    }
+                //}
+
+                Cookware cookware = es.Equipment.GetComponent<Cookware>();
+                if (cookware != null && cookware.occupyObj != null)
                 {
-                    switch(il.slot.occupyObj.tag)
+                    if (il != null && il.slot.AbleToPlace(cookware.occupyObj))
                     {
-                        case "Ingrediant":
-                            return;
-                        case "Cookware":
-                            if (il.slot.occupyObj.GetComponent<Cookware>().occupyObj != null)
-                                return;
-                            break;
-                        default:
-                            break;
+                        il.slot.OnPlace(cookware.OnTakeOut(cursor));
+                    }
+                }
+                else
+                {
+                    if (il != null && il.slot.AbleToPlace(es.Equipment))
+                    {
+                        il.slot.OnPlace(es.Unequip());
                     }
                 }
 
-                GameObject discarded = es.Unequip();
-                if (discarded != null)
-                {
-                    switch (il.slot)
-                    {
-                        case Cookware cookware:
-                            cookware.OnPlace(discarded);
-                            break;
-                        case Appliances appliances:
-                            appliances.OnPlace(discarded);
-                            break;
-                        default:
-                            il.slot.OnPlace(discarded);
-                            break;
-                    }
-                }
+                //if (discarded != null)
+                //{
+                //    switch (il.slot)
+                //    {
+                //        case Cookware cookware:
+                //            cookware.OnPlace(discarded);
+                //            break;
+                //        case Appliances appliances:
+                //            appliances.OnPlace(discarded);
+                //            break;
+                //        default:
+                //            il.slot.OnPlace(discarded);
+                //            break;
+                //    }
+                //}
             }
             else
             {

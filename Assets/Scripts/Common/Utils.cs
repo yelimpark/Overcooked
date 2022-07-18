@@ -16,6 +16,9 @@ public class Utils : MonoBehaviour
 
     public static void FixPosition(GameObject go)
     {
+        if (go == null)
+            return;
+
         Rigidbody rb = go.GetComponent<Rigidbody>();
         if (rb != null)
             rb.isKinematic = true;

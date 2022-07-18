@@ -6,6 +6,16 @@ public class Appliances : Slot
 {
     public SlotMask mask;
 
+    private void Start()
+    {
+        if (occupyObj != null)
+        {
+            CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
+            if (cb != null)
+                cb.CurPosition = mask;
+        }
+    }
+
     public override bool AbleToPlace(GameObject go)
     {
         if (occupyObj != null)

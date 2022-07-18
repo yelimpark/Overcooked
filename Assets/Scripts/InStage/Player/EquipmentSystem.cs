@@ -22,6 +22,13 @@ public class EquipmentSystem : MonoBehaviour
 
     public Animator animator;
 
+    public bool AbleToEauip()
+    {
+        if (equipment != null || curState != State.NONE)
+            return false;
+        return true;
+    }
+
     public void Equip(GameObject go)
     {
         if (equipment != null || curState != State.NONE)
@@ -69,6 +76,14 @@ public class EquipmentSystem : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public bool AbletoUnequip()
+    {
+        if (equipment == null || curState != State.NONE)
+            return false;
+
+        return true;
     }
 
     public GameObject Unequip()
