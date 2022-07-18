@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AppliancesType
+{
+    None,
+    FRYPAN,
+    CUTTING_BOARD,
+    PLATE
+}
+
 public class Appliances : Slot
 {
-    public SlotMask mask;
+    public AppliancesType mask;
 
     public override bool AbleToPlace(GameObject go)
     {
@@ -42,7 +50,7 @@ public class Appliances : Slot
         if (dest != null)
         {
             Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware != null && cookware.mask == SlotMask.PLATE)
+            if (cookware != null && cookware.mask == AppliancesType.PLATE)
                 return cookware.AbleToTakeOut(dest);
         }
 
@@ -54,7 +62,7 @@ public class Appliances : Slot
         if (dest != null)
         {
             Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware != null && cookware.mask == SlotMask.PLATE)
+            if (cookware != null && cookware.mask == AppliancesType.PLATE)
                 return cookware.OnTakeOut(dest);
         }
 

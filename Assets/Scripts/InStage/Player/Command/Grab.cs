@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Grab : Command
 {
+    private GameObject player;
+
     public override void Execute()
     {
 

@@ -25,9 +25,6 @@ public class Slot : MonoBehaviour
 
     public virtual void OnPlace(GameObject go)
     {
-        //if (!AbleToPlace(go))
-        //    return;
-
         occupyObj = go;
 
         Utils.FixPosition(occupyObj);
@@ -45,17 +42,11 @@ public class Slot : MonoBehaviour
 
     public virtual bool AbleToTakeOut(GameObject dest)
     {
-        if (occupyObj == null)
-            return false;
-
-        return true;
+        return occupyObj != null;
     }
 
     public virtual GameObject OnTakeOut(GameObject dest)
     {
-        //if (!AbleToTakeOut())
-        //    return null;
-
         GameObject takeout = occupyObj;
         occupyObj = null;
 

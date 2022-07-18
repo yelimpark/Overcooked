@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public GameObject player;
     public Highlight highlight;
 
     protected bool active = false;
@@ -33,26 +30,13 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void Start()
+    public virtual bool OnGrab(EquipmentSystem es)
     {
-        // temp code
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    private void Update()
-    {
-        if (active && Input.GetButtonDown("Fire1"))
-        {
-            OnTakeOutBtnDown();
-        }
-    }
-
-    public virtual void OnTakeOutBtnDown() 
-    {
-        EquipmentSystem es = player.GetComponent<EquipmentSystem>();
-        if (es == null || es.Equipment != null)
-            return;
+        if (es.Equipment != null)
+            return false;
 
         es.Equip(gameObject);
+
+        return true;
     }
 }

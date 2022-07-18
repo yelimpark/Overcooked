@@ -15,10 +15,10 @@ public class CookingBehaviour : MonoBehaviour
     [System.NonSerialized]
     public bool trigger = false;
 
-    public SlotMask mask;
+    public AppliancesType mask;
     
-    private SlotMask curPosition;
-    public SlotMask CurPosition
+    private AppliancesType curPosition;
+    public AppliancesType CurPosition
     {
         get { return curPosition; }
         set
@@ -70,7 +70,7 @@ public class CookingBehaviour : MonoBehaviour
         if (fixWhileCooking && !timebar.end)
             return false;
 
-        CurPosition = SlotMask.None;
+        CurPosition = AppliancesType.None;
         timebar.pause = true;
         return true;
     }

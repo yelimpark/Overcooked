@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cookware : Slot
 {
-    public SlotMask mask;
+    public AppliancesType mask;
     private CookingBehaviour cb;
 
     public bool onlyAtPlate = false;
