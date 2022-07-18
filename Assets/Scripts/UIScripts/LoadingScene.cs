@@ -10,7 +10,8 @@ public class LoadingScene : MonoBehaviour
     public static LoadingScene Instance { get { return instance; } }
 
     [Header("Canvas UI")]
-    public FadeInOutUI fadeInOutUI;
+    public FadeIn fadeIn;
+    public FadeOut fadeOut;
     public GameObject loadingUI;
 
     [Header("Loading Bar")]
@@ -22,11 +23,6 @@ public class LoadingScene : MonoBehaviour
     [Header("Next Scene")]
     public string SceneName;
 
-    public enum SceneNames
-    {
-        STARTSCENE,
-
-    }
 
     private float time;
 
@@ -38,7 +34,7 @@ public class LoadingScene : MonoBehaviour
             instance = this;
         }
 
-        fadeInOutUI.FadeInUI();
+        fadeIn.FadeInUI();
         StartCoroutine(LoadAsynSceneCoroutine());
         
     }
@@ -72,7 +68,7 @@ public class LoadingScene : MonoBehaviour
             if (loadRatio >= 0.9f)
             {
                 image.fillAmount = 1.0f;
-                fadeInOutUI.FadeOutUI();
+                fadeOut.FadeOutUI();
                 yield return new WaitForSeconds(2f);
                 
                 operation.allowSceneActivation = true;

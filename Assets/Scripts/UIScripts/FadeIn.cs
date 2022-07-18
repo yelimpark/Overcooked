@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class FadeInOutUI : MonoBehaviour
+public class FadeIn : MonoBehaviour
 {
     public float posX, posY;
     public float time;
@@ -12,7 +12,8 @@ public class FadeInOutUI : MonoBehaviour
 
     public GameObject FadeUI;
     public UnityEvent OnCompleteEvent;
-    
+
+    public string loadScene;
 
 
     public void FadeInUI()
@@ -26,14 +27,8 @@ public class FadeInOutUI : MonoBehaviour
         OnCompleteEvent.Invoke();
     }
 
-    public void FadeOutUI()
-    {
-        iTween.ScaleTo(FadeUI, iTween.Hash("scale", new Vector3(1,1,1), "time", time, "delay", delayTime, "easetype", iTween.EaseType.easeInOutExpo));
-    }
-
     public void ChangeResultScene()
     {
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene(loadScene);
     }
-
 }
