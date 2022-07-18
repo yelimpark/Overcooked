@@ -15,7 +15,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void OnSubmit(GameObject submittedFood)
+    private void OnSubmit(GameObject submitFood)
     {
 
     }
