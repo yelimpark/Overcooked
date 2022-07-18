@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardManager : MonoBehaviour
 {
     public List<GameObject> cardList;
+    public List<GameObject> submitList;
     public Transform order;
 
     private void Update()
@@ -25,9 +26,9 @@ public class CardManager : MonoBehaviour
         if (order.childCount < 5)
         {
             var index = Random.Range(0, cardList.Count);
-            var newCard = Instantiate(cardList[index]);
-            newCard.transform.SetParent(order);
+            var newCard = Instantiate(cardList[index], order);
             newCard.transform.localScale = new Vector3(1f, 1f, 1f);
+            submitList.Add(newCard);
         }
     }
 }

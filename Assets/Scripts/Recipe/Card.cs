@@ -11,12 +11,15 @@ public class Card : MonoBehaviour
     public float timeLimit;
     public bool isActive;
 
+    private CardManager cardMgr;
     private Color timeMaxColor;
     private Color timeMedianColor = new Color(250 / 255f, 250 / 255f, 80 / 255f);
     private Color timeMinColor = new Color(250 / 255f, 50 / 255f, 15 / 255f);
 
     private void Awake()
     {
+        cardMgr = transform.GetComponentInParent<CardManager>();
+
         timer.maxValue = timeLimit;
         timer.value = timer.maxValue;
         timeMaxColor = timerBar.color;
@@ -51,6 +54,7 @@ public class Card : MonoBehaviour
 
     public void DeleteCard()
     {
+        cardMgr.submitList.Remove(gameObject);
         Destroy(gameObject);
     }
 }
