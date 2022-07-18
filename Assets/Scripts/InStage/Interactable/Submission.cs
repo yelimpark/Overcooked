@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Submission : MonoBehaviour
+public class Submission : Slot
 {
-    CardManager CardManager;
+    public float conbearSpeed = 3f;
+    public KitchenManager km;
 
-    public void OnTriggerEnter(Collider other)
+    public override void OnPlace(GameObject go)
     {
-        if (other.tag == "Ingrediants" || other.tag == "Cookware")
-        {
-            Debug.Log(other.name);
-            Utils.FixPosition(other.gameObject);
-            iTween.MoveTo(other.gameObject, iTween.Hash("z", -10f, "speed", 1f));
-            //CardManager.OnSubmit(null);
-        }
+        // ¿Ã∆Â∆Æ
+
+        go.SetActive(false);
+
+        km.OnSubmit(go);
     }
+
 }
