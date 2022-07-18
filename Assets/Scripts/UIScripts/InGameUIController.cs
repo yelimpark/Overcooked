@@ -14,10 +14,10 @@ public class InGameUIController : MonoBehaviour
     public Player player;
 
     [Header("To Fade UI's")]
-    public FadeInOutUI FadeUI;
-    public FadeInOutUI FadeReadyUI;
-    public FadeInOutUI FadeStartUI;
-    public FadeInOutUI FadeEndUI;
+    public FadeIn FadeUI;
+    public FadeIn FadeReadyUI;
+    public FadeIn FadeStartUI;
+    public FadeIn FadeEndUI;
 
     [Header("Loading Circle")]
     public Image LoadingBar;
@@ -44,7 +44,7 @@ public class InGameUIController : MonoBehaviour
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
         EndUI.SetActive(false);
-        player.enabled = false;
+        //player.enabled = false;
 
     }
 
@@ -55,7 +55,7 @@ public class InGameUIController : MonoBehaviour
         {
             //After 3sec -> PlayerUI true
             pressTime += LoadingSpeed * Time.deltaTime;
-            if (pressTime >= 50)
+            if (pressTime >= 1.5)
             {
                 StartCoroutine(ChangeUI());
                 pressTime = 0;
@@ -66,14 +66,14 @@ public class InGameUIController : MonoBehaviour
         {
             pressTime = 0f;
         }
-        LoadingBar.fillAmount = pressTime/50;
+        LoadingBar.fillAmount = pressTime/1.5f;
 
         if(timeController.time <= 0f)
         {
             EndUI.SetActive(true);
             FadeEndUI.FadeInUI();
             timeController.time = 0;
-            player.enabled = false;
+            //player.enabled = false;
         }
     }
 
@@ -85,18 +85,18 @@ public class InGameUIController : MonoBehaviour
 
         
 
-        player.enabled = false;
+        //player.enabled = false;
         mainCamera.CameraZoomIn();
         PlayerUI.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(1f);
         ReadyUI.SetActive(true);
         if(ReadyUI)
         {
             FadeReadyUI.FadeInUI();
         }
 
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(1.5f);
 
         ReadyUI.SetActive(false);
         StartUI.SetActive(true);
@@ -108,7 +108,7 @@ public class InGameUIController : MonoBehaviour
         
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
-        player.enabled = true;
+        //player.enabled = true;
 
         timeController.GetComponent<TimeController>().enabled = true;
         timerBar.GetComponent<TimerBar>().enabled = true;

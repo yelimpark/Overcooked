@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ingrediant
+  - Interactable
+  - Cookware
   - Stage
   layers:
   - Default
@@ -13,7 +16,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - player
   - 
   - 
   - 
@@ -39,9 +42,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: New Layer 1
-    uniqueID: 738147507
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
