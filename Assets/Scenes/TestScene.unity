@@ -166,6 +166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225745, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 900620021761225749, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2119,6 +2123,26 @@ PrefabInstance:
     - target: {fileID: 7103700230792477738, guid: 2a13f3f50e696e843a06a46aaaf8508f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 30.5533
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103700231337823577, guid: 2a13f3f50e696e843a06a46aaaf8508f, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103700231337823577, guid: 2a13f3f50e696e843a06a46aaaf8508f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103700231337823577, guid: 2a13f3f50e696e843a06a46aaaf8508f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103700231337823577, guid: 2a13f3f50e696e843a06a46aaaf8508f, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103700231337823577, guid: 2a13f3f50e696e843a06a46aaaf8508f, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7103700231564038323, guid: 2a13f3f50e696e843a06a46aaaf8508f, type: 3}
       propertyPath: m_fontAsset
