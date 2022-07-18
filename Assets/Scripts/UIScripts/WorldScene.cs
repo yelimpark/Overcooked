@@ -7,14 +7,14 @@ public class WorldScene : MonoBehaviour
     public Info stage1;
     public Info stage2;
 
-    public FadeIn fadeIn;
-    public FadeOut fadeOut;
+    public ZoomIn ZoomInUI;
+    public ZoomOut ZoomOutUI;
     public string loadScene;
 
 
     private void Start()
     {
-        fadeIn.FadeInUI();
+        ZoomInUI.ZoomInUI();
     }
 
     private void Update()
@@ -24,7 +24,7 @@ public class WorldScene : MonoBehaviour
             if (stage1.onCollider)
             {
                 Debug.Log("스테이지 1");
-                fadeOut.FadeOutUI();
+                ZoomOutUI.ZoomOutUI();
             }
             else if (stage2.onCollider) 
             {

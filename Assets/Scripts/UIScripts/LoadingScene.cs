@@ -10,8 +10,8 @@ public class LoadingScene : MonoBehaviour
     public static LoadingScene Instance { get { return instance; } }
 
     [Header("Canvas UI")]
-    public FadeIn fadeIn;
-    public FadeOut fadeOut;
+    public ZoomIn ZoomIn;
+    public ZoomOut ZoomOut;
     public GameObject loadingUI;
 
     [Header("Loading Bar")]
@@ -34,7 +34,7 @@ public class LoadingScene : MonoBehaviour
             instance = this;
         }
 
-        fadeIn.FadeInUI();
+        ZoomIn.ZoomInUI();
         StartCoroutine(LoadAsynSceneCoroutine());
         
     }
@@ -68,7 +68,7 @@ public class LoadingScene : MonoBehaviour
             if (loadRatio >= 0.9f)
             {
                 image.fillAmount = 1.0f;
-                fadeOut.FadeOutUI();
+                ZoomOut.ZoomOutUI();
                 yield return new WaitForSeconds(2f);
                 
                 operation.allowSceneActivation = true;

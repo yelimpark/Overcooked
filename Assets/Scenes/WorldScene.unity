@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3678,8 +3678,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage1: {fileID: 543450653599610275}
   stage2: {fileID: 2062733739}
-  fadeIn: {fileID: 1476462457}
-  fadeOut: {fileID: 1476462456}
+  ZoomInUI: {fileID: 1476462457}
+  ZoomOutUI: {fileID: 1476462456}
   loadScene: 
 --- !u!1001 &1089624100
 PrefabInstance:
@@ -4496,6 +4496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab7ff64446f411f4a99c9e02c0a25f97, type: 3}
+--- !u!1 &1290014046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 900620021938012881, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+  m_PrefabInstance: {fileID: 1476462455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1290431302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5242,6 +5247,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 1290014046}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: loadScene
       value: LoadingScene
       objectReference: {fileID: 0}
@@ -5273,6 +5282,10 @@ PrefabInstance:
       propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225737, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 1290014046}
     - target: {fileID: 900620021761225745, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: m_Name
       value: FadeUI

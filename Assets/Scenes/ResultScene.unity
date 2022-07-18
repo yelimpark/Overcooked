@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43728545, g: 0.4762408, b: 0.51763576, a: 1}
+  m_IndirectSpecularColor: {r: 0.43728516, g: 0.47624046, b: 0.5176349, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2358,8 +2358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e595860c484284e45a9606e8c4084ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeUI: {fileID: 7492449063080639712}
-  fadeOutUI: {fileID: 7492449063080639720}
+  ZoomUI: {fileID: 7492449063080639712}
+  ZoomOutUI: {fileID: 7492449063080639720}
 --- !u!1 &874936908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 220.6, y: 22.66}
+  m_AnchoredPosition: {x: 220.59998, y: 22.659973}
   m_SizeDelta: {x: 441.1945, y: 28.2105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &927129274
@@ -4665,7 +4665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 1
   delayTime: 0.1
-  FadeUI: {fileID: 7492449062855625248}
+  ZoomUI: {fileID: 7492449062855625248}
   OnCompleteEvent:
     m_PersistentCalls:
       m_Calls:

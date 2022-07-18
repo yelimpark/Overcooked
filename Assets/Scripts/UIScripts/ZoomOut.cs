@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class FadeOut : MonoBehaviour
+public class ZoomOut : MonoBehaviour
 {
     public float time;
     public float delayTime;
 
-    public GameObject FadeUI;
+    public GameObject ZoomUI;
     public UnityEvent OnCompleteEvent;
 
     public string loadScene;
 
-    public void FadeOutUI()
+    public void ZoomOutUI()
     {
-        iTween.ScaleTo(FadeUI, iTween.Hash("scale", new Vector3(1, 1, 1), "time", time, "delay", delayTime, "easetype", iTween.EaseType.easeInOutExpo, "oncomplete", "ExecuteEvent2", "oncompletetarget", gameObject));
+        iTween.ScaleTo(ZoomUI, iTween.Hash("scale", new Vector3(1, 1, 1), "time", time, "delay", delayTime, "easetype", iTween.EaseType.easeInOutExpo, "oncomplete", "ExecuteEvent2", "oncompletetarget", gameObject));
     }
     public void ExecuteEvent2()
     {

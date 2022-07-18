@@ -1291,8 +1291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e02054663b32b4785a9ef7d16694d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeIn: {fileID: 8190957167036434256}
-  fadeOut: {fileID: 8190957167036434257}
+  ZoomIn: {fileID: 8190957167036434256}
+  ZoomOut: {fileID: 8190957167036434257}
   loadingUI: {fileID: 1012180255}
   image: {fileID: 536407316}
   minLoadingTime: 4
@@ -2368,6 +2368,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 9066736735862076250}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: loadScene
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8190957167036434257}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ZoomOut, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225737, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 9066736735862076250}
     - target: {fileID: 900620021761225745, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: m_Name
       value: FadeUI
@@ -2458,3 +2498,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+--- !u!1 &9066736735862076250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 900620021938012881, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+  m_PrefabInstance: {fileID: 9066736735862076249}
+  m_PrefabAsset: {fileID: 0}
