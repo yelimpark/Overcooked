@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public float speed;
     public Animator animator;
+    private Rigidbody rb;
 
     private float horizontal;
     private float vertical;
@@ -22,6 +23,11 @@ public class Player : MonoBehaviour
     private bool isPickUp;
     private bool delay;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     private void Update()
     {
         Move();
@@ -32,7 +38,8 @@ public class Player : MonoBehaviour
     {
         if (!delay)
         {
-            transform.position += moveVec * speed * Time.deltaTime;
+            Vector3 newVelocity = new Vector3(horizontal, 0f, vertical) * speed;
+            rb.velocity = newVelocity;
         }
     }
 
@@ -41,7 +48,11 @@ public class Player : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         moveVec = new Vector3(horizontal, 0f, vertical).normalized;
-        transform.LookAt(transform.position + moveVec);
+        if (moveVec != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(moveVec.x, moveVec.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+        }
 
         if (moveVec != Vector3.zero)
         {

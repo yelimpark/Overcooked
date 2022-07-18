@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44880885, g: 0.49887007, b: 0.5756939, a: 1}
+  m_IndirectSpecularColor: {r: 0.44880903, g: 0.49887073, b: 0.57569426, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3715,6 +3715,17 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.3212399, y: 0.0015495121, z: 0.118696585}
     m_Extent: {x: 0.3267632, y: 0.44298038, z: 0.5847043}
   m_DirtyAABB: 0
+--- !u!114 &319520075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5339074960799991410, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+  m_PrefabInstance: {fileID: 1207102418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &323105547
 GameObject:
   m_ObjectHideFlags: 0
@@ -15504,6 +15515,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 5339074960944247462, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: timerBar
+      value: 
+      objectReference: {fileID: 319520075}
     - target: {fileID: 5339074961147503640, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 23.3
@@ -18691,6 +18706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardList:
   - {fileID: 4780895680793885109, guid: dfeeb8bbdb50136458b1c1473ba9b3c9, type: 3}
+  submitList: []
   order: {fileID: 1353103332}
 --- !u!1001 &1353655540
 PrefabInstance:
@@ -19722,9 +19738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7.5
   animator: {fileID: 1437445670}
-  knife: {fileID: 0}
-  plate: {fileID: 0}
-  pickOrDropDelay: 0
+  knife: {fileID: 1813712163}
+  plate: {fileID: 408740680}
+  pickOrDropDelay: 0.2
 --- !u!114 &1437445667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22800,6 +22816,10 @@ PrefabInstance:
     - target: {fileID: 900620021761225745, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: m_Name
       value: FadeUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 900620021761225745, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 900620021761225749, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: m_Pivot.x

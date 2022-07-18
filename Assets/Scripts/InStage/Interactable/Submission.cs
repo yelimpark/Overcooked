@@ -13,7 +13,7 @@ public class Submission : MonoBehaviour
             Debug.Log(other.name);
             Utils.FixPosition(other.gameObject);
             iTween.MoveTo(other.gameObject, iTween.Hash("z", -10f, "speed", 1f));
-            CardManager.OnSubmit(null);
+            //CardManager.OnSubmit(null);
         }
     }
 }
