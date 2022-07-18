@@ -66,7 +66,7 @@ public class EquipmentSystem : MonoBehaviour
 
             case State.UNEQUIPING:
                 int layerMask = (-1) - (1 << LayerMask.NameToLayer("player"));
-                if (Utils.IsFalling(equipment, equipErrorRange, layerMask))
+                if (equipment==null || Utils.IsFalling(equipment, equipErrorRange, layerMask))
                 {
                     curState = State.NONE;
                     equipment = null;

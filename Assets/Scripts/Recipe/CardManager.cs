@@ -15,9 +15,25 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void OnSubmit(GameObject submittedFood)
+    public void OnSubmit(GameObject submittedFood)
     {
-
+        //юс╫ц
+        if (submittedFood == null)
+        {
+            foreach (var card in cardList)
+            {
+                Animator animator = card.GetComponent<Animator>();
+                animator.SetTrigger("isTimeout");
+            }
+        }
+        else
+        {
+            foreach (var card in cardList)
+            {
+                Animator animator = card.GetComponent<Animator>();
+                animator.ResetTrigger("isTimeout");
+            }
+        }
     }
 
     private void NewCard()
@@ -28,6 +44,7 @@ public class CardManager : MonoBehaviour
             var newCard = Instantiate(cardList[index]);
             newCard.transform.SetParent(order);
             newCard.transform.localScale = new Vector3(1f, 1f, 1f);
+            cardList.Add(newCard);
         }
     }
 }
