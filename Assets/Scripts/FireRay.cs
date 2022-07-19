@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FireRay : MonoBehaviour
 {
+    [SerializeField]
+    LayerMask layerMask;
+
     public float distance = 2f;
     private RaycastHit rayHit;
     private Ray ray;
@@ -15,8 +18,7 @@ public class FireRay : MonoBehaviour
 
     public void Awake()
     {
-        extingParticle = GetComponent<ParticleSystem>();
-
+        extingParticle = GetComponentInChildren<ParticleSystem>();        
         ray = new Ray();
         ray.origin = transform.position;
         ray.direction = transform.forward;
@@ -24,26 +26,30 @@ public class FireRay : MonoBehaviour
 
     public void Update()
     {
-        OnDrawGizmos();
-        if (Physics.Raycast(ray.origin, ray.direction, out rayHit, distance))
+        if(Input.GetMouseButtonDown(0))
         {
-            //Debug.Log(rayHit.collider.gameObject.name);
+            OnDrawGizmos();
+            Shoot();
+        }   
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawRay(ray.origin, ray.direction * distance, Color.green);
+    }
+
+    public void Shoot()
+    {
+        extingParticle.Play();
+        if (Physics.Raycast(ray.origin, ray.direction, out rayHit, distance, layerMask))
+        {
             fireHp = rayHit.collider.GetComponent<FireHp>();
             if(fireHp != null)
             {
                 fireHp.TakeDamage(damage);
-            }
-        } 
-    }
-
-    public void Spread()
-    {
-        extingParticle.Stop();
-        extingParticle.Play();
-    }
-    private void OnDrawGizmos()
-    {
-        Debug.DrawRay(ray.origin, ray.direction * distance, Color.green);
+            } 
+        }
     }
 }
 

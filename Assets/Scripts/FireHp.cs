@@ -6,27 +6,24 @@ using UnityEngine.UI;
 public class FireHp : MonoBehaviour
 {
     //체력바 
-    public GameObject fireBarPrefab;
-    public float maxFire = 100f;
-    public float currentFire;
+    //public Slider fireHp;
+    public GameObject fireTimeBar;
+    public float Yoffset = 20f;
+    
+    public float maxTime = 100f;
+    public float currentTime;
 
     private CapsuleCollider capsule;
 
     private void Awake()
     {
+        //fireHp = GetComponent<Slider>();
         capsule = GetComponent<CapsuleCollider>();
-        currentFire = maxFire;
-    }
 
-    public void TakeDamage(int amount)
-    {
-        // 체력이 다 닳았을 경우 소멸됨
-        currentFire -= amount;
-        if(currentFire <= 0)
-        {
-            OnFireExtinguising();
-        }
-    }
+        currentTime = maxTime;
+        //fireHp.gameObject.SetActive(false);
+        
+    }    
 
     public void OnFireExtinguising()
     {
@@ -35,7 +32,20 @@ public class FireHp : MonoBehaviour
 
     private void Update()
     {
-       
+        //fireBarPrefab.transform.position = transform.position;
+        var newpos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
+        //newpos.y += Yoffset;
+        fireTimeBar.transform.position = newpos;
+    }
+    public void TakeDamage(int damage)
+    {
+        currentTime -= damage;
+        //fireHp.value = currentTime / maxTime;
+        if(currentTime <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 }
