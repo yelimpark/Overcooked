@@ -27,16 +27,21 @@ public class FireCreate : MonoBehaviour
         switch(eSelfState)
         {
             case ESelfState.Self:
-                Fire();
                 break;
             case ESelfState.FireSelf:
-
+                // 시간 
+                // 
                 break;
         }
     }
-    public void Fire()
+
+    public void FireOn()
     {
-        
+        // 불 이펙트 on, 상태 FireSelf
     }
 
+    public void FireOff()
+    {
+        // 불 이펙트 off, 상태 Self
+    }
 }
