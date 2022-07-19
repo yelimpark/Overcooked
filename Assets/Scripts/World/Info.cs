@@ -5,8 +5,9 @@ using UnityEngine;
 public class Info : MonoBehaviour
 {
     public Animator animator;
-    public bool onCollider = false; 
+    public bool onCollider = false;
 
+    public SceneDefinition sceneDefinition;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,3 +28,4 @@ public class Info : MonoBehaviour
     }
 
 }
+

@@ -20,7 +20,6 @@ public class ZoomOut : MonoBehaviour
     }
     public void ExecuteEvent2()
     {
-        Debug.Log("이걸왜타");
         OnCompleteEvent.Invoke();
     }
 

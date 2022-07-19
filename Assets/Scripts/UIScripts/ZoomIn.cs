@@ -22,8 +22,7 @@ public class ZoomIn : MonoBehaviour
     }
 
     public void ExecuteEvent()
-    {
-        Debug.Log("???");
+    { 
         OnCompleteEvent.Invoke();
     }
 

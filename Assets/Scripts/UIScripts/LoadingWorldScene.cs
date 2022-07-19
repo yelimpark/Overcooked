@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class LoadingScene : MonoBehaviour
+public class LoadingWorldScene : MonoBehaviour
 {
-    private static LoadingScene instance;
-    public static LoadingScene Instance { get { return instance; } }
+    private static LoadingWorldScene instance;
+    public static LoadingWorldScene Instance { get { return instance; } }
 
     [Header("Canvas UI")]
     public ZoomIn ZoomIn;
@@ -24,37 +24,22 @@ public class LoadingScene : MonoBehaviour
     [Header("To Loaded Scene")]
     public string SceneName;
 
-    [Header("Get Scene Info")]
-    public Image StageImage;
-    public TextMeshProUGUI Titletext;
-    public TextMeshProUGUI[] StarPoint;
-
     private float time;
 
 
     void Start()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
-        StageImage.sprite = GameVariable.GetDefinition().StageImage;
-        Titletext.text = GameVariable.GetDefinition().SceneName;
-        for(int i = 0; i < StarPoint.Length; i++)
-        {
-            StarPoint[i].text = GameVariable.GetDefinition().StarScores[i].ToString();
-        }
-        
 
         ZoomIn.ZoomInUI();
-        StartCoroutine(LoadAsynSceneCoroutine());
-
-
-        Debug.Log(GameVariable.GetDefinition().StarScores[1]);
+        StartCoroutine(LoadAsynWorldSceneCoroutine());
         
     }
 
-    IEnumerator LoadAsynSceneCoroutine()
+    IEnumerator LoadAsynWorldSceneCoroutine()
     {
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneName);

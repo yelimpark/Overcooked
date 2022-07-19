@@ -9,8 +9,11 @@ public class WorldScene : MonoBehaviour
 
     public ZoomIn ZoomInUI;
     public ZoomOut ZoomOutUI;
+
     public string loadScene;
 
+
+    private SceneDefinition StageInfo;
 
     private void Start()
     {
@@ -24,7 +27,11 @@ public class WorldScene : MonoBehaviour
             if (stage1.onCollider)
             {
                 Debug.Log("스테이지 1");
+
+                GameVariable.SetDefinition(stage1.sceneDefinition);
+                Debug.Log(GameVariable.GetDefinition().SceneName);
                 ZoomOutUI.ZoomOutUI();
+                //stage1.sceneDefinition.SceneName; 
             }
             else if (stage2.onCollider) 
             {
