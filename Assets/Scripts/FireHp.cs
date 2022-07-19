@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class FireHp : MonoBehaviour
 {
-    //Ã¼·Â¹Ù 
-    //public Slider fireHp;
     public GameObject fireTimeBar;
-    public float Yoffset = 20f;
     
     public float maxTime = 100f;
     public float currentTime;
@@ -17,7 +14,7 @@ public class FireHp : MonoBehaviour
 
     private void Awake()
     {
-        //fireHp = GetComponent<Slider>();
+        fireTimeBar = GameObject.Find("Canvas/Slider");
         capsule = GetComponent<CapsuleCollider>();
 
         currentTime = maxTime;
@@ -32,9 +29,7 @@ public class FireHp : MonoBehaviour
 
     private void Update()
     {
-        //fireBarPrefab.transform.position = transform.position;
-        var newpos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
-        //newpos.y += Yoffset;
+        var newpos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position + new Vector3 (0f, 0.8f, 0f));
         fireTimeBar.transform.position = newpos;
     }
     public void TakeDamage(int damage)
