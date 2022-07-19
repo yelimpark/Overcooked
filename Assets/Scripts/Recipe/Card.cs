@@ -52,6 +52,16 @@ public class Card : MonoBehaviour
         }
     }
 
+    public void SuccessSubmission()
+    {
+        animator.SetTrigger("isSuccess");
+    }
+
+    public void WrongSubmission()
+    {
+        animator.SetTrigger("isWrong");
+    }
+
     public void DeleteCard()
     {
         cardMgr.submitList.Remove(gameObject);

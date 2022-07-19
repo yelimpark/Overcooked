@@ -163,7 +163,7 @@ MonoBehaviour:
   timer: {fileID: 5966789798114661194}
   timerBar: {fileID: 5966789798047282667}
   animator: {fileID: 6359809742093132940}
-  timeLimit: 5
+  timeLimit: 90
   isActive: 0
 --- !u!1 &5966789797133523236
 GameObject:

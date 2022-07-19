@@ -16,9 +16,27 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void OnSubmit(GameObject submitFood)
+    public void OnSubmit(GameObject submitFood)
     {
+        bool find = false;
+        for (var i = 0; i < submitList.Count; i++)
+        {
+            if (submitFood.transform.name == submitList[i].name)
+            {
+                find = true;
+                submitList[i].GetComponent<Card>().SuccessSubmission();
+                Debug.Log(submitList[i].name);
+                break;
+            }
+        }
 
+        if (!find)
+        {
+            for (var i = 0; i < submitList.Count; i++)
+            {
+                submitList[i].GetComponent<Card>().WrongSubmission();
+            }
+        }
     }
 
     private void NewCard()
@@ -27,6 +45,7 @@ public class CardManager : MonoBehaviour
         {
             var index = Random.Range(0, cardList.Count);
             var newCard = Instantiate(cardList[index], order);
+            newCard.name = cardList[index].name;
             newCard.transform.localScale = new Vector3(1f, 1f, 1f);
             submitList.Add(newCard);
         }
