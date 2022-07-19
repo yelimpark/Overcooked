@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Van : MonoBehaviour
 {
@@ -12,8 +13,20 @@ public class Van : MonoBehaviour
 
     private float minX = 0f;
 
+    PhotonView photonView;
+
+    private void Start()
+    {
+        photonView = PhotonView.Get(this);
+    }
+
     private void Update()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         if (canMove)
         {
             horizontal = Input.GetAxisRaw("Horizontal");
