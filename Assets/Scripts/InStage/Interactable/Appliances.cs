@@ -12,60 +12,60 @@ public enum AppliancesType
 
 public class Appliances : Slot
 {
-    public AppliancesType mask;
+    //public AppliancesType mask;
 
-    public override bool AbleToPlace(GameObject go)
-    {
-        if (occupyObj != null)
-        {
-            Cookware cookware = occupyObj.GetComponent<Cookware>();
-            if (cookware != null)
-                return cookware.AbleToPlace(go);
-        }
+    //public override bool AbleToPlace(GameObject go)
+    //{
+    //    if (occupyObj != null)
+    //    {
+    //        Cookware cookware = occupyObj.GetComponent<Cookware>();
+    //        if (cookware != null)
+    //            return cookware.AbleToPlace(go);
+    //    }
 
-        return base.AbleToPlace(go);
-    }
+    //    return base.AbleToPlace(go);
+    //}
 
-    public override void OnPlace(GameObject go)
-    {
-        if (occupyObj != null)
-        {
-            Cookware cookware = occupyObj.GetComponent<Cookware>();
-            if (cookware != null)
-            {
-                cookware.OnPlace(go);
-                return;
-            }
-        }
+    //public override void OnPlace(GameObject go)
+    //{
+    //    if (occupyObj != null)
+    //    {
+    //        Cookware cookware = occupyObj.GetComponent<Cookware>();
+    //        if (cookware != null)
+    //        {
+    //            cookware.OnPlace(go);
+    //            return;
+    //        }
+    //    }
 
-        base.OnPlace(go);
+    //    base.OnPlace(go);
 
-        CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
-        if (cb != null)
-            cb.CurPosition = mask;
-    }
+    //    CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
+    //    if (cb != null)
+    //        cb.CurPosition = mask;
+    //}
 
-    public override bool AbleToTakeOut(GameObject dest)
-    {
-        if (dest != null)
-        {
-            Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware != null && cookware.mask == AppliancesType.PLATE)
-                return cookware.AbleToTakeOut(dest);
-        }
+    //public override bool AbleToTakeOut(GameObject dest)
+    //{
+    //    if (dest != null)
+    //    {
+    //        Cookware cookware = dest.GetComponent<Cookware>();
+    //        if (cookware != null && cookware.mask == AppliancesType.PLATE)
+    //            return cookware.AbleToTakeOut(dest);
+    //    }
 
-        return base.AbleToTakeOut(dest);
-    }
+    //    return base.AbleToTakeOut(dest);
+    //}
 
-    public override GameObject OnTakeOut(GameObject dest)
-    {
-        if (dest != null)
-        {
-            Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware != null && cookware.mask == AppliancesType.PLATE)
-                return cookware.OnTakeOut(dest);
-        }
+    //public override GameObject OnTakeOut(GameObject dest)
+    //{
+    //    if (dest != null)
+    //    {
+    //        Cookware cookware = dest.GetComponent<Cookware>();
+    //        if (cookware != null && cookware.mask == AppliancesType.PLATE)
+    //            return cookware.OnTakeOut(dest);
+    //    }
 
-        return base.OnTakeOut(dest);
-    }
+    //    return base.OnTakeOut(dest);
+    //}
 }
