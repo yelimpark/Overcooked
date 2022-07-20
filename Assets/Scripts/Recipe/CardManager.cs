@@ -39,7 +39,7 @@ public class CardManager : MonoBehaviour
             {
                 submitList[i].GetComponent<Card>().WrongSubmission();
             }
-            kitchenMgr.wrongSubmit++;
+            kitchenMgr.WrongSubmit();
         }
     }
 

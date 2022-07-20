@@ -165,6 +165,7 @@ MonoBehaviour:
   animator: {fileID: 6359809742093132940}
   timeLimit: 90
   submitScore: 30
+  timeoutScore: 15
   isActive: 0
 --- !u!1 &5966789797133523236
 GameObject:

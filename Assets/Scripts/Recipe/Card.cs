@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     public Animator animator;
     public float timeLimit;
     public int submitScore;
+    public int timeoutScore;
     public bool isActive;
 
     private CardManager cardMgr;
@@ -48,7 +49,7 @@ public class Card : MonoBehaviour
 
             if (timer.value == 0f)
             {
-                cardMgr.kitchenMgr.failSubmit++;
+                cardMgr.kitchenMgr.LostScore(timeoutScore);
                 animator.SetTrigger("isTimeout");
             }
         }

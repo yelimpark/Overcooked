@@ -41,6 +41,7 @@ public class ScoreController : MonoBehaviour
 
     public void GetScore(int score, bool isFever, int feverLevel)
     {
+        animator.SetTrigger("isSpin");
         this.isFever = isFever;
         tipText.SetText($"фа x {feverLevel}");
 
@@ -51,5 +52,23 @@ public class ScoreController : MonoBehaviour
         var go = str.GetComponent<TextMeshProUGUI>();
         go.SetText($"+{score}");
         go.color = colors[0];
+    }
+
+    public void LostScore(int lostScore)
+    {
+        animator.SetTrigger("isSpin");
+        isFever = false;
+        score -= lostScore;
+        scoreText.SetText($"{score}");
+
+        var str = Instantiate(scoreString, spawnPos);
+        var go = str.GetComponent<TextMeshProUGUI>();
+        go.SetText($"-{lostScore}");
+        go.color = colors[1];
+    }
+
+    public void WrongSubmit()
+    {
+        isFever = false;
     }
 }
