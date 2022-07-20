@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class Grab : Command
 {
-    private GameObject player;
-
     public override void Execute()
     {
-
-    }
-
-    public override void Execute(float value)
-    {
-    }
-
-    public override void Execute(bool value)
-    {
+        throw new System.NotImplementedException();
     }
 }

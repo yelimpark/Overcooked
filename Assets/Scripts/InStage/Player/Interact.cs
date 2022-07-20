@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
+    public List<string> tags = new List<string>();
+
     protected List<GameObject> collisions = new List<GameObject>();
 
     protected GameObject cursor;
@@ -59,17 +61,22 @@ public class Interact : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        Cursor = other.gameObject;
-        collisions.Add(other.gameObject);
-
+        if (tags.Contains(other.tag))
+        {
+            Cursor = other.gameObject;
+            collisions.Add(other.gameObject);
+        }
     }
 
     public virtual void OnTriggerExit(Collider other)
     {
-        GameObject go = other.gameObject;
+        if (tags.Contains(other.tag))
+        {
+            GameObject go = other.gameObject;
 
-        collisions.Remove(go);
-        if (go.Equals(cursor))
-            Cursor = null;
+            collisions.Remove(go);
+            if (go.Equals(cursor))
+                Cursor = null;
+        }
     }
 }
