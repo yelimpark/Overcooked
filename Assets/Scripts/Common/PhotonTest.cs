@@ -110,6 +110,6 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public void MoveToWorldMap()
     {
-        PhotonNetwork.LoadLevel("MapScene 1");
+        PhotonNetwork.LoadLevel("WorldScene");
     }
 }

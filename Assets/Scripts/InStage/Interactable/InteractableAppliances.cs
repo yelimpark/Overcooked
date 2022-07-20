@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class InteractableAppliances : Interactable
 {
-    //public Slot slot;
+    public Slot slot;
 
-    //public override GameObject TakeOut(GameObject dest)
-    //{
-    //    if (!slot.AbleToTakeOut(dest))
-    //        return null;
+    public override GameObject TakeOut(GameObject dest)
+    {
+        if (!slot.AbleToTakeOut(dest))
+            return null;
 
-    //    return slot.OnTakeOut(dest);
-    //}
+        return slot.OnTakeOut(dest);
+    }
 }

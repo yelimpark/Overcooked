@@ -4,107 +4,107 @@ using UnityEngine;
 
 public class EquipmentSystem : MonoBehaviour
 {
-    //public enum State
-    //{
-    //    EQUIPING,
-    //    UNEQUIPING,
-    //    NONE
-    //}
+    public enum State
+    {
+        EQUIPING,
+        UNEQUIPING,
+        NONE
+    }
 
-    //GameObject equipment;
-    //public GameObject Equipment { get { return equipment; } }
+    GameObject equipment;
+    public GameObject Equipment { get { return equipment; } }
 
-    //public Transform hands;
+    public Transform hands;
 
-    //private State curState = State.NONE;
-    //public float equipSpeed = 2f;
-    //public float equipErrorRange = 0.1f;
+    private State curState = State.NONE;
+    public float equipSpeed = 2f;
+    public float equipErrorRange = 0.1f;
 
-    //private Animator animator;
+    private Animator animator;
 
-    //public GameObject EquipableTo()
-    //{
-    //    if (equipment != null)
-    //    {
-    //        Cookware cookware = equipment.GetComponent<Cookware>();
-    //        if (cookware != null && cookware.AbleToPlace(equipment))
-    //        {
-    //            return equipment;
-    //        }
-    //        return null;
-    //    }
-    //    return gameObject;
-    //}
+    public GameObject EquipableTo()
+    {
+        if (equipment != null)
+        {
+            Cookware cookware = equipment.GetComponent<Cookware>();
+            if (cookware != null && cookware.AbleToPlace(equipment))
+            {
+                return equipment;
+            }
+            return null;
+        }
+        return gameObject;
+    }
 
-    //private void Start()
-    //{
-    //    animator = GetComponent<Animator>();
-    //}
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
-    //public void Equip(GameObject go)
-    //{
-    //    if (go == null || equipment != null || curState != State.NONE)
-    //        return;
+    public void Equip(GameObject go)
+    {
+        if (go == null || equipment != null || curState != State.NONE)
+            return;
 
-    //    equipment = go;
+        equipment = go;
 
-    //    Utils.FixPosition(go);
+        Utils.FixPosition(go);
 
-    //    var colliders = go.transform.GetComponentsInChildren<Collider>();
-    //    foreach (var childCollider in colliders)
-    //    {
-    //        childCollider.enabled = false;
-    //    }
+        var colliders = go.transform.GetComponentsInChildren<Collider>();
+        foreach (var childCollider in colliders)
+        {
+            childCollider.enabled = false;
+        }
 
-    //    curState = State.EQUIPING;
-    //    equipment.transform.SetParent(hands);
-    //    animator.SetBool("isPickUp", true);
-    //}
+        curState = State.EQUIPING;
+        equipment.transform.SetParent(hands);
+        animator.SetBool("isPickUp", true);
+    }
 
-    //private void Update()
-    //{
-    //    switch (curState)
-    //    {
-    //        case State.EQUIPING:
-    //            Vector3 dir = hands.position - equipment.transform.position;
-    //            equipment.transform.position += dir.normalized * Time.deltaTime * equipSpeed;
+    private void Update()
+    {
+        switch (curState)
+        {
+            case State.EQUIPING:
+                Vector3 dir = hands.position - equipment.transform.position;
+                equipment.transform.position += dir.normalized * Time.deltaTime * equipSpeed;
 
-    //            if (Vector3.Distance(hands.position, equipment.transform.position) < equipErrorRange)
-    //            {
-    //                curState = State.NONE;
-    //            }
-    //            break;
+                if (Vector3.Distance(hands.position, equipment.transform.position) < equipErrorRange)
+                {
+                    curState = State.NONE;
+                }
+                break;
 
-    //        case State.UNEQUIPING:
-    //            int layerMask = (-1) - (1 << LayerMask.NameToLayer("player"));
-    //            if (Utils.IsFalling(equipment, equipErrorRange, layerMask))
-    //            {
-    //                curState = State.NONE;
-    //                equipment = null;
-    //            }
-    //            break;
+            case State.UNEQUIPING:
+                int layerMask = (-1) - (1 << LayerMask.NameToLayer("player"));
+                if (Utils.IsFalling(equipment, equipErrorRange, layerMask))
+                {
+                    curState = State.NONE;
+                    equipment = null;
+                }
+                break;
 
-    //        default:
-    //            break;
-    //    }
-    //}
+            default:
+                break;
+        }
+    }
 
-    //public GameObject Unequip()
-    //{
-    //    if (equipment == null || curState != State.NONE)
-    //        return null;
+    public GameObject Unequip()
+    {
+        if (equipment == null || curState != State.NONE)
+            return null;
 
-    //    Utils.UnFixPosition(equipment);
+        Utils.UnFixPosition(equipment);
 
-    //    Collider collider = equipment.GetComponent<Collider>();
-    //    if (collider != null)
-    //        collider.enabled = true;
+        Collider collider = equipment.GetComponent<Collider>();
+        if (collider != null)
+            collider.enabled = true;
 
-    //    curState = State.UNEQUIPING;
-    //    equipment.transform.parent = null;
+        curState = State.UNEQUIPING;
+        equipment.transform.parent = null;
 
-    //    animator.SetBool("isPickUp", false);
-        
-    //    return equipment;
-    //}
+        animator.SetBool("isPickUp", false);
+
+        return equipment;
+    }
 }

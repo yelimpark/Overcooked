@@ -4,90 +4,90 @@ using UnityEngine;
 
 public class CookingBehaviour : MonoBehaviour
 {
-    //Cookware cookware;
+    Cookware cookware;
 
-    //public TimeBar timebar;
-    //public float Yoffset = 20f;
+    public TimeBar timebar;
+    public float Yoffset = 20f;
 
-    //public bool fixWhileCooking = false;
-    //public bool AutoExecute = true;
+    public bool fixWhileCooking = false;
+    public bool AutoExecute = true;
 
-    //[System.NonSerialized]
-    //public bool trigger = false;
+    [System.NonSerialized]
+    public bool trigger = false;
 
-    //public AppliancesType mask;
-    
-    //private AppliancesType curPosition;
-    //public AppliancesType CurPosition
-    //{
-    //    get { return curPosition; }
-    //    set
-    //    {
-    //        curPosition = value;
-    //        Execute();
-    //    }
-    //}
+    public AppliancesType mask;
 
-    //private void Start()
-    //{
-    //    cookware = GetComponent<Cookware>();
-    //}
+    private AppliancesType curPosition;
+    public AppliancesType CurPosition
+    {
+        get { return curPosition; }
+        set
+        {
+            curPosition = value;
+            Execute();
+        }
+    }
 
-    //public void OnTimeUp()
-    //{
-    //    if (cookware == null || cookware.occupyObj == null)
-    //        return;
+    private void Start()
+    {
+        cookware = GetComponent<Cookware>();
+    }
 
-    //    GameObject before = cookware.OnTakeOut(null);
-    //    Ingrediant ingrediant = before.GetComponent<Ingrediant>();
+    public void OnTimeUp()
+    {
+        if (cookware == null || cookware.occupyObj == null)
+            return;
 
-    //    // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
-    //    GameObject after = GameObject.Find(ingrediant.next);
-    //    after.SetActive(true);
+        GameObject before = cookware.OnTakeOut(null);
+        Ingrediant ingrediant = before.GetComponent<Ingrediant>();
 
-    //    cookware.OnPlace(after);
+        // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
+        GameObject after = GameObject.Find(ingrediant.next);
+        after.SetActive(true);
 
-    //    //반환
-    //    before.SetActive(false);
-    //}
+        cookware.OnPlace(after);
 
-    //private void Update()
-    //{
-    //    Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
-    //    newPos.y += Yoffset;
-    //    timebar.transform.position = newPos;
+        //반환
+        before.SetActive(false);
+    }
 
-    //    //임시코드!!!!!!
-    //    if (Input.GetKeyDown(KeyCode.Z))
-    //    {
-    //        trigger = true;
-    //        Execute();
-    //    }
-    //}
+    private void Update()
+    {
+        Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
+        newPos.y += Yoffset;
+        timebar.transform.position = newPos;
 
-    //public bool ExitPosition()
-    //{
-    //    if (fixWhileCooking && !timebar.end)
-    //        return false;
+        //임시코드!!!!!!
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            trigger = true;
+            Execute();
+        }
+    }
 
-    //    CurPosition = AppliancesType.None;
-    //    timebar.pause = true;
-    //    return true;
-    //}
+    public bool ExitPosition()
+    {
+        if (fixWhileCooking && !timebar.end)
+            return false;
 
-    //public void Execute()
-    //{
-    //    if (timebar.end || CurPosition != mask)
-    //        return;
+        CurPosition = AppliancesType.None;
+        timebar.pause = true;
+        return true;
+    }
 
-    //    Cookware cookware = GetComponent<Cookware>();
-    //    if (cookware == null || cookware.occupyObj == null)
-    //        return;
+    public void Execute()
+    {
+        if (timebar.end || CurPosition != mask)
+            return;
 
-    //    if (AutoExecute || trigger)
-    //    {
-    //        timebar.gameObject.SetActive(true);
-    //        timebar.pause = false;
-    //    }
-    //}
+        Cookware cookware = GetComponent<Cookware>();
+        if (cookware == null || cookware.occupyObj == null)
+            return;
+
+        if (AutoExecute || trigger)
+        {
+            timebar.gameObject.SetActive(true);
+            timebar.pause = false;
+        }
+    }
 }

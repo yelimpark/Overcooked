@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Submission : Slot
 {
-    //public float conbearSpeed = 3f;
-    //public KitchenManager km;
+    public float conbearSpeed = 3f;
+    public KitchenManager km;
 
-    //public override void OnPlace(GameObject go)
-    //{
-    //    // ¿Ã∆Â∆Æ
+    public override void OnPlace(GameObject go)
+    {
+        // ¿Ã∆Â∆Æ
 
-    //    go.SetActive(false);
+        go.SetActive(false);
 
-    //    km.OnSubmit(go);
-    //}
+        km.OnSubmit(go);
+    }
 
 }

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Release : Command
 {
-    //EquipmentSystem es;
+    EquipmentSystem es;
 
-    //public Release(EquipmentSystem es)
-    //{
-    //    this.es = es;
-    //}
+    public Release(EquipmentSystem es)
+    {
+        this.es = es;
+    }
 
-    //public override void Execute()
-    //{
-    //    es.Unequip();
-    //}
+    public override void Execute()
+    {
+        es.Unequip();
+    }
 }
