@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hamburger: {fileID: 1099445687}
-  SceneName: WorldScene
+  SceneName: TitleScene
   minLoadingTime: 4
 --- !u!4 &1005787418
 Transform:

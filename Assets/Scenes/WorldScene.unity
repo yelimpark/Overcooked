@@ -6146,7 +6146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8654212321861993354, guid: 9437084632048924290175fafc3945e2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8122942861139847569, guid: 9437084632048924290175fafc3945e2, type: 3}
       propertyPath: m_IsActive
@@ -8697,6 +8697,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1070394701}
     m_Modifications:
+    - target: {fileID: 919132149388220613, guid: 8ea294eb9232a414aadfdbe5908ad073, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3905643791234846462, guid: 8ea294eb9232a414aadfdbe5908ad073, type: 3}
       propertyPath: m_Name
       value: Van
@@ -8818,7 +8822,7 @@ PrefabInstance:
     - target: {fileID: 1891057908426356235, guid: 2303bd90cfe77bf4498ffaef60d3034f, type: 3}
       propertyPath: sceneDefinition
       value: 
-      objectReference: {fileID: 11400000, guid: 70818d6b48c9f0248818e90f6be8409a, type: 2}
+      objectReference: {fileID: 11400000, guid: 183352757b6eb2c40926cd7be8809eab, type: 2}
     - target: {fileID: 7296401015514340884, guid: 2303bd90cfe77bf4498ffaef60d3034f, type: 3}
       propertyPath: m_RootOrder
       value: 1

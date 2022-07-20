@@ -74,7 +74,7 @@ public class LoadingScene : MonoBehaviour
 
             //loadRatio
             loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
-            Debug.Log("Loading progress: " + (loadRatio * 100) + "%");
+            //Debug.Log("Loading progress: " + (loadRatio * 100) + "%");
             image.fillAmount = loadRatio;
 
             

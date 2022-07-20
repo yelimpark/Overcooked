@@ -44,7 +44,7 @@ public class InGameUIController : MonoBehaviour
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
         EndUI.SetActive(false);
-        player.enabled = false;
+        //player.enabled = false;
 
     }
 
@@ -73,7 +73,7 @@ public class InGameUIController : MonoBehaviour
             EndUI.SetActive(true);
             ZoomEndUI.ZoomInUI();
             timeController.time = 0;
-            player.enabled = false;
+            //player.enabled = false;
         }
     }
 
@@ -85,7 +85,7 @@ public class InGameUIController : MonoBehaviour
 
         
 
-        player.enabled = false;
+        //player.enabled = false;
         mainCamera.CameraZoomIn();
         PlayerUI.SetActive(true);
 
@@ -108,7 +108,7 @@ public class InGameUIController : MonoBehaviour
         
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
-        player.enabled = true;
+        //player.enabled = true;
 
         timeController.GetComponent<TimeController>().enabled = true;
         timerBar.GetComponent<TimerBar>().enabled = true;

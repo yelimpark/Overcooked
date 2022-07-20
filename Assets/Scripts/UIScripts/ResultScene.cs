@@ -8,6 +8,7 @@ public class ResultScene : MonoBehaviour
     public GameObject ZoomUI;
     public ZoomOut ZoomOutUI;
 
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
