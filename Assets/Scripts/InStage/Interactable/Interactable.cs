@@ -39,4 +39,9 @@ public class Interactable : MonoBehaviour
 
         return true;
     }
+
+    public virtual GameObject TakeOut(GameObject dest)
+    {
+        return gameObject;
+    }
 }

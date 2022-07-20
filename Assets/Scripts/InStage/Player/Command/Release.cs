@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Release : MonoBehaviour
+public class Release : Command
 {
-    // Start is called before the first frame update
-    void Start()
+    EquipmentSystem es;
+
+    public Release(EquipmentSystem es)
     {
-        
+        this.es = es;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Execute()
     {
-        
+        es.Unequip();
     }
 }

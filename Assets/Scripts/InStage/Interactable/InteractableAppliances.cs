@@ -6,18 +6,11 @@ public class InteractableAppliances : Interactable
 {
     public Slot slot;
 
-    //public override void OnTakeOut()
-    //{
-    //    //EquipmentSystem es = player.GetComponent<EquipmentSystem>();
-    //    //if (es == null || es.Equipment != null)
-    //    //    return;
+    public override GameObject TakeOut(GameObject dest)
+    {
+        if (!slot.AbleToTakeOut(dest))
+            return null;
 
-    //    //if (!slot.AbleToTakeOut(player))
-    //    //    return;
-
-    //    //GameObject ingrediant = slot.OnTakeOut(player);
-
-    //    //if (ingrediant != null)
-    //    //    es.Equip(ingrediant);
-    //}
+        return slot.OnTakeOut(dest);
+    }
 }

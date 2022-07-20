@@ -45,8 +45,7 @@ public class Utils : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, target);
 
-        Rigidbody rb = go.GetComponent<Rigidbody>();
-        rb.velocity = Vector3.down * 10;
+        //Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
 
         if (go.transform.position.y - hit.transform.position.y > errorRange + go.transform.lossyScale.y)
         {

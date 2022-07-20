@@ -20,9 +20,30 @@ public class EquipmentSystem : MonoBehaviour
     public float equipSpeed = 2f;
     public float equipErrorRange = 0.1f;
 
+    private Animator animator;
+
+    public GameObject EquipableTo()
+    {
+        if (equipment != null)
+        {
+            Cookware cookware = equipment.GetComponent<Cookware>();
+            if (cookware != null && cookware.AbleToPlace(equipment))
+            {
+                return equipment;
+            }
+            return null;
+        }
+        return gameObject;
+    }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void Equip(GameObject go)
     {
-        if (equipment != null || curState != State.NONE)
+        if (go == null || equipment != null || curState != State.NONE)
             return;
 
         equipment = go;
@@ -37,6 +58,7 @@ public class EquipmentSystem : MonoBehaviour
 
         curState = State.EQUIPING;
         equipment.transform.SetParent(hands);
+        animator.SetBool("isPickUp", true);
     }
 
     private void Update()
@@ -81,6 +103,8 @@ public class EquipmentSystem : MonoBehaviour
         curState = State.UNEQUIPING;
         equipment.transform.parent = null;
 
+        animator.SetBool("isPickUp", false);
+        
         return equipment;
     }
 }

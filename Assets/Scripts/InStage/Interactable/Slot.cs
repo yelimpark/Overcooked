@@ -14,6 +14,9 @@ public class Slot : MonoBehaviour
 
     public virtual bool AbleToPlace(GameObject go)
     {
+        if (go == null)
+            return false;
+
         if (!(go.CompareTag("Ingrediant") || go.CompareTag("Cookware")))
             return false;
 
