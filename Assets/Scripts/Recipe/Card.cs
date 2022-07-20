@@ -9,6 +9,7 @@ public class Card : MonoBehaviour
     public Image timerBar;
     public Animator animator;
     public float timeLimit;
+    public int submitScore;
     public bool isActive;
 
     private CardManager cardMgr;
@@ -47,14 +48,21 @@ public class Card : MonoBehaviour
 
             if (timer.value == 0f)
             {
+                cardMgr.kitchenMgr.failSubmit++;
                 animator.SetTrigger("isTimeout");
             }
         }
     }
 
-    public void SuccessSubmission()
+    public bool SuccessSubmission()
     {
+        bool isFever = false;
+        if (timer.value > timer.maxValue * 0.5f)
+        {
+            isFever = true;
+        }
         animator.SetTrigger("isSuccess");
+        return isFever;
     }
 
     public void WrongSubmission()

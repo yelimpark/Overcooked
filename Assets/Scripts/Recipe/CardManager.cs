@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
+    public KitchenManager kitchenMgr;
     public List<GameObject> cardList;
     public List<GameObject> submitList;
     public Transform order;
@@ -24,7 +25,9 @@ public class CardManager : MonoBehaviour
             if (submitFood.transform.name == submitList[i].name)
             {
                 find = true;
-                submitList[i].GetComponent<Card>().SuccessSubmission();
+                var submit = submitList[i].GetComponent<Card>();
+                var isFever = submit.SuccessSubmission();
+                kitchenMgr.GetScore(submit.submitScore, isFever);
                 Debug.Log(submitList[i].name);
                 break;
             }
@@ -36,6 +39,7 @@ public class CardManager : MonoBehaviour
             {
                 submitList[i].GetComponent<Card>().WrongSubmission();
             }
+            kitchenMgr.wrongSubmit++;
         }
     }
 
