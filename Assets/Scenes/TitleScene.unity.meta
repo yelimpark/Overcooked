@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/TitleScene.unity.meta
 guid: 317736cdf750a4245a6cb9927582334b
+========
+guid: e7cb4597c37829b4a920fcc5a9a93fac
+folderAsset: yes
+>>>>>>>> b69b8a5190b41e61988a677f8aaea83e431e8d87:Assets/Scripts/Food.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

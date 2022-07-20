@@ -27,8 +27,8 @@ public class TestMove : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
         moveVec = new Vector3(horizontal, 0f, vertical).normalized;
         if (moveVec != Vector3.zero)
         {
@@ -36,5 +36,15 @@ public class TestMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
         animator.SetBool("isWalking", moveVec != Vector3.zero);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            animator.SetBool("isChoping", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetBool("isChoping", false);
+        }
     }
 }
