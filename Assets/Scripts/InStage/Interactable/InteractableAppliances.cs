@@ -13,4 +13,12 @@ public class InteractableAppliances : Interactable
 
         return slot.OnTakeOut(dest);
     }
+
+    //public bool Place(GameObject go)
+    //{
+    //    if (!slot.AbleToPlace(go))
+    //        return false;
+    //    slot.OnPlace(go);
+    //    return true;
+    //}
 }

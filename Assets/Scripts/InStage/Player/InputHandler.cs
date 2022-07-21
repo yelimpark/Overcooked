@@ -7,8 +7,9 @@ public class InputHandler : MonoBehaviour
 {
     private Invoker _invoker;
     private EquipmentSystem _equipmentSystem;
-    private Interact EquipmentCursor;
-    private Interact InteractableCursor;
+    private Animator animator;
+    public Interact EquipmentCursor;
+    public Interact InteractableCursor;
 
     private PhotonView photonView;
 
@@ -16,39 +17,34 @@ public class InputHandler : MonoBehaviour
     {
         _invoker = GetComponent<Invoker>();
         _equipmentSystem = GetComponent<EquipmentSystem>();
-        EquipmentCursor = GetComponents<Interact>()[0];
-        InteractableCursor = GetComponents<Interact>()[1];
+        animator = GetComponent<Animator>();
         photonView = PhotonView.Get(this);
     }
 
     void Update()
     {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
+        //if (!photonView.IsMine)
+        //{
+        //    return;
+        //}
 
         if (Input.GetButtonDown("Fire1"))
         {
-            var dest = _equipmentSystem.EquipableTo();
-            if (dest == null)
+            if (animator.GetBool("isPickUp"))
             {
-                _invoker.ExecuteCommand(new Release(_equipmentSystem));
-            }
-            else if (dest == gameObject)
-            {
-                if (EquipmentCursor.Cursor == null)
+                if (InteractableCursor.Cursor == null)
                 {
-
+                    _invoker.ExecuteCommand(new Release(_equipmentSystem));
                 }
                 else
                 {
-                    _invoker.ExecuteCommand(new PickUp(_equipmentSystem, EquipmentCursor.Cursor));
+                    _invoker.ExecuteCommand(new Place(_equipmentSystem, InteractableCursor.Cursor));
                 }
             }
             else
             {
-
+                var cursor = (EquipmentCursor.Cursor != null) ? EquipmentCursor.Cursor : InteractableCursor.Cursor;
+                _invoker.ExecuteCommand(new TakeOut(_equipmentSystem, cursor));
             }
         }
 

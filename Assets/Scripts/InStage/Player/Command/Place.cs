@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Place : MonoBehaviour
+public class Place : Command
 {
-    // Start is called before the first frame update
-    void Start()
+    EquipmentSystem es;
+    GameObject cursor;
+
+    public Place(EquipmentSystem es, GameObject cursor)
     {
-        
+        this.es = es;
+        this.cursor = cursor;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Execute()
     {
-        
+        if (cursor != null)
+        {
+            InteractableAppliances interactable = cursor.GetComponent<InteractableAppliances>();
+            if (interactable != null && interactable.slot.AbleToPlace(es.Equipment))
+            {
+                GameObject discarded = es.Unequip();
+                interactable.slot.OnPlace(discarded);
+            }
+        }
+        es.Unequip();
     }
 }

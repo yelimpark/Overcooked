@@ -30,16 +30,6 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public virtual bool OnGrab(EquipmentSystem es)
-    {
-        if (es.Equipment != null)
-            return false;
-
-        es.Equip(gameObject);
-
-        return true;
-    }
-
     public virtual GameObject TakeOut(GameObject dest)
     {
         return gameObject;

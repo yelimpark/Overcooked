@@ -43,22 +43,35 @@ public class EquipmentSystem : MonoBehaviour
 
     public void Equip(GameObject go)
     {
-        if (go == null || equipment != null || curState != State.NONE)
+        if (go == null || curState != State.NONE)
             return;
 
-        equipment = go;
-
-        Utils.FixPosition(go);
-
-        var colliders = go.transform.GetComponentsInChildren<Collider>();
-        foreach (var childCollider in colliders)
+        var dest = EquipableTo();
+        if (dest == null)
         {
-            childCollider.enabled = false;
+            return;
+        }
+        else if (dest == gameObject)
+        {
+            equipment = go;
+
+            Utils.FixPosition(go);
+
+            var colliders = go.transform.GetComponentsInChildren<Collider>();
+            foreach (var childCollider in colliders)
+            {
+                childCollider.enabled = false;
+            }
+
+            curState = State.EQUIPING;
+            equipment.transform.SetParent(hands);
+            animator.SetBool("isPickUp", true);
+        }
+        else
+        {
+
         }
 
-        curState = State.EQUIPING;
-        equipment.transform.SetParent(hands);
-        animator.SetBool("isPickUp", true);
     }
 
     private void Update()

@@ -47,6 +47,9 @@ public class Utils : MonoBehaviour
 
         //Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
 
+        Rigidbody rb = go.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.down * 10;
+
         if (go.transform.position.y - hit.transform.position.y > errorRange + go.transform.lossyScale.y)
         {
             return false;
