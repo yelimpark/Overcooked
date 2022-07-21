@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TimerBar : MonoBehaviour
 {
+    public TimeController timeCtr;
     public Slider TimerSlider;
     public Image timerBar;
 
@@ -13,13 +14,16 @@ public class TimerBar : MonoBehaviour
     private Color timeMinColor = new Color(250 / 255f, 50 / 255f, 15 / 255f);
 
     //float time = 150f;
-    void Start()
+    private void Start()
     {
         TimerSlider = GetComponent<Slider>();
         timeMaxColor = timerBar.color;
+
+        TimerSlider.maxValue = timeCtr.time;
+        TimerSlider.value = TimerSlider.maxValue;
     }
 
-    void Update()
+    private void Update()
     {
         if (TimerSlider.value > 0.0f)
         {

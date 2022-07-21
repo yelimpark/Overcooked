@@ -1825,6 +1825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 0}
+  cookware: {fileID: 0}
 --- !u!114 &172821270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3719,6 +3720,11 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.3212399, y: 0.0015495121, z: 0.118696585}
     m_Extent: {x: 0.3267632, y: 0.44298038, z: 0.5847043}
   m_DirtyAABB: 0
+--- !u!1 &316481263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1272053687027150369, guid: 480ba881b03a8d441a513b82c7077d4b, type: 3}
+  m_PrefabInstance: {fileID: 744086498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &323105547
 GameObject:
   m_ObjectHideFlags: 0
@@ -9699,6 +9705,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736325576}
   m_Mesh: {fileID: 4288517420239996657, guid: e4b02f2a038ace1459251c92650bba06, type: 3}
+--- !u!1 &740641280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 900620021938012881, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+  m_PrefabInstance: {fileID: 1667163842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &741551678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9824,6 +9835,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 500051173278196707, guid: 480ba881b03a8d441a513b82c7077d4b, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 316481263}
     - target: {fileID: 1272053687618391541, guid: 480ba881b03a8d441a513b82c7077d4b, type: 3}
       propertyPath: m_Name
       value: StartUI
@@ -10220,6 +10235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
+  cookware: {fileID: 0}
 --- !u!114 &770813897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11584,6 +11600,11 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &905896726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8550549624883896415, guid: e3c7098c9842e3047a057106e8d5cf37, type: 3}
+  m_PrefabInstance: {fileID: 2118943208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &907522037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13597,6 +13618,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1146950279}
     - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 1667163843}
+    - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1437445666}
@@ -13621,6 +13646,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1684048184}
     - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
+      propertyPath: ZoomEndUI
+      value: 
+      objectReference: {fileID: 1684048184}
+    - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
       propertyPath: LoadingBar
       value: 
       objectReference: {fileID: 1921114387}
@@ -13634,6 +13663,14 @@ PrefabInstance:
       objectReference: {fileID: 2118943210}
     - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
       propertyPath: FadeStartUI
+      value: 
+      objectReference: {fileID: 744086500}
+    - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
+      propertyPath: ZoomReadyUI
+      value: 
+      objectReference: {fileID: 2118943210}
+    - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
+      propertyPath: ZoomStartUI
       value: 
       objectReference: {fileID: 744086500}
     - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
@@ -15553,15 +15590,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5339074960944247449, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
       propertyPath: m_Value
-      value: 150
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339074960944247449, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
       propertyPath: m_MaxValue
-      value: 150
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074960944247462, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: timeCtr
+      value: 
+      objectReference: {fileID: 1225956421}
+    - target: {fileID: 5339074961090173502, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961090173502, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961147503641, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961147503641, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961147503641, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961147503641, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279186170
       objectReference: {fileID: 0}
     - target: {fileID: 5339074961573743562, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 25.23143
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961680169109, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961680169109, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961680169109, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961680169109, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279186170
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961875864537, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961875864537, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961875864537, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339074961875864537, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279186170
       objectReference: {fileID: 0}
     - target: {fileID: 5339074961984971895, guid: 2a3f30e478c4922459d88d80601dcb02, type: 3}
       propertyPath: time
@@ -17590,6 +17687,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 500051173278196707, guid: 480ba881b03a8d441a513b82c7077d4b, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 1726703441}
     - target: {fileID: 500051173278196707, guid: 480ba881b03a8d441a513b82c7077d4b, type: 3}
       propertyPath: loadScene
       value: ResultScene
@@ -19664,8 +19765,6 @@ GameObject:
   - component: {fileID: 1437445667}
   - component: {fileID: 1437445666}
   - component: {fileID: 1437445665}
-  - component: {fileID: 1437445664}
-  - component: {fileID: 1437445663}
   - component: {fileID: 1437445662}
   - component: {fileID: 1437445661}
   m_Layer: 7
@@ -19687,8 +19786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3ec78fad4c35e4c9d7595b3cd3b423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _invoker: {fileID: 1437445662}
-  _controller: {fileID: 0}
+  EquipmentCursor: {fileID: 0}
+  InteractableCursor: {fileID: 0}
 --- !u!114 &1437445662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19699,30 +19798,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db927cd867933894ca2826abaf87ed4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1437445663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437445660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f548a65f4e3cb54d9bd86557f56503c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1437445664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437445660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9894789af4e136f46a24db73b873c0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1437445665
@@ -19740,7 +19815,6 @@ MonoBehaviour:
   hands: {fileID: 457727386}
   equipSpeed: 5
   equipErrorRange: 0.15
-  animator: {fileID: 1437445670}
 --- !u!114 &1437445666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22841,6 +22915,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 900620021761225736, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 740641280}
+    - target: {fileID: 900620021761225737, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 740641280}
     - target: {fileID: 900620021761225745, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: m_Name
       value: FadeUI
@@ -23659,6 +23741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e634fc7605f0df43a21cce2a23122d6, type: 3}
+--- !u!1 &1726703441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1272053687027150369, guid: 480ba881b03a8d441a513b82c7077d4b, type: 3}
+  m_PrefabInstance: {fileID: 1316657404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1729816826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33285,6 +33372,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2786790197213643124, guid: e3c7098c9842e3047a057106e8d5cf37, type: 3}
+      propertyPath: ZoomUI
+      value: 
+      objectReference: {fileID: 905896726}
     - target: {fileID: 2786790197213643124, guid: e3c7098c9842e3047a057106e8d5cf37, type: 3}
       propertyPath: OnCompleteEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1

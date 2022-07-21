@@ -47,7 +47,11 @@ public class TimeController : MonoBehaviour
             }
         }
 
-        if ((second == 30 || second == 0) && !isHalf)
+        if (second == 30 && minite == 0)
+        {
+            animator.SetTrigger("isEnd");
+        }
+        else if ((second == 30 || second == 0) && !isHalf)
         {
             animator.SetTrigger("isHalf");
         }
