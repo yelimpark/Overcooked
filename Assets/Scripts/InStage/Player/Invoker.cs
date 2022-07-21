@@ -6,9 +6,9 @@ using Photon.Realtime;
 
 public class Invoker : MonoBehaviour
 {
-    public void send(Command command)
+    public void Send(Command command)
     {
-        PhotonView.Get(this).RPC("ExecuteCommand", RpcTarget.All, command);
+        PhotonView.Get(this).RPC("command.Execute", RpcTarget.All);
     }
 
     [PunRPC]

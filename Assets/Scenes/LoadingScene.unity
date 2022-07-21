@@ -1296,7 +1296,7 @@ MonoBehaviour:
   loadingUI: {fileID: 1012180255}
   image: {fileID: 536407316}
   minLoadingTime: 4
-  SceneName: TestScene
+  SceneName: MapScene 1
   StageImage: {fileID: 781895840}
   Titletext: {fileID: 2067288340}
   StarPoint:

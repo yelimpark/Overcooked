@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System;
 
 public class KitchenManager : MonoBehaviour
 {
@@ -15,6 +17,17 @@ public class KitchenManager : MonoBehaviour
     public int lostScore;
 
     private int feverLevel;
+
+    public GameObject playerPrefab;
+    public List<Transform> SpawnPoints = new List<Transform>();
+
+    public void Start()
+    {
+        //int idx = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
+
+        //GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
+        //myPlayer.GetComponent<InputHandler>().enabled = true;
+    }
 
     public void OnSubmit(GameObject go)
     {

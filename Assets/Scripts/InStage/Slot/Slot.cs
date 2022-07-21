@@ -38,9 +38,11 @@ public class Slot : MonoBehaviour
 
         occupyObj.transform.SetParent(transform);
 
-        Interactable interactable = occupyObj.GetComponent<Interactable>();
-        if (interactable != null)
-            interactable.enabled = false;
+        //occupyObj.tag = "Untagged";
+
+        //Interactable interactable = occupyObj.GetComponent<Interactable>();
+        //if (interactable != null)
+        //    interactable.enabled = false;
     }
 
     public virtual bool AbleToTakeOut(GameObject dest)
@@ -57,9 +59,11 @@ public class Slot : MonoBehaviour
 
         takeout.transform.parent = null;
 
-        Interactable interactable = takeout.GetComponent<Interactable>();
-        if (interactable != null)
-            interactable.enabled = true;
+        //takeout.tag = "Ingrediant";
+
+        //Interactable interactable = takeout.GetComponent<Interactable>();
+        //if (interactable != null)
+        //    interactable.enabled = true;
 
         return takeout;
     }
