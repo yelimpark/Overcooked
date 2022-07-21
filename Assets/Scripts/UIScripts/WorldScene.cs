@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class WorldScene : MonoBehaviour
 {
+    [Header("껏다 킬 UI")]
+    public GameObject FadeUI;
+
+    [Header("깃발 정보")]
     public Info stage1;
     public Info stage2;
 
+    [Header("검정화면 zoom In/Out")]
     public ZoomIn ZoomInUI;
     public ZoomOut ZoomOutUI;
 
-    public string loadScene;
+    
 
 
-    private SceneDefinition StageInfo;
 
     private void Start()
     {
+        FadeUI.SetActive(true);
         ZoomInUI.ZoomInUI();
+
     }
 
     private void Update()
@@ -36,6 +42,9 @@ public class WorldScene : MonoBehaviour
             else if (stage2.onCollider) 
             {
                 Debug.Log("스테이지 2");
+
+                GameVariable.SetDefinition(stage2.sceneDefinition);
+                ZoomOutUI.ZoomOutUI();
             }
         }
     }

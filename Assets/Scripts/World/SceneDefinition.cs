@@ -9,6 +9,7 @@ public class SceneDefinition : ScriptableObject
     public string SceneName;
     public Sprite StageImage;
     public int[] StarScores;
+    public int JsonIndex;
     
 
 }

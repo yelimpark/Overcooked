@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InGameUIController : MonoBehaviour
 {
     [Header("On/Off UI")]
+    public GameObject FadeUI;
     public GameObject HelpUI;
     public GameObject PlayerUI;
     public GameObject ReadyUI;
@@ -39,6 +40,7 @@ public class InGameUIController : MonoBehaviour
     private void Start()
     {
         ZoomUI.ZoomInUI();
+        FadeUI.SetActive(true);
         HelpUI.SetActive(true);
         PlayerUI.SetActive(false);
         ReadyUI.SetActive(false);

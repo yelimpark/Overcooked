@@ -23,6 +23,8 @@ public class LoadingScene : MonoBehaviour
 
     [Header("To Loaded Scene")]
     public string SceneName;
+    
+    
 
     [Header("Get Scene Info")]
     public Image StageImage;
@@ -46,7 +48,6 @@ public class LoadingScene : MonoBehaviour
             StarPoint[i].text = GameVariable.GetDefinition().StarScores[i].ToString();
         }
         
-
         ZoomIn.ZoomInUI();
         StartCoroutine(LoadAsynSceneCoroutine());
 
