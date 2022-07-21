@@ -12,6 +12,7 @@ public class TimeController : MonoBehaviour
     public TextMeshProUGUI[] timeText;
     //public TextMeshProUGUI gameOverText;
     public float time = 150f;
+    private float startTime;
     private int minite, second;
 
     public bool isHalf;
@@ -20,6 +21,8 @@ public class TimeController : MonoBehaviour
     {
         timeText[0].text = "00";
         timeText[1].text = "00";
+
+        startTime = time;
     }
 
     private void Update()
@@ -51,7 +54,7 @@ public class TimeController : MonoBehaviour
         {
             animator.SetTrigger("isEnd");
         }
-        else if ((second == 30 || second == 0) && !isHalf)
+        else if ((second == 30 || second == 0) && !isHalf && time < startTime - 1f)
         {
             animator.SetTrigger("isHalf");
         }
