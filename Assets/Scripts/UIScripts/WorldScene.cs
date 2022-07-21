@@ -15,10 +15,6 @@ public class WorldScene : MonoBehaviour
     public ZoomIn ZoomInUI;
     public ZoomOut ZoomOutUI;
 
-    
-
-
-
     private void Start()
     {
         FadeUI.SetActive(true);

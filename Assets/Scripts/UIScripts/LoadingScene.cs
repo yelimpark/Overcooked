@@ -23,7 +23,9 @@ public class LoadingScene : MonoBehaviour
 
     [Header("To Loaded Scene")]
     public string SceneName;
-    
+
+    [Header("Score")]
+    public int parentScore;
     
 
     [Header("Get Scene Info")]
@@ -31,7 +33,9 @@ public class LoadingScene : MonoBehaviour
     public TextMeshProUGUI Titletext;
     public TextMeshProUGUI[] StarPoint;
 
-    private float time;
+    [Header("¹Ù²ð Sprite")]
+    public SpriteRenderer[] sprite = new SpriteRenderer[3];
+    public Sprite YellowStar;
 
 
     void Start()
@@ -40,19 +44,21 @@ public class LoadingScene : MonoBehaviour
         {
             instance = this;
         }
+
+        GameManager.Instance.DataManager.LoadStageData();
+
         StageImage.sprite = GameVariable.GetDefinition().StageImage;
         Titletext.text = GameVariable.GetDefinition().SceneName;
         SceneName = GameVariable.GetDefinition().SceneName;
         for(int i = 0; i < StarPoint.Length; i++)
         {
             StarPoint[i].text = GameVariable.GetDefinition().StarScores[i].ToString();
+            //if (GameVariable.GetDefinition().StarScores[i] < GameManager.Instance.DataManager.currentStageInfo)
         }
-        
+
+
         ZoomIn.ZoomInUI();
         StartCoroutine(LoadAsynSceneCoroutine());
-
-
-        Debug.Log(GameVariable.GetDefinition().StarScores[1]);
         
     }
 
@@ -71,7 +77,7 @@ public class LoadingScene : MonoBehaviour
         {
             fakeLoadTime += Time.deltaTime;
             fakeLoadRatio = fakeLoadTime / minLoadingTime;
-            time += Time.deltaTime;
+            //time += Time.deltaTime;
 
 
             //loadRatio

@@ -25,6 +25,7 @@ public class Info : MonoBehaviour
         {
             return;
         }
+
         GameManager.Instance.DataManager.LoadStageData();
         
         for(int i = 0; i < GameManager.Instance.DataManager.currentStageInfo.Count; i++)
