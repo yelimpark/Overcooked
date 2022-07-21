@@ -13,16 +13,26 @@ public class TimeBar : MonoBehaviour
 
     private Slider slider;
 
-    private bool isTriggerd = false;
+    [System.NonSerialized]
+    public bool pause = false;
+    [System.NonSerialized]
+    public bool end = false;
 
     void Start()
     {
         slider = GetComponent<Slider>();
     }
 
+    public void Init()
+    {
+        timer = 0f;
+        pause = false;
+        end = false;
+    }
+
     void Update()
     {
-        if (isTriggerd)
+        if (pause || end)
             return;
 
         timer += Time.deltaTime;
@@ -30,8 +40,9 @@ public class TimeBar : MonoBehaviour
 
         if (timer > time)
         {
+            end = true;
             TimeUpEvent.Invoke();
-            isTriggerd = true;
+            gameObject.SetActive(false);
         }
     }
 }

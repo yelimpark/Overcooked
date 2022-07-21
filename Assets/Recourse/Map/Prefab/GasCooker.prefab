@@ -112,9 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff45013539c85e48b36eea0d6f5ad4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  self: []
+  sideShelf: []
   firePrefab: {fileID: 4545144464680454865}
   time: 0
+  eShelfState: 0
 --- !u!1 &4776891502346921566
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ GameObject:
   - component: {fileID: 3035543538055918415}
   - component: {fileID: 299238253421456462}
   m_Layer: 0
-  m_Name: PFX_PanFire (1)
+  m_Name: PanFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,6 +206,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1011196917364294407}
     m_Modifications:
+    - target: {fileID: 5453415869437696552, guid: 72e7bd13d0facbb41b6b23cf9773e41c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453415869437696552, guid: 72e7bd13d0facbb41b6b23cf9773e41c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7514916149684992137, guid: 72e7bd13d0facbb41b6b23cf9773e41c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -251,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7708405069387920553, guid: 72e7bd13d0facbb41b6b23cf9773e41c, type: 3}
       propertyPath: m_Name
-      value: Fire (1)
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 7708405069387920553, guid: 72e7bd13d0facbb41b6b23cf9773e41c, type: 3}
       propertyPath: m_IsActive

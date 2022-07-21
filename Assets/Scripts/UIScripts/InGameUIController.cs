@@ -10,7 +10,14 @@ public class InGameUIController : MonoBehaviour
     public GameObject PlayerUI;
     public GameObject ReadyUI;
     public GameObject StartUI;
+    public GameObject EndUI;
     public Player player;
+
+    [Header("To Zoom UI's")]
+    public ZoomIn ZoomUI;
+    public ZoomIn ZoomReadyUI;
+    public ZoomIn ZoomStartUI;
+    public ZoomIn ZoomEndUI;
 
     [Header("Loading Circle")]
     public Image LoadingBar;
@@ -22,18 +29,22 @@ public class InGameUIController : MonoBehaviour
     public float time;
     public float delayTime;
 
-
     [Header("Camera Moving")]
     public CameraController mainCamera;
+    
+    [Header("Time Bar And StopWatch")]
     public TimeController timeController;
     public TimerBar timerBar;
+
     private void Start()
     {
+        ZoomUI.ZoomInUI();
         HelpUI.SetActive(true);
         PlayerUI.SetActive(false);
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
-        player.enabled = false;
+        EndUI.SetActive(false);
+        //player.enabled = false;
 
     }
 
@@ -44,7 +55,7 @@ public class InGameUIController : MonoBehaviour
         {
             //After 3sec -> PlayerUI true
             pressTime += LoadingSpeed * Time.deltaTime;
-            if (pressTime >= 50)
+            if (pressTime >= 1.5)
             {
                 StartCoroutine(ChangeUI());
                 pressTime = 0;
@@ -55,7 +66,15 @@ public class InGameUIController : MonoBehaviour
         {
             pressTime = 0f;
         }
-        LoadingBar.fillAmount = pressTime/50;
+        LoadingBar.fillAmount = pressTime/1.5f;
+
+        if(timeController.time <= 0f)
+        {
+            EndUI.SetActive(true);
+            ZoomEndUI.ZoomInUI();
+            timeController.time = 0;
+            //player.enabled = false;
+        }
     }
 
     IEnumerator ChangeUI()
@@ -64,27 +83,37 @@ public class InGameUIController : MonoBehaviour
         timerBar.GetComponent<TimerBar>().enabled = false;
         HelpUI.SetActive(false);
 
-        player.enabled = false;
+        
+
+        //player.enabled = false;
         mainCamera.CameraZoomIn();
         PlayerUI.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(1f);
         ReadyUI.SetActive(true);
+        if(ReadyUI)
+        {
+            ZoomReadyUI.ZoomInUI();
+        }
 
-
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(1.5f);
 
         ReadyUI.SetActive(false);
         StartUI.SetActive(true);
+        if (StartUI)
+        {
+            ZoomStartUI.ZoomInUI();
+        }
         yield return new WaitForSecondsRealtime(2f);
         
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
-        player.enabled = true;
+        //player.enabled = true;
 
         timeController.GetComponent<TimeController>().enabled = true;
         timerBar.GetComponent<TimerBar>().enabled = true;
 
 
     }
+
 }

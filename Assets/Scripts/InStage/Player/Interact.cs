@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
-    protected RayInterection rayInterection;
+    public List<string> tags = new List<string>();
+
     protected List<GameObject> collisions = new List<GameObject>();
-    
+
     protected GameObject cursor;
     public virtual GameObject Cursor
     {
         get { return cursor; }
-        set { cursor = value; }
-    }
+        set
+        {
+            Interactable il;
 
-    protected string InteracableTag;
+            if (cursor != null)
+            {
+                il = cursor.GetComponent<Interactable>();
+                if (il != null)
+                    il.Active = false;
+            }
 
-    public virtual void Start()
-    {
-        rayInterection = GetComponent<RayInterection>();
+            cursor = value;
+
+            if (cursor != null)
+            {
+                il = cursor.GetComponent<Interactable>();
+                if (il != null)
+                    il.Active = true;
+            }
+        }
     }
 
     public virtual void Update()
@@ -34,33 +47,36 @@ public class Interact : MonoBehaviour
 
     public void OnMove()
     {
-        Transform hit = rayInterection.Shoot().transform;
-        if (hit != null && collisions.Count > 1 && collisions.Contains(hit.gameObject))
+        RaycastHit hit;
+        Vector3 direction = transform.forward + transform.up * (-1);
+        Physics.Raycast(transform.position, direction.normalized, out hit, Utils.RAY_MAX_LENGTH);
+
+        Transform hitted = hit.transform;
+
+        if (hitted != null && collisions.Count > 1 && collisions.Contains(hitted.gameObject))
         {
-            Cursor = hit.gameObject;
+            Cursor = hitted.gameObject;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag(InteracableTag) && !other.isTrigger)
-            return;
-
-        Cursor = other.gameObject;
-        collisions.Add(other.gameObject);
+        if (tags.Contains(other.tag))
+        {
+            Cursor = other.gameObject;
+            collisions.Add(other.gameObject);
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
+        if (tags.Contains(other.tag))
+        {
+            GameObject go = other.gameObject;
 
-        if (!other.CompareTag(InteracableTag) && !other.isTrigger)
-            return;
-
-        GameObject go = other.gameObject;
-
-        collisions.Remove(go);
-        if (go.Equals(cursor))
-            Cursor = null;
+            collisions.Remove(go);
+            if (go.Equals(cursor))
+                Cursor = null;
+        }
     }
-
 }

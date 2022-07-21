@@ -20,23 +20,58 @@ public class EquipmentSystem : MonoBehaviour
     public float equipSpeed = 2f;
     public float equipErrorRange = 0.1f;
 
+    private Animator animator;
+
+    public GameObject EquipableTo()
+    {
+        if (equipment != null)
+        {
+            Cookware cookware = equipment.GetComponent<Cookware>();
+            if (cookware != null && cookware.AbleToPlace(equipment))
+            {
+                return equipment;
+            }
+            return null;
+        }
+        return gameObject;
+    }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void Equip(GameObject go)
     {
-        if (equipment != null || curState != State.NONE)
+        if (go == null || curState != State.NONE)
             return;
 
-        equipment = go;
-
-        Utils.FixPosition(go);
-
-        var colliders = go.transform.GetComponentsInChildren<Collider>();
-        foreach (var childCollider in colliders)
+        var dest = EquipableTo();
+        if (dest == null)
         {
-            childCollider.enabled = false;
+            return;
+        }
+        else if (dest == gameObject)
+        {
+            equipment = go;
+
+            Utils.FixPosition(go);
+
+            var colliders = go.transform.GetComponentsInChildren<Collider>();
+            foreach (var childCollider in colliders)
+            {
+                childCollider.enabled = false;
+            }
+
+            curState = State.EQUIPING;
+            equipment.transform.SetParent(hands);
+            animator.SetBool("isPickUp", true);
+        }
+        else
+        {
+
         }
 
-        curState = State.EQUIPING;
-        equipment.transform.SetParent(hands);
     }
 
     private void Update()
@@ -80,6 +115,8 @@ public class EquipmentSystem : MonoBehaviour
 
         curState = State.UNEQUIPING;
         equipment.transform.parent = null;
+
+        animator.SetBool("isPickUp", false);
 
         return equipment;
     }

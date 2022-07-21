@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class CreateBoxWithLocation : Interactable
 {
-    public override void OnTakeOutBtnDown()
-    {
-        EquipmentSystem es = player.GetComponent<EquipmentSystem>();
-        if (es == null || es.Equipment != null)
-            return;
+    //public override void OnTakeOutBtnDown()
+    //{
+    //    EquipmentSystem es = player.GetComponent<EquipmentSystem>();
+    //    if (es == null || es.Equipment != null)
+    //        return;
 
-        GameObject ingrediant = shelf.OnTakeOut();
-        if (ingrediant != null)
-            es.Equip(ingrediant);
-        else
-        {
+    //    GameObject ingrediant = shelf.OnTakeOut();
+    //    if (ingrediant != null)
+    //        es.Equip(ingrediant);
+    //    else
+    //    {
 
-        }
-    }
+    //    }
+    //}
 
 }
