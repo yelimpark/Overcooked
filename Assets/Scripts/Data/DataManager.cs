@@ -24,7 +24,7 @@ public class DataManager : MonoBehaviour
         {
             Debug.Log($"[DataManager] 세이브 데이터 없음");
 
-            fileName = "DefaultQuestData";
+            fileName = "DefaultStageInfo";
             path = Application.dataPath + "/" + "Json" + "/" + fileName + ".Json";
 
             string json = File.ReadAllText(path);
@@ -41,7 +41,7 @@ public class DataManager : MonoBehaviour
 
     }
 
-    public void SaveQuestData()
+    public void SaveStageData()
     {
         string fileName = "StageInfo";
         string path = Application.dataPath + "/" + "Json" + "/" + fileName + ".Json";
@@ -51,7 +51,7 @@ public class DataManager : MonoBehaviour
         Debug.Log($"[DataManager] 저장한 파일명 : {fileName}");
     }
 
-    public void DeleteQuestData()
+    public void DeleteStageData()
     {
         string fileName = "StageInfo";
         string path = Application.dataPath + "Json" + "/" + fileName + ".Json";

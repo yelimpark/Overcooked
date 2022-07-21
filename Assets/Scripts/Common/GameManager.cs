@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public static DataManager DataManager;
+    public DataManager DataManager;
 
     
 
