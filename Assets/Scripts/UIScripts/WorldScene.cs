@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WorldScene : MonoBehaviour
 {
+    [Header("Van 위치")]
+    public GameObject van;
+    public GameObject Home;
+
     [Header("껏다 킬 UI")]
     public GameObject FadeUI;
 
@@ -31,6 +35,7 @@ public class WorldScene : MonoBehaviour
                 Debug.Log("스테이지 1");
 
                 GameVariable.SetDefinition(stage1.sceneDefinition);
+
                 Debug.Log(GameVariable.GetDefinition().SceneName);
                 ZoomOutUI.ZoomOutUI();
                 //stage1.sceneDefinition.SceneName; 

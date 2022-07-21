@@ -36,11 +36,15 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         this.gameObject.AddComponent<DataManager>();
-        this.gameObject.AddComponent<Info>();
+
+        //this.gameObject.AddComponent<Info>();
     }
 
 
     public DataManager DataManager;
+
+
+    //public Info Info;
 
 
 }

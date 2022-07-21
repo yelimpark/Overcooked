@@ -34,7 +34,7 @@ public class LoadingScene : MonoBehaviour
     public TextMeshProUGUI[] StarPoint;
 
     [Header("바뀔 Sprite")]
-    public SpriteRenderer[] sprite = new SpriteRenderer[3];
+    public Image[] sprite = new Image[3];
     public Sprite YellowStar;
 
 
@@ -53,7 +53,20 @@ public class LoadingScene : MonoBehaviour
         for(int i = 0; i < StarPoint.Length; i++)
         {
             StarPoint[i].text = GameVariable.GetDefinition().StarScores[i].ToString();
-            //if (GameVariable.GetDefinition().StarScores[i] < GameManager.Instance.DataManager.currentStageInfo)
+        }
+        for (int i = 0; i < GameVariable.GetDefinition().StarScores.Length; i++)
+        {
+            //스타포인트와 내 점수를 비교해야해
+            if(GameVariable.GetDefinition().JsonIndex == GameManager.Instance.DataManager.currentStageInfo[i].Index)
+            {
+                for (int j = 0; j < GameVariable.GetDefinition().StarScores.Length; j++)
+                {
+                    if (GameVariable.GetDefinition().StarScores[j] < GameManager.Instance.DataManager.currentStageInfo[i].score)
+                    {
+                        sprite[j].sprite = YellowStar;
+                    }
+                }
+            }
         }
 
 
