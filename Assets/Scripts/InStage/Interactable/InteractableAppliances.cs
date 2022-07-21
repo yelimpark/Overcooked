@@ -6,17 +6,19 @@ public class InteractableAppliances : Interactable
 {
     public Slot slot;
 
-    public override void OnTakeOutBtnDown(EquipmentSystem es)
+    public override GameObject TakeOut(GameObject dest)
     {
-        if (es.Equipment != null)
-            return;
+        if (!slot.AbleToTakeOut(dest))
+            return null;
 
-        if (!slot.AbleToTakeOut(es.gameObject))
-            return;
-
-        GameObject ingrediant = slot.OnTakeOut(es.gameObject);
-
-        if (ingrediant != null)
-            es.Equip(ingrediant);
+        return slot.OnTakeOut(dest);
     }
+
+    //public bool Place(GameObject go)
+    //{
+    //    if (!slot.AbleToPlace(go))
+    //        return false;
+    //    slot.OnPlace(go);
+    //    return true;
+    //}
 }

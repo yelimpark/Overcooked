@@ -16,9 +16,6 @@ public class Utils : MonoBehaviour
 
     public static void FixPosition(GameObject go)
     {
-        if (go == null)
-            return;
-
         Rigidbody rb = go.GetComponent<Rigidbody>();
         if (rb != null)
             rb.isKinematic = true;
@@ -48,10 +45,10 @@ public class Utils : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, target);
 
-        if (hit.transform == null)
-            return false;
+        //Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
 
         Rigidbody rb = go.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.down * 10;
 
         if (go.transform.position.y - hit.transform.position.y > errorRange + go.transform.lossyScale.y)
         {

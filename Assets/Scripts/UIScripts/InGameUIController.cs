@@ -13,11 +13,11 @@ public class InGameUIController : MonoBehaviour
     public GameObject EndUI;
     public Player player;
 
-    [Header("To Fade UI's")]
-    public FadeIn FadeUI;
-    public FadeIn FadeReadyUI;
-    public FadeIn FadeStartUI;
-    public FadeIn FadeEndUI;
+    [Header("To Zoom UI's")]
+    public ZoomIn ZoomUI;
+    public ZoomIn ZoomReadyUI;
+    public ZoomIn ZoomStartUI;
+    public ZoomIn ZoomEndUI;
 
     [Header("Loading Circle")]
     public Image LoadingBar;
@@ -38,7 +38,7 @@ public class InGameUIController : MonoBehaviour
 
     private void Start()
     {
-        FadeUI.FadeInUI();
+        ZoomUI.ZoomInUI();
         HelpUI.SetActive(true);
         PlayerUI.SetActive(false);
         ReadyUI.SetActive(false);
@@ -71,7 +71,7 @@ public class InGameUIController : MonoBehaviour
         if(timeController.time <= 0f)
         {
             EndUI.SetActive(true);
-            FadeEndUI.FadeInUI();
+            ZoomEndUI.ZoomInUI();
             timeController.time = 0;
             //player.enabled = false;
         }
@@ -93,7 +93,7 @@ public class InGameUIController : MonoBehaviour
         ReadyUI.SetActive(true);
         if(ReadyUI)
         {
-            FadeReadyUI.FadeInUI();
+            ZoomReadyUI.ZoomInUI();
         }
 
         yield return new WaitForSecondsRealtime(1.5f);
@@ -102,7 +102,7 @@ public class InGameUIController : MonoBehaviour
         StartUI.SetActive(true);
         if (StartUI)
         {
-            FadeStartUI.FadeInUI();
+            ZoomStartUI.ZoomInUI();
         }
         yield return new WaitForSecondsRealtime(1f);
         

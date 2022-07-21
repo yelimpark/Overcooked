@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
@@ -32,11 +30,8 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public virtual void OnTakeOutBtnDown(EquipmentSystem es) 
+    public virtual GameObject TakeOut(GameObject dest)
     {
-        if (es.Equipment != null)
-            return;
-
-        es.Equip(gameObject);
+        return gameObject;
     }
 }

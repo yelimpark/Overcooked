@@ -20,34 +20,58 @@ public class EquipmentSystem : MonoBehaviour
     public float equipSpeed = 2f;
     public float equipErrorRange = 0.1f;
 
-    public Animator animator;
+    private Animator animator;
 
-    public bool AbleToEauip()
+    public GameObject EquipableTo()
     {
-        if (equipment != null || curState != State.NONE)
-            return false;
-        return true;
+        if (equipment != null)
+        {
+            Cookware cookware = equipment.GetComponent<Cookware>();
+            if (cookware != null && cookware.AbleToPlace(equipment))
+            {
+                return equipment;
+            }
+            return null;
+        }
+        return gameObject;
+    }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
     }
 
     public void Equip(GameObject go)
     {
-        if (equipment != null || curState != State.NONE)
+        if (go == null || curState != State.NONE)
             return;
 
-        equipment = go;
-
-        Utils.FixPosition(go);
-
-        var colliders = go.transform.GetComponentsInChildren<Collider>();
-        foreach (var childCollider in colliders)
+        var dest = EquipableTo();
+        if (dest == null)
         {
-            childCollider.enabled = false;
+            return;
+        }
+        else if (dest == gameObject)
+        {
+            equipment = go;
+
+            Utils.FixPosition(go);
+
+            var colliders = go.transform.GetComponentsInChildren<Collider>();
+            foreach (var childCollider in colliders)
+            {
+                childCollider.enabled = false;
+            }
+
+            curState = State.EQUIPING;
+            equipment.transform.SetParent(hands);
+            animator.SetBool("isPickUp", true);
+        }
+        else
+        {
+
         }
 
-        curState = State.EQUIPING;
-        equipment.transform.SetParent(hands);
-
-        animator.SetBool("isPickUp", true);
     }
 
     private void Update()
@@ -66,7 +90,7 @@ public class EquipmentSystem : MonoBehaviour
 
             case State.UNEQUIPING:
                 int layerMask = (-1) - (1 << LayerMask.NameToLayer("player"));
-                if (equipment==null || Utils.IsFalling(equipment, equipErrorRange, layerMask))
+                if (Utils.IsFalling(equipment, equipErrorRange, layerMask))
                 {
                     curState = State.NONE;
                     equipment = null;
@@ -76,14 +100,6 @@ public class EquipmentSystem : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    public bool AbletoUnequip()
-    {
-        if (equipment == null || curState != State.NONE)
-            return false;
-
-        return true;
     }
 
     public GameObject Unequip()

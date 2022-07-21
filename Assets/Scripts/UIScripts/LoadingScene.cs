@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LoadingScene : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class LoadingScene : MonoBehaviour
     public static LoadingScene Instance { get { return instance; } }
 
     [Header("Canvas UI")]
-    public FadeIn fadeIn;
-    public FadeOut fadeOut;
+    public ZoomIn ZoomIn;
+    public ZoomOut ZoomOut;
     public GameObject loadingUI;
 
     [Header("Loading Bar")]
@@ -20,9 +21,13 @@ public class LoadingScene : MonoBehaviour
     [Header("LoadingTime")]
     public float minLoadingTime = 4.0f;
 
-    [Header("Next Scene")]
+    [Header("To Loaded Scene")]
     public string SceneName;
 
+    [Header("Get Scene Info")]
+    public Image StageImage;
+    public TextMeshProUGUI Titletext;
+    public TextMeshProUGUI[] StarPoint;
 
     private float time;
 
@@ -33,9 +38,19 @@ public class LoadingScene : MonoBehaviour
         {
             instance = this;
         }
+        StageImage.sprite = GameVariable.GetDefinition().StageImage;
+        Titletext.text = GameVariable.GetDefinition().SceneName;
+        for(int i = 0; i < StarPoint.Length; i++)
+        {
+            StarPoint[i].text = GameVariable.GetDefinition().StarScores[i].ToString();
+        }
+        
 
-        fadeIn.FadeInUI();
+        ZoomIn.ZoomInUI();
         StartCoroutine(LoadAsynSceneCoroutine());
+
+
+        Debug.Log(GameVariable.GetDefinition().StarScores[1]);
         
     }
 
@@ -52,7 +67,6 @@ public class LoadingScene : MonoBehaviour
 
         while (!operation.isDone)
         {
-
             fakeLoadTime += Time.deltaTime;
             fakeLoadRatio = fakeLoadTime / minLoadingTime;
             time += Time.deltaTime;
@@ -60,7 +74,7 @@ public class LoadingScene : MonoBehaviour
 
             //loadRatio
             loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
-            Debug.Log("Loading progress: " + (loadRatio * 100) + "%");
+            //Debug.Log("Loading progress: " + (loadRatio * 100) + "%");
             image.fillAmount = loadRatio;
 
             
@@ -68,7 +82,7 @@ public class LoadingScene : MonoBehaviour
             if (loadRatio >= 0.9f)
             {
                 image.fillAmount = 1.0f;
-                fadeOut.FadeOutUI();
+                ZoomOut.ZoomOutUI();
                 yield return new WaitForSeconds(2f);
                 
                 operation.allowSceneActivation = true;
