@@ -104,7 +104,7 @@ public class InGameUIController : MonoBehaviour
         {
             FadeStartUI.FadeInUI();
         }
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1f);
         
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
