@@ -40,6 +40,7 @@ public class LoadingScene : MonoBehaviour
         }
         StageImage.sprite = GameVariable.GetDefinition().StageImage;
         Titletext.text = GameVariable.GetDefinition().SceneName;
+        SceneName = GameVariable.GetDefinition().SceneName;
         for(int i = 0; i < StarPoint.Length; i++)
         {
             StarPoint[i].text = GameVariable.GetDefinition().StarScores[i].ToString();
