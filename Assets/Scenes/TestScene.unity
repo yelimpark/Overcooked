@@ -778,6 +778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  mask: 0
 --- !u!54 &47292627
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1822,6 +1824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea9c5560cd1a1149a8ac646ce996637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
   cookware: {fileID: 0}
 --- !u!114 &172821270
 MonoBehaviour:
@@ -1835,6 +1838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff22a300359952448006b2eea90ece1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  mask: 0
+  onlyAtPlate: 0
 --- !u!54 &172821271
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2850,6 +2856,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e601d3cf2361a647a2af28b8a7a7ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timebar: {fileID: 0}
+  Yoffset: 20
+  fixWhileCooking: 0
+  AutoExecute: 1
+  mask: 0
 --- !u!114 &268312760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2862,6 +2873,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff22a300359952448006b2eea90ece1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  mask: 0
+  onlyAtPlate: 0
 --- !u!54 &268312761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5505,6 +5519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
 --- !u!54 &442527309
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5625,6 +5640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  mask: 0
 --- !u!114 &463239882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5637,6 +5654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
+  slot: {fileID: 0}
 --- !u!135 &463239883
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9396,6 +9415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
 --- !u!54 &719069176
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10192,6 +10212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e601d3cf2361a647a2af28b8a7a7ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timebar: {fileID: 0}
+  Yoffset: 20
+  fixWhileCooking: 0
+  AutoExecute: 1
+  mask: 0
 --- !u!114 &770813896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10204,6 +10229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea9c5560cd1a1149a8ac646ce996637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
   cookware: {fileID: 0}
 --- !u!114 &770813897
 MonoBehaviour:
@@ -10217,6 +10243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff22a300359952448006b2eea90ece1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  mask: 0
+  onlyAtPlate: 0
 --- !u!65 &770813898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10594,6 +10623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
+  slot: {fileID: 0}
 --- !u!135 &799767005
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10776,6 +10807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
+  slot: {fileID: 0}
 --- !u!135 &802234642
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18252,6 +18285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
 --- !u!54 &1342212569
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18564,6 +18598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  mask: 0
 --- !u!54 &1351526403
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19714,6 +19750,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022a3617f1aea444da6d7386230ded42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hands: {fileID: 0}
+  equipSpeed: 2
+  equipErrorRange: 0.1
 --- !u!114 &1437445666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20053,6 +20092,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
+  slot: {fileID: 0}
 --- !u!135 &1455008965
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22858,7 +22899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 900620021761225745, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 900620021761225749, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
       propertyPath: m_Pivot.x
@@ -30745,6 +30786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  mask: 0
 --- !u!54 &1892081319
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31800,6 +31843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
+  slot: {fileID: 0}
 --- !u!114 &1984581550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31812,6 +31857,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc3ca16c9a66c042928763cfdf620a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  conbearSpeed: 3
+  km: {fileID: 0}
 --- !u!54 &1984581551
 Rigidbody:
   m_ObjectHideFlags: 0
