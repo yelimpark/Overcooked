@@ -14455,7 +14455,7 @@ PrefabInstance:
     - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
       propertyPath: FadeUI
       value: 
-      objectReference: {fileID: 1667163843}
+      objectReference: {fileID: 1667163844}
     - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
       propertyPath: HelpUI
       value: 
@@ -25632,12 +25632,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 900620021761225737, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
   m_PrefabInstance: {fileID: 1667163842}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1667163844}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4031050d7eea268489105f2e2bdf5f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1667163844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 900620021761225745, guid: 17846fa2af4b49c45a3bbca3f0947a95, type: 3}
+  m_PrefabInstance: {fileID: 1667163842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1667448311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2620099155161912967, guid: 2e634fc7605f0df43a21cce2a23122d6, type: 3}
