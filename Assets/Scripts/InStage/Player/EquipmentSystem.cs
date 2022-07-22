@@ -11,6 +11,7 @@ public class EquipmentSystem : MonoBehaviour
         NONE
     }
 
+    [SerializeField]
     GameObject equipment;
     public GameObject Equipment { get { return equipment; } }
 
@@ -41,15 +42,15 @@ public class EquipmentSystem : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Equip(GameObject go)
+    public bool Equip(GameObject go)
     {
         if (go == null || curState != State.NONE)
-            return;
+            return false;
 
         var dest = EquipableTo();
         if (dest == null)
         {
-            return;
+            return false;
         }
         else if (dest == gameObject)
         {
@@ -66,12 +67,13 @@ public class EquipmentSystem : MonoBehaviour
             curState = State.EQUIPING;
             equipment.transform.SetParent(hands);
             animator.SetBool("isPickUp", true);
+            return true;
         }
         else
         {
 
         }
-
+        return false;
     }
 
     private void Update()

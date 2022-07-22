@@ -55,13 +55,11 @@ public class InputHandler : MonoBehaviour
         {
             if (animator.GetBool("isPickUp"))
             {
-                InteractableCursor.enabled = false;
                 //PhotonView.Get(this).RPC("Place", RpcTarget.All);
                 Place();
             }
             else
             {
-                InteractableCursor.enabled = true;
                 TakeOut();
                 //PhotonView.Get(this).RPC("TakeOut", RpcTarget.All);
             }
@@ -81,6 +79,7 @@ public class InputHandler : MonoBehaviour
         {
             var takeOut = interactable.TakeOut(dest);
             _equipmentSystem.Equip(takeOut);
+            EquipmentCursor.enabled = false;
         }
     }
 

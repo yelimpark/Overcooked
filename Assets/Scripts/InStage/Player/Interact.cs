@@ -8,6 +8,7 @@ public class Interact : MonoBehaviour
 
     protected List<GameObject> collisions = new List<GameObject>();
 
+    [SerializeField]
     protected GameObject cursor;
     public virtual GameObject Cursor
     {

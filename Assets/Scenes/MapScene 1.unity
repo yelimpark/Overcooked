@@ -204,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &17304661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4244,6 +4244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags:
   - Interactable
+  cursor: {fileID: 0}
 --- !u!1 &1141716204
 GameObject:
   m_ObjectHideFlags: 0
@@ -5354,7 +5355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1477852845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6077,6 +6078,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1633274929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1859801812061723893, guid: 1d9cfe1dd78bd5748a5a973ad0a81e1b, type: 3}
+  m_PrefabInstance: {fileID: 2327636398792367149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1633274942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633274929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1001 &1635246816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6778,6 +6817,7 @@ MonoBehaviour:
   tags:
   - Cookware
   - Ingrediant
+  cursor: {fileID: 0}
 --- !u!1001 &1758390542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21269,8 +21309,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0000007, y: 0, z: 3.0000007}
-  m_Center: {x: -1.5000005, y: 0.000000011175871, z: -1.5000002}
+  m_Size: {x: 3.0000007, y: 1, z: 3.0000007}
+  m_Center: {x: -1.5000005, y: -0.5, z: -1.5000002}
 --- !u!54 &3991227862493318929
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30671,6 +30711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022a3617f1aea444da6d7386230ded42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipment: {fileID: 0}
   hands: {fileID: 433160383}
   equipSpeed: 5
   equipErrorRange: 0.1
