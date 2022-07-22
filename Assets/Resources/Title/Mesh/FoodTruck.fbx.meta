@@ -1,20 +1,8 @@
 fileFormatVersion: 2
-guid: 25525ecc5ff9abe4083d8172f513e040
+guid: 96f9def4a9e61294ab33573fbd471842
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable:
-  - first:
-      74: 2522796960360824745
-    second: Shutter_Closed
-  - first:
-      74: -1865310429205754063
-    second: Shutter_Closing
-  - first:
-      74: 8792733285671487717
-    second: Shutter_Open
-  - first:
-      74: 4797041643506117132
-    second: Shutter_Opening_With_Sound_02
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -47,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
