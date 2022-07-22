@@ -31,7 +31,7 @@ public class CreateShelf : MonoBehaviour
             switch (eShelfState)
             {
                 case EShelfState.Shelf:
-                    // 불 이펙트 off, 상태 Self
+                    
                     firePrefab.SetActive(false);
                     break;
                 case EShelfState.FireShelf:
@@ -87,6 +87,7 @@ public class CreateShelf : MonoBehaviour
         if (firehp.currentTime <= 0)
         {
             eShelfState = EShelfState.Shelf;
+            firehp.currentTime = 100f;
         }
     }
 

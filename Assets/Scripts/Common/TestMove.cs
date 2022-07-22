@@ -35,7 +35,7 @@ public class TestMove : MonoBehaviour
             float angle = Mathf.Atan2(moveVec.x, moveVec.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
-        animator.SetBool("isWalking", moveVec != Vector3.zero);
+        //animator.SetBool("isWalking", moveVec != Vector3.zero);
 
         if (Input.GetKeyDown(KeyCode.Z))
         {

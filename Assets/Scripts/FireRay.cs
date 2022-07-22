@@ -48,7 +48,6 @@ public class FireRay : MonoBehaviour
             if(fireHp != null)
             {
                 fireHp.TakeDamage(damage);
-                Debug.Log("Hitted fire Ray");
             } 
         }
     }

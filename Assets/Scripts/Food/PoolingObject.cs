@@ -26,7 +26,8 @@ public class PoolingObject : MonoBehaviour
     }
 
     public void Activate() 
-    { 
+    {
+
        gameObject.SetActive(true);      
     }
 
