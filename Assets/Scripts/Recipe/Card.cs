@@ -49,7 +49,7 @@ public class Card : MonoBehaviour
 
             if (timer.value == 0f)
             {
-                cardMgr.kitchenMgr.LostScore(timeoutScore);
+                cardMgr.kitchenMgr.LostScores(timeoutScore);
                 animator.SetTrigger("isTimeout");
             }
         }
