@@ -48,7 +48,7 @@ public class CreateShelf : MonoBehaviour
         eShelfStateTest = eShelfState;
         firePrefab.SetActive(false);
 
-        firehp = GetComponentInChildren<FireHp>();
+        firehp = GetComponentInChildren<FireHp>(true);
     }
 
 
