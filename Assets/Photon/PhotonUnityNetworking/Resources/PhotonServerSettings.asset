@@ -40,6 +40,9 @@ MonoBehaviour:
   - RemovePlayerList
   - ExecuteCommand
   - Execute
+  - TakeOut
+  - Place
+  - SetDefinition
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

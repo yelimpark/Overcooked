@@ -36,10 +36,10 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
-        //if (!photonView.IsMine)
-        //{
-        //    return;
-        //}
+        if (!photonView.IsMine)
+        {
+            return;
+        }
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
@@ -55,22 +55,58 @@ public class InputHandler : MonoBehaviour
         {
             if (animator.GetBool("isPickUp"))
             {
-                if (InteractableCursor.Cursor == null)
-                {
-                    _invoker.ExecuteCommand(new Release(_equipmentSystem));
-                }
-                else
-                {
-                    _invoker.ExecuteCommand(new Place(_equipmentSystem, InteractableCursor.Cursor));
-                }
+                //if (InteractableCursor.Cursor == null)
+                //{
+                //    //_invoker.ExecuteCommand(new Release(_equipmentSystem));
+                //    _equipmentSystem.Unequip();
+                //}
+                //else
+                //{
+                //    //_invoker.ExecuteCommand(new Place(_equipmentSystem, InteractableCursor.Cursor));
+
+                //}
                 InteractableCursor.enabled = false;
+                PhotonView.Get(this).RPC("Place", RpcTarget.All);
             }
             else
             {
-                var cursor = (EquipmentCursor.Cursor != null) ? EquipmentCursor.Cursor : InteractableCursor.Cursor;
-                _invoker.ExecuteCommand(new TakeOut(_equipmentSystem, cursor));
+                InteractableCursor.enabled = true;
+                //var cursor = (EquipmentCursor.Cursor != null) ? EquipmentCursor.Cursor : InteractableCursor.Cursor;
+                //_invoker.ExecuteCommand(new TakeOut(_equipmentSystem, cursor));
+                PhotonView.Get(this).RPC("TakeOut", RpcTarget.All);
             }
         }
-
     }
+
+    [PunRPC]
+    public void TakeOut()
+    {
+        var cursor = (EquipmentCursor.Cursor != null) ? EquipmentCursor.Cursor : InteractableCursor.Cursor;
+        if (cursor == null)
+            return;
+
+        var dest = _equipmentSystem.EquipableTo();
+        Interactable interactable = cursor.GetComponent<Interactable>();
+        if (interactable != null)
+        {
+            var takeOut = interactable.TakeOut(dest);
+            _equipmentSystem.Equip(takeOut);
+        }
+    }
+
+    [PunRPC]
+    public void Place()
+    {
+        if (InteractableCursor.Cursor != null)
+        {
+            InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
+            if (interactable != null && interactable.slot.AbleToPlace(_equipmentSystem.Equipment))
+            {
+                GameObject discarded = _equipmentSystem.Unequip();
+                interactable.slot.OnPlace(discarded);
+            }
+        }
+        _equipmentSystem.Unequip();
+    }
+
 }

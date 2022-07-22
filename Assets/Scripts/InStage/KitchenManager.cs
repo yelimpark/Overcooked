@@ -23,10 +23,10 @@ public class KitchenManager : MonoBehaviour
 
     public void Start()
     {
-        //int idx = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
+        int idx = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
 
-        //GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
-        //myPlayer.GetComponent<InputHandler>().enabled = true;
+        GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
+        myPlayer.GetComponent<InputHandler>().enabled = true;
     }
 
     public void OnSubmit(GameObject go)

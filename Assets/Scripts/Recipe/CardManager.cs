@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class CardManager : MonoBehaviour
 {
@@ -48,7 +49,10 @@ public class CardManager : MonoBehaviour
         if (order.childCount < 5)
         {
             var index = Random.Range(0, cardList.Count);
-            var newCard = Instantiate(cardList[index], order);
+
+            //var newCard = Instantiate(cardList[index], order);
+            GameObject newCard = PhotonNetwork.Instantiate(cardList[index].name, Vector3.zero, Quaternion.identity);
+            newCard.transform.SetParent(order);
             newCard.name = cardList[index].name;
             newCard.transform.localScale = new Vector3(1f, 1f, 1f);
             submitList.Add(newCard);
