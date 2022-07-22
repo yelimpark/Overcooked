@@ -29,9 +29,9 @@ public class WorldScene : MonoBehaviour
             {
                 Debug.Log("스테이지 1");
 
-                PhotonView.Get(this).RPC("SetDefinition", RpcTarget.Others);
-                Debug.Log(GameVariable.GetDefinition().SceneName);
-                ZoomOutUI.ZoomOutUI();
+                PhotonView.Get(this).RPC("SetDefinition", RpcTarget.All);
+                //Debug.Log(GameVariable.GetDefinition().SceneName);
+                
                 //stage1.sceneDefinition.SceneName; 
             }
             else if (stage2.onCollider) 
@@ -45,5 +45,6 @@ public class WorldScene : MonoBehaviour
     public void SetDefinition()
     {
         GameVariable.SetDefinition(stage1.sceneDefinition);
+        ZoomOutUI.ZoomOutUI();
     }
 }

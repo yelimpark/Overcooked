@@ -24,7 +24,7 @@ public class InputHandler : MonoBehaviour
         _invoker = GetComponent<Invoker>();
         _equipmentSystem = GetComponent<EquipmentSystem>();
         animator = GetComponent<Animator>();
-        photonView = PhotonView.Get(this);
+        //photonView = PhotonView.Get(this);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -36,10 +36,10 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
+        //if (!photonView.IsMine)
+        //{
+        //    return;
+        //}
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
@@ -55,25 +55,15 @@ public class InputHandler : MonoBehaviour
         {
             if (animator.GetBool("isPickUp"))
             {
-                //if (InteractableCursor.Cursor == null)
-                //{
-                //    //_invoker.ExecuteCommand(new Release(_equipmentSystem));
-                //    _equipmentSystem.Unequip();
-                //}
-                //else
-                //{
-                //    //_invoker.ExecuteCommand(new Place(_equipmentSystem, InteractableCursor.Cursor));
-
-                //}
                 InteractableCursor.enabled = false;
-                PhotonView.Get(this).RPC("Place", RpcTarget.All);
+                //PhotonView.Get(this).RPC("Place", RpcTarget.All);
+                Place();
             }
             else
             {
                 InteractableCursor.enabled = true;
-                //var cursor = (EquipmentCursor.Cursor != null) ? EquipmentCursor.Cursor : InteractableCursor.Cursor;
-                //_invoker.ExecuteCommand(new TakeOut(_equipmentSystem, cursor));
-                PhotonView.Get(this).RPC("TakeOut", RpcTarget.All);
+                TakeOut();
+                //PhotonView.Get(this).RPC("TakeOut", RpcTarget.All);
             }
         }
     }
