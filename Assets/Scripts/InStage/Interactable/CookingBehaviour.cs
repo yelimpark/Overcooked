@@ -38,6 +38,8 @@ public class CookingBehaviour : MonoBehaviour
         if (cookware == null || cookware.occupyObj == null)
             return;
 
+        timebar.Init();
+
         GameObject before = cookware.OnTakeOut(null);
         Ingrediant ingrediant = before.GetComponent<Ingrediant>();
 
@@ -70,7 +72,7 @@ public class CookingBehaviour : MonoBehaviour
         if (fixWhileCooking && !timebar.end)
             return false;
 
-        CurPosition = AppliancesType.None;
+        //CurPosition = AppliancesType.None;
         timebar.pause = true;
         return true;
     }

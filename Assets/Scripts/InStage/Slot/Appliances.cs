@@ -69,6 +69,10 @@ public class Appliances : Slot
         if (cookware != null && cookware.AbleToTakeOut(dest))
             return cookware.OnTakeOut(dest);
 
+        CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
+        if (cb != null)
+            cb.CurPosition = AppliancesType.None;
+
         return base.OnTakeOut(dest);
     }
 }
