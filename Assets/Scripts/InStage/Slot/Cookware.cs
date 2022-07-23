@@ -16,7 +16,10 @@ public class Cookware : Slot
 
     public override bool AbleToPlace(GameObject go)
     {
-        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
+        if (go == null)
+            return false;
+
+         Ingrediant ingrediant = go.GetComponent<Ingrediant>();
         if (ingrediant == null || ingrediant.mask != mask)
             return false;
 
@@ -37,14 +40,18 @@ public class Cookware : Slot
         if (cb != null && !cb.ExitPosition())
             return false;
 
-        return base.AbleToTakeOut(dest);
+        if (dest != null)
+        {
+            Cookware cookware = dest.GetComponent<Cookware>();
+            if (cookware == null || cookware.AbleToPlace(occupyObj))
+                return true;
+        }
+
+        return false;
     }
 
     public override GameObject OnTakeOut(GameObject dest)
     {
-        if (cb != null)
-            cb.timebar.Init();
-
         return base.OnTakeOut(dest);
     }
 }

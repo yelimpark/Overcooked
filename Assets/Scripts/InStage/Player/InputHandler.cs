@@ -53,33 +53,47 @@ public class InputHandler : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (animator.GetBool("isPickUp"))
+            if (_equipmentSystem.Equipment == null)
             {
-                //PhotonView.Get(this).RPC("Place", RpcTarget.All);
-                Place();
+                OnEquipBtn();
+                //PhotonView.Get(this).RPC("OnTakeOutBtn", RpcTarget.All
             }
             else
             {
-                TakeOut();
-                //PhotonView.Get(this).RPC("TakeOut", RpcTarget.All);
+                if (_equipmentSystem.Equipment.tag == "Cookware" && InteractableCursor.Cursor != null)
+                {
+                    Cookware cookware = _equipmentSystem.Equipment.GetComponent<Cookware>();
+                    InteractableAppliances ia = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
+                    if (cookware.occupyObj == null && ia.slot.occupyObj != null)
+                    {
+                        OnEquipBtn();
+                        return;
+                    }
+                }
+
+                //PhotonView.Get(this).RPC("Place", RpcTarget.All);
+                Place();
             }
         }
     }
 
     [PunRPC]
-    public void TakeOut()
+    public void OnEquipBtn()
     {
-        var cursor = (EquipmentCursor.Cursor != null) ? EquipmentCursor.Cursor : InteractableCursor.Cursor;
-        if (cursor == null)
-            return;
+        if (InteractableCursor.Cursor != null)
+            TakeOut(InteractableCursor.Cursor);
+        if (EquipmentCursor.Cursor != null)
+            TakeOut(EquipmentCursor.Cursor);
+    }
 
-        var dest = _equipmentSystem.EquipableTo();
+    public void TakeOut(GameObject cursor)
+    {
+        var dest = _equipmentSystem.Equipment;
         Interactable interactable = cursor.GetComponent<Interactable>();
         if (interactable != null)
         {
             var takeOut = interactable.TakeOut(dest);
             _equipmentSystem.Equip(takeOut);
-            EquipmentCursor.enabled = false;
         }
     }
 
@@ -93,6 +107,7 @@ public class InputHandler : MonoBehaviour
             {
                 GameObject discarded = _equipmentSystem.Unequip();
                 interactable.slot.OnPlace(discarded);
+                return;
             }
         }
         _equipmentSystem.Unequip();

@@ -6,12 +6,6 @@ public class Slot : MonoBehaviour
 {
     public GameObject occupyObj;
 
-    public virtual void OnTriggerEnter(Collider other)
-    {
-        if (AbleToPlace(other.gameObject))
-            OnPlace(other.gameObject);
-    }
-
     public virtual bool AbleToPlace(GameObject go)
     {
         if (go == null)
@@ -37,12 +31,6 @@ public class Slot : MonoBehaviour
         occupyObj.transform.position = newPos;
 
         occupyObj.transform.SetParent(transform);
-
-        //occupyObj.tag = "Untagged";
-
-        //Interactable interactable = occupyObj.GetComponent<Interactable>();
-        //if (interactable != null)
-        //    interactable.enabled = false;
     }
 
     public virtual bool AbleToTakeOut(GameObject dest)
@@ -58,12 +46,6 @@ public class Slot : MonoBehaviour
         Utils.UnFixPosition(takeout);
 
         takeout.transform.parent = null;
-
-        //takeout.tag = "Ingrediant";
-
-        //Interactable interactable = takeout.GetComponent<Interactable>();
-        //if (interactable != null)
-        //    interactable.enabled = true;
 
         return takeout;
     }
