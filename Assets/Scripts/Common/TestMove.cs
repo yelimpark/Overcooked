@@ -8,6 +8,7 @@ public class TestMove : MonoBehaviour
 
     private float horizontal;
     private float vertical;
+    private Vector3 moveVec;
 
     private Animator animator;
     private Rigidbody rb;
@@ -28,12 +29,22 @@ public class TestMove : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        Vector3 moveVec = new Vector3(horizontal, 0f, vertical).normalized;
+        moveVec = new Vector3(horizontal, 0f, vertical).normalized;
         if (moveVec != Vector3.zero)
         {
             float angle = Mathf.Atan2(moveVec.x, moveVec.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
-        animator.SetBool("isWalking", moveVec != Vector3.zero);
+        //animator.SetBool("isWalking", moveVec != Vector3.zero);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            animator.SetBool("isChoping", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetBool("isChoping", false);
+        }
     }
 }
