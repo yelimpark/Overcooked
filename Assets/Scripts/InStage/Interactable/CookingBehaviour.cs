@@ -53,19 +53,19 @@ public class CookingBehaviour : MonoBehaviour
         before.SetActive(false);
     }
 
-    private void Update()
-    {
-        Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
-        newPos.y += Yoffset;
-        timebar.transform.position = newPos;
+    //private void Update()
+    //{
+    //    Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
+    //    newPos.y += Yoffset;
+    //    timebar.transform.position = newPos;
 
-        //임시코드!!!!!!
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            trigger = true;
-            Execute();
-        }
-    }
+    //    임시코드!!!!!!
+    //    if (Input.GetKeyDown(KeyCode.Z))
+    //    {
+    //        trigger = true;
+    //        Execute();
+    //    }
+    //}
 
     public bool ExitPosition()
     {
@@ -84,6 +84,10 @@ public class CookingBehaviour : MonoBehaviour
 
         Cookware cookware = GetComponent<Cookware>();
         if (cookware == null || cookware.occupyObj == null)
+            return;
+
+        Ingrediant ingrediant = cookware.occupyObj.GetComponent<Ingrediant>();
+        if (ingrediant.mask != mask)
             return;
 
         if (AutoExecute || trigger)

@@ -107,11 +107,14 @@ public class EquipmentSystem : MonoBehaviour
 
         Utils.UnFixPosition(equipment);
 
-        curState = State.UNEQUIPING;
+        curState = State.NONE;
         equipment.transform.parent = null;
+
+        var tmp = equipment;
+        equipment = null;
 
         animator.SetBool("isPickUp", false);
 
-        return equipment;
+        return tmp;
     }
 }
