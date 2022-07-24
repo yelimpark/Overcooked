@@ -22,6 +22,14 @@ public class Interact : MonoBehaviour
                 il = cursor.GetComponent<Interactable>();
                 if (il != null)
                     il.Active = false;
+
+                InteractableAppliances interactable = cursor.GetComponent<InteractableAppliances>();
+                if (interactable != null)
+                {
+                    CookingBehaviour cb = interactable.slot.gameObject.GetComponent<CookingBehaviour>();
+                    if (cb != null)
+                        cb.SetTrigger(false);
+                }
             }
 
             cursor = value;

@@ -7,7 +7,7 @@ public class Cookware : Slot
     public AppliancesType mask;
     private CookingBehaviour cb;
 
-    public bool onlyAtPlate = false;
+    public bool withoutPlate = false;
 
     private void Start()
     {
@@ -39,6 +39,9 @@ public class Cookware : Slot
     {
         if (cb != null && !cb.ExitPosition())
             return false;
+
+        if (withoutPlate)
+            return true;
 
         if (dest != null)
         {

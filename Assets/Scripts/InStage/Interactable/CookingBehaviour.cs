@@ -67,6 +67,17 @@ public class CookingBehaviour : MonoBehaviour
     //    }
     //}
 
+    public void SetTrigger(bool trigger)
+    {
+        this.trigger = trigger;
+        Execute();
+
+        if (!(trigger || AutoExecute))
+        {
+            timebar.pause = true;
+        }
+    }
+
     public bool ExitPosition()
     {
         if (fixWhileCooking && !timebar.end)
@@ -79,6 +90,9 @@ public class CookingBehaviour : MonoBehaviour
 
     public void Execute()
     {
+        //if (timebar == null)
+        //    return;
+
         if (timebar.end || CurPosition != mask)
             return;
 

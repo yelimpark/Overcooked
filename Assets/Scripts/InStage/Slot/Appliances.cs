@@ -14,6 +14,16 @@ public class Appliances : Slot
 {
     public AppliancesType mask;
 
+    private void Start()
+    {
+        if (occupyObj != null)
+        {
+            CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
+            if (cb != null)
+                cb.CurPosition = mask;
+        }
+    }
+
     public virtual void OnTriggerEnter(Collider other)
     {
         if (AbleToPlace(other.gameObject))

@@ -75,6 +75,11 @@ public class InputHandler : MonoBehaviour
                 Place();
             }
         }
+        if (Input.GetButtonDown("Fire2"))
+        {
+            OnZDown();
+        }
+
     }
 
     [PunRPC]
@@ -113,4 +118,18 @@ public class InputHandler : MonoBehaviour
         _equipmentSystem.Unequip();
     }
 
+    [PunRPC]
+    public void OnZDown()
+    {
+        if (InteractableCursor.Cursor != null)
+        {
+            InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
+            if (interactable != null)
+            {
+                CookingBehaviour cb = interactable.slot.gameObject.GetComponent<CookingBehaviour>();
+                if (cb != null)
+                    cb.SetTrigger(true);
+            }
+        }
+    }
 }
