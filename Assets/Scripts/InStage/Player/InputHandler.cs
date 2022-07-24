@@ -64,7 +64,7 @@ public class InputHandler : MonoBehaviour
                 {
                     Cookware cookware = _equipmentSystem.Equipment.GetComponent<Cookware>();
                     InteractableAppliances ia = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
-                    if (cookware.occupyObj == null && ia.slot.occupyObj != null)
+                    if (ia.slot.occupyObj != null)
                     {
                         OnEquipBtn();
                         return;

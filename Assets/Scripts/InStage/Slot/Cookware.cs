@@ -19,18 +19,44 @@ public class Cookware : Slot
         if (go == null)
             return false;
 
-         Ingrediant ingrediant = go.GetComponent<Ingrediant>();
+        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
         if (ingrediant == null || ingrediant.mask != mask)
             return false;
+
+        if (occupyObj != null)
+        {
+            Ingrediant occupyIngrediant = occupyObj.GetComponent<Ingrediant>();
+            if (occupyIngrediant.combinedWith == ingrediant.IngrediantName)
+            {
+                return true;
+            }
+        }
 
         return base.AbleToPlace(go);
     }
 
     public override void OnPlace(GameObject go)
     {
+        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
+        if (ingrediant != null && occupyObj != null)
+        {
+            Ingrediant occupyIngrediant = occupyObj.GetComponent<Ingrediant>();
+            if (occupyIngrediant.combinedWith == ingrediant.IngrediantName)
+            {
+                // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
+                GameObject after = GameObject.Find(occupyIngrediant.next);
+                after.SetActive(true);
+
+                var before = OnTakeOut(null);
+                OnPlace(after);
+
+                //반환
+                before.SetActive(false);
+            }
+        }
+
         base.OnPlace(go);
 
-        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
         if (ingrediant != null && ingrediant.mask == mask && cb != null)
             cb.Execute();
     }
