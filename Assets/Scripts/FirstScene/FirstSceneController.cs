@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FirstSceneController : MonoBehaviour
 {
-    [Header("On/Off UI")]
+    [Header("Hamburger")]
     public GameObject Hamburger;
 
     [Header("Next Scene")]

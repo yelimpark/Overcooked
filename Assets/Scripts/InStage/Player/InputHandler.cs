@@ -48,6 +48,7 @@ public class InputHandler : MonoBehaviour
         {
             float angle = Mathf.Atan2(moveVec.x, moveVec.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, angle, 0);
+            animator.SetBool("isChoping", false);
         }
         animator.SetBool("isWalking", moveVec != Vector3.zero);
 
@@ -128,7 +129,10 @@ public class InputHandler : MonoBehaviour
             {
                 CookingBehaviour cb = interactable.slot.gameObject.GetComponent<CookingBehaviour>();
                 if (cb != null)
+                {
                     cb.SetTrigger(true);
+                    animator.SetBool("isChoping", true);
+                }
             }
         }
     }

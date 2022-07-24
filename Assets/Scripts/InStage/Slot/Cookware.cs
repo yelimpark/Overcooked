@@ -44,7 +44,9 @@ public class Cookware : Slot
             if (occupyIngrediant.combinedWith == ingrediant.IngrediantName)
             {
                 // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
-                GameObject after = GameObject.Find(occupyIngrediant.next);
+                GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
+                ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
+                GameObject after = ObjPoolMgr.Extract(occupyIngrediant.next).gameObject;
                 after.SetActive(true);
 
                 var before = OnTakeOut(null);

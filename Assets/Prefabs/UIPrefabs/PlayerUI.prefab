@@ -778,9 +778,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 150
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 150
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -796,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8840466408adafa4ebd646436567c306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeCtr: {fileID: 5339074961984971895}
   TimerSlider: {fileID: 5339074960944247449}
   timerBar: {fileID: 5339074960799991410}
 --- !u!1 &5339074961090173489
@@ -834,8 +835,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.5, y: 9.5486}
-  m_SizeDelta: {x: -35, y: -29.0972}
+  m_AnchoredPosition: {x: -2.5, y: 9.5486}
+  m_SizeDelta: {x: -45, y: -29.0972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5339074961114261683
 GameObject:
@@ -1286,17 +1287,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5339074961573743565}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5339074961742334999}
-  m_RootOrder: 2
+  m_Father: {fileID: 5339074961984971880}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -21.8638, y: 35.23143}
+  m_AnchoredPosition: {x: -11.8638, y: 25.23143}
   m_SizeDelta: {x: 43.7276, y: 60.4629}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5339074961573743560
@@ -1502,7 +1503,6 @@ RectTransform:
   m_Children:
   - {fileID: 5339074960944247448}
   - {fileID: 5339074961984971880}
-  - {fileID: 5339074961573743562}
   m_Father: {fileID: 5339074962051138785}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1657,6 +1657,7 @@ GameObject:
   - component: {fileID: 5339074961984971880}
   - component: {fileID: 5339074961984971894}
   - component: {fileID: 5339074961984971881}
+  - component: {fileID: 1225956425}
   - component: {fileID: 5339074961984971895}
   m_Layer: 5
   m_Name: UI_TimerBanner
@@ -1678,6 +1679,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5339074961090173502}
+  - {fileID: 5339074961573743562}
   m_Father: {fileID: 5339074961742334999}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1724,6 +1726,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1225956425
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5339074961984971883}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2ecfa3839c917247985dfd80ded0024, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5339074961984971895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1736,10 +1758,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a75cc9dd0dcef4f8816e7d577f0dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1225956425}
   timeText:
   - {fileID: 5339074961680169109}
   - {fileID: 5339074961147503641}
   time: 150
+  isHalf: 0
 --- !u!1 &5339074962051138789
 GameObject:
   m_ObjectHideFlags: 0

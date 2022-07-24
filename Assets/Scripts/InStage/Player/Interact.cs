@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
+    public GameObject player;
+
     public List<string> tags = new List<string>();
 
     protected List<GameObject> collisions = new List<GameObject>();
@@ -28,7 +30,11 @@ public class Interact : MonoBehaviour
                 {
                     CookingBehaviour cb = interactable.slot.gameObject.GetComponent<CookingBehaviour>();
                     if (cb != null)
+                    {
                         cb.SetTrigger(false);
+                        Animator animator = player.GetComponent<Animator>();
+                        animator.SetBool("isChoping", false);
+                    }
                 }
             }
 
