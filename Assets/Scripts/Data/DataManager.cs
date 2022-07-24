@@ -40,6 +40,20 @@ public class DataManager : MonoBehaviour
         Debug.Log($"[DataManager] 불러온 파일명 :  {fileName}");
 
     }
+    public void LoadNewStageData()
+    {
+        string fileName = "DefaultStageInfo";
+        string path = Application.dataPath + "/" + "Json" + "/" + fileName + ".Json";
+
+        fileInfo = new FileInfo(path);
+
+        string json = File.ReadAllText(path);
+        currentStageInfo = JsonConvert.DeserializeObject<List<SceneInfo>>(json);
+    
+        Debug.Log($"[DataManager] 불러온 파일명 :  {fileName}");
+
+    }
+
 
     public void SaveStageData()
     {

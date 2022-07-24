@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
 
         DataManager = this.gameObject.AddComponent<DataManager>();
         KitchenManager = this.gameObject.AddComponent<KitchenManager>();
-        
     }
 
 
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviour
 
     public KitchenManager KitchenManager;
 
-    
 
 
 }
