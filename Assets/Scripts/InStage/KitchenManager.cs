@@ -43,8 +43,8 @@ public class KitchenManager : MonoBehaviour
             myPlayer2.AddComponent<SinglePlay>();
             myPlayer2.GetComponent<SinglePlay>().Toggle();
 
-            myPlayer1.GetComponent<RandomChef>().Send(1);
-            myPlayer2.GetComponent<RandomChef>().Send(1);
+            myPlayer1.GetComponent<RandomChef>().Send(0);
+            myPlayer2.GetComponent<RandomChef>().Send(0);
         }
         else
         {

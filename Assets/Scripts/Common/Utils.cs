@@ -45,7 +45,7 @@ public class Utils : MonoBehaviour
     public static bool IsFalling(GameObject go, float errorRange)
     {
         RaycastHit hit;
-        Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH);
+        Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, LayerMask.GetMask("Ground"));
 
         Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
 

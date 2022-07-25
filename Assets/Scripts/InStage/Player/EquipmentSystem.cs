@@ -15,6 +15,8 @@ public class EquipmentSystem : MonoBehaviour
     GameObject equipment;
     public GameObject Equipment { get { return equipment; } }
 
+    private GameObject tempGO;
+
     public Transform hands;
 
     private State curState = State.NONE;
@@ -85,12 +87,12 @@ public class EquipmentSystem : MonoBehaviour
                 break;
 
             case State.UNEQUIPING:
-                if (Utils.IsFalling(equipment, equipErrorRange))
+                if (Utils.IsFalling(tempGO, equipErrorRange))
                 {
                     curState = State.NONE;
                     int layer = LayerMask.NameToLayer("Default");
-                    equipment.layer = layer;
-                    equipment = null;
+                    tempGO.layer = layer;
+                    tempGO = null;
                 }
                 break;
 
@@ -106,14 +108,14 @@ public class EquipmentSystem : MonoBehaviour
 
         Utils.UnFixPosition(equipment);
 
-        curState = State.NONE;
+        curState = State.UNEQUIPING;
         equipment.transform.parent = null;
 
-        var tmp = equipment;
+        tempGO = equipment;
         equipment = null;
 
         animator.SetBool("isPickUp", false);
 
-        return tmp;
+        return tempGO;
     }
 }
