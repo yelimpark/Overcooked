@@ -7,7 +7,8 @@ public enum AppliancesType
     None,
     FRYPAN,
     CUTTING_BOARD,
-    PLATE
+    PLATE,
+    FIRE_EXTINGUISHER,
 }
 
 public class Appliances : Slot

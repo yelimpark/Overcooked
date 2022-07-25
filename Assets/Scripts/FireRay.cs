@@ -19,19 +19,21 @@ public class FireRay : MonoBehaviour
     public void Awake()
     {
         extingParticle = GetComponentInChildren<ParticleSystem>();        
-        ray = new Ray();
-        ray.origin = transform.position;
-        ray.direction = transform.forward;
+    
     }
 
     public void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        ray = new Ray();
+        ray.origin = transform.position;
+        ray.direction = transform.forward;
+
+        OnDrawGizmos();
+        if(Input.GetMouseButton(1))
         {
-            OnDrawGizmos();
             Shoot();
-        }   
-        
+        }
+
     }
 
     private void OnDrawGizmos()

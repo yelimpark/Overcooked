@@ -44,7 +44,7 @@ public class TestMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetBool("isChoping", false);
+            //animator.SetBool("isChoping", false);
         }
     }
 }

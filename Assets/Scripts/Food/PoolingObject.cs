@@ -6,7 +6,6 @@ using KeyCode = System.String;
 public class PoolingObject : MonoBehaviour
 {
     public KeyCode key;
-
     public PoolingObject Clone()
     {
         GameObject go = Instantiate(gameObject);
@@ -27,7 +26,6 @@ public class PoolingObject : MonoBehaviour
 
     public void Activate() 
     {
-
        gameObject.SetActive(true);      
     }
 
@@ -35,13 +33,4 @@ public class PoolingObject : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.CompareTag("Trash"))
-        {
-            Disabled();
-        }
-    }
-
 }

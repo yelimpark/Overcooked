@@ -9,6 +9,7 @@ public class CreateIngredient : MonoBehaviour
     public ObjectPoolManager poolManager;
     public PoolingObject Create()
     {
+        
         return poolManager.Extract(key);
     }
 

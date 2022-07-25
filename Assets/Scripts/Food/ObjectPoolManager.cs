@@ -86,6 +86,7 @@ public class ObjectPoolManager : MonoBehaviour
 
     public void Return(PoolingObject ObjectPool)
     {
+        Debug.Log(gameObject, gameObject);
         if(!poolDic.TryGetValue(ObjectPool.key, out var pool))
         {
             return;

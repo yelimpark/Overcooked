@@ -80,6 +80,18 @@ public class InputHandler : MonoBehaviour
             OnZDown();
             PhotonView.Get(this).RPC("OnZDown", RpcTarget.All);
         }
+        if(Input.GetButton("Fire4"))
+        {            
+            if (_equipmentSystem.Equipment.tag == "Cookware")
+            {                
+                FireRay fireRay = _equipmentSystem.Equipment.GetComponentInChildren<FireRay>();
+                if (fireRay != null)
+                {
+                    fireRay.Shoot();
+                    Debug.Log("Shoot");
+                }
+            }
+        }
 
     }
 
