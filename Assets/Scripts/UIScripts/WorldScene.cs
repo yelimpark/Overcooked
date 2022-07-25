@@ -35,9 +35,11 @@ public class WorldScene : MonoBehaviour
             {
                 Debug.Log("스테이지 1");
 
-                PhotonView.Get(this).RPC("SetDefinition", RpcTarget.All);
+                //PhotonView.Get(this).RPC("SetDefinition", RpcTarget.All);
+                GameVariable.SetDefinition(stage1.sceneDefinition);
+
                 //Debug.Log(GameVariable.GetDefinition().SceneName);
-                
+
                 //GameVariable.SetDefinition(stage1.sceneDefinition);
 
                 //Debug.Log(GameVariable.GetDefinition().SceneName);

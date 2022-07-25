@@ -27,11 +27,13 @@ public class ZoomOut : MonoBehaviour
 
     public void ChangeResultScene2()
     {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return;
-        }
-        PhotonNetwork.LoadLevel(loadScene);
+        //if (!PhotonNetwork.IsMasterClient)
+        //{
+        //    return;
+        //}
+        //PhotonNetwork.LoadLevel(loadScene);
+
+        SceneManager.LoadScene(loadScene);
     }
 
 }
