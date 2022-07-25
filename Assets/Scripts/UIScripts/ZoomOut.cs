@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class ZoomOut : MonoBehaviour
 {
@@ -26,6 +27,12 @@ public class ZoomOut : MonoBehaviour
 
     public void ChangeResultScene2()
     {
+        //if (!PhotonNetwork.IsMasterClient)
+        //{
+        //    return;
+        //}
+        //PhotonNetwork.LoadLevel(loadScene);
+
         SceneManager.LoadScene(loadScene);
     }
 

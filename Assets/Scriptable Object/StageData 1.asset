@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f99a05b46ce5746ac8537eb4957f2d, type: 3}
   m_Name: StageData 1
   m_EditorClassIdentifier: 
-  SceneName: Stage 1-1
+  SceneName: Stage1
   StageImage: {fileID: 21300000, guid: e544300c2a411734a847157d471b2600, type: 3}
   StarScores: 140000003c000000f0000000
+  JsonIndex: 0

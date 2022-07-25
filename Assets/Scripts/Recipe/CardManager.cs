@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class CardManager : MonoBehaviour
 {
@@ -9,11 +10,21 @@ public class CardManager : MonoBehaviour
     public List<GameObject> submitList;
     public Transform order;
 
+    public float orderTime;
+    private float orderWaitTimer;
+
+    private void Awake()
+    {
+        orderWaitTimer = orderTime;
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        orderWaitTimer += Time.deltaTime;
+        if (orderWaitTimer > orderTime)
         {
             NewCard();
+            orderWaitTimer = 0f;
         }
     }
 
@@ -48,7 +59,10 @@ public class CardManager : MonoBehaviour
         if (order.childCount < 5)
         {
             var index = Random.Range(0, cardList.Count);
-            var newCard = Instantiate(cardList[index], order);
+
+            //var newCard = Instantiate(cardList[index], order);
+            GameObject newCard = PhotonNetwork.Instantiate(cardList[index].name, Vector3.zero, Quaternion.identity);
+            newCard.transform.SetParent(order);
             newCard.name = cardList[index].name;
             newCard.transform.localScale = new Vector3(1f, 1f, 1f);
             submitList.Add(newCard);

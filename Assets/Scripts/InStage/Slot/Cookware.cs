@@ -7,7 +7,7 @@ public class Cookware : Slot
     public AppliancesType mask;
     private CookingBehaviour cb;
 
-    public bool onlyAtPlate = false;
+    public bool withoutPlate = false;
 
     private void Start()
     {
@@ -16,18 +16,49 @@ public class Cookware : Slot
 
     public override bool AbleToPlace(GameObject go)
     {
+        if (go == null)
+            return false;
+
         Ingrediant ingrediant = go.GetComponent<Ingrediant>();
         if (ingrediant == null || ingrediant.mask != mask)
             return false;
+
+        if (occupyObj != null)
+        {
+            Ingrediant occupyIngrediant = occupyObj.GetComponent<Ingrediant>();
+            if (occupyIngrediant.combinedWith == ingrediant.IngrediantName)
+            {
+                return true;
+            }
+        }
 
         return base.AbleToPlace(go);
     }
 
     public override void OnPlace(GameObject go)
     {
+        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
+        if (ingrediant != null && occupyObj != null)
+        {
+            Ingrediant occupyIngrediant = occupyObj.GetComponent<Ingrediant>();
+            if (occupyIngrediant.combinedWith == ingrediant.IngrediantName)
+            {
+                // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
+                GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
+                ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
+                GameObject after = ObjPoolMgr.Extract(occupyIngrediant.next).gameObject;
+                after.SetActive(true);
+
+                var before = OnTakeOut(null);
+                OnPlace(after);
+
+                //반환
+                before.SetActive(false);
+            }
+        }
+
         base.OnPlace(go);
 
-        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
         if (ingrediant != null && ingrediant.mask == mask && cb != null)
             cb.Execute();
     }
@@ -37,14 +68,21 @@ public class Cookware : Slot
         if (cb != null && !cb.ExitPosition())
             return false;
 
-        return base.AbleToTakeOut(dest);
+        if (withoutPlate)
+            return true;
+
+        if (dest != null)
+        {
+            Cookware cookware = dest.GetComponent<Cookware>();
+            if (cookware == null || cookware.AbleToPlace(occupyObj))
+                return true;
+        }
+
+        return false;
     }
 
     public override GameObject OnTakeOut(GameObject dest)
     {
-        if (cb != null)
-            cb.timebar.Init();
-
         return base.OnTakeOut(dest);
     }
 }

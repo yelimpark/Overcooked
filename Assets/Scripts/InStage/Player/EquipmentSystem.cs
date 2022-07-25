@@ -11,6 +11,7 @@ public class EquipmentSystem : MonoBehaviour
         NONE
     }
 
+    [SerializeField]
     GameObject equipment;
     public GameObject Equipment { get { return equipment; } }
 
@@ -22,19 +23,19 @@ public class EquipmentSystem : MonoBehaviour
 
     private Animator animator;
 
-    public GameObject EquipableTo()
-    {
-        if (equipment != null)
-        {
-            Cookware cookware = equipment.GetComponent<Cookware>();
-            if (cookware != null && cookware.AbleToPlace(equipment))
-            {
-                return equipment;
-            }
-            return null;
-        }
-        return gameObject;
-    }
+    //public GameObject GetDestination()
+    //{
+    //    if (equipment != null)
+    //    {
+    //        Cookware cookware = equipment.GetComponent<Cookware>();
+
+    //        if (cookware != null)
+    //            return equipment;
+    //        else 
+    //            return null;
+    //    }
+    //    return gameObject;
+    //}
 
     private void Start()
     {
@@ -46,22 +47,14 @@ public class EquipmentSystem : MonoBehaviour
         if (go == null || curState != State.NONE)
             return;
 
-        var dest = EquipableTo();
-        if (dest == null)
-        {
-            return;
-        }
-        else if (dest == gameObject)
+        if (equipment == null)
         {
             equipment = go;
 
             Utils.FixPosition(go);
 
-            var colliders = go.transform.GetComponentsInChildren<Collider>();
-            foreach (var childCollider in colliders)
-            {
-                childCollider.enabled = false;
-            }
+            int layer = LayerMask.NameToLayer("ExceptPlayer");
+            go.layer = layer;
 
             curState = State.EQUIPING;
             equipment.transform.SetParent(hands);
@@ -69,9 +62,12 @@ public class EquipmentSystem : MonoBehaviour
         }
         else
         {
-
+            Cookware cookware = equipment.GetComponent<Cookware>();
+            if (cookware != null && cookware.AbleToPlace(go))
+            {
+                cookware.OnPlace(go);
+            }
         }
-
     }
 
     private void Update()
@@ -89,10 +85,11 @@ public class EquipmentSystem : MonoBehaviour
                 break;
 
             case State.UNEQUIPING:
-                int layerMask = (-1) - (1 << LayerMask.NameToLayer("player"));
-                if (Utils.IsFalling(equipment, equipErrorRange, layerMask))
+                if (Utils.IsFalling(equipment, equipErrorRange))
                 {
                     curState = State.NONE;
+                    int layer = LayerMask.NameToLayer("Default");
+                    equipment.layer = layer;
                     equipment = null;
                 }
                 break;
@@ -109,15 +106,14 @@ public class EquipmentSystem : MonoBehaviour
 
         Utils.UnFixPosition(equipment);
 
-        Collider collider = equipment.GetComponent<Collider>();
-        if (collider != null)
-            collider.enabled = true;
-
-        curState = State.UNEQUIPING;
+        curState = State.NONE;
         equipment.transform.parent = null;
+
+        var tmp = equipment;
+        equipment = null;
 
         animator.SetBool("isPickUp", false);
 
-        return equipment;
+        return tmp;
     }
 }

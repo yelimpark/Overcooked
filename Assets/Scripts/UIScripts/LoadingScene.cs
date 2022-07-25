@@ -24,12 +24,18 @@ public class LoadingScene : MonoBehaviour
     [Header("To Loaded Scene")]
     public string SceneName;
 
+    [Header("Score")]
+    public int parentScore;
+    
+
     [Header("Get Scene Info")]
     public Image StageImage;
     public TextMeshProUGUI Titletext;
     public TextMeshProUGUI[] StarPoint;
 
-    private float time;
+    [Header("바뀔 Sprite")]
+    public Image[] sprite = new Image[3];
+    public Sprite YellowStar;
 
 
     void Start()
@@ -38,19 +44,34 @@ public class LoadingScene : MonoBehaviour
         {
             instance = this;
         }
+
+        GameManager.Instance.DataManager.LoadStageData();
+
         StageImage.sprite = GameVariable.GetDefinition().StageImage;
         Titletext.text = GameVariable.GetDefinition().SceneName;
+        SceneName = GameVariable.GetDefinition().SceneName;
         for(int i = 0; i < StarPoint.Length; i++)
         {
             StarPoint[i].text = GameVariable.GetDefinition().StarScores[i].ToString();
         }
-        
+        for (int i = 0; i < GameVariable.GetDefinition().StarScores.Length; i++)
+        {
+            //스타포인트와 내 점수를 비교해야해
+            if(GameVariable.GetDefinition().JsonIndex == GameManager.Instance.DataManager.currentStageInfo[i].Index)
+            {
+                for (int j = 0; j < GameVariable.GetDefinition().StarScores.Length; j++)
+                {
+                    if (GameVariable.GetDefinition().StarScores[j] < GameManager.Instance.DataManager.currentStageInfo[i].score)
+                    {
+                        sprite[j].sprite = YellowStar;
+                    }
+                }
+            }
+        }
+
 
         ZoomIn.ZoomInUI();
         StartCoroutine(LoadAsynSceneCoroutine());
-
-
-        Debug.Log(GameVariable.GetDefinition().StarScores[1]);
         
     }
 
@@ -69,7 +90,7 @@ public class LoadingScene : MonoBehaviour
         {
             fakeLoadTime += Time.deltaTime;
             fakeLoadRatio = fakeLoadTime / minLoadingTime;
-            time += Time.deltaTime;
+            //time += Time.deltaTime;
 
 
             //loadRatio

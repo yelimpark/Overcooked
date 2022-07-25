@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class InGameUIController : MonoBehaviour
 {
     [Header("On/Off UI")]
+    public GameObject FadeUI;
     public GameObject HelpUI;
     public GameObject PlayerUI;
     public GameObject ReadyUI;
     public GameObject StartUI;
     public GameObject EndUI;
-    public Player player;
+    public InputHandler player;
+    public GameObject orderUI;
 
     [Header("To Zoom UI's")]
     public ZoomIn ZoomUI;
@@ -39,6 +41,7 @@ public class InGameUIController : MonoBehaviour
     private void Start()
     {
         ZoomUI.ZoomInUI();
+        FadeUI.SetActive(true);
         HelpUI.SetActive(true);
         PlayerUI.SetActive(false);
         ReadyUI.SetActive(false);
@@ -73,7 +76,7 @@ public class InGameUIController : MonoBehaviour
             EndUI.SetActive(true);
             ZoomEndUI.ZoomInUI();
             timeController.time = 0;
-            //player.enabled = false;
+            player.enabled = false;
         }
     }
 
@@ -83,9 +86,7 @@ public class InGameUIController : MonoBehaviour
         timerBar.GetComponent<TimerBar>().enabled = false;
         HelpUI.SetActive(false);
 
-        
-
-        //player.enabled = false;
+        player.enabled = false;
         mainCamera.CameraZoomIn();
         PlayerUI.SetActive(true);
 
@@ -104,10 +105,11 @@ public class InGameUIController : MonoBehaviour
         {
             ZoomStartUI.ZoomInUI();
         }
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1f);
         
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
+        orderUI.SetActive(true);
         //player.enabled = true;
 
         timeController.GetComponent<TimeController>().enabled = true;

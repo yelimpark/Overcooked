@@ -15,6 +15,22 @@ public class Appliances : Slot
 {
     public AppliancesType mask;
 
+    private void Start()
+    {
+        if (occupyObj != null)
+        {
+            CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
+            if (cb != null)
+                cb.CurPosition = mask;
+        }
+    }
+
+    public virtual void OnTriggerEnter(Collider other)
+    {
+        if (AbleToPlace(other.gameObject))
+            OnPlace(other.gameObject);
+    }
+
     public override bool AbleToPlace(GameObject go)
     {
         if (occupyObj != null)
@@ -48,11 +64,11 @@ public class Appliances : Slot
 
     public override bool AbleToTakeOut(GameObject dest)
     {
-        if (dest != null)
+        if (occupyObj != null)
         {
-            Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware != null && cookware.mask == AppliancesType.PLATE)
-                return cookware.AbleToTakeOut(dest);
+            Cookware cookware = occupyObj.GetComponent<Cookware>();
+            if (cookware != null && cookware.AbleToTakeOut(dest))
+                return true;
         }
 
         return base.AbleToTakeOut(dest);
@@ -60,12 +76,13 @@ public class Appliances : Slot
 
     public override GameObject OnTakeOut(GameObject dest)
     {
-        if (dest != null)
-        {
-            Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware != null && cookware.mask == AppliancesType.PLATE)
-                return cookware.OnTakeOut(dest);
-        }
+        Cookware cookware = occupyObj.GetComponent<Cookware>();
+        if (cookware != null && cookware.AbleToTakeOut(dest))
+            return cookware.OnTakeOut(dest);
+
+        CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
+        if (cb != null)
+            cb.CurPosition = AppliancesType.None;
 
         return base.OnTakeOut(dest);
     }

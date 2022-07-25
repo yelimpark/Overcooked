@@ -4,15 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
-  - Stage
   - Ingrediant
   - Interactable
+  - Cookware
+  - Stage
+  - Fire
   - StuffBox
   - Trash
-  - Cookware
-  - Ingredient
-  - submission
+  - ObjPoolMgr
   layers:
   - Default
   - TransparentFX
@@ -20,10 +19,10 @@ TagManager:
   - 
   - Water
   - UI
-  - Fire
   - 
-  - 
-  - 
+  - player
+  - ExceptPlayer
+  - Ground
   - 
   - 
   - 
@@ -49,4 +48,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 343456345
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 2010207923
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 2253725245
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 2685349619
     locked: 0

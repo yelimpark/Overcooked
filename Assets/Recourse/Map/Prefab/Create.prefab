@@ -123,12 +123,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752230158151772050}
-  - component: {fileID: 8801017135545097611}
   - component: {fileID: 1579575945}
   - component: {fileID: 1579575944}
+  - component: {fileID: 325578010}
   m_Layer: 0
   m_Name: Create
-  m_TagString: StuffBox
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,20 +151,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8801017135545097611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5537960647291735261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06befa477e1f07448a442bcfec9cbd38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: Lettuce
-  poolManager: {fileID: 0}
 --- !u!54 &1579575945
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -194,6 +180,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7219255, y: 1, z: 1.1987066}
   m_Center: {x: -0.270568, y: 0, z: 0.12509334}
+--- !u!114 &325578010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537960647291735261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0916efe8059e6f84c92455190228b52a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
+  key: Lettuce
+  poolManager: {fileID: 0}
 --- !u!1 &8740878336461968129
 GameObject:
   m_ObjectHideFlags: 0

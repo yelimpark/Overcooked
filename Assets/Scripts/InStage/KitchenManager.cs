@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System;
+using Photon.Realtime;
 
 public class KitchenManager : MonoBehaviour
 {
@@ -9,13 +12,37 @@ public class KitchenManager : MonoBehaviour
     public ScoreController scoreCtr;
     public CreateDish createDish;
 
-    public int successSubmit;
-    public int score;
-    public int tipScore;
-    public int failSubmit;
-    public int lostScore;
+    public int successSubmit;       //¼º°øÇÑ ÁÖ¹® °¹¼ö
+    public int score;               //µæÁ¡
+    public int tipScore;            //ÆÁ
+    public int failSubmit;          //½ÇÆÐÇÑ ÁÖ¹® °¹¼ö
+    public int lostScore;           //½ÇÆÐ Á¡¼ö
+
+
+    public int SuccessSubmit => successSubmit;
+    public int Score => score;
+    public int TipScore => tipScore;
+    public int FailSubmit => failSubmit;
+    public int LostScore => lostScore;
+
 
     private int feverLevel;
+
+    public GameObject playerPrefab;
+    public List<Transform> SpawnPoints = new List<Transform>();
+
+    public void Start()
+    {
+        //int idx = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
+
+        //GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
+        //myPlayer.GetComponent<InputHandler>().enabled = true;
+    }
+
+    void CalledOnLevelWasLoaded(int level)
+    {
+        Debug.Log("CalledOnLevelWasLoaded");
+    }
 
     public void OnSubmit(GameObject go)
     {
@@ -46,7 +73,7 @@ public class KitchenManager : MonoBehaviour
         scoreCtr.GetScore(result, isFever, feverLevel);
     }
 
-    public void LostScore(int lostScore)
+    public void LostScores(int lostScore)
     {
         this.lostScore += lostScore;
         failSubmit++;

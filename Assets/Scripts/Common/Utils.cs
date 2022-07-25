@@ -20,9 +20,11 @@ public class Utils : MonoBehaviour
         if (rb != null)
             rb.isKinematic = true;
 
-        Collider collider = go.GetComponent<Collider>();
-        if (collider != null)
+        var colliders = go.GetComponents<Collider>();
+        foreach(Collider collider in colliders)
+        {
             collider.enabled = false;
+        }
 
         go.transform.rotation = Quaternion.identity;
     }
@@ -33,22 +35,23 @@ public class Utils : MonoBehaviour
         if (rb != null)
             rb.isKinematic = false;
 
-        var colliders = go.transform.GetComponentsInChildren<Collider>();
-        foreach (var childCollider in colliders)
+        var colliders = go.GetComponents<Collider>();
+        foreach (Collider collider in colliders)
         {
-            childCollider.enabled = true;
+            collider.enabled = true;
         }
     }
 
-    public static bool IsFalling(GameObject go, float errorRange, LayerMask target)
+    public static bool IsFalling(GameObject go, float errorRange)
     {
         RaycastHit hit;
-        Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, target);
+        Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH);
 
-        //Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
+        Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
 
-        Rigidbody rb = go.GetComponent<Rigidbody>();
-        rb.velocity = Vector3.down * 10;
+        //Rigidbody rb = go.GetComponent<Rigidbody>();
+        //rb.velocity = Vector3.down * 3;
+        go.transform.rotation = Quaternion.identity;
 
         if (go.transform.position.y - hit.transform.position.y > errorRange + go.transform.lossyScale.y)
         {

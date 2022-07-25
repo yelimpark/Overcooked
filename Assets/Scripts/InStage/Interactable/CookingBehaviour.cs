@@ -38,6 +38,8 @@ public class CookingBehaviour : MonoBehaviour
         if (cookware == null || cookware.occupyObj == null)
             return;
 
+        timebar.Init();
+
         GameObject before = cookware.OnTakeOut(null);
         Ingrediant ingrediant = before.GetComponent<Ingrediant>();
 
@@ -51,17 +53,28 @@ public class CookingBehaviour : MonoBehaviour
         before.SetActive(false);
     }
 
-    private void Update()
-    {
-        Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
-        newPos.y += Yoffset;
-        timebar.transform.position = newPos;
+    //private void Update()
+    //{
+    //    Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
+    //    newPos.y += Yoffset;
+    //    timebar.transform.position = newPos;
 
-        //임시코드!!!!!!
-        if (Input.GetKeyDown(KeyCode.Z))
+    //    임시코드!!!!!!
+    //    if (Input.GetKeyDown(KeyCode.Z))
+    //    {
+    //        trigger = true;
+    //        Execute();
+    //    }
+    //}
+
+    public void SetTrigger(bool trigger)
+    {
+        this.trigger = trigger;
+        Execute();
+
+        if (!(trigger || AutoExecute))
         {
-            trigger = true;
-            Execute();
+            timebar.pause = true;
         }
     }
 
@@ -70,18 +83,25 @@ public class CookingBehaviour : MonoBehaviour
         if (fixWhileCooking && !timebar.end)
             return false;
 
-        CurPosition = AppliancesType.None;
+        //CurPosition = AppliancesType.None;
         timebar.pause = true;
         return true;
     }
 
     public void Execute()
     {
+        //if (timebar == null)
+        //    return;
+
         if (timebar.end || CurPosition != mask)
             return;
 
         Cookware cookware = GetComponent<Cookware>();
         if (cookware == null || cookware.occupyObj == null)
+            return;
+
+        Ingrediant ingrediant = cookware.occupyObj.GetComponent<Ingrediant>();
+        if (ingrediant.mask != mask)
             return;
 
         if (AutoExecute || trigger)

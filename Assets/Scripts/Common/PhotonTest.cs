@@ -68,7 +68,6 @@ public class PhotonTest : MonoBehaviourPunCallbacks
         
         popUp.gameObject.SetActive(true);
         joinGame.SetActive(false);
-        WorldBtn.SetActive(true);
     }
 
     public override void OnJoinedRoom()

@@ -34,14 +34,15 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        this.gameObject.AddComponent<SaveLoadManager>();
+
+        DataManager = this.gameObject.AddComponent<DataManager>();
+        KitchenManager = this.gameObject.AddComponent<KitchenManager>();
     }
 
-    public SaveLoadManager SaveLoadManager;
 
-    
+    public DataManager DataManager;
 
-
+    public KitchenManager KitchenManager;
 
 
 

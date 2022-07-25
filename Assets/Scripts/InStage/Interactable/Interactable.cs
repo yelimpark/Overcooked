@@ -34,6 +34,4 @@ public class Interactable : MonoBehaviour
     {
         return gameObject;
     }
-
-    
 }
