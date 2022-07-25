@@ -17,7 +17,6 @@ public class KitchenManager : MonoBehaviour
     public int failSubmit;          //실패한 주문 갯수
     public int lostScore;           //실패 점수
 
-
     public int SuccessSubmit => successSubmit;
     public int Score => score;
     public int TipScore => tipScore;
@@ -32,10 +31,24 @@ public class KitchenManager : MonoBehaviour
 
     public void Start()
     {
-        //int idx = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
+        Debug.Log(PhotonNetwork.CountOfPlayers);
 
-        //GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
-        //myPlayer.GetComponent<InputHandler>().enabled = true;
+        if (PhotonNetwork.CountOfPlayers == 1)
+        {
+            GameObject myPlayer1 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[0].position, SpawnPoints[0].rotation);
+            GameObject myPlayer2 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[1].position, SpawnPoints[1].rotation);
+            myPlayer2.GetComponent<InputHandler>().enabled = false;
+            
+            myPlayer1.AddComponent<SinglePlay>();
+            myPlayer2.AddComponent<SinglePlay>();
+        }
+        else
+        {
+            int idx = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
+
+            GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
+            //myPlayer.GetComponent<InputHandler>().enabled = true;
+        }
     }
 
     void CalledOnLevelWasLoaded(int level)

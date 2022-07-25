@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class InputHandler : MonoBehaviour
 {
-    private Invoker _invoker;
     private EquipmentSystem _equipmentSystem;
     private Animator animator;
     private Rigidbody rb;
@@ -21,10 +20,9 @@ public class InputHandler : MonoBehaviour
 
     void Start()
     {
-        _invoker = GetComponent<Invoker>();
         _equipmentSystem = GetComponent<EquipmentSystem>();
         animator = GetComponent<Animator>();
-        //photonView = PhotonView.Get(this);
+        photonView = PhotonView.Get(this);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -36,10 +34,10 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
-        //if (!photonView.IsMine)
-        //{
-        //    return;
-        //}
+        if (!photonView.IsMine)
+        {
+            return;
+        }
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
@@ -56,8 +54,8 @@ public class InputHandler : MonoBehaviour
         {
             if (_equipmentSystem.Equipment == null)
             {
-                OnEquipBtn();
-                //PhotonView.Get(this).RPC("OnTakeOutBtn", RpcTarget.All
+                //OnEquipBtn();
+                PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
             }
             else
             {
@@ -67,18 +65,20 @@ public class InputHandler : MonoBehaviour
                     InteractableAppliances ia = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
                     if (ia.slot.occupyObj != null)
                     {
-                        OnEquipBtn();
+                        //OnEquipBtn();
+                        PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
                         return;
                     }
                 }
 
-                //PhotonView.Get(this).RPC("Place", RpcTarget.All);
-                Place();
+                PhotonView.Get(this).RPC("Place", RpcTarget.All);
+                //Place();
             }
         }
         if (Input.GetButtonDown("Fire2"))
         {
             OnZDown();
+            PhotonView.Get(this).RPC("OnZDown", RpcTarget.All);
         }
 
     }
