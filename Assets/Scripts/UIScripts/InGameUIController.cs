@@ -12,6 +12,7 @@ public class InGameUIController : MonoBehaviour
     public GameObject ReadyUI;
     public GameObject StartUI;
     public GameObject EndUI;
+    public GameObject orderUI;
     public Player player;
 
     [Header("To Zoom UI's")]
@@ -110,6 +111,7 @@ public class InGameUIController : MonoBehaviour
         
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
+        orderUI.SetActive(true);
         //player.enabled = true;
 
         timeController.GetComponent<TimeController>().enabled = true;

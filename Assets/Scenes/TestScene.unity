@@ -8022,7 +8022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &599159754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14477,6 +14477,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 744086499}
     - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
+      propertyPath: orderUI
+      value: 
+      objectReference: {fileID: 599159753}
+    - target: {fileID: 4565956809976723040, guid: b1ef197624b0b404f91e6c8d0e1210d8, type: 3}
       propertyPath: PlayerUI
       value: 
       objectReference: {fileID: 1215454996}
@@ -20164,7 +20168,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 160}
+  m_SizeDelta: {x: 20, y: 160}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1353103333
 MonoBehaviour:
@@ -20223,6 +20227,7 @@ MonoBehaviour:
   - {fileID: 4780895680793885109, guid: f09dc303c1a4d8c4eb2c27ac78fc9e7f, type: 3}
   submitList: []
   order: {fileID: 1353103332}
+  orderTime: 20
 --- !u!1001 &1353655540
 PrefabInstance:
   m_ObjectHideFlags: 0
