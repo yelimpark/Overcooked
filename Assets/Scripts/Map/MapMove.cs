@@ -15,15 +15,14 @@ public class MapMove : MonoBehaviour
 
     public IEnumerator CoMapMove()
     {
-        while(true)
-        {
-            yield return new WaitForSeconds(5f);
-            transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPosition.transform.position, ref vel, 1f);
-            Debug.Log(transform.position);
 
-            yield return new WaitForSeconds(5f);
-            transform.position = Vector3.SmoothDamp(gameObject.transform.position, originPosition.transform.position, ref vel, 1f);
-            Debug.Log(transform.position);
-        }
+        yield return new WaitForSeconds(5f);
+        transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPosition.transform.position, ref vel, 1f);
+        Debug.Log(transform.position);
+
+        yield return new WaitForSeconds(5f);
+        transform.position = Vector3.SmoothDamp(gameObject.transform.position, originPosition.transform.position, ref vel, 1f);
+        Debug.Log(transform.position);
+
     }
 }
