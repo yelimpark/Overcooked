@@ -26,12 +26,7 @@ public class FireRay : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            OnDrawGizmos();
-            Shoot();
-        }   
-        
+        OnDrawGizmos();
     }
 
     private void OnDrawGizmos()
