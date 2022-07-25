@@ -13,6 +13,9 @@ public class CardManager : MonoBehaviour
     public float orderTime;
     private float orderWaitTimer;
 
+    public AudioSource audioSource;
+    public AudioClip[] sounds;
+
     private void Awake()
     {
         orderWaitTimer = orderTime;
@@ -39,6 +42,8 @@ public class CardManager : MonoBehaviour
                 var submit = submitList[i].GetComponent<Card>();
                 var isFever = submit.SuccessSubmission();
                 kitchenMgr.GetScore(submit.submitScore, isFever);
+                audioSource.clip = sounds[0];
+                audioSource.Play();
                 Debug.Log(submitList[i].name);
                 break;
             }
@@ -50,6 +55,8 @@ public class CardManager : MonoBehaviour
             {
                 submitList[i].GetComponent<Card>().WrongSubmission();
             }
+            audioSource.clip = sounds[1];
+            audioSource.Play();
             kitchenMgr.WrongSubmit();
         }
     }

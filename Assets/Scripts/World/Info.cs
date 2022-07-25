@@ -19,6 +19,9 @@ public class Info : MonoBehaviour
     [Header("스크립터블 정보")]
     public SceneDefinition sceneDefinition;
 
+    [Header("사운드")]
+    public AudioSource audioSource;
+
     public void Start()
     {
         if (!sceneDefinition)
@@ -57,6 +60,7 @@ public class Info : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        audioSource.Play();
         onCollider = true;
         if (other.gameObject.CompareTag("Player"))
         {
