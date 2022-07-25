@@ -8,12 +8,16 @@ public class Van : MonoBehaviour
     public float speed;
     public bool canMove = true;
 
-    private float horizontal;
+    private float horizontal; 
+    private float vertical; 
     private Vector3 moveVec;
 
     private float minX = 0f;
 
     PhotonView photonView;
+
+    public VirtualJoyStick joystick;
+
 
     private void Start()
     {
@@ -29,8 +33,10 @@ public class Van : MonoBehaviour
 
         if (canMove)
         {
-            horizontal = Input.GetAxisRaw("Horizontal");
-            moveVec = new Vector3(horizontal, 0f, 0f).normalized;
+            //horizontal = Input.GetAxisRaw("Horizontal");
+            float h = joystick.GetAxis("Horizontal") * speed;
+
+            moveVec = new Vector3(h, 0f, 0f).normalized;
             transform.LookAt(transform.position + moveVec);
         }
     }

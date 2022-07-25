@@ -13,6 +13,8 @@ public class DataManager : MonoBehaviour
 
     private FileInfo fileInfo;
 
+    public TextAsset hgh;
+
     public void LoadStageData()
     {
         string fileName = "StageInfo";
@@ -20,22 +22,9 @@ public class DataManager : MonoBehaviour
 
         fileInfo = new FileInfo(path);
 
-        if (!fileInfo.Exists)
-        {
-            Debug.Log($"[DataManager] 세이브 데이터 없음");
-
-            fileName = "DefaultStageInfo";
-            path = Application.dataPath + "/" + "Json" + "/" + fileName + ".Json";
-
-            string json = File.ReadAllText(path);
-
-            currentStageInfo = JsonConvert.DeserializeObject<List<SceneInfo>>(json);
-        }
-        else
-        {
-            string json = File.ReadAllText(path);
-            currentStageInfo = JsonConvert.DeserializeObject<List<SceneInfo>>(json);
-        }
+        string json = File.ReadAllText(path);
+        currentStageInfo = JsonConvert.DeserializeObject<List<SceneInfo>>(json);
+        
 
         Debug.Log($"[DataManager] 불러온 파일명 :  {fileName}");
 
@@ -68,7 +57,7 @@ public class DataManager : MonoBehaviour
     public void DeleteStageData()
     {
         string fileName = "StageInfo";
-        string path = Application.dataPath + "Json" + "/" + fileName + ".Json";
+        string path = Application.persistentDataPath + "Json" + "/" + fileName + ".Json";
 
         File.Delete(path);
     }

@@ -56,6 +56,32 @@ public class WorldScene : MonoBehaviour
         }
     }
 
+    public void SelectSceneButton()
+    {
+        if (stage1.onCollider)
+        {
+            Debug.Log("스테이지 1");
+
+            //PhotonView.Get(this).RPC("SetDefinition", RpcTarget.All);
+            GameVariable.SetDefinition(stage1.sceneDefinition);
+
+            //Debug.Log(GameVariable.GetDefinition().SceneName);
+
+            //GameVariable.SetDefinition(stage1.sceneDefinition);
+
+            //Debug.Log(GameVariable.GetDefinition().SceneName);
+            ZoomOutUI.ZoomOutUI();
+            //stage1.sceneDefinition.SceneName; 
+        }
+        else if (stage2.onCollider)
+        {
+            Debug.Log("스테이지 2");
+
+            GameVariable.SetDefinition(stage2.sceneDefinition);
+            ZoomOutUI.ZoomOutUI();
+        }
+    }
+
     [PunRPC]
     public void SetDefinition()
     {
