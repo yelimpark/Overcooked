@@ -8,6 +8,10 @@ TagManager:
   - Interactable
   - Cookware
   - Stage
+  - Fire
+  - StuffBox
+  - Trash
+  - ObjPoolMgr
   layers:
   - Default
   - TransparentFX
@@ -17,8 +21,8 @@ TagManager:
   - UI
   - 
   - player
-  - 
-  - 
+  - ExceptPlayer
+  - Ground
   - 
   - 
   - 

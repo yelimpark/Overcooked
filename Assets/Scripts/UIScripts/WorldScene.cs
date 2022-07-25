@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class WorldScene : MonoBehaviour
 {
@@ -34,9 +35,14 @@ public class WorldScene : MonoBehaviour
             {
                 Debug.Log("스테이지 1");
 
+                //PhotonView.Get(this).RPC("SetDefinition", RpcTarget.All);
                 GameVariable.SetDefinition(stage1.sceneDefinition);
 
-                Debug.Log(GameVariable.GetDefinition().SceneName);
+                //Debug.Log(GameVariable.GetDefinition().SceneName);
+
+                //GameVariable.SetDefinition(stage1.sceneDefinition);
+
+                //Debug.Log(GameVariable.GetDefinition().SceneName);
                 ZoomOutUI.ZoomOutUI();
                 //stage1.sceneDefinition.SceneName; 
             }
@@ -48,5 +54,12 @@ public class WorldScene : MonoBehaviour
                 ZoomOutUI.ZoomOutUI();
             }
         }
+    }
+
+    [PunRPC]
+    public void SetDefinition()
+    {
+        GameVariable.SetDefinition(stage1.sceneDefinition);
+        ZoomOutUI.ZoomOutUI();
     }
 }
