@@ -89,16 +89,21 @@ public class EquipmentSystem : MonoBehaviour
             case State.UNEQUIPING:
                 if (Utils.IsFalling(tempGO, equipErrorRange))
                 {
-                    curState = State.NONE;
-                    int layer = LayerMask.NameToLayer("Default");
-                    tempGO.layer = layer;
-                    tempGO = null;
+                    UnequipEnd();
                 }
                 break;
 
             default:
                 break;
         }
+    }
+
+    public void UnequipEnd()
+    {
+        curState = State.NONE;
+        int layer = LayerMask.NameToLayer("Default");
+        tempGO.layer = layer;
+        tempGO = null;
     }
 
     public GameObject Unequip()

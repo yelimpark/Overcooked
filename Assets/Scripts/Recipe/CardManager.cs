@@ -36,17 +36,24 @@ public class CardManager : MonoBehaviour
         bool find = false;
         for (var i = 0; i < submitList.Count; i++)
         {
-            if (submitFood.transform.name == submitList[i].name)
+            Cookware cookware = submitFood.GetComponent<Cookware>();
+            if (cookware.occupyObj != null)
             {
-                find = true;
-                var submit = submitList[i].GetComponent<Card>();
-                var isFever = submit.SuccessSubmission();
-                kitchenMgr.GetScore(submit.submitScore, isFever);
-                audioSource.clip = sounds[0];
-                audioSource.Play();
-                Debug.Log(submitList[i].name);
-                break;
+                string name = cookware.occupyObj.GetComponent<Ingrediant>().IngrediantName;
+                Debug.Log($"{name} {submitList[i].name}");
+                if (name == submitList[i].name)
+                {
+                    find = true;
+                    var submit = submitList[i].GetComponent<Card>();
+                    var isFever = submit.SuccessSubmission();
+                    kitchenMgr.GetScore(submit.submitScore, isFever);
+                    audioSource.clip = sounds[0];
+                    audioSource.Play();
+                    Debug.Log(submitList[i].name);
+                    break;
+                }
             }
+
         }
 
         if (!find)
@@ -55,8 +62,8 @@ public class CardManager : MonoBehaviour
             {
                 submitList[i].GetComponent<Card>().WrongSubmission();
             }
-            audioSource.clip = sounds[1];
-            audioSource.Play();
+            //audioSource.clip = sounds[1];
+            //audioSource.Play();
             kitchenMgr.WrongSubmit();
         }
     }

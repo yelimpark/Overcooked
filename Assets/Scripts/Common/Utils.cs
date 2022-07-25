@@ -47,7 +47,7 @@ public class Utils : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, LayerMask.GetMask("Ground"));
 
-        Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
+        //Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
 
         //Rigidbody rb = go.GetComponent<Rigidbody>();
         //rb.velocity = Vector3.down * 3;

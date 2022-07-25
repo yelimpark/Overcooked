@@ -44,12 +44,15 @@ public class CookingBehaviour : MonoBehaviour
         Ingrediant ingrediant = before.GetComponent<Ingrediant>();
 
         // 원래는 오브젝트 풀에 요청해야 함. 테스트 코드.
-        GameObject after = GameObject.Find(ingrediant.next);
-        after.SetActive(true);
+        GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
+        ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
+        GameObject after = ObjPoolMgr.Extract(ingrediant.next).gameObject;
 
         cookware.OnPlace(after);
 
         //반환
+        PoolingObject po = before.GetComponent<PoolingObject>();
+        ObjPoolMgr.Return(po);
         before.SetActive(false);
     }
 

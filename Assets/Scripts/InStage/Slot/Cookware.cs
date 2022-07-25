@@ -47,12 +47,14 @@ public class Cookware : Slot
                 GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
                 ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
                 GameObject after = ObjPoolMgr.Extract(occupyIngrediant.next).gameObject;
-                after.SetActive(true);
+                //after.SetActive(true);
 
                 var before = OnTakeOut(null);
                 OnPlace(after);
 
                 //¹ÝÈ¯
+                PoolingObject po = before.GetComponent<PoolingObject>();
+                ObjPoolMgr.Return(po);
                 before.SetActive(false);
             }
         }

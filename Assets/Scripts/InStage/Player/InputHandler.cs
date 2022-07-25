@@ -124,6 +124,7 @@ public class InputHandler : MonoBehaviour
             if (interactable != null && interactable.slot.AbleToPlace(_equipmentSystem.Equipment))
             {
                 GameObject discarded = _equipmentSystem.Unequip();
+                _equipmentSystem.UnequipEnd();
                 interactable.slot.OnPlace(discarded);
                 return;
             }
