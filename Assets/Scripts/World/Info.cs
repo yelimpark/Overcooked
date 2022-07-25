@@ -26,8 +26,18 @@ public class Info : MonoBehaviour
             return;
         }
 
-        GameManager.Instance.DataManager.LoadStageData();
-        
+        if(TitleSceneController.NewScene)
+        {
+            GameManager.Instance.DataManager.LoadNewStageData();
+            TitleSceneController.NewScene = false;
+        }
+        else
+        {
+            GameManager.Instance.DataManager.LoadStageData();
+        }
+     
+
+
         for(int i = 0; i < GameManager.Instance.DataManager.currentStageInfo.Count; i++)
         {
             if(sceneDefinition.JsonIndex == GameManager.Instance.DataManager.currentStageInfo[i].Index)
