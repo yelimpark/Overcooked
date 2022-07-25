@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7543549534451315352}
   - component: {fileID: 6572391008879850663}
   - component: {fileID: 247302201015937394}
+  - component: {fileID: 3640857582227569758}
+  - component: {fileID: 7988973037934322154}
   m_Layer: 0
   m_Name: Lettuce
   m_TagString: Untagged
@@ -115,3 +117,29 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 633031351545837914, guid: a72654037ef7f014ba4c4f2f30be5ecd, type: 3}
+--- !u!114 &3640857582227569758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543549534451315353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284def03d6a08ee46a9f8cb61a711bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Lettuce
+--- !u!114 &7988973037934322154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543549534451315353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579b3973138ca1c4c82923f930dd84f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolManager: {fileID: 62497118129666386, guid: e70bfe20ae3f98a468aa8e410bbfa56d, type: 3}

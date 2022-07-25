@@ -7,6 +7,7 @@ public class KitchenManager : MonoBehaviour
     // UI 
     public CardManager cm;
     public ScoreController scoreCtr;
+    public CreateDish createDish;
 
     public int successSubmit;
     public int score;
@@ -19,6 +20,8 @@ public class KitchenManager : MonoBehaviour
     public void OnSubmit(GameObject go)
     {
         cm.OnSubmit(go);
+        createDish.GenerateDish(); //접시 타이밍
+
     }
 
     public void GetScore(int score, bool isFever)

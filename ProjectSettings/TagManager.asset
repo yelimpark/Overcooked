@@ -10,6 +10,9 @@ TagManager:
   - Interactable
   - StuffBox
   - Trash
+  - Cookware
+  - Ingredient
+  - submission
   layers:
   - Default
   - TransparentFX

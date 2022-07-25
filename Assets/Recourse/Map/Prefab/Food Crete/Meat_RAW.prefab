@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 5453879782599833438}
   - component: {fileID: 6575067007652743241}
   - component: {fileID: 5832068590246887270}
+  - component: {fileID: 586495193}
+  - component: {fileID: 2152049963621354571}
   m_Layer: 0
   m_Name: Meat_RAW
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,3 +117,29 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2983433793011800343, guid: dcd8695d5cc7d124a8fc8c076e57507c, type: 3}
+--- !u!114 &586495193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5453879782599833439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284def03d6a08ee46a9f8cb61a711bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Meat
+--- !u!114 &2152049963621354571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5453879782599833439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579b3973138ca1c4c82923f930dd84f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolManager: {fileID: 62497118129666386, guid: e70bfe20ae3f98a468aa8e410bbfa56d, type: 3}

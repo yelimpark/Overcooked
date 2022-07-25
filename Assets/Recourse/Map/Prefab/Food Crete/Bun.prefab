@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 1387952541581149444}
   - component: {fileID: -6445346770750224874}
   - component: {fileID: 6666901794375508043}
+  - component: {fileID: -3762480229142693208}
+  - component: {fileID: 2188471948169043892}
   m_Layer: 0
   m_Name: Bun
   m_TagString: Untagged
@@ -147,6 +149,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7249241, y: 0.39499056, z: 0.39426184}
   m_Center: {x: -0.07169449, y: 0.15396613, z: 0.023799896}
+--- !u!114 &-3762480229142693208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932026364695135221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284def03d6a08ee46a9f8cb61a711bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Bun
+--- !u!114 &2188471948169043892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932026364695135221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579b3973138ca1c4c82923f930dd84f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolManager: {fileID: 62497118129666386, guid: e70bfe20ae3f98a468aa8e410bbfa56d, type: 3}
 --- !u!1 &5382823859302125327
 GameObject:
   m_ObjectHideFlags: 0
