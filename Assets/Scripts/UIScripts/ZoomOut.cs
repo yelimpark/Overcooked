@@ -15,8 +15,13 @@ public class ZoomOut : MonoBehaviour
 
     public string loadScene;
 
+    public AudioSource audioSource;
+    public AudioClip zoomSound;
+
     public void ZoomOutUI()
     {
+        audioSource.clip = zoomSound;
+        audioSource.PlayDelayed(0.5f);
         iTween.ScaleTo(ZoomUI, iTween.Hash("scale", new Vector3(1, 1, 1), "time", time, "delay", delayTime, "easetype", iTween.EaseType.easeInOutExpo, "oncomplete", "ExecuteEvent2", "oncompletetarget", gameObject));
     }
     public void ExecuteEvent2()

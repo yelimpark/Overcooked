@@ -50,6 +50,8 @@ public class Card : MonoBehaviour
             if (timer.value == 0f)
             {
                 cardMgr.kitchenMgr.LostScores(timeoutScore);
+                cardMgr.audioSource.clip = cardMgr.sounds[1];
+                cardMgr.audioSource.Play();
                 animator.SetTrigger("isTimeout");
             }
         }

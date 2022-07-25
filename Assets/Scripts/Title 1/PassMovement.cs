@@ -6,6 +6,7 @@ public class PassMovement : MonoBehaviour
 {
     public Animator animator;
     public Transform passPos;
+    public GameObject chef;
     public GameObject tuchText;
 
     public float speed;
@@ -15,6 +16,7 @@ public class PassMovement : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
+            chef.SetActive(true);
             tuchText.SetActive(false);
             animator.SetBool("isOpen", true);
         }
