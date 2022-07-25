@@ -10,11 +10,21 @@ public class CardManager : MonoBehaviour
     public List<GameObject> submitList;
     public Transform order;
 
+    public float orderTime;
+    private float orderWaitTimer;
+
+    private void Awake()
+    {
+        orderWaitTimer = orderTime;
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        orderWaitTimer += Time.deltaTime;
+        if (orderWaitTimer > orderTime)
         {
             NewCard();
+            orderWaitTimer = 0f;
         }
     }
 

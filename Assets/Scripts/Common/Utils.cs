@@ -42,12 +42,12 @@ public class Utils : MonoBehaviour
         }
     }
 
-    public static bool IsFalling(GameObject go, float errorRange, LayerMask target)
+    public static bool IsFalling(GameObject go, float errorRange)
     {
         RaycastHit hit;
-        Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, target);
+        Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH);
 
-        //Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
+        Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
 
         //Rigidbody rb = go.GetComponent<Rigidbody>();
         //rb.velocity = Vector3.down * 3;

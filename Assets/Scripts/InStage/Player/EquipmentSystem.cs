@@ -85,8 +85,7 @@ public class EquipmentSystem : MonoBehaviour
                 break;
 
             case State.UNEQUIPING:
-                int layerMask = (-1) - (1 << LayerMask.NameToLayer("player"));
-                if (Utils.IsFalling(equipment, equipErrorRange, layerMask))
+                if (Utils.IsFalling(equipment, equipErrorRange))
                 {
                     curState = State.NONE;
                     int layer = LayerMask.NameToLayer("Default");
