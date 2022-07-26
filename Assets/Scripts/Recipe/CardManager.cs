@@ -13,6 +13,9 @@ public class CardManager : MonoBehaviour
     public float orderTime;
     private float orderWaitTimer;
 
+    public AudioSource audioSource;
+    public AudioClip[] sounds;
+
     private void Awake()
     {
         orderWaitTimer = orderTime;
@@ -33,15 +36,24 @@ public class CardManager : MonoBehaviour
         bool find = false;
         for (var i = 0; i < submitList.Count; i++)
         {
-            if (submitFood.transform.name == submitList[i].name)
+            Cookware cookware = submitFood.GetComponent<Cookware>();
+            if (cookware.occupyObj != null)
             {
-                find = true;
-                var submit = submitList[i].GetComponent<Card>();
-                var isFever = submit.SuccessSubmission();
-                kitchenMgr.GetScore(submit.submitScore, isFever);
-                Debug.Log(submitList[i].name);
-                break;
+                string name = cookware.occupyObj.GetComponent<Ingrediant>().IngrediantName;
+                Debug.Log($"{name} {submitList[i].name}");
+                if (name == submitList[i].name)
+                {
+                    find = true;
+                    var submit = submitList[i].GetComponent<Card>();
+                    var isFever = submit.SuccessSubmission();
+                    kitchenMgr.GetScore(submit.submitScore, isFever);
+                    audioSource.clip = sounds[0];
+                    audioSource.Play();
+                    Debug.Log(submitList[i].name);
+                    break;
+                }
             }
+
         }
 
         if (!find)
@@ -50,6 +62,8 @@ public class CardManager : MonoBehaviour
             {
                 submitList[i].GetComponent<Card>().WrongSubmission();
             }
+            //audioSource.clip = sounds[1];
+            //audioSource.Play();
             kitchenMgr.WrongSubmit();
         }
     }
@@ -60,8 +74,8 @@ public class CardManager : MonoBehaviour
         {
             var index = Random.Range(0, cardList.Count);
 
-            //var newCard = Instantiate(cardList[index], order);
-            GameObject newCard = PhotonNetwork.Instantiate(cardList[index].name, Vector3.zero, Quaternion.identity);
+            var newCard = Instantiate(cardList[index], order);
+            //GameObject newCard = PhotonNetwork.Instantiate(cardList[index].name, Vector3.zero, Quaternion.identity);
             newCard.transform.SetParent(order);
             newCard.name = cardList[index].name;
             newCard.transform.localScale = new Vector3(1f, 1f, 1f);

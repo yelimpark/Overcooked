@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Photon.Pun;
 
 public class LoadingWorldScene : MonoBehaviour
 {
@@ -62,22 +63,49 @@ public class LoadingWorldScene : MonoBehaviour
             //Debug.Log("Loading progress: " + (loadRatio * 100) + "%");
             image.fillAmount = loadRatio;
 
-            
-            
+
+
             if (loadRatio >= 0.9f)
             {
                 image.fillAmount = 1.0f;
                 ZoomOut.ZoomOutUI();
                 yield return new WaitForSeconds(2f);
-                
+
                 operation.allowSceneActivation = true;
             }
-            
-            yield return null;
-            
-        }
-        
 
+            yield return null;
+
+        }
+
+        //    float fakeLoadTime = 0f;
+        //    float fakeLoadRatio = 0f;
+        //    float loadRatio = 0f;
+
+        //    while (true)
+        //    {
+        //        fakeLoadTime += Time.deltaTime;
+        //        fakeLoadRatio = fakeLoadTime / minLoadingTime;
+
+        //        //loadRatio
+        //        //loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
+        //        loadRatio = fakeLoadRatio;
+        //        image.fillAmount = loadRatio;
+
+        //        if (loadRatio >= 0.9f)
+        //        {
+        //            image.fillAmount = 1.0f;
+        //            ZoomOut.ZoomOutUI();
+
+        //            yield return new WaitForSeconds(2f);
+
+        //            PhotonNetwork.LoadLevel(SceneName);
+        //            break;
+        //            //operation.allowSceneActivation = true;
+        //        }
+
+        //    }
+        //    yield return null;
     }
 
 }

@@ -12,6 +12,8 @@ TagManager:
   - StuffBox
   - Trash
   - ObjPoolMgr
+  - ObjectPool
+  - submission
   layers:
   - Default
   - TransparentFX
@@ -23,7 +25,7 @@ TagManager:
   - player
   - ExceptPlayer
   - Ground
-  - 
+  - Fire
   - 
   - 
   - 

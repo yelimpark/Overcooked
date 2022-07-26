@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Photon.Pun;
 
 public class LoadingScene : MonoBehaviour
 {
@@ -77,43 +78,34 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator LoadAsynSceneCoroutine()
     {
-
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneName);
-
-        operation.allowSceneActivation = false;
-
         float fakeLoadTime = 0f;
         float fakeLoadRatio = 0f;
         float loadRatio = 0f;
 
-        while (!operation.isDone)
+        while (true)
         {
             fakeLoadTime += Time.deltaTime;
             fakeLoadRatio = fakeLoadTime / minLoadingTime;
-            //time += Time.deltaTime;
-
 
             //loadRatio
-            loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
-            //Debug.Log("Loading progress: " + (loadRatio * 100) + "%");
+            //loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
+            loadRatio = fakeLoadRatio;
             image.fillAmount = loadRatio;
 
-            
-            
             if (loadRatio >= 0.9f)
             {
                 image.fillAmount = 1.0f;
                 ZoomOut.ZoomOutUI();
-                yield return new WaitForSeconds(2f);
-                
-                operation.allowSceneActivation = true;
-            }
-            
-            yield return null;
-            
-        }
-        
 
+                yield return new WaitForSeconds(2f);
+
+                PhotonNetwork.LoadLevel(SceneName);
+                break;
+                //operation.allowSceneActivation = true;
+            }
+
+        }
+       yield return null;
     }
 
 }

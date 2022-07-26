@@ -28,6 +28,8 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public List<string> players = new List<string>();
 
+    public AudioSource pressButtonSound;
+
     private void Start()
     {
         photonView = PhotonView.Get(this);
@@ -52,6 +54,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public void Connect()
     {
+        pressButtonSound.Play();
         PhotonNetwork.NickName = nameInput.text;
         PhotonNetwork.JoinRoom(roomNumInput.text);
         joinGame.SetActive(false);
@@ -59,6 +62,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public void OnCreateBtn()
     {
+        pressButtonSound.Play();
         PhotonNetwork.NickName = nameInput.text;
         int roomNum = Random.Range(0, 1000000);
         string roomNumStr = roomNum.ToString();
