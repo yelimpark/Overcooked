@@ -46,7 +46,7 @@ public class LoadingScene : MonoBehaviour
             instance = this;
         }
 
-        GameManager.Instance.DataManager.LoadStageData();
+        //GameManager.Instance.DataManager.LoadStageData();
 
         StageImage.sprite = GameVariable.GetDefinition().StageImage;
         Titletext.text = GameVariable.GetDefinition().SceneName;
@@ -70,6 +70,7 @@ public class LoadingScene : MonoBehaviour
             }
         }
 
+        Debug.Log(GameManager.Instance.DataManager.currentStageInfo[0].successSubmit);
 
         ZoomIn.ZoomInUI();
         StartCoroutine(LoadAsynSceneCoroutine());
@@ -78,34 +79,71 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator LoadAsynSceneCoroutine()
     {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneName);
+
+        operation.allowSceneActivation = false;
+
         float fakeLoadTime = 0f;
         float fakeLoadRatio = 0f;
         float loadRatio = 0f;
 
-        while (true)
+        while (!operation.isDone)
         {
             fakeLoadTime += Time.deltaTime;
             fakeLoadRatio = fakeLoadTime / minLoadingTime;
+            //time += Time.deltaTime;
+
 
             //loadRatio
-            //loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
-            loadRatio = fakeLoadRatio;
+            loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
+            //Debug.Log("Loading progress: " + (loadRatio * 100) + "%");
             image.fillAmount = loadRatio;
+
+
 
             if (loadRatio >= 0.9f)
             {
                 image.fillAmount = 1.0f;
                 ZoomOut.ZoomOutUI();
-
                 yield return new WaitForSeconds(2f);
 
-                PhotonNetwork.LoadLevel(SceneName);
-                break;
-                //operation.allowSceneActivation = true;
+                operation.allowSceneActivation = true;
             }
 
+            yield return null;
+
         }
-       yield return null;
+       // float fakeLoadTime = 0f;
+       // float fakeLoadRatio = 0f;
+       // float loadRatio = 0f;
+
+       // while (true)
+       // {
+
+
+
+       //     fakeLoadTime += Time.deltaTime;
+       //     fakeLoadRatio = fakeLoadTime / minLoadingTime;
+
+       //     //loadRatio
+       //     //loadRatio = Mathf.Min(operation.progress + 0.1f, fakeLoadRatio);
+       //     loadRatio = fakeLoadRatio;
+       //     image.fillAmount = loadRatio;
+
+       //     if (loadRatio >= 0.9f)
+       //     {
+       //         image.fillAmount = 1.0f;
+       //         ZoomOut.ZoomOutUI();
+
+       //         yield return new WaitForSeconds(2f);
+
+       //         PhotonNetwork.LoadLevel(SceneName);
+       //         break;
+       //         //operation.allowSceneActivation = true;
+       //     }
+
+       // }
+       //yield return null;
     }
 
 }

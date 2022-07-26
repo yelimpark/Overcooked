@@ -23,6 +23,8 @@ public class ResultScene : MonoBehaviour
     public int score;
     public int tipScore;
     public int lostScore;
+    public int successSubmit;
+    public int failSubmit;
     public int totalScore;
 
     [Header("별 바뀔 Sprite")]
@@ -34,26 +36,24 @@ public class ResultScene : MonoBehaviour
     {
         TitleText.text = GameVariable.GetDefinition().SceneName;
         
-        score = GameManager.Instance.KitchenManager.Score;
-        tipScore = GameManager.Instance.KitchenManager.TipScore;
-        lostScore = GameManager.Instance.KitchenManager.LostScore;
+        score = GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].score;
+        tipScore = GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].tipScore;
+        lostScore = GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].lostScore;
+        failSubmit = GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].failSubmit;
+        successSubmit = GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].successSubmit;
+        totalScore = GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].totalScore;
 
-        totalScore = score + tipScore - lostScore;
+        
 
-        if(totalScore > GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].score)
-        {
-            GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].score = totalScore;
-        }
+        ScoreText.text = score.ToString();
+        TipScoreText.text = tipScore.ToString();
+        lostScoreText.text = lostScore.ToString();
 
-        ScoreText.text = GameManager.Instance.KitchenManager.Score.ToString();
-        TipScoreText.text = GameManager.Instance.KitchenManager.TipScore.ToString();
-        lostScoreText.text = GameManager.Instance.KitchenManager.LostScore.ToString();
-
-        SubMissionCountText.text = $"배달된 주문 x {GameManager.Instance.KitchenManager.SuccessSubmit.ToString()}";
-        FailedMissionCountText.text = $"실패한 주문 x {GameManager.Instance.KitchenManager.FailSubmit.ToString()}";
+        SubMissionCountText.text = $"배달된 주문 x {successSubmit.ToString()}";
+        FailedMissionCountText.text = $"실패한 주문 x {failSubmit.ToString()}";
 
 
-        TotalScoreText.text = (score + tipScore - lostScore).ToString();
+        TotalScoreText.text = totalScore.ToString();
 
         //첫번째, 두번쨰, 세번째 스타 스코어와 totalScore 를 비교해서 별의 sprite를 바꿔주자.
         for (int i = 0; i < GameVariable.GetDefinition().StarScores.Length; i++)
@@ -71,6 +71,15 @@ public class ResultScene : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            if (totalScore > GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].totalScore)
+            {
+                GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].totalScore = totalScore;
+                GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].failSubmit = failSubmit;
+                GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].successSubmit = successSubmit;
+                GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].score = score;
+                GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].tipScore = tipScore;
+                GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].lostScore = lostScore;
+            }
             GameManager.Instance.DataManager.SaveStageData();
             ZoomOutUI.ZoomOutUI();
         }

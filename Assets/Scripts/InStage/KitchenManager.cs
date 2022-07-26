@@ -33,6 +33,8 @@ public class KitchenManager : MonoBehaviour
 
     public void Start()
     {
+        
+
         Debug.Log(PhotonNetwork.CountOfPlayers);
 
         if (PhotonNetwork.CountOfPlayers == 1)
@@ -56,6 +58,15 @@ public class KitchenManager : MonoBehaviour
 
             //myPlayer.GetComponent<InputHandler>().enabled = true;
         }
+    }
+    private void Update()
+    {
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].successSubmit = successSubmit;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].tipScore = tipScore;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].failSubmit = failSubmit;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].lostScore = lostScore;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].score = score;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].totalScore = score + tipScore - lostScore;
     }
 
     void CalledOnLevelWasLoaded(int level)

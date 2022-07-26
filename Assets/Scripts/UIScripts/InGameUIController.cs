@@ -74,6 +74,7 @@ public class InGameUIController : MonoBehaviour
         if(timeController.time <= 0f)
         {
             EndUI.SetActive(true);
+            GameManager.Instance.DataManager.SaveStageData();
             ZoomEndUI.ZoomInUI();
             timeController.time = 0;
             //player.enabled = false;

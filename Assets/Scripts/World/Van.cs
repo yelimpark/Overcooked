@@ -33,10 +33,10 @@ public class Van : MonoBehaviour
 
         if (canMove)
         {
-            //horizontal = Input.GetAxisRaw("Horizontal");
-            float h = joystick.GetAxis("Horizontal") * speed;
+            horizontal = Input.GetAxisRaw("Horizontal");
+            //float h = joystick.GetAxis("Horizontal") * speed;
 
-            moveVec = new Vector3(h, 0f, 0f).normalized;
+            moveVec = new Vector3(horizontal, 0f, 0f).normalized;
             transform.LookAt(transform.position + moveVec);
         }
     }
