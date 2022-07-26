@@ -871,6 +871,8 @@ GameObject:
   - component: {fileID: -7683344770867890231}
   - component: {fileID: 6031890280754723332}
   - component: {fileID: 2519653358794609260}
+  - component: {fileID: 8858331106390604336}
+  - component: {fileID: 7027044257780530174}
   m_Layer: 7
   m_Name: Chef (1)
   m_TagString: Untagged
@@ -999,6 +1001,8 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 6031890280754723332}
+  - {fileID: 8858331106390604336}
+  - {fileID: 7027044257780530174}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1034,6 +1038,52 @@ MonoBehaviour:
   - {fileID: 805744437810591928}
   - {fileID: 5938468284554026538}
   - {fileID: 6281706296490811339}
+--- !u!114 &8858331106390604336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679262642584591440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &7027044257780530174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679262642584591440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: isWalking
+  - Type: 4
+    SynchronizeType: 0
+    Name: isChoping
+  - Type: 4
+    SynchronizeType: 0
+    Name: isWashing
+  - Type: 4
+    SynchronizeType: 0
+    Name: isPickUp
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
 --- !u!1 &682304837906606334
 GameObject:
   m_ObjectHideFlags: 0
@@ -11735,7 +11785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4695789362149274676
 Transform:
   m_ObjectHideFlags: 0

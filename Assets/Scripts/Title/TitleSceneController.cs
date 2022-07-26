@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+
 
 public class TitleSceneController : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class TitleSceneController : MonoBehaviour
         pressButtonSound.Play();
         NewScene = true;
         //Debug.Log(GameManager.Instance.TitleSceneController.NewScene);
-        SceneManager.LoadScene(nextSceneName);
+        //SceneManager.LoadScene(nextSceneName);
+        PhotonNetwork.LoadLevel("Stage1");
     }
 }

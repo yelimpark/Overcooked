@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using KeyCode = System.String;
+using Photon.Pun;
+
 
 [DisallowMultipleComponent]
 public class ObjectPoolManager : MonoBehaviour
@@ -31,14 +33,22 @@ public class ObjectPoolManager : MonoBehaviour
         dataDic = new Dictionary<KeyCode, IngredientType>(dataLen);
         poolDic = new Dictionary<KeyCode, Stack<PoolingObject>>(dataLen);
 
-        foreach(var data in objectPoolData)
+        if (PhotonNetwork.IsMasterClient)
         {
-            Save(data);
+            for (int i= 0; i< dataLen; i++)
+            {
+                //Save(data);
+                PhotonView.Get(this).RPC("Save", RpcTarget.All, i);
+            }
         }
+
     }
 
-    public void Save(IngredientType data)
+    [PunRPC]
+    public void Save(int idx)
     {
+        IngredientType data = objectPoolData[idx];
+
         //같은 데이터 Key
         if (poolDic.ContainsKey(data.key)) 
         {
@@ -53,9 +63,10 @@ public class ObjectPoolManager : MonoBehaviour
         origin.SetActive(false);
 
         Stack<PoolingObject> objectPool = new Stack<PoolingObject>(data.maxIngredCount);
-        for(int i =0; i < data.initIngredCount; i++)
+
+        for (int i = 0; i < data.initIngredCount; i++)
         {
-            PoolingObject clone = mpo.Clone();
+            PoolingObject clone = mpo.Clone(true);
             objectPool.Push(clone);
         }
 
@@ -63,6 +74,7 @@ public class ObjectPoolManager : MonoBehaviour
         dataDic.Add(data.key, data);
         poolDic.Add(data.key, objectPool);   
     }
+
     public PoolingObject Extract(KeyCode key)
     {
         PoolingObject objectPool;

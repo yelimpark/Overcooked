@@ -35,24 +35,26 @@ public class KitchenManager : MonoBehaviour
     {
         Debug.Log(PhotonNetwork.CountOfPlayers);
 
+        int idx = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
+
+        GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
+        myPlayer.GetComponent<RandomChef>().Send(idx);
+
         if (PhotonNetwork.CountOfPlayers == 1)
         {
-            GameObject myPlayer1 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[0].position, SpawnPoints[0].rotation);
-            GameObject myPlayer2 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[1].position, SpawnPoints[1].rotation);
+            //GameObject myPlayer1 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[0].position, SpawnPoints[0].rotation);
+            //GameObject myPlayer2 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[1].position, SpawnPoints[1].rotation);
 
-            myPlayer1.AddComponent<SinglePlay>();
-            myPlayer2.AddComponent<SinglePlay>();
-            myPlayer2.GetComponent<SinglePlay>().Toggle();
+            //myPlayer1.AddComponent<SinglePlay>();
+            //myPlayer2.AddComponent<SinglePlay>();
+            //myPlayer2.GetComponent<SinglePlay>().Toggle();
 
-            myPlayer1.GetComponent<RandomChef>().Send(0);
-            myPlayer2.GetComponent<RandomChef>().Send(0);
+            //myPlayer1.GetComponent<RandomChef>().Send(0);
+            //myPlayer2.GetComponent<RandomChef>().Send(0);
         }
         else
         {
-            int idx = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
 
-            GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
-            myPlayer.GetComponent<RandomChef>().Send(idx);
 
             //myPlayer.GetComponent<InputHandler>().enabled = true;
         }
