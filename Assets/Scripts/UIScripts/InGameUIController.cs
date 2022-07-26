@@ -54,7 +54,7 @@ public class InGameUIController : MonoBehaviour
     private void Update()
     {
         //Debug.Log(Time.deltaTime);
-        if(Input.anyKey)
+        if(Input.GetKey(KeyCode.Space))
         {
             //After 3sec -> PlayerUI true
             pressTime += LoadingSpeed * Time.deltaTime;
