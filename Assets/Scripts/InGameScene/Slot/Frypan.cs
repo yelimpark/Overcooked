@@ -4,12 +4,42 @@ using UnityEngine;
 
 public class Frypan : Slot
 {
-    private CookingBehaviour cb;
+    public TimeBar timebar;
+
+    private CoockwareType position;
+    public CoockwareType Position
+    {
+        get { return Position; }
+        set
+        {
+            Position = value;
+            Execute();
+        }
+    }
 
     private void Start()
     {
-        cb = GetComponent<CookingBehaviour>();
         AcceptableTag.Add("Ingrediant");
+    }
+
+    public void OnTimeUp()
+    {
+        if (occupyObj == null)
+            return;
+
+        timebar.Init();
+
+        GameObject before = OnTakeOut(null);
+        Ingrediant ingrediant = before.GetComponent<Ingrediant>();
+
+        GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
+        ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
+        GameObject after = ObjPoolMgr.Extract(ingrediant.next).gameObject;
+
+        base.OnPlace(after);
+
+        PoolingObject po = before.GetComponent<PoolingObject>();
+        ObjPoolMgr.Return(po);
     }
 
     public override bool AbleToPlace(GameObject go)
@@ -30,12 +60,16 @@ public class Frypan : Slot
     public override void OnPlace(GameObject go)
     {
         base.OnPlace(go);
-        cb.Execute();
+        Execute();
     }
 
     public override bool AbleToTakeOut(GameObject dest)
     {
-        if (cb != null && !cb.ExitPosition())
+        if (!base.AbleToTakeOut(dest))
+            return false;
+
+        Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
+        if (ingrediant.type == CoockwareType.FRYPAN)
             return false;
 
         if (dest == null)
@@ -43,5 +77,28 @@ public class Frypan : Slot
 
         Slot slot = dest.GetComponent<Slot>();
         return slot != null && slot.AbleToPlace(occupyObj);
+    }
+
+    public override GameObject OnTakeOut(GameObject dest)
+    {
+        timebar.pause = true;
+        return base.OnTakeOut(dest);
+    }
+
+    public void Execute()
+    {
+        if (Position != CoockwareType.FRYPAN)
+            return;
+
+        Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
+        if (ingrediant.type == CoockwareType.FRYPAN)
+            return false;
+
+        Ingrediant ingrediant = cookware.occupyObj.GetComponent<Ingrediant>();
+        if (ingrediant.type != mask)
+            return;
+
+        timebar.gameObject.SetActive(true);
+        timebar.pause = false;
     }
 }
