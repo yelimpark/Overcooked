@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Frypan : Slot
 {
+    private CookingBehaviour cb;
+
+    private void Start()
+    {
+        cb = GetComponent<CookingBehaviour>();
+        AcceptableTag.Add("Ingrediant");
+    }
+
     public override bool AbleToPlace(GameObject go)
     {
         if (!base.AbleToPlace(go))
@@ -22,8 +30,6 @@ public class Frypan : Slot
     public override void OnPlace(GameObject go)
     {
         base.OnPlace(go);
-
-        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
         cb.Execute();
     }
 
@@ -32,18 +38,10 @@ public class Frypan : Slot
         if (cb != null && !cb.ExitPosition())
             return false;
 
-        if (dest != null)
-        {
-            Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware == null || cookware.AbleToPlace(occupyObj))
-                return true;
-        }
+        if (dest == null)
+            return false;
 
-        return false;
-    }
-
-    public override GameObject OnTakeOut(GameObject dest)
-    {
-        return base.OnTakeOut(dest);
+        Slot slot = dest.GetComponent<Slot>();
+        return slot != null && slot.AbleToPlace(occupyObj);
     }
 }

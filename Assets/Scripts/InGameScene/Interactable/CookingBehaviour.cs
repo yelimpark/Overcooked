@@ -56,20 +56,6 @@ public class CookingBehaviour : MonoBehaviour
         before.SetActive(false);
     }
 
-    //private void Update()
-    //{
-    //    Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
-    //    newPos.y += Yoffset;
-    //    timebar.transform.position = newPos;
-
-    //    임시코드!!!!!!
-    //    if (Input.GetKeyDown(KeyCode.Z))
-    //    {
-    //        trigger = true;
-    //        Execute();
-    //    }
-    //}
-
     public void SetTrigger(bool trigger)
     {
         this.trigger = trigger;

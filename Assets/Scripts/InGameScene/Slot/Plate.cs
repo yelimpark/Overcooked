@@ -24,10 +24,11 @@ public class Plate : Slot
 
     public override void OnPlace(GameObject go)
     {
-        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
-        if (ingrediant != null && occupyObj != null)
+        if (occupyObj != null)
         {
+            Ingrediant ingrediant = go.GetComponent<Ingrediant>();
             Ingrediant occupyIngrediant = occupyObj.GetComponent<Ingrediant>();
+            
             if (occupyIngrediant.combinedWith == ingrediant.IngrediantName)
             {
                 GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
@@ -41,12 +42,18 @@ public class Plate : Slot
                 ObjPoolMgr.Return(po);
             }
         }
-
-        base.OnPlace(go);
+        else
+        {
+            base.OnPlace(go);
+        }
     }
 
     public override bool AbleToTakeOut(GameObject dest)
     {
+        if (dest == null)
+            return false;
 
+        Slot slot = dest.GetComponent<Slot>();
+        return slot != null && slot.AbleToPlace(occupyObj);
     }
 }
