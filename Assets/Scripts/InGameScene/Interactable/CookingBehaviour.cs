@@ -15,10 +15,10 @@ public class CookingBehaviour : MonoBehaviour
     [System.NonSerialized]
     public bool trigger = false;
 
-    public AppliancesType mask;
+    public CoockwareType mask;
 
-    private AppliancesType curPosition;
-    public AppliancesType CurPosition
+    private CoockwareType curPosition;
+    public CoockwareType CurPosition
     {
         get { return curPosition; }
         set
@@ -104,7 +104,7 @@ public class CookingBehaviour : MonoBehaviour
             return;
 
         Ingrediant ingrediant = cookware.occupyObj.GetComponent<Ingrediant>();
-        if (ingrediant.mask != mask)
+        if (ingrediant.type != mask)
             return;
 
         if (AutoExecute || trigger)
