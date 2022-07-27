@@ -3072,6 +3072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CuttingBoard_code
       objectReference: {fileID: 0}
+    - target: {fileID: 7121776947906707041, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8286e38cb7f8da44c8392c6761585cbe, type: 2}
     - target: {fileID: 8306656652073982100, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.70006835
@@ -15237,6 +15241,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CuttingBoard_code
       objectReference: {fileID: 0}
+    - target: {fileID: 7121776947906707041, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8286e38cb7f8da44c8392c6761585cbe, type: 2}
     - target: {fileID: 8306656652073982100, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.121
