@@ -8,6 +8,9 @@ public class Appliances : Slot
 
     private void Start()
     {
+        AcceptableTag.Add("Ingrediant");
+        AcceptableTag.Add("Cookware");
+
         if (occupyObj != null)
         {
             CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
@@ -73,7 +76,7 @@ public class Appliances : Slot
 
         CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
         if (cb != null)
-            cb.CurPosition = CoockwareType.None;
+            cb.CurPosition = CoockwareType.NONE;
 
         return base.OnTakeOut(dest);
     }

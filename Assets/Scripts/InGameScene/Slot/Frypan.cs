@@ -92,10 +92,6 @@ public class Frypan : Slot
 
         Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
         if (ingrediant.type == CoockwareType.FRYPAN)
-            return false;
-
-        Ingrediant ingrediant = cookware.occupyObj.GetComponent<Ingrediant>();
-        if (ingrediant.type != mask)
             return;
 
         timebar.gameObject.SetActive(true);

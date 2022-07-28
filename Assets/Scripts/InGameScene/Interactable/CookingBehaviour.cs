@@ -68,7 +68,7 @@ public class CookingBehaviour : MonoBehaviour
     }
 
     public bool ExitPosition()
-    {
+    { 
         if (fixWhileCooking && !timebar.end)
             return false;
 
