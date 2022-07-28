@@ -2,21 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AppliancesType
-{
-    None,
-    FRYPAN,
-    CUTTING_BOARD,
-    PLATE,
-    FIRE_EXTINGUISHER,
-}
-
 public class Appliances : Slot
 {
-    public AppliancesType mask;
+    public CoockwareType mask;
 
     private void Start()
     {
+        AcceptableTag.Add("Ingrediant");
+        AcceptableTag.Add("Cookware");
+
         if (occupyObj != null)
         {
             CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
@@ -82,7 +76,7 @@ public class Appliances : Slot
 
         CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
         if (cb != null)
-            cb.CurPosition = AppliancesType.None;
+            cb.CurPosition = CoockwareType.NONE;
 
         return base.OnTakeOut(dest);
     }

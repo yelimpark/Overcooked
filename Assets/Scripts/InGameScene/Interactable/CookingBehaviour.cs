@@ -15,10 +15,10 @@ public class CookingBehaviour : MonoBehaviour
     [System.NonSerialized]
     public bool trigger = false;
 
-    public AppliancesType mask;
+    public CoockwareType mask;
 
-    private AppliancesType curPosition;
-    public AppliancesType CurPosition
+    private CoockwareType curPosition;
+    public CoockwareType CurPosition
     {
         get { return curPosition; }
         set
@@ -56,20 +56,6 @@ public class CookingBehaviour : MonoBehaviour
         before.SetActive(false);
     }
 
-    //private void Update()
-    //{
-    //    Vector3 newPos = UnityEngine.Camera.main.WorldToScreenPoint(transform.position);
-    //    newPos.y += Yoffset;
-    //    timebar.transform.position = newPos;
-
-    //    임시코드!!!!!!
-    //    if (Input.GetKeyDown(KeyCode.Z))
-    //    {
-    //        trigger = true;
-    //        Execute();
-    //    }
-    //}
-
     public void SetTrigger(bool trigger)
     {
         this.trigger = trigger;
@@ -82,7 +68,7 @@ public class CookingBehaviour : MonoBehaviour
     }
 
     public bool ExitPosition()
-    {
+    { 
         if (fixWhileCooking && !timebar.end)
             return false;
 
@@ -104,7 +90,7 @@ public class CookingBehaviour : MonoBehaviour
             return;
 
         Ingrediant ingrediant = cookware.occupyObj.GetComponent<Ingrediant>();
-        if (ingrediant.mask != mask)
+        if (ingrediant.type != mask)
             return;
 
         if (AutoExecute || trigger)

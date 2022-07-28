@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ingrediant : MonoBehaviour
 {
-    public AppliancesType mask;
+    public CoockwareType type;
     public string next;
     public string IngrediantName;
     public string combinedWith;

@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    LEFT,
-    RIGHT,
-    UP,
-    DOWN,
-}
-
 public class Utils : MonoBehaviour
 {
     public static readonly float RAY_MAX_LENGTH = 10f;
@@ -47,10 +39,6 @@ public class Utils : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(go.transform.position, Vector3.down, out hit, RAY_MAX_LENGTH, LayerMask.GetMask("Ground"));
 
-        //Debug.Log($"{hit.transform.name} {go.transform.position.y - hit.transform.position.y}");
-
-        //Rigidbody rb = go.GetComponent<Rigidbody>();
-        //rb.velocity = Vector3.down * 3;
         go.transform.rotation = Quaternion.identity;
 
         if (go.transform.position.y - hit.transform.position.y > errorRange + go.transform.lossyScale.y)
