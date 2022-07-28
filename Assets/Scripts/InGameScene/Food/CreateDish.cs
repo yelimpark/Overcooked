@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CreateDish : MonoBehaviour
 {
-
     public float timer;
     private CreateIngredient createObject;
 

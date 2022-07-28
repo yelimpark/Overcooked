@@ -7,7 +7,7 @@ public class FireRay : MonoBehaviour
     [SerializeField]
     LayerMask layerMask;
 
-    public float distance = 2f;
+    public float distance = 5f;
     private RaycastHit rayHit;
     private Ray ray;
 

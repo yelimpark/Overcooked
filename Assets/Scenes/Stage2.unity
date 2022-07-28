@@ -29417,6 +29417,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.17
       objectReference: {fileID: 0}
+    - target: {fileID: 2181452874910890392, guid: 5f681e653b150224ebc582195f1cac02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 4855893089954636538, guid: 5f681e653b150224ebc582195f1cac02, type: 3}
       propertyPath: speed
       value: 1
@@ -29682,7 +29686,7 @@ PrefabInstance:
       objectReference: {fileID: 847370984}
     - target: {fileID: 7170608696995234903, guid: ca29fb007feea9644b80a055410a9877, type: 3}
       propertyPath: layerMask.m_Bits
-      value: 64
+      value: 1088
       objectReference: {fileID: 0}
     - target: {fileID: 8113207339660423091, guid: ca29fb007feea9644b80a055410a9877, type: 3}
       propertyPath: InitialModule.maxNumParticles
