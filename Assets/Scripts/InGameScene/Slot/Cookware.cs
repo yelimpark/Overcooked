@@ -76,6 +76,10 @@ public class Cookware : Slot
             if (cookware == null || cookware.AbleToPlace(occupyObj))
                 return true;
         }
+        else
+        {
+            return true;
+        }
 
         return false;
     }

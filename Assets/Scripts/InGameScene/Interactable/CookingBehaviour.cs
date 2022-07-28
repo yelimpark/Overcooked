@@ -69,8 +69,13 @@ public class CookingBehaviour : MonoBehaviour
 
     public bool ExitPosition()
     { 
-        if (fixWhileCooking && !timebar.end)
-            return false;
+        if (fixWhileCooking)
+        {
+            Cookware cookware = GetComponent<Cookware>();
+            Ingrediant ingrediant = cookware.occupyObj.GetComponent<Ingrediant>();
+            if (ingrediant.type == mask)
+                return false;
+        }
 
         //CurPosition = AppliancesType.None;
         timebar.pause = true;

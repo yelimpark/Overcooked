@@ -3064,6 +3064,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6217272475968385416, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
+      propertyPath: fixWhileCooking
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6217272475968385417, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -21696,6 +21700,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6556251223585148810, guid: dbd36810f21158d478684af092486a06, type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 155067882202646250, guid: dbd36810f21158d478684af092486a06, type: 3}
       propertyPath: m_RootOrder
       value: 1

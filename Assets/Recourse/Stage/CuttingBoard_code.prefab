@@ -536,7 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timebar: {fileID: 6217272475723072341}
   Yoffset: 20
-  fixWhileCooking: 0
+  fixWhileCooking: 1
   AutoExecute: 0
   mask: 2
 --- !u!114 &6217272475968385423
