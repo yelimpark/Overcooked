@@ -1,8 +1,9 @@
 [
   {
-    "SceneName": "TestScene",
+    "SceneName": "Stage1",
     "score": 0,
     "successSubmit": 0,
+    "totalScore": 0,
     "tipScore": 0,
     "failSubmit": 0,
     "lostScore": 0,
@@ -12,6 +13,7 @@
     "SceneName": "MapScene 1",
     "score": 0,
     "successSubmit": 0,
+    "totalScore": 0,
     "tipScore": 0,
     "failSubmit": 0,
     "lostScore": 0,
@@ -21,6 +23,7 @@
     "SceneName": "1-1",
     "score": 0,
     "successSubmit": 0,
+    "totalScore": 0,
     "tipScore": 0,
     "failSubmit": 0,
     "lostScore": 0,
