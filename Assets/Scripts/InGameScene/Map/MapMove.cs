@@ -4,30 +4,52 @@ using UnityEngine;
 
 public class MapMove : MonoBehaviour
 {    
-    public Transform targetPosition;
-    public Transform originPosition;
+    public Transform targetPos;
+    public Transform originPos;
+    public Transform desPos;
 
-    private Transform origin;
-    private Vector3 vel = Vector3.zero;
+    public float speed = 5f;
 
-    private void Awake()
+    private void Start()
     {
-        origin = this.gameObject.transform;
+        transform.position = originPos.position;
+        desPos = targetPos;
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        StartCoroutine(CoMapMove());
+        StartCoroutine(CoMapMovement());
     }
-
-    public IEnumerator CoMapMove()
+    public IEnumerator CoMapMovement()
     {
-
         yield return new WaitForSeconds(5f);
-        transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPosition.transform.position, ref vel, 1f);
-        //transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPosition.transform.position, 1f);
+        transform.position = Vector3.MoveTowards(transform.position, desPos.position, Time.deltaTime * speed);
 
-        yield return new WaitForSeconds(5f);
-        transform.position = Vector3.SmoothDamp(gameObject.transform.position, origin.position, ref vel, 1f);
-        //transform.position = Vector3.MoveTowards(gameObject.transform.position, origin.position, 1f);
+        if (Vector3.Distance(transform.position, desPos.position) <= 0.05f)
+        {
+            if (desPos == targetPos)
+            {
+                desPos = originPos;
+            }
+            else
+            {
+                desPos = targetPos;
+            }
+        }
+    }
+    public void Move()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, desPos.position, Time.deltaTime * speed);
+
+        if (Vector3.Distance(transform.position, desPos.position) <= 0.05f)
+        {
+            if (desPos == targetPos)
+            {
+                desPos = originPos;
+            }
+            else
+            {
+                desPos = targetPos;
+            }
+        }
     }
 }
