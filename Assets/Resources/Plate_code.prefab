@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3146602307515992129}
   - component: {fileID: 3146602307515992128}
   - component: {fileID: 3146602307515992131}
-  - component: {fileID: 3146602307515992154}
-  - component: {fileID: 3146602307515992157}
   - component: {fileID: 6076709914245132895}
   - component: {fileID: 8631889802842919212}
+  - component: {fileID: 3146602307515992154}
+  - component: {fileID: 3146602307515992157}
   m_Layer: 0
   m_Name: Plate_code
   m_TagString: Cookware
@@ -81,35 +81,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3146602307515992154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146602307515992130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff22a300359952448006b2eea90ece1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  occupyObj: {fileID: 0}
-  mask: 3
-  withoutPlate: 0
---- !u!114 &3146602307515992157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146602307515992130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea9c5560cd1a1149a8ac646ce996637, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
-  cookware: {fileID: 3146602307515992154}
 --- !u!114 &6076709914245132895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +120,34 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &3146602307515992154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146602307515992130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff22a300359952448006b2eea90ece1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupyObj: {fileID: 0}
+  type: 3
+--- !u!114 &3146602307515992157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146602307515992130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea9c5560cd1a1149a8ac646ce996637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
+  cookware: {fileID: 3146602307515992154}
 --- !u!1001 &3146602307953028073
 PrefabInstance:
   m_ObjectHideFlags: 0

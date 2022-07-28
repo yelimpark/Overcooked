@@ -75,13 +75,11 @@ public class InputHandler : MonoBehaviour
                 //Place();
             }
         }
-        if (Input.GetButtonDown("Fire2"))
+        if(Input.GetButton("Fire4"))
         {
             OnZDown();
             PhotonView.Get(this).RPC("OnZDown", RpcTarget.All);
-        }
-        if(Input.GetButton("Fire4"))
-        {            
+
             if (_equipmentSystem.Equipment.tag == "Cookware")
             {                
                 FireRay fireRay = _equipmentSystem.Equipment.GetComponentInChildren<FireRay>();

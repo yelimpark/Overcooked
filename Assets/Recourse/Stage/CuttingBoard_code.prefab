@@ -566,8 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupyObj: {fileID: 0}
-  mask: 2
-  withoutPlate: 1
+  type: 2
 --- !u!1 &7614772185888302130
 GameObject:
   m_ObjectHideFlags: 0

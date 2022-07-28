@@ -2,37 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CoockwareType
+{
+    NONE,
+    FRYPAN,
+    CUTTING_BOARD,
+    PLATE,
+    FIRE_EXTINGUISHER,
+    HANDS
+}
+
 public class Cookware : Slot
 {
-    public AppliancesType mask;
+    public CoockwareType type;
     private CookingBehaviour cb;
-
-    public bool withoutPlate = false;
 
     private void Start()
     {
         cb = GetComponent<CookingBehaviour>();
+        AcceptableTag.Add("Ingrediant");
     }
 
     public override bool AbleToPlace(GameObject go)
     {
-        if (go == null)
+        if (!base.AbleToPlace(go))
             return false;
 
         Ingrediant ingrediant = go.GetComponent<Ingrediant>();
-        if (ingrediant == null || ingrediant.mask != mask)
+        if (ingrediant == null || ingrediant.type != type)
             return false;
 
-        if (occupyObj != null)
-        {
-            Ingrediant occupyIngrediant = occupyObj.GetComponent<Ingrediant>();
-            if (occupyIngrediant.combinedWith == ingrediant.IngrediantName)
-            {
-                return true;
-            }
-        }
-
-        return base.AbleToPlace(go);
+        return true;
     }
 
     public override void OnPlace(GameObject go)
@@ -61,7 +61,7 @@ public class Cookware : Slot
 
         base.OnPlace(go);
 
-        if (ingrediant != null && ingrediant.mask == mask && cb != null)
+        if (ingrediant != null && ingrediant.type == type && cb != null)
             cb.Execute();
     }
 
@@ -69,9 +69,6 @@ public class Cookware : Slot
     {
         if (cb != null && !cb.ExitPosition())
             return false;
-
-        if (withoutPlate)
-            return true;
 
         if (dest != null)
         {

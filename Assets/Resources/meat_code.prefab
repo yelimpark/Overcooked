@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 767688232019802383}
   - component: {fileID: 767688232019802369}
   - component: {fileID: 767688232019802381}
-  - component: {fileID: 767688232019802370}
-  - component: {fileID: 767688232019802368}
   - component: {fileID: -2674810183247017460}
-  - component: {fileID: -2021221337535232438}
   - component: {fileID: 1380144536937033903}
+  - component: {fileID: 767688232019802368}
+  - component: {fileID: 767688232019802370}
   m_Layer: 0
   m_Name: meat_code
   m_TagString: Ingrediant
@@ -82,35 +81,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &767688232019802370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767688232019802382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
---- !u!114 &767688232019802368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767688232019802382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3557a502d86a24eb287ffe6cb294d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask: 2
-  next: meat_slice_code
-  IngrediantName: meat_code
-  combinedWith: 
 --- !u!114 &-2674810183247017460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,27 +100,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -2021221337535232438}
   - {fileID: 1380144536937033903}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-2021221337535232438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767688232019802382}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &1380144536937033903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +120,35 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &767688232019802368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767688232019802382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3557a502d86a24eb287ffe6cb294d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  next: meat_slice_code
+  IngrediantName: meat_code
+  combinedWith: 
+--- !u!114 &767688232019802370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767688232019802382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
 --- !u!1001 &1950229715808698034
 PrefabInstance:
   m_ObjectHideFlags: 0
