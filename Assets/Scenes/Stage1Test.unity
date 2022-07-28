@@ -16726,7 +16726,7 @@ MonoBehaviour:
   failSubmit: 0
   lostScore: 0
   playerPrefab: {fileID: 679262642584591440, guid: dbd36810f21158d478684af092486a06, type: 3}
-  JoyStick: {fileID: 325967778}
+  JoyStick: {fileID: 1111436065}
   SpawnPoints:
   - {fileID: 833919616}
   - {fileID: 610214024}
