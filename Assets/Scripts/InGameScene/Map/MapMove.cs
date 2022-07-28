@@ -14,42 +14,31 @@ public class MapMove : MonoBehaviour
     {
         transform.position = originPos.position;
         desPos = targetPos;
+        iTween.MoveTo(gameObject, iTween.Hash(
+            "delay", 2f,
+            "speed", 1,
+            "position", desPos.position,
+            "essettype", iTween.EaseType.easeOutQuart,
+            "oncomplete", "SetDest"
+        ));
     }
-    private void FixedUpdate()
+    public void SetDest()
     {
-        StartCoroutine(CoMapMovement());
-    }
-    public IEnumerator CoMapMovement()
-    {
-        yield return new WaitForSeconds(5f);
-        transform.position = Vector3.MoveTowards(transform.position, desPos.position, Time.deltaTime * speed);
-
-        if (Vector3.Distance(transform.position, desPos.position) <= 0.05f)
+        if (targetPos == desPos)
         {
-            if (desPos == targetPos)
-            {
-                desPos = originPos;
-            }
-            else
-            {
-                desPos = targetPos;
-            }
+            desPos = originPos;
         }
-    }
-    public void Move()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, desPos.position, Time.deltaTime * speed);
-
-        if (Vector3.Distance(transform.position, desPos.position) <= 0.05f)
+        else
         {
-            if (desPos == targetPos)
-            {
-                desPos = originPos;
-            }
-            else
-            {
-                desPos = targetPos;
-            }
+            desPos = targetPos;
         }
+
+        iTween.MoveTo(gameObject, iTween.Hash(
+        "delay", 2f,
+        "speed", 1,
+        "position", desPos.position,
+        "essettype", iTween.EaseType.easeOutQuart,
+        "oncomplete", "SetDest"
+        ));
     }
 }
