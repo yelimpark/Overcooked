@@ -37,6 +37,7 @@ public class InGameUIController : MonoBehaviour
     [Header("Time Bar And StopWatch")]
     public TimeController timeController;
     public TimerBar timerBar;
+    public bool HelpOn;
 
     private void Start()
     {
@@ -47,6 +48,7 @@ public class InGameUIController : MonoBehaviour
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
         EndUI.SetActive(false);
+        HelpOn = true;
         //player.enabled = false;
 
     }
@@ -54,8 +56,8 @@ public class InGameUIController : MonoBehaviour
     private void Update()
     {
         //Debug.Log(Time.deltaTime);
-
-        if(Input.anyKey)
+#if UNITY_STANDALONE
+        if(Input.GetKey(KeyCode.Space))
         {
             //After 3sec -> PlayerUI true
             pressTime += LoadingSpeed * Time.deltaTime;
@@ -70,6 +72,26 @@ public class InGameUIController : MonoBehaviour
         {
             pressTime = 0f;
         }
+#endif
+#if UNITY_ANDROID
+        
+        if(Input.anyKey && HelpOn)
+        {
+            //After 3sec -> PlayerUI true
+            pressTime += LoadingSpeed * Time.deltaTime;
+            if (pressTime >= 1.5)
+            {
+                StartCoroutine(ChangeUI());
+                pressTime = 0;
+                HelpOn = false;
+            }
+
+        }
+        else
+        {
+            pressTime = 0f;
+        }
+#endif
         LoadingBar.fillAmount = pressTime/1.5f;
 
         if(timeController.time <= 0f)
