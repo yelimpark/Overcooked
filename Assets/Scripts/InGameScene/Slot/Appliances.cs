@@ -2,26 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AppliancesType
-{
-    None,
-    FRYPAN,
-    CUTTING_BOARD,
-    PLATE,
-    FIRE_EXTINGUISHER,
-}
-
 public class Appliances : Slot
 {
-    public AppliancesType mask;
+    public CoockwareType mask;
 
     private void Start()
     {
+        AcceptableTag.Add("Ingrediant");
+        AcceptableTag.Add("Cookware");
+
         if (occupyObj != null)
         {
-            CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
-            if (cb != null)
-                cb.CurPosition = mask;
+            Cookware cookware = occupyObj.GetComponent<Cookware>();
+            if (cookware != null)
+                cookware.Position = mask;
         }
     }
 
@@ -49,17 +43,16 @@ public class Appliances : Slot
         {
             Cookware cookware = occupyObj.GetComponent<Cookware>();
             if (cookware != null)
-            {
                 cookware.OnPlace(go);
-                return;
-            }
         }
+        else
+        {
+            base.OnPlace(go);
 
-        base.OnPlace(go);
-
-        CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
-        if (cb != null)
-            cb.CurPosition = mask;
+            Cookware cookware = occupyObj.GetComponent<Cookware>();
+            if (cookware != null)
+                cookware.Position = mask;
+        }
     }
 
     public override bool AbleToTakeOut(GameObject dest)
@@ -80,9 +73,8 @@ public class Appliances : Slot
         if (cookware != null && cookware.AbleToTakeOut(dest))
             return cookware.OnTakeOut(dest);
 
-        CookingBehaviour cb = occupyObj.GetComponent<CookingBehaviour>();
-        if (cb != null)
-            cb.CurPosition = AppliancesType.None;
+        if (cookware != null)
+            cookware.Position = CoockwareType.NONE;
 
         return base.OnTakeOut(dest);
     }

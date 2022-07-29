@@ -52,16 +52,18 @@ public class InputHandler : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (_equipmentSystem.Equipment == null)
+            var equipment = _equipmentSystem.hands.occupyObj;
+
+            if (equipment == null)
             {
                 //OnEquipBtn();
                 PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
             }
             else
             {
-                if (_equipmentSystem.Equipment.tag == "Cookware" && InteractableCursor.Cursor != null)
+                if (equipment.tag == "Cookware" && InteractableCursor.Cursor != null)
                 {
-                    Cookware cookware = _equipmentSystem.Equipment.GetComponent<Cookware>();
+                    Cookware cookware = equipment.GetComponent<Cookware>();
                     InteractableAppliances ia = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
                     if (ia.slot.occupyObj != null)
                     {
@@ -75,22 +77,20 @@ public class InputHandler : MonoBehaviour
                 //Place();
             }
         }
-        if (Input.GetButtonDown("Fire2"))
+        if(Input.GetButton("Fire4"))
         {
             OnZDown();
-            PhotonView.Get(this).RPC("OnZDown", RpcTarget.All);
-        }
-        if(Input.GetButton("Fire4"))
-        {            
-            if (_equipmentSystem.Equipment.tag == "Cookware")
-            {                
-                FireRay fireRay = _equipmentSystem.Equipment.GetComponentInChildren<FireRay>();
-                if (fireRay != null)
-                {
-                    fireRay.Shoot();
-                    Debug.Log("Shoot");
-                }
-            }
+            //PhotonView.Get(this).RPC("OnZDown", RpcTarget.All);
+
+            //if (_equipmentSystem.Equipment.tag == "Cookware")
+            //{                
+            //    FireRay fireRay = _equipmentSystem.Equipment.GetComponentInChildren<FireRay>();
+            //    if (fireRay != null)
+            //    {
+            //        fireRay.Shoot();
+            //        Debug.Log("Shoot");
+            //    }
+            //}
         }
 
     }
@@ -106,13 +106,16 @@ public class InputHandler : MonoBehaviour
 
     public void TakeOut(GameObject cursor)
     {
-        var dest = _equipmentSystem.Equipment;
+        var dest = _equipmentSystem.hands.gameObject;
         Interactable interactable = cursor.GetComponent<Interactable>();
         if (interactable != null)
         {
             var takeOut = interactable.TakeOut(dest);
             _equipmentSystem.Equip(takeOut);
         }
+
+        if (_equipmentSystem.hands.gameObject != null)
+            EquipmentCursor.Cursor = null;
     }
 
     [PunRPC]
@@ -121,7 +124,7 @@ public class InputHandler : MonoBehaviour
         if (InteractableCursor.Cursor != null)
         {
             InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
-            if (interactable != null && interactable.slot.AbleToPlace(_equipmentSystem.Equipment))
+            if (interactable != null && interactable.slot.AbleToPlace(_equipmentSystem.hands.occupyObj))
             {
                 GameObject discarded = _equipmentSystem.Unequip();
                 _equipmentSystem.UnequipEnd();
@@ -140,10 +143,10 @@ public class InputHandler : MonoBehaviour
             InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
             if (interactable != null)
             {
-                CookingBehaviour cb = interactable.slot.gameObject.GetComponent<CookingBehaviour>();
-                if (cb != null)
+                Cookware cookware = interactable.slot.GetComponent<Cookware>();
+                if (cookware != null)
                 {
-                    cb.SetTrigger(true);
+                    cookware.Execute(true);
                     animator.SetBool("isChoping", true);
                 }
             }

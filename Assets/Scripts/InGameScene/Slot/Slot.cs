@@ -6,15 +6,14 @@ public class Slot : MonoBehaviour
 {
     public GameObject occupyObj;
 
+    protected List<string> AcceptableTag = new List<string>();
+
     public virtual bool AbleToPlace(GameObject go)
     {
         if (go == null)
             return false;
 
-        if (!(go.CompareTag("Ingrediant") || go.CompareTag("Cookware")))
-            return false;
-
-        if (occupyObj != null)
+        if (!AcceptableTag.Contains(go.tag))
             return false;
 
         return true;

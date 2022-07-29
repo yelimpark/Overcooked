@@ -92,8 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupyObj: {fileID: 0}
-  mask: 4
-  withoutPlate: 0
+  type: 4
 --- !u!114 &1489182235
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7979909724998549407}
   - component: {fileID: 7979909724998549405}
   - component: {fileID: 7979909724998549392}
-  - component: {fileID: 7979909724998549395}
-  - component: {fileID: 7979909724998549394}
   - component: {fileID: -4178385087676326030}
   - component: {fileID: 3937051223051273679}
+  - component: {fileID: 7979909724998549394}
+  - component: {fileID: 7979909724998549395}
   m_Layer: 0
   m_Name: meat_slice_code
   m_TagString: Ingrediant
@@ -81,35 +81,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7979909724998549395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7979909724998549396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
---- !u!114 &7979909724998549394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7979909724998549396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3557a502d86a24eb287ffe6cb294d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask: 1
-  next: meat_cook_code
-  IngrediantName: meat_slice_code
-  combinedWith: 
 --- !u!114 &-4178385087676326030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +99,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3937051223051273679}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -148,6 +120,35 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &7979909724998549394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979909724998549396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3557a502d86a24eb287ffe6cb294d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  next: meat_cook_code
+  IngrediantName: meat_slice_code
+  combinedWith: 
+--- !u!114 &7979909724998549395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979909724998549396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
 --- !u!1001 &7979909724943144473
 PrefabInstance:
   m_ObjectHideFlags: 0

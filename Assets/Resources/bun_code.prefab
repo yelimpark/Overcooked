@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 3560838868814206704}
   - component: {fileID: 3560838868814206705}
   - component: {fileID: 3560838868814206706}
+  - component: {fileID: 1635675362777722480}
+  - component: {fileID: 8079348935839076516}
   - component: {fileID: 3560838868814206707}
   - component: {fileID: 3560838868814206716}
-  - component: {fileID: 8079348935839076516}
-  - component: {fileID: 4663588210683624224}
-  - component: {fileID: 1635675362777722480}
   m_Layer: 0
   m_Name: bun_code
   m_TagString: Ingrediant
@@ -82,67 +81,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3560838868814206707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560838868814206717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3557a502d86a24eb287ffe6cb294d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask: 3
-  next: bun_meat_code
-  IngrediantName: bun_code
-  combinedWith: meat_cook_code
---- !u!114 &3560838868814206716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560838868814206717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
---- !u!114 &8079348935839076516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560838868814206717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!114 &4663588210683624224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560838868814206717}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &1635675362777722480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,10 +101,54 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 8079348935839076516}
-  - {fileID: 4663588210683624224}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8079348935839076516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560838868814206717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &3560838868814206707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560838868814206717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3557a502d86a24eb287ffe6cb294d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
+  next: bun_meat_code
+  IngrediantName: bun_code
+  combinedWith: meat_cook_code
+--- !u!114 &3560838868814206716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560838868814206717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
 --- !u!1001 &3560838868499354802
 PrefabInstance:
   m_ObjectHideFlags: 0
