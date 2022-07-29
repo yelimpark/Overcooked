@@ -99,7 +99,9 @@ MonoBehaviour:
   order: {fileID: 2131330484967506741}
   orderTime: 20
   audioSource: {fileID: 2131330484967506745}
-  sounds: []
+  sounds:
+  - {fileID: 8300000, guid: f4176e77742998344bcd1a508d48e389, type: 3}
+  - {fileID: 8300000, guid: cfec9a212626a4041a2140f7b17d2125, type: 3}
 --- !u!82 &2131330484967506745
 AudioSource:
   m_ObjectHideFlags: 0
