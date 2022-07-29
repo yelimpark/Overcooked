@@ -34,6 +34,13 @@ public class Slot : MonoBehaviour
 
     public virtual bool AbleToTakeOut(GameObject dest)
     {
+        if (dest != null)
+        {
+            Slot slot = dest.GetComponent<Slot>();
+            if (slot != null)
+                return slot.AbleToPlace(occupyObj);
+        }
+
         return occupyObj != null;
     }
 

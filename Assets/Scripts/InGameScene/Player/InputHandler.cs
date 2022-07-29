@@ -65,7 +65,6 @@ public class InputHandler : MonoBehaviour
             {
                 if (equipment.tag == "Cookware" && InteractableCursor.Cursor != null)
                 {
-                    Cookware cookware = equipment.GetComponent<Cookware>();
                     InteractableAppliances ia = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
                     if (ia.slot.occupyObj != null)
                     {

@@ -66,7 +66,7 @@ public class Appliances : Slot
         if (cookware != null && cookware.AbleToTakeOut(dest))
             return cookware.OnTakeOut(dest);
 
-        if (cookware != null)
+        if (cookware != null)  
             cookware.Position = CoockwareType.NONE;
 
         return base.OnTakeOut(dest);
