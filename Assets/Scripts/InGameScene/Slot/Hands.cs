@@ -21,4 +21,39 @@ public class Hands : Slot
 
         return base.AbleToPlace(go);
     }
+
+    public override void OnPlace(GameObject go)
+    {
+        if (occupyObj != null)
+        {
+            Cookware cookware = occupyObj.GetComponent<Cookware>();
+            if (cookware != null)
+                cookware.OnPlace(go);
+        }
+        else
+        {
+            base.OnPlace(go);
+        }
+    }
+
+    public override bool AbleToTakeOut(GameObject dest)
+    {
+        if (occupyObj != null)
+        {
+            Cookware cookware = occupyObj.GetComponent<Cookware>();
+            if (cookware != null && cookware.AbleToTakeOut(dest))
+                return true;
+        }
+
+        return base.AbleToTakeOut(dest);
+    }
+
+    public override GameObject OnTakeOut(GameObject dest)
+    {
+        Cookware cookware = occupyObj.GetComponent<Cookware>();
+        if (cookware != null && cookware.AbleToTakeOut(dest))
+            return cookware.OnTakeOut(dest);
+
+        return base.OnTakeOut(dest);
+    }
 }

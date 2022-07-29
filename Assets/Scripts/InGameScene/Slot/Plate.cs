@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Plate : Slot
 {
+    private void Start()
+    {
+        AcceptableTag.Add("Ingrediant");
+    }
+
     public override bool AbleToPlace(GameObject go)
     {
         if (!base.AbleToPlace(go))

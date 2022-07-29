@@ -10,13 +10,6 @@ public class Appliances : Slot
     {
         AcceptableTag.Add("Ingrediant");
         AcceptableTag.Add("Cookware");
-
-        if (occupyObj != null)
-        {
-            Cookware cookware = occupyObj.GetComponent<Cookware>();
-            if (cookware != null)
-                cookware.Position = mask;
-        }
     }
 
     public virtual void OnTriggerEnter(Collider other)
@@ -29,9 +22,9 @@ public class Appliances : Slot
     {
         if (occupyObj != null)
         {
-            Cookware cookware = occupyObj.GetComponent<Cookware>();
-            if (cookware != null)
-                return cookware.AbleToPlace(go);
+            Slot slot = occupyObj.GetComponent<Slot>();
+            if (slot != null)
+                return slot.AbleToPlace(go);
         }
 
         return base.AbleToPlace(go);
@@ -41,9 +34,9 @@ public class Appliances : Slot
     {
         if (occupyObj != null)
         {
-            Cookware cookware = occupyObj.GetComponent<Cookware>();
-            if (cookware != null)
-                cookware.OnPlace(go);
+            Slot slot = occupyObj.GetComponent<Slot>();
+            if (slot != null)
+                slot.OnPlace(go);
         }
         else
         {

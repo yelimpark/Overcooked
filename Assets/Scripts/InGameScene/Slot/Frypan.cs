@@ -2,99 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Frypan : Slot
+public class Frypan : Cookware
 {
-    public TimeBar timebar;
+    public Animator fireAlarm;
+    public float fireTime = 4f;
+    private bool fireTrigger = false;
+    private IEnumerator fireCorutine;
 
-    private CoockwareType position;
-    public CoockwareType Position
+    public override void Start()
     {
-        get { return Position; }
-        set
-        {
-            Position = value;
-            Execute();
-        }
-    }
-
-    private void Start()
-    {
-        AcceptableTag.Add("Ingrediant");
-    }
-
-    public void OnTimeUp()
-    {
-        if (occupyObj == null)
-            return;
-
-        timebar.Init();
-
-        GameObject before = OnTakeOut(null);
-        Ingrediant ingrediant = before.GetComponent<Ingrediant>();
-
-        GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
-        ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
-        GameObject after = ObjPoolMgr.Extract(ingrediant.next).gameObject;
-
-        base.OnPlace(after);
-
-        PoolingObject po = before.GetComponent<PoolingObject>();
-        ObjPoolMgr.Return(po);
-    }
-
-    public override bool AbleToPlace(GameObject go)
-    {
-        if (!base.AbleToPlace(go))
-            return false;
-
-        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
-        if (ingrediant == null || ingrediant.type != CoockwareType.FRYPAN)
-            return false;
-
-        if (occupyObj != null)
-            return false;
-
-        return true;
-    }
-
-    public override void OnPlace(GameObject go)
-    {
-        base.OnPlace(go);
-        Execute();
+        type = CoockwareType.FRYPAN;
+        base.Start();
     }
 
     public override bool AbleToTakeOut(GameObject dest)
     {
-        if (!base.AbleToTakeOut(dest))
-            return false;
+        if (dest != null)
+        {
+            Hands hands = dest.GetComponent<Hands>();
+            if (hands != null)
+                return false;
+        }
 
-        Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
-        if (ingrediant.type == CoockwareType.FRYPAN)
-            return false;
-
-        if (dest == null)
-            return false;
-
-        Slot slot = dest.GetComponent<Slot>();
-        return slot != null && slot.AbleToPlace(occupyObj);
+        return base.AbleToTakeOut(dest);
     }
 
     public override GameObject OnTakeOut(GameObject dest)
     {
         timebar.pause = true;
+
         return base.OnTakeOut(dest);
     }
 
-    public void Execute()
+    public override void OnTimeUp()
     {
-        if (Position != CoockwareType.FRYPAN)
-            return;
+        base.OnTimeUp();
 
-        Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
-        if (ingrediant.type == CoockwareType.FRYPAN)
-            return;
+        fireCorutine = CoSetFire();
+        StartCoroutine(fireCorutine);
+    }
 
-        timebar.gameObject.SetActive(true);
-        timebar.pause = false;
+    public IEnumerator CoSetFire()
+    {
+        float timer = fireTime;
+        // 애니메이터 trigger
+        
+        while (timer > 0)
+        {
+            if (!timebar.pause)
+                timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        // 불지름
     }
 }

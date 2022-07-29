@@ -5,31 +5,26 @@ using Photon.Pun;
 
 public class InputHandler : MonoBehaviour
 {
-    private EquipmentSystem _equipmentSystem;
+    //componant
+    private EquipmentSystem es;
     private Animator animator;
     private Rigidbody rb;
+    private PhotonView photonView;
+
     public Interact EquipmentCursor;
     public Interact InteractableCursor;
 
-    private PhotonView photonView;
-
+    // variable about movement
     public float speed;
-
     private float horizontal;
     private float vertical;
 
-    public VirtualJoyStick joystick;
-    //public GameObject go;
-
-
     void Start()
     {
-        _equipmentSystem = GetComponent<EquipmentSystem>();
+        es = GetComponent<EquipmentSystem>();
         animator = GetComponent<Animator>();
-        photonView = PhotonView.Get(this);
         rb = GetComponent<Rigidbody>();
-        //joystick = GetComponent<VirtualJoyStick>();
-       //go = GetComponent<VirtualJoyStick>();
+        photonView = PhotonView.Get(this);
     }
 
     private void FixedUpdate()
@@ -40,19 +35,13 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
+        // Movement
         if (!photonView.IsMine)
-        {
             return;
-        }
-#if UNITY_STANDALONE
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-#endif
-#if UNITY_ANDROID
-        horizontal = joystick.GetAxis("Horizontal");
-        vertical = joystick.GetAxis("Vertical");
 
-#endif
         Vector3 moveVec = new Vector3(horizontal, 0f, vertical).normalized;
         if (moveVec != Vector3.zero)
         {
@@ -61,10 +50,11 @@ public class InputHandler : MonoBehaviour
             animator.SetBool("isChoping", false);
         }
         animator.SetBool("isWalking", moveVec != Vector3.zero);
-#if UNITY_STANDALONE
+
+        // Interaction
         if (Input.GetButtonDown("Fire1"))
         {
-            var equipment = _equipmentSystem.hands.occupyObj;
+            var equipment = es.hands.occupyObj;
 
             if (equipment == null)
             {
@@ -105,55 +95,7 @@ public class InputHandler : MonoBehaviour
             //}
         }
 
-#endif
     }
-
-#if UNITY_ANDROID
-    public void GetGrabButtonDown()
-    {
-        Debug.Log("Ž");
-        if (_equipmentSystem.Equipment == null)
-        {
-            //OnEquipBtn();
-            PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
-        }
-        else
-        {
-            if (_equipmentSystem.Equipment.tag == "Cookware" && InteractableCursor.Cursor != null)
-            {
-                Cookware cookware = _equipmentSystem.Equipment.GetComponent<Cookware>();
-                InteractableAppliances ia = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
-                if (ia.slot.occupyObj != null)
-                {
-                    //OnEquipBtn();
-                    PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
-                    return;
-                }
-            }
-
-            PhotonView.Get(this).RPC("Place", RpcTarget.All);
-            //Place();
-        }
-    }
-
-    public void GetKnifeButtonDown()
-    {
-        OnZDown();
-        PhotonView.Get(this).RPC("OnZDown", RpcTarget.All);
-
-        if (_equipmentSystem.Equipment.tag == "Cookware")
-        {
-            FireRay fireRay = _equipmentSystem.Equipment.GetComponentInChildren<FireRay>();
-            if (fireRay != null)
-            {
-                fireRay.Shoot();
-                Debug.Log("Shoot");
-            }
-        }
-    }
-
-
-#endif
 
     [PunRPC]
     public void OnEquipBtn()
@@ -166,15 +108,15 @@ public class InputHandler : MonoBehaviour
 
     public void TakeOut(GameObject cursor)
     {
-        var dest = _equipmentSystem.hands.gameObject;
+         var dest = es.hands.gameObject;
         Interactable interactable = cursor.GetComponent<Interactable>();
         if (interactable != null)
         {
             var takeOut = interactable.TakeOut(dest);
-            _equipmentSystem.Equip(takeOut);
+            es.Equip(takeOut);
         }
 
-        if (_equipmentSystem.hands.gameObject != null)
+        if (es.hands.gameObject != null)
             EquipmentCursor.Cursor = null;
     }
 
@@ -184,15 +126,15 @@ public class InputHandler : MonoBehaviour
         if (InteractableCursor.Cursor != null)
         {
             InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
-            if (interactable != null && interactable.slot.AbleToPlace(_equipmentSystem.hands.occupyObj))
+            if (interactable != null && interactable.slot.AbleToPlace(es.hands.occupyObj))
             {
-                GameObject discarded = _equipmentSystem.Unequip();
-                _equipmentSystem.UnequipEnd();
+                GameObject discarded = es.Unequip();
+                es.UnequipEnd();
                 interactable.slot.OnPlace(discarded);
                 return;
             }
         }
-        _equipmentSystem.Unequip();
+        es.Unequip();
     }
 
     [PunRPC]
@@ -203,10 +145,10 @@ public class InputHandler : MonoBehaviour
             InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
             if (interactable != null)
             {
-                Cookware cookware = interactable.slot.GetComponent<Cookware>();
-                if (cookware != null)
+                CuttingBoard cb = interactable.slot.GetComponent<CuttingBoard>();
+                if (cb != null)
                 {
-                    cookware.Execute(true);
+                    cb.Trigger();
                     animator.SetBool("isChoping", true);
                 }
             }
