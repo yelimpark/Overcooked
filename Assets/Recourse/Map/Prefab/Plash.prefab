@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 694742333995080863}
   - component: {fileID: 694742333995080858}
   - component: {fileID: 694742333995080857}
-  - component: {fileID: 694742333995080856}
   - component: {fileID: 2458188089731594335}
+  - component: {fileID: 5045463588458452884}
   m_Layer: 0
   m_Name: Plash
   m_TagString: StuffBox
@@ -163,20 +163,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &694742333995080856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694742333995080862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06befa477e1f07448a442bcfec9cbd38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: Dish
-  poolManager: {fileID: 0}
 --- !u!114 &2458188089731594335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +176,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+--- !u!114 &5045463588458452884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694742333995080862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0916efe8059e6f84c92455190228b52a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 0}
+  key: Dish
+  poolManager: {fileID: 0}
 --- !u!1 &2323505496363964932
 GameObject:
   m_ObjectHideFlags: 0

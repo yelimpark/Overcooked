@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 217817384454762717}
+  - component: {fileID: 5928055241987264928}
   m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
@@ -116,6 +117,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5928055241987264928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8014645943939861238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284def03d6a08ee46a9f8cb61a711bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Dish
 --- !u!1 &8088452856628287951
 GameObject:
   m_ObjectHideFlags: 0

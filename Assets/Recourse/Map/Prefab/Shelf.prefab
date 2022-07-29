@@ -157,7 +157,6 @@ GameObject:
   - component: {fileID: 6429313917293164627}
   - component: {fileID: 5670144401258837444}
   - component: {fileID: 2669364632627618035}
-  - component: {fileID: 4237622705694782009}
   m_Layer: 0
   m_Name: slot
   m_TagString: Untagged
@@ -223,20 +222,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4237622705694782009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8318164782969622024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  occupyObj: {fileID: 0}
-  mask: 0
 --- !u!1001 &8383567227055395610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +229,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6063887325578760538}
     m_Modifications:
+    - target: {fileID: 367920591445242918, guid: 72e7bd13d0facbb41b6b23cf9773e41c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 367920591445242918, guid: 72e7bd13d0facbb41b6b23cf9773e41c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5453415868151194837, guid: 72e7bd13d0facbb41b6b23cf9773e41c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 10

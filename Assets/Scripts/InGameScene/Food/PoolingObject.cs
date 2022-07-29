@@ -6,9 +6,10 @@ using KeyCode = System.String;
 public class PoolingObject : MonoBehaviour
 {
     public KeyCode key;
+    public Transform sponPos;
     public PoolingObject Clone()
     {
-        GameObject go = Instantiate(gameObject);
+        GameObject go = Instantiate(gameObject, sponPos.position, sponPos.rotation);
         if(!go.TryGetComponent(out PoolingObject Mpo))
         {
             Mpo = go.AddComponent<PoolingObject>();
@@ -26,7 +27,7 @@ public class PoolingObject : MonoBehaviour
 
     public void Activate() 
     {
-       gameObject.SetActive(true);      
+        gameObject.SetActive(true);      
     }
 
     public void Disabled() 
