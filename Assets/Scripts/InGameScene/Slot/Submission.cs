@@ -16,10 +16,16 @@ public class Submission : Slot
     public override void OnPlace(GameObject go)
     {
         // ¿Ã∆Â∆Æ
-        //PoolingObject po = go.GetComponent<PoolingObject>();
-        //poolManager.Return(po);
-        go.SetActive(false);
-
+        PoolingObject po = go.GetComponent<PoolingObject>();
+        //go.SetActive(false);
+        if (po == null)
+        {
+            go.SetActive(false);
+        }
+        else
+        {
+            poolManager.Return(po);
+        }
         km.OnSubmit(go);
     }
 

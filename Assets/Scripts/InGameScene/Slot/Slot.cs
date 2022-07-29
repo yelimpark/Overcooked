@@ -8,6 +8,11 @@ public class Slot : MonoBehaviour
 
     protected List<string> AcceptableTag = new List<string>();
 
+    public void Start()
+    {
+        AcceptableTag.Add("Cookware");
+    }
+
     public virtual bool AbleToPlace(GameObject go)
     {
         if (go == null)

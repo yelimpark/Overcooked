@@ -32,9 +32,7 @@ public class KitchenManager : MonoBehaviour
     public List<Transform> SpawnPoints = new List<Transform>();
 
     public void Start()
-    {
-        
-
+    {    
         Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
 
         if (PhotonNetwork.CurrentRoom.PlayerCount <= 1)
