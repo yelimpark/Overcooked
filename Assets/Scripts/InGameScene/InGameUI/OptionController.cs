@@ -14,12 +14,14 @@ public class OptionController : MonoBehaviour
 
     public void OpenOptionScreen()
     {
+        Time.timeScale = 0f;
         optionScreen.SetActive(true);
         optionButton.SetActive(false);
     }
 
     public void ContinueButton()
     {
+        Time.timeScale = 1f;
         optionButton.SetActive(true);
         optionScreen.SetActive(false);
     }
@@ -32,7 +34,6 @@ public class OptionController : MonoBehaviour
 
     public void StopButton()
     {
-        Debug.Log("stop");
         fade.SetActive(true);
         stopMenu.SetActive(true);
     }
