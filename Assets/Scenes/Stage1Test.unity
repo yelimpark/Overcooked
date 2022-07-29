@@ -10423,6 +10423,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7bbbf77d2b683c41a61dc4f419dd068, type: 3}
+--- !u!114 &1238718238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3154366599491301350, guid: a7bbbf77d2b683c41a61dc4f419dd068, type: 3}
+  m_PrefabInstance: {fileID: 1238718237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1238718239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3154366599770219314, guid: a7bbbf77d2b683c41a61dc4f419dd068, type: 3}
+  m_PrefabInstance: {fileID: 1238718237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1241032008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16237,6 +16259,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6063887325578760538, guid: 0c3c549a2f8291141b30ecdea97db9d8, type: 3}
   m_PrefabInstance: {fileID: 1977111579}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1998029493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3154366600229458208, guid: a7bbbf77d2b683c41a61dc4f419dd068, type: 3}
+  m_PrefabInstance: {fileID: 1238718237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2003282630 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7170608696065867258, guid: ca29fb007feea9644b80a055410a9877, type: 3}
@@ -16727,6 +16760,9 @@ MonoBehaviour:
   lostScore: 0
   playerPrefab: {fileID: 679262642584591440, guid: dbd36810f21158d478684af092486a06, type: 3}
   JoyStick: {fileID: 1111436065}
+  GrabButton: {fileID: 1998029493}
+  KnifeButton: {fileID: 1238718239}
+  SwitchButton: {fileID: 1238718238}
   SpawnPoints:
   - {fileID: 833919616}
   - {fileID: 610214024}
@@ -17628,6 +17664,10 @@ PrefabInstance:
       propertyPath: go
       value: 
       objectReference: {fileID: 325967778}
+    - target: {fileID: 679262642584591446, guid: dbd36810f21158d478684af092486a06, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 679262642584591446, guid: dbd36810f21158d478684af092486a06, type: 3}
       propertyPath: joystick
       value: 

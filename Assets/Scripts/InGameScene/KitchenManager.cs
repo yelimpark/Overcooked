@@ -30,6 +30,10 @@ public class KitchenManager : MonoBehaviour
 
     public GameObject playerPrefab;
     public VirtualJoyStick JoyStick;
+    public Button GrabButton;
+    public Button KnifeButton;
+    public Button SwitchButton;
+
     public List<Transform> SpawnPoints = new List<Transform>();
 
     public void Start()
@@ -57,6 +61,11 @@ public class KitchenManager : MonoBehaviour
 
             myPlayer1.GetComponent<InputHandler>().joystick = JoyStick;
             myPlayer2.GetComponent<InputHandler>().joystick = JoyStick;
+
+            
+            //GrabButton.onClick.AddListener(myPlayer1.GetComponent<InputHandler>().GetGrabButtonDown());
+            //myPlayer2.GetComponent<InputHandler>().GetGrabButtonDown();
+
         }
         else
         {
