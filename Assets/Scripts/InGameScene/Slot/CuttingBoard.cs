@@ -4,98 +4,27 @@ using UnityEngine;
 
 public class CuttingBoard : Cookware
 {
-    public TimeBar timebar;
+    private bool trigger;
 
-    private CoockwareType position;
-    public CoockwareType Position
+    public override void Start()
     {
-        get { return Position; }
-        set
-        {
-            Position = value;
-            Execute();
-        }
+        type = CoockwareType.CUTTING_BOARD;
+        Position = CoockwareType.CUTTING_BOARD;
+        base.Start();
     }
 
-    private void Start()
+    public void Trigger()
     {
-        AcceptableTag.Add("Ingrediant");
-    }
-
-    public void OnTimeUp()
-    {
-        if (occupyObj == null)
-            return;
-
-        timebar.Init();
-
-        GameObject before = OnTakeOut(null);
-        Ingrediant ingrediant = before.GetComponent<Ingrediant>();
-
-        GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
-        ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
-        GameObject after = ObjPoolMgr.Extract(ingrediant.next).gameObject;
-
-        base.OnPlace(after);
-
-        PoolingObject po = before.GetComponent<PoolingObject>();
-        ObjPoolMgr.Return(po);
-    }
-
-    public override bool AbleToPlace(GameObject go)
-    {
-        if (!base.AbleToPlace(go))
-            return false;
-
-        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
-        if (ingrediant == null || ingrediant.type != CoockwareType.CUTTING_BOARD)
-            return false;
-
-        if (occupyObj != null)
-            return false;
-
-        return true;
-    }
-
-    public override void OnPlace(GameObject go)
-    {
-        base.OnPlace(go);
+        trigger = true;
         Execute();
+        trigger = false;
     }
 
-    public override bool AbleToTakeOut(GameObject dest)
+    public override void Execute()
     {
-        if (!base.AbleToTakeOut(dest))
-            return false;
-
-        Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
-        if (ingrediant.type == CoockwareType.FRYPAN)
-            return false;
-
-        if (dest == null)
-            return false;
-
-        Slot slot = dest.GetComponent<Slot>();
-        return slot != null && slot.AbleToPlace(occupyObj);
-    }
-
-    public override GameObject OnTakeOut(GameObject dest)
-    {
-        return base.OnTakeOut(dest);
-    }
-
-    public void Execute()
-    {
-        if (Position != CoockwareType.CUTTING_BOARD)
+        if (!trigger)
             return;
 
-        Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
-        if (ingrediant.type == CoockwareType.FRYPAN)
-            return;
-
-        // ¹öÆ°!!
-
-        timebar.gameObject.SetActive(true);
-        timebar.pause = false;
+        base.Execute();
     }
 }

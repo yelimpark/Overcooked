@@ -15,29 +15,28 @@ public enum CoockwareType
 public class Cookware : Slot
 {
     public TimeBar timebar;
-    public CoockwareType type;
+
+    protected CoockwareType type;
 
     private CoockwareType position;
     public CoockwareType Position
     {
         get { return position; }
-        set
+        set 
         {
             position = value;
             Execute();
         }
     }
 
-    public bool autoExecute = true;
-
-    private void Start()
+    public virtual void Start()
     {
         AcceptableTag.Add("Ingrediant");
     }
 
     public override bool AbleToPlace(GameObject go)
     {
-        if (!base.AbleToPlace(go))
+         if (!base.AbleToPlace(go))
             return false;
 
         Ingrediant ingrediant = go.GetComponent<Ingrediant>();
@@ -77,7 +76,7 @@ public class Cookware : Slot
         return base.OnTakeOut(dest);
     }
 
-    public void Execute(bool trigger = false)
+    public virtual void Execute()
     {
         if (Position != type)
             return;
@@ -89,14 +88,11 @@ public class Cookware : Slot
         if (ingrediant.type != type)
             return;
 
-        if (!(autoExecute || trigger))
-            return;
-
         timebar.gameObject.SetActive(true);
         timebar.pause = false;
     }
 
-    public void OnTimeUp()
+    public virtual void OnTimeUp()
     {
         if (occupyObj == null)
             return;

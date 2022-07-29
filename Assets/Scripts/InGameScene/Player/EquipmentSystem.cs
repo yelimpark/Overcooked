@@ -4,32 +4,13 @@ using UnityEngine;
 
 public class EquipmentSystem : MonoBehaviour
 {
-    public enum State
-    {
-        EQUIPING,
-        UNEQUIPING,
-        NONE
-    }
-
-    public Hands hands;
-
-    //[SerializeField]
-    //GameObject equipment;
-    //public GameObject Equipment {
-    //    get {
-    //        if 
-    //        return equipment; 
-    //    } 
-    //}
-
-    private GameObject tempGO;
-
-    private State curState = State.NONE;
-    public float equipSpeed = 2f;
+    bool equipable = true;
     public float equipErrorRange = 0.1f;
 
-    private Animator animator;
+    public Hands hands;
+    private GameObject unequipingObj;
 
+    private Animator animator;
 
     private void Start()
     {
@@ -38,83 +19,41 @@ public class EquipmentSystem : MonoBehaviour
 
     public void Equip(GameObject go)
     {
-        if (go == null || curState != State.NONE)
+        if (go == null || !equipable)
             return;
 
-        if (hands.occupyObj == null)
-        {
-            //equipment = go;
-
-            //Utils.FixPosition(go);
-
+        if (hands.AbleToPlace(go))
             hands.OnPlace(go);
 
-            int layer = LayerMask.NameToLayer("ExceptPlayer");
-            go.layer = layer;
+        int layer = LayerMask.NameToLayer("ExceptPlayer");
+        go.layer = layer;
 
-            curState = State.NONE;
-            //equipment.transform.SetParent(hands);
-            animator.SetBool("isPickUp", true);
-        }
-        else
-        {
-            //Cookware cookware = equipment.GetComponent<Cookware>();
-            //if (cookware != null && cookware.AbleToPlace(go))
-            //{
-            //    cookware.OnPlace(go);
-            //}
-        }
+        animator.SetBool("isPickUp", true);
     }
 
     private void Update()
     {
-        switch (curState)
-        {
-            case State.EQUIPING:
-                //Vector3 dir = hands.position - equipment.transform.position;
-                //equipment.transform.position += dir.normalized * Time.deltaTime * equipSpeed;
-
-                //if (Vector3.Distance(hands.position, equipment.transform.position) < equipErrorRange)
-                //{
-                //    curState = State.NONE;
-                //}
-                break;
-
-            case State.UNEQUIPING:
-                if (Utils.IsFalling(tempGO, equipErrorRange))
-                {
-                    UnequipEnd();
-                }
-                break;
-
-            default:
-                break;
-        }
+        if (!equipable && Utils.IsFalling(unequipingObj, equipErrorRange))
+            UnequipEnd();
     }
 
     public void UnequipEnd()
     {
-        curState = State.NONE;
+        equipable = true;
         int layer = LayerMask.NameToLayer("Default");
-        tempGO.layer = layer;
-        tempGO = null;
+        unequipingObj.layer = layer;
+        unequipingObj = null;
     }
 
     public GameObject Unequip()
     {
-        if (!hands.AbleToTakeOut(null)|| curState != State.NONE)
+        if (!hands.AbleToTakeOut(null)|| !equipable)
             return null;
 
-        //Utils.UnFixPosition(equipment);
-
-        curState = State.UNEQUIPING;
-        //equipment.transform.parent = null;
-
-        tempGO = hands.OnTakeOut(null);
-        //equipment = null;
-
+        equipable = false;
+        unequipingObj = hands.OnTakeOut(null);
         animator.SetBool("isPickUp", false);
 
-        return tempGO;
+        return unequipingObj;
     }
 }

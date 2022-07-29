@@ -50,6 +50,7 @@ public class ObjectPoolManager : MonoBehaviour
         {
           mpo = origin.AddComponent<PoolingObject>();
         }
+        mpo.key = data.key;
         origin.SetActive(false);
 
         Stack<PoolingObject> objectPool = new Stack<PoolingObject>(data.maxIngredCount);
@@ -87,7 +88,7 @@ public class ObjectPoolManager : MonoBehaviour
     public void Return(PoolingObject ObjectPool)
     {
         Debug.Log(gameObject, gameObject);
-        if(!poolDic.TryGetValue(ObjectPool.key, out var pool))
+         if(!poolDic.TryGetValue(ObjectPool.key, out var pool))
         {
             return;
         }
