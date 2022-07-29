@@ -66,16 +66,16 @@ public class OptionController : MonoBehaviour
         fade.SetActive(false);
     }
 
-    public void SettingCancelButton()
+    public void SettingSaveButton()
     {
-        volumeSlider.value = prevValue;
-        AudioListener.volume = volumeSlider.value;
         settingMenu.SetActive(false);
         fade.SetActive(false);
     }
 
-    public void SettingSaveButton()
+    public void SettingCancelButton()
     {
+        volumeSlider.value = prevValue;
+        AudioListener.volume = volumeSlider.value;
         settingMenu.SetActive(false);
         fade.SetActive(false);
     }
