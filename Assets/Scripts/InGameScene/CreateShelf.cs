@@ -13,8 +13,6 @@ public class CreateShelf : MonoBehaviour
     public List<CreateShelf> sideShelf = new List<CreateShelf>();
 
     public GameObject firePrefab;
-
-    //public FireHp firePrefabs;
     public float time = 0f;
 
     private FireHp firehp;

@@ -41,4 +41,11 @@ public class MapMove : MonoBehaviour
         "oncomplete", "SetDest"
         ));
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
 }
