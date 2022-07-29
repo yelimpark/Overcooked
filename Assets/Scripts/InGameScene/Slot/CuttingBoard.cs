@@ -2,14 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingBoard : Slot
+public class CuttingBoard : Cookware
 {
-    private CookingBehaviour cb;
+    public TimeBar timebar;
+
+    private CoockwareType position;
+    public CoockwareType Position
+    {
+        get { return Position; }
+        set
+        {
+            Position = value;
+            Execute();
+        }
+    }
 
     private void Start()
     {
-        cb = GetComponent<CookingBehaviour>();
         AcceptableTag.Add("Ingrediant");
+    }
+
+    public void OnTimeUp()
+    {
+        if (occupyObj == null)
+            return;
+
+        timebar.Init();
+
+        GameObject before = OnTakeOut(null);
+        Ingrediant ingrediant = before.GetComponent<Ingrediant>();
+
+        GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
+        ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
+        GameObject after = ObjPoolMgr.Extract(ingrediant.next).gameObject;
+
+        base.OnPlace(after);
+
+        PoolingObject po = before.GetComponent<PoolingObject>();
+        ObjPoolMgr.Return(po);
     }
 
     public override bool AbleToPlace(GameObject go)
@@ -30,26 +60,42 @@ public class CuttingBoard : Slot
     public override void OnPlace(GameObject go)
     {
         base.OnPlace(go);
-        cb.Execute();
+        Execute();
     }
 
     public override bool AbleToTakeOut(GameObject dest)
     {
-        if (cb != null && !cb.ExitPosition())
+        if (!base.AbleToTakeOut(dest))
             return false;
 
-        if (dest != null)
-        {
-            Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware == null || cookware.AbleToPlace(occupyObj))
-                return true;
-        }
+        Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
+        if (ingrediant.type == CoockwareType.FRYPAN)
+            return false;
 
-        return false;
+        if (dest == null)
+            return false;
+
+        Slot slot = dest.GetComponent<Slot>();
+        return slot != null && slot.AbleToPlace(occupyObj);
     }
 
     public override GameObject OnTakeOut(GameObject dest)
     {
         return base.OnTakeOut(dest);
+    }
+
+    public void Execute()
+    {
+        if (Position != CoockwareType.CUTTING_BOARD)
+            return;
+
+        Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
+        if (ingrediant.type == CoockwareType.FRYPAN)
+            return;
+
+        // ¹öÆ°!!
+
+        timebar.gameObject.SetActive(true);
+        timebar.pause = false;
     }
 }
