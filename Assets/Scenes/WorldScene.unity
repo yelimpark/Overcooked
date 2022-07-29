@@ -2119,7 +2119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStageInfo: []
-  hgh: {fileID: 0}
+  DefaultStageInfo: {fileID: 0}
 --- !u!4 &681023642
 Transform:
   m_ObjectHideFlags: 0
@@ -9464,6 +9464,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1070394701}
     m_Modifications:
+    - target: {fileID: 919132149388220610, guid: 8ea294eb9232a414aadfdbe5908ad073, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 1591581069}
     - target: {fileID: 919132149388220613, guid: 8ea294eb9232a414aadfdbe5908ad073, type: 3}
       propertyPath: sceneViewId
       value: 1
