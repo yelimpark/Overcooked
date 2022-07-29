@@ -28,13 +28,13 @@ public class Interact : MonoBehaviour
                 InteractableAppliances interactable = cursor.GetComponent<InteractableAppliances>();
                 if (interactable != null)
                 {
-                    CookingBehaviour cb = interactable.slot.gameObject.GetComponent<CookingBehaviour>();
-                    if (cb != null)
-                    {
-                        cb.SetTrigger(false);
-                        Animator animator = player.GetComponent<Animator>();
-                        animator.SetBool("isChoping", false);
-                    }
+                    //CookingBehaviour cb = interactable.slot.gameObject.GetComponent<CookingBehaviour>();
+                    //if (cb != null)
+                    //{
+                    //    cb.SetTrigger(false);
+                    //    Animator animator = player.GetComponent<Animator>();
+                    //    animator.SetBool("isChoping", false);
+                    //}
                 }
             }
 

@@ -144,8 +144,8 @@ MonoBehaviour:
   TimeUpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8940872672656071518}
-        m_TargetAssemblyTypeName: CookingBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 8940872672656071456}
+        m_TargetAssemblyTypeName: Cookware, Assembly-CSharp
         m_MethodName: OnTimeUp
         m_Mode: 1
         m_Arguments:
@@ -499,8 +499,7 @@ GameObject:
   - component: {fileID: 8940872672656071457}
   - component: {fileID: 8940872672656071459}
   - component: {fileID: 8940872672656071456}
-  - component: {fileID: 8940872672656071519}
-  - component: {fileID: 8940872672656071518}
+  - component: {fileID: 1550119601217121737}
   - component: {fileID: 458179248566066253}
   - component: {fileID: 4141959566008118037}
   m_Layer: 0
@@ -582,8 +581,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupyObj: {fileID: 0}
-  type: 1
---- !u!114 &8940872672656071519
+  timebar: {fileID: 655466864250633975}
+  type: 0
+  autoExecute: 1
+--- !u!114 &1550119601217121737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -592,28 +593,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8940872672656071464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea9c5560cd1a1149a8ac646ce996637, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
-  cookware: {fileID: 8940872672656071456}
---- !u!114 &8940872672656071518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8940872672656071464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e601d3cf2361a647a2af28b8a7a7ecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timebar: {fileID: 655466864250633975}
-  Yoffset: 20
-  fixWhileCooking: 0
-  AutoExecute: 1
-  mask: 1
 --- !u!114 &458179248566066253
 MonoBehaviour:
   m_ObjectHideFlags: 0
