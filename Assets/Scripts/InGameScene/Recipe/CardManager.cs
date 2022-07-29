@@ -70,7 +70,7 @@ public class CardManager : MonoBehaviour
 
     private void NewCard()
     {
-        if (order.childCount < 5)
+        if (order.childCount < 4)
         {
             var index = Random.Range(0, cardList.Count);
 

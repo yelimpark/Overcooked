@@ -29,6 +29,11 @@ public class KitchenManager : MonoBehaviour
     private int feverLevel;
 
     public GameObject playerPrefab;
+    public VirtualJoyStick JoyStick;
+    public Button GrabButton;
+    public Button KnifeButton;
+    public Button SwitchButton;
+
     public List<Transform> SpawnPoints = new List<Transform>();
 
     public void Start()
@@ -42,12 +47,25 @@ public class KitchenManager : MonoBehaviour
             GameObject myPlayer1 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[0].position, SpawnPoints[0].rotation);
             GameObject myPlayer2 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[1].position, SpawnPoints[1].rotation);
 
+            
+
             myPlayer1.AddComponent<SinglePlay>();
             myPlayer2.AddComponent<SinglePlay>();
             myPlayer2.GetComponent<SinglePlay>().Toggle();
 
             myPlayer1.GetComponent<RandomChef>().Send(0);
             myPlayer2.GetComponent<RandomChef>().Send(0);
+
+            //myPlayer1.GetComponent<InputHandler>().GetComponent<VirtualJoyStick>();
+            //myPlayer2.GetComponent<InputHandler>().GetComponent<VirtualJoyStick>();
+
+            myPlayer1.GetComponent<InputHandler>().joystick = JoyStick;
+            myPlayer2.GetComponent<InputHandler>().joystick = JoyStick;
+
+            
+            //GrabButton.onClick.AddListener(myPlayer1.GetComponent<InputHandler>().GetGrabButtonDown());
+            //myPlayer2.GetComponent<InputHandler>().GetGrabButtonDown();
+
         }
         else
         {
@@ -55,6 +73,7 @@ public class KitchenManager : MonoBehaviour
 
             GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
             myPlayer.GetComponent<RandomChef>().Send(idx);
+            //myPlayer.GetComponent <InputHandler>().GetComponent<VirtualJoyStick>();
 
             //myPlayer.GetComponent<InputHandler>().enabled = true;
         }

@@ -9,6 +9,7 @@ public class SinglePlay : MonoBehaviour
     private Image active;
     private Rigidbody rb;
     private Animator animator;
+    //private VirtualJoyStick joystick;
 
     private void Awake()
     {
@@ -16,15 +17,24 @@ public class SinglePlay : MonoBehaviour
         active = GetComponentInChildren<Image>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        //joystick = GetComponentInChildren<VirtualJoyStick>();
     }
 
     void Update()
     {
+#if UNITY_STANDALONE
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Toggle();
         }
+#endif
     }
+#if UNITY_ANDROID
+    public void GetChangeButtonDown()
+    {
+        Toggle();
+    }
+#endif
 
     public void Toggle()
     {
