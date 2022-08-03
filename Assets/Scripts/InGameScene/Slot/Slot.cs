@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    public GameObject occupyObj;
+    protected GameObject occupyObj;
+    public GameObject OccupyObj
+    {
+        get { return occupyObj; }
+    }
 
     protected List<string> AcceptableTag = new List<string>();
 
@@ -23,7 +27,17 @@ public class Slot : MonoBehaviour
     {
         occupyObj = go;
 
-        Utils.FixPosition(occupyObj);
+        Rigidbody rb = occupyObj.GetComponent<Rigidbody>();
+        if (rb != null)
+            rb.isKinematic = true;
+
+        var colliders = occupyObj.GetComponents<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
+
+        occupyObj.transform.rotation = Quaternion.identity;
 
         Vector3 newPos = transform.position;
         newPos.y += transform.lossyScale.y * 0.5f + occupyObj.transform.lossyScale.y * 0.5f;
@@ -32,24 +46,25 @@ public class Slot : MonoBehaviour
         occupyObj.transform.SetParent(transform);
     }
 
-    public virtual bool AbleToTakeOut(GameObject dest)
+    public virtual bool AbleToTakeOut()
     {
-        if (dest != null)
-        {
-            Slot slot = dest.GetComponent<Slot>();
-            if (slot != null)
-                return slot.AbleToPlace(occupyObj);
-        }
-
         return occupyObj != null;
     }
 
-    public virtual GameObject OnTakeOut(GameObject dest)
+    public virtual GameObject OnTakeOut()
     {
         GameObject takeout = occupyObj;
         occupyObj = null;
 
-        Utils.UnFixPosition(takeout);
+        Rigidbody rb = takeout.GetComponent<Rigidbody>();
+        if (rb != null)
+            rb.isKinematic = false;
+
+        var colliders = takeout.GetComponents<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = true;
+        }
 
         takeout.transform.parent = null;
 

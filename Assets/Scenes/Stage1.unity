@@ -1644,35 +1644,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3965040920885476998, guid: d0b13ab3111deca43b5631b31942efce, type: 3}
   m_PrefabInstance: {fileID: 143381206}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &143381208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143381207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc3ca16c9a66c042928763cfdf620a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  occupyObj: {fileID: 0}
-  conbearSpeed: 3
-  km: {fileID: 2081511142}
---- !u!114 &143381209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143381207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
-  slot: {fileID: 143381208}
 --- !u!65 &143381210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1702,6 +1673,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &143381212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143381207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd510b9539b2b04992aadc5a377ca3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
+  km: {fileID: 2081511142}
+  poolManager: {fileID: 1360930951}
 --- !u!1001 &174777510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3143,17 +3129,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6217272475968385417, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
   m_PrefabInstance: {fileID: 341720023}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &341720025 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6217272475968385421, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
-  m_PrefabInstance: {fileID: 341720023}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &341720026 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5183613441607265937, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
   m_PrefabInstance: {fileID: 341720023}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341720025}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bea21b6d615441f428cce27750add9d2, type: 3}
@@ -11060,7 +11041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupyObj: {fileID: 1501023923}
   mask: 2
 --- !u!54 &1070960885
 Rigidbody:
@@ -11103,7 +11083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupyObj: {fileID: 0}
   mask: 0
 --- !u!1001 &1071949475
 PrefabInstance:
@@ -14840,7 +14819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kitchenMgr: {fileID: 2081511142}
   cardList:
-  - {fileID: 4780895680793885109, guid: 2c35c0f84d238d94080362678746692e, type: 3}
+  - {fileID: 4780895680793885109, guid: 37f9a34685431834ba9464a2ed7937c6, type: 3}
   submitList: []
   order: {fileID: 1468397142}
   orderTime: 20
@@ -15348,17 +15327,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6217272475968385417, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
   m_PrefabInstance: {fileID: 1501023921}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1501023923 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6217272475968385421, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
-  m_PrefabInstance: {fileID: 1501023921}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1501023924 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5183613441607265937, guid: 09d492875ff35aa4eaef7c4bde0f07dd, type: 3}
   m_PrefabInstance: {fileID: 1501023921}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501023923}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bea21b6d615441f428cce27750add9d2, type: 3}
@@ -22403,20 +22377,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2949452156424306388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6063887325630994474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
-  slot: {fileID: 341720026}
 --- !u!1001 &3645080159214624847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22608,7 +22568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupyObj: {fileID: 341720025}
   mask: 2
 --- !u!135 &4557319559071775328
 SphereCollider:
@@ -22741,7 +22700,7 @@ GameObject:
   - component: {fileID: 5707685624648589521}
   - component: {fileID: 4557319559071775328}
   - component: {fileID: 3752798843964272100}
-  - component: {fileID: 2949452156424306388}
+  - component: {fileID: 6063887325630994478}
   m_Layer: 0
   m_Name: Shelf (17)
   m_TagString: Interactable
@@ -22816,6 +22775,20 @@ Transform:
   m_Father: {fileID: 1827647431}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6063887325630994478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063887325630994474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215f6393829d114091257c9add1cdbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
+  slot: {fileID: 341720026}
 --- !u!114 &6429313916804591908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22828,7 +22801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820cac9bcf0cb947822367b4be48251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupyObj: {fileID: 0}
   mask: 0
 --- !u!1001 &6870723233397393996
 PrefabInstance:

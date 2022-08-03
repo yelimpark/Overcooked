@@ -14,9 +14,11 @@ public class Hands : Slot
     {
         if (occupyObj != null)
         {
-            Cookware cookware = occupyObj.GetComponent<Cookware>();
-            if (cookware != null)
-                return cookware.AbleToPlace(go);
+            Slot slot = occupyObj.GetComponent<Slot>();
+            if (slot != null)
+                return slot.AbleToPlace(go);
+            else
+                return false;
         }
 
         return base.AbleToPlace(go);
@@ -26,9 +28,9 @@ public class Hands : Slot
     {
         if (occupyObj != null)
         {
-            Cookware cookware = occupyObj.GetComponent<Cookware>();
-            if (cookware != null)
-                cookware.OnPlace(go);
+            Slot slot = occupyObj.GetComponent<Slot>();
+            if (slot != null)
+                slot.OnPlace(go);
         }
         else
         {
@@ -36,24 +38,24 @@ public class Hands : Slot
         }
     }
 
-    public override bool AbleToTakeOut(GameObject dest)
+    public override bool AbleToTakeOut()
     {
-        if (occupyObj != null)
-        {
-            Cookware cookware = occupyObj.GetComponent<Cookware>();
-            if (cookware != null && cookware.AbleToTakeOut(dest))
-                return true;
-        }
+        //if (occupyObj != null)
+        //{
+        //    Cookware cookware = occupyObj.GetComponent<Cookware>();
+        //    if (cookware != null && cookware.AbleToTakeOut(dest))
+        //        return true;
+        //}
 
-        return base.AbleToTakeOut(dest);
+        return base.AbleToTakeOut();
     }
 
-    public override GameObject OnTakeOut(GameObject dest)
+    public override GameObject OnTakeOut()
     {
-        Cookware cookware = occupyObj.GetComponent<Cookware>();
-        if (cookware != null && cookware.AbleToTakeOut(dest))
-            return cookware.OnTakeOut(dest);
+        //Cookware cookware = occupyObj.GetComponent<Cookware>();
+        //if (cookware != null && cookware.AbleToTakeOut(dest))
+        //    return cookware.OnTakeOut(dest);
 
-        return base.OnTakeOut(dest);
+        return base.OnTakeOut();
     }
 }

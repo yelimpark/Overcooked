@@ -29,9 +29,14 @@ public class Interactable : MonoBehaviour
             }
         }
     }
+}
 
-    public virtual GameObject TakeOut(GameObject dest)
-    {
-        return gameObject;
-    }
+public interface ITakeOut
+{
+    bool TakeOut(EquipmentSystem es);
+}
+
+public interface IPlace
+{
+    bool Place(EquipmentSystem es);
 }

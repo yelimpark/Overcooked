@@ -77,7 +77,7 @@ public class KitchenManager : MonoBehaviour
     public void OnSubmit(GameObject go)
     {
         cm.OnSubmit(go);
-        createDish.GenerateDish(); //접시 타이밍
+        //createDish.GenerateDish(); //접시 타이밍
     }
 
     public void GetScore(int score, bool isFever)

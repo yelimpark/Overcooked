@@ -54,34 +54,23 @@ public class InputHandler : MonoBehaviour
         // Interaction
         if (Input.GetButtonDown("Fire1"))
         {
-            var equipment = es.hands.occupyObj;
+            var equipment = es.hands.OccupyObj;
 
             if (equipment == null)
             {
-                //OnEquipBtn();
-                PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
+                PhotonView.Get(this).RPC("OntakeOutBtn", RpcTarget.All);
+                //OnActionBtn();
             }
             else
             {
-                if (equipment.tag == "Cookware" && InteractableCursor.Cursor != null)
-                {
-                    InteractableAppliances ia = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
-                    if (ia.slot.occupyObj != null)
-                    {
-                        //OnEquipBtn();
-                        PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
-                        return;
-                    }
-                }
-
-                PhotonView.Get(this).RPC("Place", RpcTarget.All);
-                //Place();
+                PhotonView.Get(this).RPC("OnPlaceBtn", RpcTarget.All);
+                //OnPlaceBtn();
             }
         }
         if(Input.GetButton("Fire4"))
         {
-            OnZDown();
-            //PhotonView.Get(this).RPC("OnZDown", RpcTarget.All);
+            PhotonView.Get(this).RPC("OnActionBtn", RpcTarget.All);
+            //OnZDown();
 
             //if (_equipmentSystem.Equipment.tag == "Cookware")
             //{                
@@ -97,47 +86,39 @@ public class InputHandler : MonoBehaviour
     }
 
     [PunRPC]
-    public void OnEquipBtn()
+    public void OntakeOutBtn()
     {
         if (InteractableCursor.Cursor != null)
-            TakeOut(InteractableCursor.Cursor);
+        {
+            ITakeOut interactable = InteractableCursor.Cursor.GetComponent<ITakeOut>();
+            if (interactable != null && interactable.TakeOut(es))
+                EquipmentCursor.Cursor = null;
+        }
+
         if (EquipmentCursor.Cursor != null)
-            TakeOut(EquipmentCursor.Cursor);
-    }
-
-    public void TakeOut(GameObject cursor)
-    {
-         var dest = es.hands.gameObject;
-        Interactable interactable = cursor.GetComponent<Interactable>();
-        if (interactable != null)
         {
-            var takeOut = interactable.TakeOut(dest);
-            es.Equip(takeOut);
+            ITakeOut interactable = EquipmentCursor.Cursor.GetComponent<ITakeOut>();
+            if (interactable != null)
+                interactable.TakeOut(es);
         }
-
-        if (es.hands.gameObject != null)
-            EquipmentCursor.Cursor = null;
     }
 
     [PunRPC]
-    public void Place()
+    public void OnPlaceBtn()
     {
         if (InteractableCursor.Cursor != null)
         {
-            InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
-            if (interactable != null && interactable.slot.AbleToPlace(es.hands.occupyObj))
-            {
-                GameObject discarded = es.Unequip();
-                es.UnequipEnd();
-                interactable.slot.OnPlace(discarded);
-                return;
-            }
+            IPlace interactable = InteractableCursor.Cursor.GetComponent<IPlace>();
+            interactable.Place(es);
         }
-        es.Unequip();
+        else
+        {
+            es.Unequip();
+        }
     }
 
     [PunRPC]
-    public void OnZDown()
+    public void OnActionBtn()
     {
         if (InteractableCursor.Cursor != null)
         {
@@ -147,8 +128,7 @@ public class InputHandler : MonoBehaviour
                 CuttingBoard cb = interactable.slot.GetComponent<CuttingBoard>();
                 if (cb != null)
                 {
-                    cb.Trigger();
-                    animator.SetBool("isChoping", true);
+                    cb.Trigger(animator);
                 }
             }
         }

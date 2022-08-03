@@ -5,6 +5,7 @@ using UnityEngine;
 public class CuttingBoard : Cookware
 {
     private bool trigger;
+    private Animator playerAnimator;
 
     public override void Start()
     {
@@ -13,8 +14,9 @@ public class CuttingBoard : Cookware
         base.Start();
     }
 
-    public void Trigger()
+    public void Trigger(Animator animator)
     {
+        playerAnimator = animator;
         trigger = true;
         Execute();
         trigger = false;
@@ -26,5 +28,15 @@ public class CuttingBoard : Cookware
             return;
 
         base.Execute();
+
+        if(timebar.gameObject.activeSelf)
+            playerAnimator.SetBool("isChoping", true);
+    }
+
+    public override void OnTimeUp()
+    {
+        base.OnTimeUp();
+
+        playerAnimator.SetBool("isChoping", false);
     }
 }

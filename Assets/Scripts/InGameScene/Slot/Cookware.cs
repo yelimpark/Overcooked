@@ -55,25 +55,16 @@ public class Cookware : Slot
         Execute();
     }
 
-    public override bool AbleToTakeOut(GameObject dest)
+    public override bool AbleToTakeOut()
     {
-        if (!base.AbleToTakeOut(dest))
+        if (!base.AbleToTakeOut())
             return false;
 
         Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
         if (ingrediant.type == type)
             return false;
 
-        if (dest == null)
-            return false;
-
-        Slot slot = dest.GetComponent<Slot>();
-        return slot != null && slot.AbleToPlace(occupyObj);
-    }
-
-    public override GameObject OnTakeOut(GameObject dest)
-    {
-        return base.OnTakeOut(dest);
+        return true;
     }
 
     public virtual void Execute()
@@ -99,23 +90,16 @@ public class Cookware : Slot
 
         timebar.Init();
 
-        GameObject before = OnTakeOut(null);
+        GameObject before = OnTakeOut();
         Ingrediant ingrediant = before.GetComponent<Ingrediant>();
 
         GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
         ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
         GameObject after = ObjPoolMgr.Extract(ingrediant.next).gameObject;
 
-        base.OnPlace(after);
+        OnPlace(after);
 
         PoolingObject po = before.GetComponent<PoolingObject>();
         ObjPoolMgr.Return(po);
-
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        foreach(var player in players)
-        {
-            if (player.GetComponent<InputHandler>().enabled)
-                player.GetComponent<Animator>().SetBool("isChoping", false);
-        }
     }
 }

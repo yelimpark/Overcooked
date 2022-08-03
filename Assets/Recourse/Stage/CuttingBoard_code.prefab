@@ -495,7 +495,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6217272475968385417}
-  - component: {fileID: 5576742213913147260}
   - component: {fileID: 5183613441607265937}
   m_Layer: 0
   m_Name: CuttingBoard_code
@@ -521,19 +520,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5576742213913147260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6217272475968385421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
 --- !u!114 &5183613441607265937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea21b6d615441f428cce27750add9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupyObj: {fileID: 0}
   timebar: {fileID: 6217272475723072341}
 --- !u!1 &7614772185888302130
 GameObject:

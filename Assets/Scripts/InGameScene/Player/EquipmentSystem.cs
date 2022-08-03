@@ -47,11 +47,11 @@ public class EquipmentSystem : MonoBehaviour
 
     public GameObject Unequip()
     {
-        if (!hands.AbleToTakeOut(null)|| !equipable)
+        if (!hands.AbleToTakeOut()|| !equipable)
             return null;
 
         equipable = false;
-        unequipingObj = hands.OnTakeOut(null);
+        unequipingObj = hands.OnTakeOut();
         animator.SetBool("isPickUp", false);
 
         return unequipingObj;
