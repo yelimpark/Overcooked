@@ -29,7 +29,7 @@ public class KitchenManager : MonoBehaviour
     private int feverLevel;
 
     public GameObject playerPrefab;
-    public VirtualJoyStick JoyStick;
+    //public VirtualJoyStick JoyStick;
     public List<Transform> SpawnPoints = new List<Transform>();
 
     public void Start()
@@ -55,8 +55,8 @@ public class KitchenManager : MonoBehaviour
             //myPlayer1.GetComponent<InputHandler>().GetComponent<VirtualJoyStick>();
             //myPlayer2.GetComponent<InputHandler>().GetComponent<VirtualJoyStick>();
 
-            myPlayer1.GetComponent<InputHandler>().joystick = JoyStick;
-            myPlayer2.GetComponent<InputHandler>().joystick = JoyStick;
+            //myPlayer1.GetComponent<InputHandler>().joystick = JoyStick;
+            //myPlayer2.GetComponent<InputHandler>().joystick = JoyStick;
         }
         else
         {
