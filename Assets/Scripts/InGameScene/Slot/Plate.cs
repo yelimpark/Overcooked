@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Plate : Slot
 {
+    private void Start()
+    {
+        AcceptableTag.Add("Ingrediant");
+    }
+
     public override bool AbleToPlace(GameObject go)
     {
         if (!base.AbleToPlace(go))
@@ -35,10 +40,13 @@ public class Plate : Slot
                 ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
                 GameObject after = ObjPoolMgr.Extract(occupyIngrediant.next).gameObject;
 
-                var before = OnTakeOut(null);
+                var before = OnTakeOut();
                 OnPlace(after);
 
                 PoolingObject po = before.GetComponent<PoolingObject>();
+                ObjPoolMgr.Return(po);
+
+                po = go.GetComponent<PoolingObject>();
                 ObjPoolMgr.Return(po);
             }
         }
@@ -46,14 +54,5 @@ public class Plate : Slot
         {
             base.OnPlace(go);
         }
-    }
-
-    public override bool AbleToTakeOut(GameObject dest)
-    {
-        if (dest == null)
-            return false;
-
-        Slot slot = dest.GetComponent<Slot>();
-        return slot != null && slot.AbleToPlace(occupyObj);
     }
 }

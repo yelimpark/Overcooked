@@ -144,8 +144,8 @@ MonoBehaviour:
   TimeUpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8940872672656071456}
-        m_TargetAssemblyTypeName: Cookware, Assembly-CSharp
+      - m_Target: {fileID: 979476819213946605}
+        m_TargetAssemblyTypeName: Frypan, Assembly-CSharp
         m_MethodName: OnTimeUp
         m_Mode: 1
         m_Arguments:
@@ -498,10 +498,10 @@ GameObject:
   - component: {fileID: 8940872672656071463}
   - component: {fileID: 8940872672656071457}
   - component: {fileID: 8940872672656071459}
-  - component: {fileID: 8940872672656071456}
-  - component: {fileID: 1550119601217121737}
+  - component: {fileID: 2134555729325067331}
   - component: {fileID: 458179248566066253}
   - component: {fileID: 4141959566008118037}
+  - component: {fileID: 979476819213946605}
   m_Layer: 0
   m_Name: Frypan_code
   m_TagString: Cookware
@@ -568,7 +568,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8940872672656071456
+--- !u!114 &2134555729325067331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -577,23 +577,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8940872672656071464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff22a300359952448006b2eea90ece1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  occupyObj: {fileID: 0}
-  timebar: {fileID: 655466864250633975}
-  type: 0
-  autoExecute: 1
---- !u!114 &1550119601217121737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8940872672656071464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
+  m_Script: {fileID: 11500000, guid: c9551dcb6d309e74291711cb92d61bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}
@@ -636,6 +620,21 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &979476819213946605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8940872672656071464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ce88d2b149c4a448469ea056bc9915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timebar: {fileID: 655466864250633975}
+  fireAlarm: {fileID: 0}
+  fireTime: 4
 --- !u!1001 &8940872672364438805
 PrefabInstance:
   m_ObjectHideFlags: 0

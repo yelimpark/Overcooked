@@ -5,25 +5,26 @@ using Photon.Pun;
 
 public class InputHandler : MonoBehaviour
 {
-    private EquipmentSystem _equipmentSystem;
+    //componant
+    private EquipmentSystem es;
     private Animator animator;
     private Rigidbody rb;
+    private PhotonView photonView;
+
     public Interact EquipmentCursor;
     public Interact InteractableCursor;
 
-    private PhotonView photonView;
-
+    // variable about movement
     public float speed;
-
     private float horizontal;
     private float vertical;
 
     void Start()
     {
-        _equipmentSystem = GetComponent<EquipmentSystem>();
+        es = GetComponent<EquipmentSystem>();
         animator = GetComponent<Animator>();
-        photonView = PhotonView.Get(this);
         rb = GetComponent<Rigidbody>();
+        photonView = PhotonView.Get(this);
     }
 
     private void FixedUpdate()
@@ -34,13 +35,13 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
+        // Movement
         if (!photonView.IsMine)
-        {
             return;
-        }
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+
         Vector3 moveVec = new Vector3(horizontal, 0f, vertical).normalized;
         if (moveVec != Vector3.zero)
         {
@@ -50,37 +51,26 @@ public class InputHandler : MonoBehaviour
         }
         animator.SetBool("isWalking", moveVec != Vector3.zero);
 
+        // Interaction
         if (Input.GetButtonDown("Fire1"))
         {
-            var equipment = _equipmentSystem.hands.occupyObj;
+            var equipment = es.hands.OccupyObj;
 
             if (equipment == null)
             {
-                //OnEquipBtn();
-                PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
+                PhotonView.Get(this).RPC("OntakeOutBtn", RpcTarget.All);
+                //OnActionBtn();
             }
             else
             {
-                if (equipment.tag == "Cookware" && InteractableCursor.Cursor != null)
-                {
-                    Cookware cookware = equipment.GetComponent<Cookware>();
-                    InteractableAppliances ia = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
-                    if (ia.slot.occupyObj != null)
-                    {
-                        //OnEquipBtn();
-                        PhotonView.Get(this).RPC("OnEquipBtn", RpcTarget.All);
-                        return;
-                    }
-                }
-
-                PhotonView.Get(this).RPC("Place", RpcTarget.All);
-                //Place();
+                PhotonView.Get(this).RPC("OnPlaceBtn", RpcTarget.All);
+                //OnPlaceBtn();
             }
         }
         if(Input.GetButton("Fire4"))
         {
-            OnZDown();
-            //PhotonView.Get(this).RPC("OnZDown", RpcTarget.All);
+            PhotonView.Get(this).RPC("OnActionBtn", RpcTarget.All);
+            //OnZDown();
 
             //if (_equipmentSystem.Equipment.tag == "Cookware")
             //{                
@@ -96,58 +86,49 @@ public class InputHandler : MonoBehaviour
     }
 
     [PunRPC]
-    public void OnEquipBtn()
+    public void OntakeOutBtn()
     {
         if (InteractableCursor.Cursor != null)
-            TakeOut(InteractableCursor.Cursor);
+        {
+            ITakeOut interactable = InteractableCursor.Cursor.GetComponent<ITakeOut>();
+            if (interactable != null && interactable.TakeOut(es))
+                EquipmentCursor.Cursor = null;
+        }
+
         if (EquipmentCursor.Cursor != null)
-            TakeOut(EquipmentCursor.Cursor);
-    }
-
-    public void TakeOut(GameObject cursor)
-    {
-        var dest = _equipmentSystem.hands.gameObject;
-        Interactable interactable = cursor.GetComponent<Interactable>();
-        if (interactable != null)
         {
-            var takeOut = interactable.TakeOut(dest);
-            _equipmentSystem.Equip(takeOut);
+            ITakeOut interactable = EquipmentCursor.Cursor.GetComponent<ITakeOut>();
+            if (interactable != null)
+                interactable.TakeOut(es);
         }
-
-        if (_equipmentSystem.hands.gameObject != null)
-            EquipmentCursor.Cursor = null;
     }
 
     [PunRPC]
-    public void Place()
+    public void OnPlaceBtn()
     {
         if (InteractableCursor.Cursor != null)
         {
-            InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
-            if (interactable != null && interactable.slot.AbleToPlace(_equipmentSystem.hands.occupyObj))
-            {
-                GameObject discarded = _equipmentSystem.Unequip();
-                _equipmentSystem.UnequipEnd();
-                interactable.slot.OnPlace(discarded);
-                return;
-            }
+            IPlace interactable = InteractableCursor.Cursor.GetComponent<IPlace>();
+            interactable.Place(es);
         }
-        _equipmentSystem.Unequip();
+        else
+        {
+            es.Unequip();
+        }
     }
 
     [PunRPC]
-    public void OnZDown()
+    public void OnActionBtn()
     {
         if (InteractableCursor.Cursor != null)
         {
             InteractableAppliances interactable = InteractableCursor.Cursor.GetComponent<InteractableAppliances>();
             if (interactable != null)
             {
-                Cookware cookware = interactable.slot.GetComponent<Cookware>();
-                if (cookware != null)
+                CuttingBoard cb = interactable.slot.GetComponent<CuttingBoard>();
+                if (cb != null)
                 {
-                    cookware.Execute(true);
-                    animator.SetBool("isChoping", true);
+                    cb.Trigger(animator);
                 }
             }
         }

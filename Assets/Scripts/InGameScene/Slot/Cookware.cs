@@ -15,29 +15,28 @@ public enum CoockwareType
 public class Cookware : Slot
 {
     public TimeBar timebar;
-    public CoockwareType type;
+
+    protected CoockwareType type;
 
     private CoockwareType position;
     public CoockwareType Position
     {
         get { return position; }
-        set
+        set 
         {
             position = value;
             Execute();
         }
     }
 
-    public bool autoExecute = true;
-
-    private void Start()
+    public virtual void Start()
     {
         AcceptableTag.Add("Ingrediant");
     }
 
     public override bool AbleToPlace(GameObject go)
     {
-        if (!base.AbleToPlace(go))
+         if (!base.AbleToPlace(go))
             return false;
 
         Ingrediant ingrediant = go.GetComponent<Ingrediant>();
@@ -56,28 +55,19 @@ public class Cookware : Slot
         Execute();
     }
 
-    public override bool AbleToTakeOut(GameObject dest)
+    public override bool AbleToTakeOut()
     {
-        if (!base.AbleToTakeOut(dest))
+        if (!base.AbleToTakeOut())
             return false;
 
         Ingrediant ingrediant = occupyObj.GetComponent<Ingrediant>();
         if (ingrediant.type == type)
             return false;
 
-        if (dest == null)
-            return false;
-
-        Slot slot = dest.GetComponent<Slot>();
-        return slot != null && slot.AbleToPlace(occupyObj);
+        return true;
     }
 
-    public override GameObject OnTakeOut(GameObject dest)
-    {
-        return base.OnTakeOut(dest);
-    }
-
-    public void Execute(bool trigger = false)
+    public virtual void Execute()
     {
         if (Position != type)
             return;
@@ -89,37 +79,27 @@ public class Cookware : Slot
         if (ingrediant.type != type)
             return;
 
-        if (!(autoExecute || trigger))
-            return;
-
         timebar.gameObject.SetActive(true);
         timebar.pause = false;
     }
 
-    public void OnTimeUp()
+    public virtual void OnTimeUp()
     {
         if (occupyObj == null)
             return;
 
         timebar.Init();
 
-        GameObject before = OnTakeOut(null);
+        GameObject before = OnTakeOut();
         Ingrediant ingrediant = before.GetComponent<Ingrediant>();
 
         GameObject ObjPoolMgrGO = GameObject.FindGameObjectWithTag("ObjPoolMgr");
         ObjectPoolManager ObjPoolMgr = ObjPoolMgrGO.GetComponent<ObjectPoolManager>();
         GameObject after = ObjPoolMgr.Extract(ingrediant.next).gameObject;
 
-        base.OnPlace(after);
+        OnPlace(after);
 
         PoolingObject po = before.GetComponent<PoolingObject>();
         ObjPoolMgr.Return(po);
-
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        foreach(var player in players)
-        {
-            if (player.GetComponent<InputHandler>().enabled)
-                player.GetComponent<Animator>().SetBool("isChoping", false);
-        }
     }
 }
