@@ -15,11 +15,6 @@ public class CreateDish : MonoBehaviour
     }
     private void Update()
     {
-        // Å×½ºÆ® 
-        if(Input.GetKey(KeyCode.G))
-        {
-            GenerateDish();
-        }
     }
 
     public void GenerateDish()
