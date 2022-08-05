@@ -35,9 +35,9 @@ public class KitchenManager : MonoBehaviour
     {
         
 
-        Debug.Log(PhotonNetwork.CountOfPlayers);
+        Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
 
-        if (PhotonNetwork.CountOfPlayers == 1)
+        if (PhotonNetwork.CurrentRoom.PlayerCount <= 1)
         {
             GameObject myPlayer1 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[0].position, SpawnPoints[0].rotation);
             GameObject myPlayer2 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[1].position, SpawnPoints[1].rotation);
@@ -77,7 +77,7 @@ public class KitchenManager : MonoBehaviour
     public void OnSubmit(GameObject go)
     {
         cm.OnSubmit(go);
-        createDish.GenerateDish(); //접시 타이밍
+        //createDish.GenerateDish(); //접시 타이밍
     }
 
     public void GetScore(int score, bool isFever)

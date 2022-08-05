@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Submission : Slot
 {
-    public float conbearSpeed = 3f;
     public KitchenManager km;
+    public ObjectPoolManager poolManager;
 
-    private ObjectPoolManager poolManager;
-
-    private void Awake()
+    public void Start()
     {
-        poolManager = GameObject.FindObjectOfType<ObjectPoolManager>();      
+        AcceptableTag.Add("Cookware");
     }
+
     public override void OnPlace(GameObject go)
     {
-        // ¿Ã∆Â∆Æ
-        //PoolingObject po = go.GetComponent<PoolingObject>();
-        //poolManager.Return(po);
-        go.SetActive(false);
+        PoolingObject po = go.GetComponent<PoolingObject>();
+        poolManager.Return(po);
 
         km.OnSubmit(go);
     }
-
 }

@@ -2,54 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingBoard : Slot
+public class CuttingBoard : Cookware
 {
-    private CookingBehaviour cb;
+    private bool trigger;
+    private Animator playerAnimator;
 
-    private void Start()
+    public override void Start()
     {
-        cb = GetComponent<CookingBehaviour>();
-        AcceptableTag.Add("Ingrediant");
+        type = CoockwareType.CUTTING_BOARD;
+        Position = CoockwareType.CUTTING_BOARD;
+        base.Start();
     }
 
-    public override bool AbleToPlace(GameObject go)
+    public void Trigger(Animator animator)
     {
-        if (!base.AbleToPlace(go))
-            return false;
-
-        Ingrediant ingrediant = go.GetComponent<Ingrediant>();
-        if (ingrediant == null || ingrediant.type != CoockwareType.CUTTING_BOARD)
-            return false;
-
-        if (occupyObj != null)
-            return false;
-
-        return true;
+        playerAnimator = animator;
+        trigger = true;
+        Execute();
+        trigger = false;
     }
 
-    public override void OnPlace(GameObject go)
+    public override void Execute()
     {
-        base.OnPlace(go);
-        cb.Execute();
+        if (!trigger)
+            return;
+
+        base.Execute();
+
+        if(timebar.gameObject.activeSelf)
+            playerAnimator.SetBool("isChoping", true);
     }
 
-    public override bool AbleToTakeOut(GameObject dest)
+    public override void OnTimeUp()
     {
-        if (cb != null && !cb.ExitPosition())
-            return false;
+        base.OnTimeUp();
 
-        if (dest != null)
-        {
-            Cookware cookware = dest.GetComponent<Cookware>();
-            if (cookware == null || cookware.AbleToPlace(occupyObj))
-                return true;
-        }
-
-        return false;
-    }
-
-    public override GameObject OnTakeOut(GameObject dest)
-    {
-        return base.OnTakeOut(dest);
+        playerAnimator.SetBool("isChoping", false);
     }
 }

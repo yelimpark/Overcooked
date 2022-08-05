@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1635675362777722480}
   - component: {fileID: 8079348935839076516}
   - component: {fileID: 3560838868814206707}
-  - component: {fileID: 3560838868814206716}
+  - component: {fileID: 8596469625184430704}
   m_Layer: 0
   m_Name: bun_code
   m_TagString: Ingrediant
@@ -136,7 +136,7 @@ MonoBehaviour:
   next: bun_meat_code
   IngrediantName: bun_code
   combinedWith: meat_cook_code
---- !u!114 &3560838868814206716
+--- !u!114 &8596469625184430704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3560838868814206717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee7bc9983d24e244aaac065250229a6, type: 3}
+  m_Script: {fileID: 11500000, guid: c9551dcb6d309e74291711cb92d61bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 11400000, guid: ae63f4d96cd5ed241ab2fc43d125f537, type: 2}

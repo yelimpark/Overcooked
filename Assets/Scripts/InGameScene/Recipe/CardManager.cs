@@ -36,10 +36,9 @@ public class CardManager : MonoBehaviour
         bool find = false;
         for (var i = 0; i < submitList.Count; i++)
         {
-            Cookware cookware = submitFood.GetComponent<Cookware>();
-            if (cookware.occupyObj != null)
+            if (submitFood != null)
             {
-                string name = cookware.occupyObj.GetComponent<Ingrediant>().IngrediantName;
+                string name = submitFood.GetComponent<Ingrediant>().IngrediantName;
                 Debug.Log($"{name} {submitList[i].name}");
                 if (name == submitList[i].name)
                 {
@@ -53,7 +52,6 @@ public class CardManager : MonoBehaviour
                     break;
                 }
             }
-
         }
 
         if (!find)
