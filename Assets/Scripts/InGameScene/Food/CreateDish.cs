@@ -6,9 +6,6 @@ public class CreateDish : MonoBehaviour
 {
     public float timer;
     private InteractableCreate createObject;
-    public Transform spon;
-
-
     private void Start()
     {
         createObject = GetComponent<InteractableCreate>();
