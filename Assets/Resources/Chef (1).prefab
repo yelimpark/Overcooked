@@ -1002,6 +1002,9 @@ MonoBehaviour:
   EquipmentCursor: {fileID: 8417508904082989660}
   InteractableCursor: {fileID: 8417508904967810102}
   speed: 8
+  joystick: {fileID: 0}
+  GrabButton: {fileID: 0}
+  KnifeButton: {fileID: 0}
 --- !u!114 &679262642584591441
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,13 +9,11 @@ public class IntroSceneController : MonoBehaviour
     public FadeIn target1;
     public FadeIn target2;
     public FadeIn target3;
-    public FadeIn target4;
 
     [Header("On/Off UI")]
     public GameObject Canvas1;
     public GameObject Canvas2;
     public GameObject Canvas3;
-    public GameObject Canvas4;
 
     [Header("시간 설정")]
     private float accumTime = 3f;
@@ -24,14 +22,13 @@ public class IntroSceneController : MonoBehaviour
     public string SceneName;
 
     [Header("LoadingTime")]
-    public float minLoadingTime = 13.0f;
+    public float minLoadingTime = 7f;
 
     private void Start()
     {
         Canvas1.SetActive(false);
         Canvas2.SetActive(false);
         Canvas3.SetActive(false);
-        Canvas4.SetActive(false);
         StartCoroutine(FadeInOut());
         StartCoroutine(LoadAsynScene());
     }
@@ -46,10 +43,7 @@ public class IntroSceneController : MonoBehaviour
         yield return new WaitForSeconds(accumTime);
         Canvas3.SetActive(true);
         target3.StartFadeIn();
-        yield return new WaitForSeconds(accumTime);
-        Canvas4.SetActive(true);
-        target4.StartFadeIn();
-        yield return new WaitForSeconds(accumTime);
+        //yield return new WaitForSeconds(accumTime);
     }
 
     IEnumerator LoadAsynScene()

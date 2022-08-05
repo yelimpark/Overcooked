@@ -70,7 +70,7 @@ public class LoadingScene : MonoBehaviour
             }
         }
 
-        Debug.Log(GameManager.Instance.DataManager.currentStageInfo[0].successSubmit);
+        //Debug.Log(GameManager.Instance.DataManager.currentStageInfo[0].successSubmit);
 
         ZoomIn.ZoomInUI();
         StartCoroutine(LoadAsynSceneCoroutine());

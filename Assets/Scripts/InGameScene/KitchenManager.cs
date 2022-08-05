@@ -25,6 +25,11 @@ public class KitchenManager : MonoBehaviour
     public int FailSubmit => failSubmit;
     public int LostScore => lostScore;
 
+    public VirtualJoyStick JoyStick;
+
+    public Button GrabButton;
+    public Button KnifeButton;
+    public Button SwitchButton;
 
     private int feverLevel;
 
@@ -39,15 +44,9 @@ public class KitchenManager : MonoBehaviour
 
         if (PhotonNetwork.CurrentRoom.PlayerCount <= 1)
         {
-            GameObject myPlayer1 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[0].position, SpawnPoints[0].rotation);
-            GameObject myPlayer2 = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[1].position, SpawnPoints[1].rotation);
-
-            myPlayer1.AddComponent<SinglePlay>();
-            myPlayer2.AddComponent<SinglePlay>();
+            InstanciateSinglePlayer(0);
+            GameObject myPlayer2 =  InstanciateSinglePlayer(1);
             myPlayer2.GetComponent<SinglePlay>().Toggle();
-
-            myPlayer1.GetComponent<RandomChef>().Send(0);
-            myPlayer2.GetComponent<RandomChef>().Send(0);
         }
         else
         {
@@ -59,6 +58,24 @@ public class KitchenManager : MonoBehaviour
             //myPlayer.GetComponent<InputHandler>().enabled = true;
         }
     }
+
+    public GameObject InstanciateSinglePlayer(int idx)
+    {
+        GameObject myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, SpawnPoints[idx].position, SpawnPoints[idx].rotation);
+        myPlayer.AddComponent<SinglePlay>();
+        myPlayer.GetComponent<RandomChef>().Send(0);
+
+        InputHandler inputHandler = myPlayer.GetComponent<InputHandler>();
+        inputHandler.joystick = JoyStick;
+        inputHandler.GrabButton = GrabButton;
+        inputHandler.KnifeButton = KnifeButton;
+
+        SinglePlay singlePlay = myPlayer.GetComponent<SinglePlay>();
+        singlePlay.SwitchButton = SwitchButton;
+
+        return myPlayer;
+    }
+
     private void Update()
     {
         GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].successSubmit = successSubmit;

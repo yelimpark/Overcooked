@@ -69,7 +69,12 @@ public class ResultScene : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_STANDALONE
         if(Input.GetKeyDown(KeyCode.Space))
+#endif
+#if UNITY_ANDROID
+        if(Input.anyKey)
+#endif
         {
             if (totalScore > GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].totalScore)
             {

@@ -9,6 +9,7 @@ public class SinglePlay : MonoBehaviour
     private Image active;
     private Rigidbody rb;
     private Animator animator;
+    public Button SwitchButton;
 
     private void Awake()
     {
@@ -17,13 +18,22 @@ public class SinglePlay : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
+    private void Start()
+    {
+        SwitchButton.onClick.AddListener(Toggle);
+        
+    }
 
     void Update()
     {
+#if UNITY_STANDALONE
         if (Input.GetKeyDown(KeyCode.LeftShift))
+
+        
         {
             Toggle();
         }
+#endif
     }
 
     public void Toggle()

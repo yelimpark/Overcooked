@@ -41,6 +41,7 @@ public class VirtualJoyStick : MonoBehaviour, IDragHandler, IEndDragHandler
         if (direction.magnitude > radius)
         {
             newPos = originalPoint + direction.normalized * radius;
+            direction = direction.normalized * radius;
         }
         point.rectTransform.position = newPos;
     }

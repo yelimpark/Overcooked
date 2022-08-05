@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class InputHandler : MonoBehaviour
 {
@@ -19,12 +20,19 @@ public class InputHandler : MonoBehaviour
     private float horizontal;
     private float vertical;
 
+    public VirtualJoyStick joystick;
+    public Button GrabButton;
+    public Button KnifeButton;
+
     void Start()
     {
         es = GetComponent<EquipmentSystem>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         photonView = PhotonView.Get(this);
+
+        GrabButton.onClick.AddListener(GetGrabButtonDown);
+        KnifeButton.onClick.AddListener(GetKnifeButtonDown);
     }
 
     private void FixedUpdate()
@@ -38,9 +46,15 @@ public class InputHandler : MonoBehaviour
         // Movement
         if (!photonView.IsMine)
             return;
-
+#if UNITY_STANDALONE
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+#endif
+#if UNITY_ANDROID
+        horizontal = joystick.GetAxis("Horizontal");
+        vertical = joystick.GetAxis("Vertical");
+
+#endif
 
         Vector3 moveVec = new Vector3(horizontal, 0f, vertical).normalized;
         if (moveVec != Vector3.zero)
@@ -50,6 +64,7 @@ public class InputHandler : MonoBehaviour
             animator.SetBool("isChoping", false);
         }
         animator.SetBool("isWalking", moveVec != Vector3.zero);
+
 
         // Interaction
         if (Input.GetButtonDown("Fire1"))
@@ -82,8 +97,41 @@ public class InputHandler : MonoBehaviour
             //    }
             //}
         }
+    
 
     }
+#if UNITY_ANDROID
+    public void GetGrabButtonDown()
+    {
+        var equipment = es.hands.OccupyObj;
+
+        if (equipment == null)
+        {
+            PhotonView.Get(this).RPC("OntakeOutBtn", RpcTarget.All);
+            //OnActionBtn();
+        }
+        else
+        {
+            PhotonView.Get(this).RPC("OnPlaceBtn", RpcTarget.All);
+            //OnPlaceBtn();
+        }
+    }
+    public void GetKnifeButtonDown()
+    {
+        PhotonView.Get(this).RPC("OnActionBtn", RpcTarget.All);
+        //OnZDown();
+
+        //if (_equipmentSystem.Equipment.tag == "Cookware")
+        //{                
+        //    FireRay fireRay = _equipmentSystem.Equipment.GetComponentInChildren<FireRay>();
+        //    if (fireRay != null)
+        //    {
+        //        fireRay.Shoot();
+        //        Debug.Log("Shoot");
+        //    }
+        //}
+    }
+#endif
 
     [PunRPC]
     public void OntakeOutBtn()
