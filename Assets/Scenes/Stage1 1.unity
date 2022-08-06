@@ -6029,6 +6029,10 @@ PrefabInstance:
       value: -1.675
       objectReference: {fileID: 0}
     - target: {fileID: 2458188089731594335, guid: 87cbb41cddfe1364f894a6a2b5c28f9e, type: 3}
+      propertyPath: time
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458188089731594335, guid: 87cbb41cddfe1364f894a6a2b5c28f9e, type: 3}
       propertyPath: spawn
       value: 
       objectReference: {fileID: 820227715}

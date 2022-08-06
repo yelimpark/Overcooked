@@ -21,6 +21,10 @@ public class TimeBar : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
+
+        Transform canvas = GetComponentInParent<Canvas>().transform;
+        canvas.LookAt(canvas.position + UnityEngine.Camera.main.transform.rotation * Vector3.back, UnityEngine.Camera.main.transform.rotation * Vector3.down);
+
     }
 
     public void Init()

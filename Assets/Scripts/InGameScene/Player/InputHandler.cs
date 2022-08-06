@@ -30,9 +30,11 @@ public class InputHandler : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         photonView = PhotonView.Get(this);
-
+#if UNITY_ANDROID
         GrabButton.onClick.AddListener(GetGrabButtonDown);
         KnifeButton.onClick.AddListener(GetKnifeButtonDown);
+#endif
+
     }
 
     private void FixedUpdate()

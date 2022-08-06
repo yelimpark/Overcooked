@@ -4,49 +4,41 @@ using UnityEngine;
 
 public class CreateDish : Interactable, ITakeOut
 {
-    public float timer;
+    public float time;
     public Transform spawn;
     public ObjectPoolManager poolManager;
-    public bool startTimer = false;
 
     public List<GameObject> dishes = new List<GameObject>();
 
-    public void Update()
+    IEnumerator CoCreateDish()
     {
-        if (startTimer) 
-            timer += Time.deltaTime;
+        yield return new WaitForSeconds(time);
 
-        if (timer > 4f)
+        var po = poolManager.Extract("Dish");
+        var go = po.gameObject;
+        dishes.Add(go);
+
+        Transform transform = go.transform;
+        Vector3 dishPos = spawn.position;
+        dishPos.y += (transform.lossyScale.y * dishes.Count - transform.lossyScale.y * 0.5f);
+        transform.position = dishPos;
+
+        Rigidbody rb = go.GetComponent<Rigidbody>();
+        if (rb != null)
+            rb.isKinematic = true;
+
+        var colliders = go.GetComponents<Collider>();
+        foreach (Collider collider in colliders)
         {
-            timer = 0f;
-            var po = poolManager.Extract("Dish");
-            var go = po.gameObject;
-            dishes.Add(go);
-
-            Transform transform = go.transform;
-            Vector3 dishPos = spawn.position;
-            dishPos.y += (transform.lossyScale.y * dishes.Count - transform.lossyScale.y * 0.5f);
-            transform.position = dishPos;
-
-            Rigidbody rb = go.GetComponent<Rigidbody>();
-            if (rb != null)
-                rb.isKinematic = true;
-
-            var colliders = go.GetComponents<Collider>();
-            foreach (Collider collider in colliders)
-            {
-                collider.enabled = false;
-            }
-
-            go.transform.rotation = Quaternion.identity;
-
-            startTimer = false;
+            collider.enabled = false;
         }
+
+        go.transform.rotation = Quaternion.identity;
     }
 
     public void GenerateDish()
     {
-        startTimer = true;
+        StartCoroutine(CoCreateDish());
     }
 
     public bool TakeOut(EquipmentSystem es)
