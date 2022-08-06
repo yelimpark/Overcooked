@@ -34,7 +34,6 @@ public class InputHandler : MonoBehaviour
         GrabButton.onClick.AddListener(GetGrabButtonDown);
         KnifeButton.onClick.AddListener(GetKnifeButtonDown);
 #endif
-
     }
 
     private void FixedUpdate()
@@ -48,6 +47,7 @@ public class InputHandler : MonoBehaviour
         // Movement
         if (!photonView.IsMine)
             return;
+
 #if UNITY_STANDALONE
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
@@ -55,7 +55,6 @@ public class InputHandler : MonoBehaviour
 #if UNITY_ANDROID
         horizontal = joystick.GetAxis("Horizontal");
         vertical = joystick.GetAxis("Vertical");
-
 #endif
 
         Vector3 moveVec = new Vector3(horizontal, 0f, vertical).normalized;
@@ -102,38 +101,34 @@ public class InputHandler : MonoBehaviour
     
 
     }
-#if UNITY_ANDROID
+
     public void GetGrabButtonDown()
     {
+        if (!this.enabled)
+            return;
+
         var equipment = es.hands.OccupyObj;
 
         if (equipment == null)
         {
             PhotonView.Get(this).RPC("OntakeOutBtn", RpcTarget.All);
-            //OnActionBtn();
         }
         else
         {
             PhotonView.Get(this).RPC("OnPlaceBtn", RpcTarget.All);
-            //OnPlaceBtn();
         }
     }
+
     public void GetKnifeButtonDown()
     {
-        PhotonView.Get(this).RPC("OnActionBtn", RpcTarget.All);
-        //OnZDown();
+        if (!this.enabled)
+            return;
 
-        //if (_equipmentSystem.Equipment.tag == "Cookware")
-        //{                
-        //    FireRay fireRay = _equipmentSystem.Equipment.GetComponentInChildren<FireRay>();
-        //    if (fireRay != null)
-        //    {
-        //        fireRay.Shoot();
-        //        Debug.Log("Shoot");
-        //    }
-        //}
+        if (!photonView.IsMine)
+            return;
+
+        PhotonView.Get(this).RPC("OnActionBtn", RpcTarget.All);
     }
-#endif
 
     [PunRPC]
     public void OntakeOutBtn()

@@ -9128,6 +9128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joystick
       objectReference: {fileID: 0}
+    - target: {fileID: 3154366600862862057, guid: a7bbbf77d2b683c41a61dc4f419dd068, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3154366600862862061, guid: a7bbbf77d2b683c41a61dc4f419dd068, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -17653,6 +17657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire_extinguisher
       objectReference: {fileID: 0}
+    - target: {fileID: 7170608696065867263, guid: ca29fb007feea9644b80a055410a9877, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7170608696128375930, guid: ca29fb007feea9644b80a055410a9877, type: 3}
       propertyPath: looping
       value: 0
@@ -17886,6 +17894,10 @@ PrefabInstance:
       value: -3.8000488
       objectReference: {fileID: 0}
     - target: {fileID: 5413766981235391564, guid: bf1c4e57272ae654cad66b3283831ad2, type: 3}
+      propertyPath: km
+      value: 
+      objectReference: {fileID: 2081511142}
+    - target: {fileID: 5413766981235391564, guid: bf1c4e57272ae654cad66b3283831ad2, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1293403038}
@@ -17981,6 +17993,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIScript (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8393612274033626785, guid: bf1c4e57272ae654cad66b3283831ad2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8393612274082306642, guid: bf1c4e57272ae654cad66b3283831ad2, type: 3}
       propertyPath: kitchenMgr
       value: 
@@ -18003,6 +18019,18 @@ PrefabInstance:
       objectReference: {fileID: 4780895680793885109, guid: 37f9a34685431834ba9464a2ed7937c6, type: 3}
     - target: {fileID: 8393612274082306643, guid: bf1c4e57272ae654cad66b3283831ad2, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393612274390437419, guid: bf1c4e57272ae654cad66b3283831ad2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393612274390437431, guid: bf1c4e57272ae654cad66b3283831ad2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393612274429112015, guid: bf1c4e57272ae654cad66b3283831ad2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

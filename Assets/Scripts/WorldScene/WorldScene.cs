@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class WorldScene : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class WorldScene : MonoBehaviour
     public GameObject FadeUI;
 
     [Header("깃발 정보")]
+    public ToMain back;
     public Info stage1;
     public Info stage2;
 
@@ -24,35 +26,13 @@ public class WorldScene : MonoBehaviour
     {
         FadeUI.SetActive(true);
         ZoomInUI.ZoomInUI();
-
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if (stage1.onCollider)
-            {
-                Debug.Log("스테이지 1");
-
-                //PhotonView.Get(this).RPC("SetDefinition", RpcTarget.All);
-                GameVariable.SetDefinition(stage1.sceneDefinition);
-
-                //Debug.Log(GameVariable.GetDefinition().SceneName);
-
-                //GameVariable.SetDefinition(stage1.sceneDefinition);
-
-                //Debug.Log(GameVariable.GetDefinition().SceneName);
-                ZoomOutUI.ZoomOutUI();
-                //stage1.sceneDefinition.SceneName; 
-            }
-            else if (stage2.onCollider) 
-            {
-                Debug.Log("스테이지 2");
-
-                GameVariable.SetDefinition(stage2.sceneDefinition);
-                ZoomOutUI.ZoomOutUI();
-            }
+            SelectSceneButton();
         }
     }
 
@@ -60,25 +40,20 @@ public class WorldScene : MonoBehaviour
     {
         if (stage1.onCollider)
         {
-            Debug.Log("스테이지 1");
-
             //PhotonView.Get(this).RPC("SetDefinition", RpcTarget.All);
             GameVariable.SetDefinition(stage1.sceneDefinition);
 
             //Debug.Log(GameVariable.GetDefinition().SceneName);
-
-            //GameVariable.SetDefinition(stage1.sceneDefinition);
-
-            //Debug.Log(GameVariable.GetDefinition().SceneName);
             ZoomOutUI.ZoomOutUI();
-            //stage1.sceneDefinition.SceneName; 
         }
         else if (stage2.onCollider)
         {
-            Debug.Log("스테이지 2");
-
             GameVariable.SetDefinition(stage2.sceneDefinition);
             ZoomOutUI.ZoomOutUI();
+        }
+        else if (back.onCollider)
+        {
+            SceneManager.LoadScene("TitleScene");
         }
     }
 

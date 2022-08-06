@@ -24,10 +24,11 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public Button createBtn;
     public Button connectBtn;
+    public Button newGame;
+    public Button LoadGame;
 
-    public GameObject WorldBtn;
-
-    PhotonView photonView;
+    public TextMeshProUGUI nameFieldLabel;
+    public TextMeshProUGUI roomNumberFieldLabel;
 
     public List<string> players = new List<string>();
 
@@ -35,12 +36,29 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        photonView = PhotonView.Get(this);
+        if (PhotonNetwork.InRoom)
+        {
+            joinGame.SetActive(false);
+            InRoomCanvas.SetActive(true);
+
+            string playerStr = string.Empty;
+            foreach(var player in PhotonNetwork.PlayerList)
+            {
+                playerStr += $"{player}\n";
+            }
+
+            playerList.text = playerStr;
+
+            return;
+        }
+
         PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.AutomaticallySyncScene = true;
         createBtn.enabled = false;
         connectBtn.enabled = false;
+        newGame.enabled = false;
+        LoadGame.enabled = false;
     }
 
     public override void OnConnectedToMaster()
@@ -57,6 +75,20 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public void Connect()
     {
+        if (nameInput.text == null || nameInput.text == string.Empty)
+        {
+            nameFieldLabel.color = Color.red;
+            StartCoroutine(CoColorWhite(nameFieldLabel));
+            return;
+        }
+
+        if (roomNumInput.text == null || roomNumInput.text == string.Empty)
+        {
+            roomNumberFieldLabel.color = Color.red;
+            StartCoroutine(CoColorWhite(roomNumberFieldLabel));
+            return;
+        }
+
         pressButtonSound.Play();
         PhotonNetwork.NickName = nameInput.text;
         PhotonNetwork.JoinRoom(roomNumInput.text);
@@ -65,6 +97,13 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public void OnCreateBtn()
     {
+        if (nameInput.text == null || nameInput.text == string.Empty)
+        {
+            nameFieldLabel.color = Color.red;
+            StartCoroutine(CoColorWhite(nameFieldLabel));
+            return;
+        }
+
         pressButtonSound.Play();
         PhotonNetwork.NickName = nameInput.text;
         int roomNum = Random.Range(0, 1000000);
@@ -79,8 +118,23 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        newGame.enabled = true;
+        LoadGame.enabled = true;
         InRoomCanvas.SetActive(true);
-        photonView.RPC("AddPlayerList", RpcTarget.AllBuffered, PhotonNetwork.NickName);
+        PhotonView.Get(this).RPC("AddPlayerList", RpcTarget.AllBuffered, PhotonNetwork.NickName);
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        base.OnJoinRoomFailed(returnCode, message);
+
+        switch (returnCode)
+        {
+            case 32758:
+                roomNumberFieldLabel.color = Color.red;
+                StartCoroutine(CoColorWhite(roomNumberFieldLabel));
+                return;
+        }
     }
 
     [PunRPC]
@@ -99,7 +153,7 @@ public class PhotonTest : MonoBehaviourPunCallbacks
     {
         InRoomCanvas.SetActive(false);
         joinGame.SetActive(true);
-        photonView.RPC("RemovePlayerList", RpcTarget.AllBuffered, PhotonNetwork.NickName);
+        PhotonView.Get(this).RPC("RemovePlayerList", RpcTarget.AllBuffered, PhotonNetwork.NickName);
     }
 
     [PunRPC]
@@ -116,10 +170,13 @@ public class PhotonTest : MonoBehaviourPunCallbacks
 
     public void MoveToWorldMap()
     {
-#if MULTI
         PhotonNetwork.LoadLevel("WorldScene");
-#else
-        SceneManager.LoadScene("LoadingWorldScene");
-#endif
+    }
+
+    IEnumerator CoColorWhite(TextMeshProUGUI target)
+    {
+        yield return new WaitForSeconds(1f);
+
+        target.color = Color.white;
     }
 }

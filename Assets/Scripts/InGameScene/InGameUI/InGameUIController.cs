@@ -40,6 +40,8 @@ public class InGameUIController : MonoBehaviour
     public TimerBar timerBar;
     public bool HelpOn;
 
+    public KitchenManager km;
+
     private void Start()
     {
         ZoomUI.ZoomInUI();
@@ -100,6 +102,7 @@ public class InGameUIController : MonoBehaviour
         {
             EndUI.SetActive(true);
             GameManager.Instance.DataManager.SaveStageData();
+            km.SetStageInfo();
             ZoomEndUI.ZoomInUI();
             timeController.time = 0;
             //player.enabled = false;

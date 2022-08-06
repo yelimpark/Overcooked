@@ -86,6 +86,17 @@ public class KitchenManager : MonoBehaviour
         //GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].totalScore = score + tipScore - lostScore;
     }
 
+    public void SetStageInfo()
+    {
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].successSubmit = successSubmit;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].tipScore = tipScore;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].failSubmit = failSubmit;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].lostScore = lostScore;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].score = score;
+        GameManager.Instance.DataManager.currentStageInfo[GameVariable.GetDefinition().JsonIndex].totalScore = score + tipScore - lostScore;
+
+    }
+
     void CalledOnLevelWasLoaded(int level)
     {
         Debug.Log("CalledOnLevelWasLoaded");

@@ -6,7 +6,6 @@ using Photon.Pun;
 public class Van : MonoBehaviour
 {
     public float speed;
-    public bool canMove = true;
 
     private float horizontal; 
     private float vertical; 
@@ -31,28 +30,21 @@ public class Van : MonoBehaviour
             return;
         }
 
-        if (canMove)
-        {
-            //horizontal = Input.GetAxisRaw("Horizontal");
-            horizontal = joystick.GetAxis("Horizontal") * speed;
+        horizontal = joystick.GetAxis("Horizontal") * speed;
 
-            moveVec = new Vector3(horizontal, 0f, 0f).normalized;
-            transform.LookAt(transform.position + moveVec);
-        }
+        moveVec = new Vector3(horizontal, 0f, 0f).normalized;
+        transform.LookAt(transform.position + moveVec);
     }
 
     private void FixedUpdate()
     {
-        if (canMove)
-        {
-            transform.position += moveVec * speed * Time.deltaTime;
+        transform.position += moveVec * speed * Time.deltaTime;
 
-            if (transform.position.x < minX)
-            {
-                var pos = transform.position;
-                pos.x = minX;
-                transform.position = pos;
-            }
+        if (transform.position.x < minX)
+        {
+            var pos = transform.position;
+            pos.x = minX;
+            transform.position = pos;
         }
     }
 }

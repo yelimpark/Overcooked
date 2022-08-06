@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44232836, g: 0.48437184, b: 0.53350353, a: 1}
+  m_IndirectSpecularColor: {r: 0.44232795, g: 0.48437124, b: 0.5335033, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 75aa73196cc2a00418e7ceb8826f02ec, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -17083,7 +17083,10 @@ MonoBehaviour:
   playerList: {fileID: 1276948072}
   createBtn: {fileID: 826873173}
   connectBtn: {fileID: 1309950951}
-  WorldBtn: {fileID: 0}
+  newGame: {fileID: 2069071250}
+  LoadGame: {fileID: 911613046}
+  nameFieldLabel: {fileID: 1409841801}
+  roomNumberFieldLabel: {fileID: 925100183}
   players: []
   pressButtonSound: {fileID: 1928617783}
 --- !u!4 &1928617781
