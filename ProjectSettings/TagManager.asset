@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Ingrediant
   - Interactable
+  - Cookware
+  - Stage
+  - Fire
+  - StuffBox
+  - Trash
+  - ObjPoolMgr
+  - ObjectPool
+  - submission
   layers:
   - Default
   - TransparentFX
@@ -13,11 +21,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Interactable
   - 
-  - 
-  - 
-  - 
+  - player
+  - ExceptPlayer
+  - Ground
+  - Fire
   - 
   - 
   - 
