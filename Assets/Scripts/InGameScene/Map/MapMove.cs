@@ -3,26 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapMove : MonoBehaviour
-{    
-    public Transform targetPosition;
-    public Transform originPosition;
+{
+    public Transform targetPos;
+    public Transform originPos;
+    public Transform desPos;
 
-    private Vector3 vel = Vector3.zero;
-    private void Update()
+    public float speed = 10f;
+
+    private void Start()
     {
-        StartCoroutine(CoMapMove());
+        transform.position = originPos.position;
+        desPos = targetPos;
+        iTween.MoveTo(gameObject, iTween.Hash(
+            "delay", 2f,
+            "speed", 1,
+            "position", desPos.position,
+            "essettype", iTween.EaseType.easeOutQuart,
+            "oncomplete", "SetDest"
+        ));
+    }
+    public void SetDest()
+    {
+        if (targetPos == desPos)
+        {
+            desPos = originPos;
+        }
+        else
+        {
+            desPos = targetPos;
+        }
+
+        iTween.MoveTo(gameObject, iTween.Hash(
+        "delay", 2f,
+        "speed", 1,
+        "position", desPos.position,
+        "essettype", iTween.EaseType.easeOutQuart,
+        "oncomplete", "SetDest"
+        ));
     }
 
-    public IEnumerator CoMapMove()
+    private void OnCollisionEnter(Collision collision)
     {
-
-        yield return new WaitForSeconds(5f);
-        transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPosition.transform.position, ref vel, 1f);
-        Debug.Log(transform.position);
-
-        yield return new WaitForSeconds(5f);
-        transform.position = Vector3.SmoothDamp(gameObject.transform.position, originPosition.transform.position, ref vel, 1f);
-        Debug.Log(transform.position);
-
+        if(collision.transform.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
     }
 }

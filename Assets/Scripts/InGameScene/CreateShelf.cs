@@ -13,9 +13,9 @@ public class CreateShelf : MonoBehaviour
     public List<CreateShelf> sideShelf = new List<CreateShelf>();
 
     public GameObject firePrefab;
-
-    //public FireHp firePrefabs;
     public float time = 0f;
+
+    private Frypan fryPantimer;
 
     private FireHp firehp;
 
@@ -49,6 +49,7 @@ public class CreateShelf : MonoBehaviour
         firePrefab.SetActive(false);
 
         firehp = GetComponentInChildren<FireHp>(true);
+        fryPantimer = GetComponentInChildren<Frypan>(true);
     }
 
 
@@ -93,6 +94,6 @@ public class CreateShelf : MonoBehaviour
 
     public void FireOff()
     {
-
+        
     }
 }

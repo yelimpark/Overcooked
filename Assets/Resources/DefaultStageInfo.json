@@ -10,7 +10,7 @@
     "Index": 0
   },
   {
-    "SceneName": "MapScene 1",
+    "SceneName": "Stage2",
     "score": 0,
     "successSubmit": 0,
     "totalScore": 0,
@@ -18,17 +18,6 @@
     "failSubmit": 0,
     "lostScore": 0,
     "Index": 1
-  },
-  {
-    "SceneName": "1-1",
-    "score": 0,
-    "successSubmit": 0,
-    "totalScore": 0,
-    "tipScore": 0,
-    "failSubmit": 0,
-    "lostScore": 0,
-    "Index": 2
   }
-
 ]
 
